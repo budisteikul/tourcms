@@ -1,0 +1,19 @@
+{
+    "name": "budisteikul/tourcms",
+    "description": "Tour CMS",
+    "authors": [
+        {
+            "name": "Budi",
+            "email": "aku@budi.my.id"
+        }
+    ],
+	"require": {
+        "budisteikul/coresdk": "dev-master",
+        "budisteikul/toursdk": "dev-master"
+    },
+    "autoload": {
+   		"psr-4": {
+        	"budisteikul\\tourcms\\": "src/"
+    	}
+	}
+}
