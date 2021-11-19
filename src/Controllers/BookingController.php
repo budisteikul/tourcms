@@ -234,6 +234,10 @@ class BookingController extends Controller
                 $shoppingcart->shoppingcart_payment->save();
                 $shoppingcart->booking_status = 'CANCELED';
                 $shoppingcart->save();
+                foreach($shoppingcart->shoppingcart_products as $product)
+                {
+                    BokunHelper::get_cancelProductBooking($product->product_confirmation_code);
+                }
             }
             return response()->json([
                         "id"=>"1",
