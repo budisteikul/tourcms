@@ -234,10 +234,14 @@ class BookingController extends Controller
                 $shoppingcart->shoppingcart_payment->save();
                 $shoppingcart->booking_status = 'CANCELED';
                 $shoppingcart->save();
-                foreach($shoppingcart->shoppingcart_products as $product)
+                if($shoppingcart->booking_channel=="WEBSITE")
                 {
-                    BokunHelper::get_cancelProductBooking($product->product_confirmation_code);
+                   foreach($shoppingcart->shoppingcart_products as $product)
+                    {
+                        BokunHelper::get_cancelProductBooking($product->product_confirmation_code);
+                    } 
                 }
+                
             }
             return response()->json([
                         "id"=>"1",
@@ -252,10 +256,13 @@ class BookingController extends Controller
             $shoppingcart->save();
             $shoppingcart->shoppingcart_payment->payment_status = 0;
             $shoppingcart->shoppingcart_payment->save();
-            foreach($shoppingcart->shoppingcart_products as $product)
-            {
-                BokunHelper::get_cancelProductBooking($product->product_confirmation_code);
-            }
+            if($shoppingcart->booking_channel=="WEBSITE")
+                {
+                   foreach($shoppingcart->shoppingcart_products as $product)
+                    {
+                        BokunHelper::get_cancelProductBooking($product->product_confirmation_code);
+                    } 
+                }
             return response()->json([
                         "id"=>"1",
                         "message"=>'success'
