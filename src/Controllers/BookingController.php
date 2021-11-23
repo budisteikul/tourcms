@@ -125,13 +125,11 @@ class BookingController extends Controller
             Cache::forget('_'.$sessionId);
             Cache::add('_'.$sessionId, $shoppingcart, 172800);
 
+            BookingHelper::set_confirmationCode($sessionId);
             $shoppingcart= BookingHelper::create_payment($sessionId,"none");
-
             $shoppingcart = BookingHelper::save_question_json($sessionId,$data);
-
             $shoppingcart = BookingHelper::confirm_booking($sessionId);
-
-            BookingHelper::shoppingcart_clear($sessionId);
+            
             return response()->json([
                     "message" => 'success'
                 ]);
