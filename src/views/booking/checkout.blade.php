@@ -334,8 +334,9 @@ function DELETE()
 				<select style="font-size:16px;height:47px;"  class="form-control" id="{{ $question->question_id }}" name="{{ $question->question_id }}">
     			<option value=""></option>
     			@foreach($question->question_options as $question_option)
-    				<option value="{{ $question_option->value }}" {{ $question_option->answer==1 ? "selected" : "" }}>{{ $question_option->label }}</option>
+    				<option value="{{ $question_option->value }}" {{ $question->answer==$question_option->value ? "selected" : "" }}>{{ $question_option->label }}</option>
     			@endforeach
+    			</select>
 			@else
 				<input name="{{ $question->question_id }}" value="{{ $question->answer }}" type="text" class="form-control" id="{{ $question->question_id }}" style="height:47px;">
 			@endif
