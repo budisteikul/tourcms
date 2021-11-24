@@ -128,7 +128,7 @@ class BookingController extends Controller
             BookingHelper::set_confirmationCode($sessionId);
             $shoppingcart= BookingHelper::create_payment($sessionId,"none");
             $shoppingcart = BookingHelper::save_question_json($sessionId,$data);
-            $shoppingcart = BookingHelper::confirm_booking($sessionId);
+            $shoppingcart = BookingHelper::confirm_booking($sessionId,false);
             
             return response()->json([
                     "message" => 'success'
