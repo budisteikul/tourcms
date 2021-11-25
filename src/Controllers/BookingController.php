@@ -184,7 +184,7 @@ class BookingController extends Controller
         }
 
         $calendar = BokunHelper::get_calendar_new($id);
-        $firstavailability = BokunHelper::get_firstAvailability($id,$calendar->year,$calendar->month);
+        $firstavailability = BookingHelper::get_firstAvailability($id,$calendar->year,$calendar->month);
         
         $microtime = $firstavailability[0]['date'];
         $month = date("n",$microtime/1000);
