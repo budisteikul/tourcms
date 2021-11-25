@@ -233,7 +233,6 @@ class BookingController extends Controller
                 $shoppingcart->booking_status = 'CANCELED';
                 $shoppingcart->save();
 
-                BookingHelper::cancel_booking($shoppingcart);
                 
             }
             return response()->json([
@@ -250,7 +249,7 @@ class BookingController extends Controller
             $shoppingcart->shoppingcart_payment->payment_status = 0;
             $shoppingcart->shoppingcart_payment->save();
             
-            BookingHelper::cancel_booking($shoppingcart);
+            
             
             return response()->json([
                         "id"=>"1",
