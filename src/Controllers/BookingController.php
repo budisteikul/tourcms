@@ -106,8 +106,13 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
+            
             $validator = Validator::make(json_decode($request->getContent(), true), [
                 'sessionId' => ['required', 'string', 'max:255'],
+                'questions.firstName' => ['required', 'string'],
+                'questions.lastName' => ['required', 'string'],
+                'questions.phoneNumber' => ['required', 'string'],
+                'questions.email' => ['required', 'string'],
             ]);
 
             if ($validator->fails()) {
@@ -115,6 +120,8 @@ class BookingController extends Controller
                 return response()->json($errors);
             }
             
+            
+
             $data = json_decode($request->getContent(), true);
 
             $sessionId = $data['sessionId'];
@@ -125,9 +132,20 @@ class BookingController extends Controller
             Cache::forget('_'.$sessionId);
             Cache::add('_'.$sessionId, $shoppingcart, 172800);
 
-            BookingHelper::set_confirmationCode($sessionId);
-            $shoppingcart= BookingHelper::create_payment($sessionId,"none");
             $shoppingcart = BookingHelper::save_question_json($sessionId,$data);
+
+            BookingHelper::set_confirmationCode($sessionId);
+
+            if($data['payment_type']!="none")
+            {
+                $shoppingcart= BookingHelper::create_payment($sessionId,"midtrans",$data['payment_type']);
+            }
+            else
+            {
+                $shoppingcart= BookingHelper::create_payment($sessionId,"none");
+            }
+            
+            
             $shoppingcart = BookingHelper::confirm_booking($sessionId,false);
             
             return response()->json([

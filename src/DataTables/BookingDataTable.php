@@ -54,6 +54,9 @@ class BookingDataTable extends DataTable
                     </div>
                 </div>';
                         	break;
+                            case 4:
+                                return $id->shoppingcart_payment->bank_code.' '.$id->shoppingcart_payment->va_number.' <br /> UNPAID';
+                            break;
                         	default:
                             	return BookingHelper::payment_status($id->shoppingcart_payment->payment_status);
                        

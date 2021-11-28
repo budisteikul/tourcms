@@ -307,7 +307,17 @@ function DELETE()
             <div class="card mb-8 p-2">
  				 <div class="card-body" style="padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:15px;">
                  
-<form onSubmit="STORE(); return false;">             
+<form onSubmit="STORE(); return false;">
+<!-- ########################################### -->
+<h3>Payment Type</h3>
+<div class="form-group">
+<label for="payment_type"><strong>Payment</strong></label>
+<select style="font-size:16px;height:47px;"  class="form-control" id="payment_type" name="payment_type">
+        <option value="none">Cash</option>
+        <option value="bni_va">Bank BNI</option>
+        <option value="permata_va">Bank Permata</option>
+</select>
+</div>            
 <!-- ########################################### -->
 <h3>Booking Channel</h3>
 <div class="form-group">
@@ -384,6 +394,13 @@ function DELETE()
 function STORE()
 {
 	var error = false;
+
+	var data = ['firstName','lastName','email','phoneNumber'];
+	$.each(data, function( index, value ) {
+  		$('#'+ value).removeClass('is-invalid');
+  		$('#span-'+ value).remove();
+	});
+
 	$("#submit").attr("disabled", true);
 	$('#submit').html('<i class="fa fa-spinner fa-spin"></i>');
 	
@@ -403,10 +420,12 @@ function STORE()
 			@endforeach
 	}
 
+
+
 	$.ajax({
 		data: JSON.stringify({
             "bookingChannel": $("#bookingChannel").val(),
-            "skip_payment": true,
+            "payment_type": $("#payment_type").val(),
             "sessionId": '{{$shoppingcart->session_id}}',
             "questions": questions,
         }),
@@ -423,6 +442,16 @@ function STORE()
 			}
 			else
 			{
+				$.each( data, function( index, value ) {
+					index = index.toString().replace("questions.", "");
+					value = value.toString().replace("questions.","")
+					$('#'+ index).addClass('is-invalid');
+					if(value!="")
+					{
+
+						$('#'+ index).after('<span id="span-'+ index  +'" class="invalid-feedback" role="alert"><strong>'+ value +'</strong></span>');
+					}
+				});
 				
 				$("#submit").attr("disabled", false);
 				$('#submit').html('<i class="fas fa-save"></i> Save');
