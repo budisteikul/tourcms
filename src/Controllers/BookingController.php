@@ -150,10 +150,12 @@ class BookingController extends Controller
 
             if($data['payment_type']!="none")
             {
+                BookingHelper::set_bookingStatus($sessionId,'PENDING');
                 $shoppingcart= BookingHelper::create_payment($sessionId,"midtrans",$data['payment_type']);
             }
             else
             {
+                BookingHelper::set_bookingStatus($sessionId,'CONFIRMED');
                 $shoppingcart= BookingHelper::create_payment($sessionId,"none");
             }
             
@@ -276,7 +278,7 @@ class BookingController extends Controller
             $shoppingcart = Shoppingcart::findOrFail($id);
             $shoppingcart->booking_status = 'CANCELED';
             $shoppingcart->save();
-            $shoppingcart->shoppingcart_payment->payment_status = 0;
+            $shoppingcart->shoppingcart_payment->payment_status = 3;
             $shoppingcart->shoppingcart_payment->save();
             
             

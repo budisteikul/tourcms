@@ -10,6 +10,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use Illuminate\Support\Str;
 
 class BookingDataTable extends DataTable
 {
@@ -29,7 +30,7 @@ class BookingDataTable extends DataTable
                     
                     
 
-                    $receipt_page = '<a href="'. env('APP_URL') .'/booking/receipt/'. $id->id .'/'. $id->session_id .'" target="_blank">View receipt page</a>';
+                    $receipt_page = '<br /><a href="'. env('APP_URL') .'/booking/receipt/'. $id->id .'/'. $id->session_id .'" target="_blank">View receipt page</a>';
 
 
                     $product = BookingHelper::display_product_detail($id);
@@ -41,11 +42,12 @@ class BookingDataTable extends DataTable
                 ->addColumn('payment', function ($id){
                 	if(isset($id->shoppingcart_payment->payment_status))
                 	{
-                   	 	switch($id->shoppingcart_payment->payment_status)
-                    	{
-                        	case 1:
-                            	return '
-                <div class="btn-toolbar justify-content-end">
+                        if($id->shoppingcart_payment->payment_provider=="paypal")
+                        {
+                            if($id->shoppingcart_payment->payment_status==1)
+                            {
+                                return '
+                <div class="btn-toolbar">
                     <div class="btn-group mr-2 mb-2" role="group">
                         
                         <button id="void-'.$id->id.'" type="button" onClick="STATUS(\''.$id->id.'\',\'void\'); return false;" class="btn btn-sm btn-warning payment"><i class="fa fa-ban"></i> Void</button>
@@ -53,16 +55,10 @@ class BookingDataTable extends DataTable
                         
                     </div>
                 </div>';
-                        	break;
-                            case 4:
-                                return $id->shoppingcart_payment->bank_code.' '.$id->shoppingcart_payment->va_number.' <br /> UNPAID';
-                            break;
-                        	default:
-                            	return BookingHelper::payment_status($id->shoppingcart_payment->payment_status);
-                       
-                    	}
+                            }
+                        }
                 	}
-                    return BookingHelper::payment_status(0);
+                    return BookingHelper::get_paymentStatus($id);
                     
                 })
                 ->addColumn('action', function ($id) {
@@ -113,7 +109,7 @@ class BookingDataTable extends DataTable
      */
     public function query(Shoppingcart $model)
     {
-        return $model->where('booking_status','CONFIRMED')->orWhere('booking_status','CANCELED')->newQuery();
+        return $model->where('booking_status','CONFIRMED')->orWhere('booking_status','CANCELED')->orWhere('booking_status','PENDING')->newQuery();
     }
 
     /**
