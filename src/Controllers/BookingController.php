@@ -278,8 +278,6 @@ class BookingController extends Controller
             $shoppingcart = Shoppingcart::findOrFail($id);
             $shoppingcart->booking_status = 'CANCELED';
             $shoppingcart->save();
-            $shoppingcart->shoppingcart_payment->payment_status = 3;
-            $shoppingcart->shoppingcart_payment->save();
             
             
             
