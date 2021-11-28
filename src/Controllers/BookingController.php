@@ -107,22 +107,34 @@ class BookingController extends Controller
     public function store(Request $request)
     {
             
-            $validator = Validator::make(json_decode($request->getContent(), true), [
-                'sessionId' => ['required', 'string', 'max:255'],
-                'questions.firstName' => ['required', 'string'],
-                'questions.lastName' => ['required', 'string'],
-                'questions.phoneNumber' => ['required', 'string'],
-                'questions.email' => ['required', 'string'],
-            ]);
-
-            if ($validator->fails()) {
-                $errors = $validator->errors();
-                return response()->json($errors);
-            }
-            
-            
-
             $data = json_decode($request->getContent(), true);
+
+            if($data['payment_type']!="none")
+            {
+                $validator = Validator::make(json_decode($request->getContent(), true), [
+                    'sessionId' => ['required', 'string', 'max:255'],
+                    'questions.firstName' => ['required', 'string'],
+                    'questions.lastName' => ['required', 'string'],
+                    'questions.phoneNumber' => ['required', 'string'],
+                    'questions.email' => ['required', 'string'],
+                ]);
+
+                if ($validator->fails()) {
+                    $errors = $validator->errors();
+                    return response()->json($errors);
+                }
+            }
+            else
+            {
+                $validator = Validator::make(json_decode($request->getContent(), true), [
+                    'sessionId' => ['required', 'string', 'max:255'],
+                ]);
+
+                if ($validator->fails()) {
+                    $errors = $validator->errors();
+                    return response()->json($errors);
+                }
+            }
 
             $sessionId = $data['sessionId'];
 
