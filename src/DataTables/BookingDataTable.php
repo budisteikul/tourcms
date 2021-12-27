@@ -30,13 +30,13 @@ class BookingDataTable extends DataTable
                     
                     
 
-                    $receipt_page = '<br /><a href="'. env('APP_URL') .'/booking/receipt/'. $id->id .'/'. $id->session_id .'" target="_blank">View receipt page</a>';
+                    $receipt_page = '';
 
 
                     $product = BookingHelper::display_product_detail($id);
                     
 
-                    return $invoice . $receipt_page .'<hr style="width:50%;margin-left:0px">'. $product ;
+                    return $invoice . $receipt_page . $product ;
                 })
                 
                 ->addColumn('payment', function ($id){
