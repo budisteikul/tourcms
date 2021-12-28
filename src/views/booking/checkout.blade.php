@@ -358,9 +358,10 @@ function DELETE()
 @foreach($shoppingcart->products as $shoppingcart_product)
 	<h2>{{ $shoppingcart_product->title }}</h2>
 	<h5>{{ $ProductHelper->datetotext($shoppingcart_product->date) }}</h5>
+	
 	@foreach($shoppingcart->questions as $question)
 		@if($question->booking_id == $shoppingcart_product->booking_id)
-			
+			@if($question->when_to_ask=="booking")
 			<label for="{{ $question->question_id }}"><strong>{{ $question->label }}</strong></label>
 			<div class="form-group">
 				@if($question->select_option)
@@ -373,9 +374,60 @@ function DELETE()
 					<input type="text" id="{{ $question->question_id }}" value="{{ $question->answer }}" style="height:47px;" name="{{ $question->question_id }}" class="form-control">
 				@endif
 			</div>
+			@endif
 		@endif
 	@endforeach
+
+	
+	@php
+	$participant_number = '';
+	$numbering = 1;
+	@endphp
+	@foreach($shoppingcart->questions as $question)
+		@if($question->booking_id == $shoppingcart_product->booking_id)
+			@if($question->when_to_ask=="participant")
+					
+					@if($participant_number!=$question->participant_number)
+					@if($participant_number!='')
+					</div>
+					</div>
+					@endif
+					<div class="card mb-2">
+						<div class="card-header">
+							Participant {{ $question->participant_number }}
+						</div>
+						<div class="card-body">
+						
+						
+						{{ $question->label }}
+						
+
+					@else
+						{{ $question->label }}
+						
+						
+					@endif
+
+					
+
+					@php
+						$participant_number = $question->participant_number;
+						$numbering += 1;
+					@endphp
+					
+			@endif
+		@endif
+	@endforeach
+	@if($numbering %2 == 0)
+		</div>
+	</div>
+	@endif
+	{{$numbering}}
+
 @endforeach
+
+	
+
 
 <button id="submit" type="submit" style="height:47px;" class="btn btn-lg btn-block btn-primary"><i class="fas fa-save"></i> Save</button>
 </form>
