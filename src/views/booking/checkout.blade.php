@@ -316,6 +316,7 @@ function DELETE()
         <option value="none">Cash</option>
         <option value="bni_va">Bank BNI</option>
         <option value="permata_va">Bank Permata</option>
+        <option value="qris">QRIS</option>
 </select>
 </div>            
 <!-- ########################################### -->
