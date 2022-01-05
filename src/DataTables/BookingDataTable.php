@@ -148,7 +148,6 @@ class BookingDataTable extends DataTable
     {
         return [
             ["name" => "created_at", "title" => "created_at", "data" => "created_at", "orderable" => true, "visible" => false,'searchable' => false],
-            ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px'],
             ["name" => "invoice", "title" => "Invoice", "data" => "invoice", "orderable" => false],
             ["name" => "payment", "title" => "Payment", "data" => "payment", "orderable" => false],
         ];
