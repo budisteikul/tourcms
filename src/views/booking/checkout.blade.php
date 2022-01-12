@@ -313,9 +313,9 @@ function DELETE()
 <div class="form-group">
 <label for="payment_type"><strong>Payment</strong></label>
 <select style="font-size:16px;height:47px;"  class="form-control" id="payment_type" name="payment_type">
-        <option value="none">Cash</option>
-        <option value="bni_va">Bank BNI</option>
-        <option value="permata_va">Bank Permata</option>
+        <option value="none">None</option>
+        <option value="bni_va">Bank Transfer (BNI)</option>
+        <option value="permata_va">Bank Transfer (Permata)</option>
         <option value="gopay">Go Pay</option>
         <option value="qris">Qris</option>
 </select>
