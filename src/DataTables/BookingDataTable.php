@@ -27,16 +27,9 @@ class BookingDataTable extends DataTable
                 ->addColumn('invoice', function ($id){
                     
                     $invoice = BookingHelper::display_invoice($id);
-                    
-                    
-
-                    $receipt_page = '';
-
-
                     $product = BookingHelper::display_product_detail($id);
                     
-
-                    return $invoice . $receipt_page . $product ;
+                    return $invoice . $product ;
                 })
                 
                 ->addColumn('payment', function ($id){

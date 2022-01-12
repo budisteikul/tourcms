@@ -137,7 +137,7 @@
       	
         <hr>
         
-		{!! $dataTable->table(['class'=>'table table-sm table-bordered table-hover table-striped table-responsive w-100 d-block d-md-table']) !!}
+		{!! $dataTable->table(['class'=>'table table-sm table-bordered table-hover table-responsive w-100 d-block d-md-table']) !!}
 		
                 </div>
             </div>
