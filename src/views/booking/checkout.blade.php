@@ -316,8 +316,7 @@ function DELETE()
         <option value="none">NONE</option>
         <option value="bni_va">BANK TRANSFER (BNI)</option>
         <option value="permata_va">BANK TRANSFER (Permata)</option>
-        <option value="gopay">GO PAY</option>
-	<option value="qris">QRIS</option>
+        <option value="gopay">QRIS (Gopay)</option>
 </select>
 </div>            
 <!-- ########################################### -->
