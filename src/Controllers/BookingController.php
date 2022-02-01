@@ -27,6 +27,7 @@ use budisteikul\toursdk\Models\ShoppingcartPayment;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 
+use budisteikul\toursdk\Helpers\FirebaseHelper;
 
 class BookingController extends Controller
 {
@@ -305,7 +306,7 @@ class BookingController extends Controller
     {
 
         $shoppingcart = Shoppingcart::findOrFail($id);
-        
+        FirebaseHelper::delete($shoppingcart);
         $shoppingcart->delete();
     }
 }
