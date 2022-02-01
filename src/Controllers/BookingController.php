@@ -27,8 +27,6 @@ use budisteikul\toursdk\Models\ShoppingcartPayment;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 
-use budisteikul\toursdk\Helpers\FirebaseHelper;
-
 
 class BookingController extends Controller
 {
@@ -165,7 +163,7 @@ class BookingController extends Controller
             
             $shoppingcart = BookingHelper::confirm_booking($sessionId,false);
             
-            FirebaseHelper::upload($shoppingcart);
+            
             
             return response()->json([
                     "message" => 'success'
@@ -273,7 +271,7 @@ class BookingController extends Controller
                 
             }
 
-            FirebaseHelper::upload($shoppingcart);
+            
             
             return response()->json([
                         "id"=>"1",
@@ -287,7 +285,7 @@ class BookingController extends Controller
             $shoppingcart->booking_status = 'CANCELED';
             $shoppingcart->save();
             
-            FirebaseHelper::upload($shoppingcart);
+            
             
             return response()->json([
                         "id"=>"1",
@@ -307,7 +305,7 @@ class BookingController extends Controller
     {
 
         $shoppingcart = Shoppingcart::findOrFail($id);
-        FirebaseHelper::delete($shoppingcart);
+        
         $shoppingcart->delete();
     }
 }
