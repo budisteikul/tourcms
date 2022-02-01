@@ -303,7 +303,9 @@ class BookingController extends Controller
      */
     public function destroy($id)
     {
+
         $shoppingcart = Shoppingcart::findOrFail($id);
+        FirebaseHelper::delete($shoppingcart);
         $shoppingcart->delete();
     }
 }
