@@ -165,6 +165,8 @@ class BookingController extends Controller
             
             $shoppingcart = BookingHelper::confirm_booking($sessionId,false);
             
+            FirebaseHelper::upload($shoppingcart);
+            
             return response()->json([
                     "message" => 'success'
                 ]);
