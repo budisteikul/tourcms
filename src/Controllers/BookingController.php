@@ -286,7 +286,7 @@ class BookingController extends Controller
             $shoppingcart->booking_status = 'CANCELED';
             $shoppingcart->save();
             
-            
+            FirebaseHelper::upload($shoppingcart);
             
             return response()->json([
                         "id"=>"1",
