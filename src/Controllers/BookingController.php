@@ -27,7 +27,7 @@ use budisteikul\toursdk\Models\ShoppingcartPayment;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 
-use budisteikul\toursdk\Helpers\FirebaseHelper;
+
 
 class BookingController extends Controller
 {
@@ -262,7 +262,6 @@ class BookingController extends Controller
             }
             if($update=="void")
             {
-
                 PaypalHelper::voidPaypal($shoppingcart->shoppingcart_payment->authorization_id);
                 $shoppingcart->booking_status = 'CANCELED';
                 $shoppingcart->save();
@@ -281,11 +280,9 @@ class BookingController extends Controller
         if($request->input('action')=="cancel")
         {
             $shoppingcart = Shoppingcart::findOrFail($id);
-            $shoppingcart->booking_status = 'CANCELED';
-            $shoppingcart->save();
-            
-            FirebaseHelper::upload($shoppingcart);
-            
+
+            BookingHelper::change_booking_status($shoppingcart,"CANCELED");
+
             return response()->json([
                         "id"=>"1",
                         "message"=>'success'
@@ -303,7 +300,6 @@ class BookingController extends Controller
     public function destroy($id)
     {
         $shoppingcart = Shoppingcart::findOrFail($id);
-        FirebaseHelper::delete($shoppingcart);
-        $shoppingcart->delete();
+        BookingHelper::change_booking_status($shoppingcart,"DELETED");
     }
 }
