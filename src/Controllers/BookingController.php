@@ -255,21 +255,19 @@ class BookingController extends Controller
             if($update=="capture")
             {
                 PaypalHelper::captureAuth($shoppingcart->shoppingcart_payment->authorization_id);
-                $shoppingcart->shoppingcart_payment->payment_status = 2;
-                $shoppingcart->shoppingcart_payment->save();
                 $shoppingcart->booking_status = 'CONFIRMED';
                 $shoppingcart->save();
+                $shoppingcart->shoppingcart_payment->payment_status = 2;
+                $shoppingcart->shoppingcart_payment->save();
             }
             if($update=="void")
             {
 
                 PaypalHelper::voidPaypal($shoppingcart->shoppingcart_payment->authorization_id);
-                $shoppingcart->shoppingcart_payment->payment_status = 3;
-                $shoppingcart->shoppingcart_payment->save();
                 $shoppingcart->booking_status = 'CANCELED';
                 $shoppingcart->save();
-
-                
+                $shoppingcart->shoppingcart_payment->payment_status = 3;
+                $shoppingcart->shoppingcart_payment->save();
             }
 
             
@@ -304,7 +302,6 @@ class BookingController extends Controller
      */
     public function destroy($id)
     {
-
         $shoppingcart = Shoppingcart::findOrFail($id);
         FirebaseHelper::delete($shoppingcart);
         $shoppingcart->delete();
