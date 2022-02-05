@@ -4,6 +4,7 @@ namespace budisteikul\tourcms\DataTables;
 
 use budisteikul\toursdk\Models\Shoppingcart;
 use budisteikul\toursdk\Helpers\BookingHelper;
+use budisteikul\toursdk\Helpers\ContentHelper;
 use budisteikul\toursdk\Helpers\ProductHelper;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -26,8 +27,8 @@ class BookingDataTable extends DataTable
                 ->addIndexColumn()
                 ->addColumn('invoice', function ($id){
                     
-                    $invoice = BookingHelper::display_invoice($id);
-                    $product = BookingHelper::display_product_detail($id);
+                    $invoice = ContentHelper::view_invoice($id);
+                    $product = ContentHelper::view_product_detail($id);
                     
                     return $invoice . $product ;
                 })
