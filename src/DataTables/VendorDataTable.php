@@ -2,14 +2,14 @@
 
 namespace budisteikul\tourcms\DataTables;
 
-use budisteikul\toursdk\Models\Channel;
+use budisteikul\toursdk\Models\Vendor;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class ChannelDataTable extends DataTable
+class VendorDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -38,10 +38,10 @@ class ChannelDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\ChannelDataTable $model
+     * @param \App\App\VendorDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Channel $model)
+    public function query(Vendor $model)
     {
         return $model->newQuery();
     }
@@ -94,6 +94,6 @@ class ChannelDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Channel_' . date('YmdHis');
+        return 'Vendor_' . date('YmdHis');
     }
 }
