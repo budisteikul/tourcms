@@ -131,13 +131,12 @@
                     <a class="btn btn-success" href="{{route('route_tourcms_booking.index')}}/checkout"><i class="fas fa-shopping-cart"></i> Shopping Cart</a>
                     </div>
                 </div>
-
-                
+   
        
       	
         <hr>
         
-		{!! $dataTable->table(['class'=>'table table-sm table-bordered table-hover table-responsive w-100 d-block d-md-table']) !!}
+		{!! $dataTable->table(['class'=>'table table-sm table-bordered table-hover table-striped table-responsive w-100 d-block d-md-table']) !!}
 		
                 </div>
             </div>

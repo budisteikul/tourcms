@@ -1,11 +1,9 @@
 <?php
-
 namespace budisteikul\tourcms\DataTables;
 
 use budisteikul\toursdk\Models\Shoppingcart;
-use budisteikul\toursdk\Helpers\BookingHelper;
-use budisteikul\toursdk\Helpers\ContentHelper;
-use budisteikul\toursdk\Helpers\ProductHelper;
+use budisteikul\toursdk\Helpers\GeneralHelper;
+
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -25,74 +23,20 @@ class BookingDataTable extends DataTable
     {
         return datatables($query)
                 ->addIndexColumn()
-                ->addColumn('invoice', function ($id){
-                    
-                    $invoice = ContentHelper::view_invoice($id);
-                    $product = ContentHelper::view_product_detail($id);
-                    
-                    return $invoice . $product ;
-                })
-                
-                ->addColumn('payment', function ($id){
-                	if(isset($id->shoppingcart_payment->payment_status))
-                	{
-                        if($id->shoppingcart_payment->payment_provider=="paypal")
-                        {
-                            if($id->shoppingcart_payment->payment_status==1)
-                            {
-                                return '
-                <div class="btn-toolbar">
-                    <div class="btn-group mr-2 mb-2" role="group">
-                        
-                        <button id="void-'.$id->id.'" type="button" onClick="STATUS(\''.$id->id.'\',\'void\'); return false;" class="btn btn-sm btn-warning payment"><i class="fa fa-ban"></i> Void</button>
-                        <button id="capture-'.$id->id.'" type="button" onClick="STATUS(\''. $id->id .'\',\'capture\')" class="btn btn-sm btn-primary payment"><i class="fa fa-money-check"></i> Capture</button>
-                        
-                    </div>
-                </div>';
-                            }
-                        }
-                	}
-                    return BookingHelper::get_paymentStatus($id);
-                    
+                ->editColumn('created_at', function($id){
+                    return GeneralHelper::dateFormat($id->created_at,10);
                 })
                 ->addColumn('action', function ($id) {
-                if(isset($id->shoppingcart_payment->payment_status))
-                {
-                    if($id->shoppingcart_payment->payment_status==1)
-                    {
-                        return '
-                <div class="btn-toolbar justify-content-end">
-                    <div class="btn-group mr-2 mb-2" role="group">
-                        
-                        
-                        <button id="btn-del" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i> Delete</button>
-                        
-                    </div>
-                </div>';
-                    }
-                }
-
-                if($id->booking_status=='CANCELED')
-                {
-                    $button_cancel = '';
-                }
-                else
-                {
-                    $button_cancel = '<button id="btn-edit" type="button" onClick="CANCEL(\''.$id->id.'\'); return false;" class="btn btn-sm btn-warning"><i class="fa fa-ban"></i> Cancel</button>';
-                }
-                
-
                 return '
                 <div class="btn-toolbar justify-content-end">
                     <div class="btn-group mr-2 mb-2" role="group">
                         
-                        '.$button_cancel.'
                         <button id="btn-del" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i> Delete</button>
                         
                     </div>
                 </div>';
                 })
-                ->rawColumns(['action','invoice','product','payment']);
+                ->rawColumns(['action']);
     }
 
     /**
@@ -103,7 +47,7 @@ class BookingDataTable extends DataTable
      */
     public function query(Shoppingcart $model)
     {
-        return $model->where('booking_status','CONFIRMED')->orWhere('booking_status','CANCELED')->orWhere('booking_status','PENDING')->newQuery();
+        return $model->newQuery();
     }
 
     /**
@@ -142,8 +86,13 @@ class BookingDataTable extends DataTable
     {
         return [
             ["name" => "created_at", "title" => "created_at", "data" => "created_at", "orderable" => true, "visible" => false,'searchable' => false],
-            ["name" => "invoice", "title" => "Invoice", "data" => "invoice", "orderable" => false],
-            ["name" => "payment", "title" => "Payment", "data" => "payment", "orderable" => false],
+            ["name" => "confirmation_code", "title" => "Transaction ID", "data" => "confirmation_code", "orderable" => false],
+            ["name" => "booking_channel", "title" => "Booking channel", "data" => "booking_channel", "orderable" => false],
+            ["name" => "created_at", "title" => "Created", "data" => "created_at", "orderable" => false],
+            ["name" => "subtotal", "title" => "Subtotal", "data" => "subtotal", "orderable" => false],
+            ["name" => "discount", "title" => "Discount", "data" => "discount", "orderable" => false],
+            ["name" => "total", "title" => "Total", "data" => "total", "orderable" => false],
+            ["name" => "booking_status", "title" => "Status", "data" => "booking_status", "orderable" => false],
         ];
     }
 
