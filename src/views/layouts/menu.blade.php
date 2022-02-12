@@ -19,6 +19,8 @@
             <a class="collapse-item {{ (request()->is('cms/category*')) ? 'active' : '' }}" href="{{ route('route_tourcms_category.index') }}"><i class="far fa-circle"></i> {{ __('Category') }}</a>
             
             <a class="collapse-item {{ (request()->is('cms/channel*')) ? 'active' : '' }}" href="{{ route('route_tourcms_channel.index') }}"><i class="far fa-circle"></i> {{ __('Channel') }}</a>
+
+            <a class="collapse-item {{ (request()->is('cms/vendor*')) ? 'active' : '' }}" href="{{ route('route_tourcms_vendor.index') }}"><i class="far fa-circle"></i> {{ __('Vendor') }}</a>
             
            
           </div>

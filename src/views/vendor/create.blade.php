@@ -16,6 +16,13 @@ function STORE()
 		data: {
         	"_token": $("meta[name=csrf-token]").attr("content"),
 			"name": $('#name').val(),
+			"contact_person": $('#contact_person').val(),
+			"phone": $('#phone').val(),
+			"email": $('#email').val(),
+			"bank_code": $('#bank_code').val(),
+			"account_holder": $('#account_holder').val(),
+			"account_number": $('#account_number').val(),
+			
         },
 		type: 'POST',
 		url: '{{ route('route_tourcms_vendor.store') }}'
@@ -62,7 +69,39 @@ function STORE()
 <div class="form-group">
 	<label for="name">Name :</label>
 	<input type="text" id="name" name="name" class="form-control" placeholder="Name" autocomplete="off">
+</div>
+
+<div class="form-group">
+	<label for="contact_person">Contact person :</label>
+	<input type="text" id="contact_person" name="contact_person" class="form-control" placeholder="Contact person" autocomplete="off">
+</div>
+
+<div class="form-group">
+	<label for="phone">Phone :</label>
+	<input type="text" id="phone" name="phone" class="form-control" placeholder="Phone" autocomplete="off">
+</div>
+
+<div class="form-group">
+	<label for="email">Email :</label>
+	<input type="text" id="email" name="email" class="form-control" placeholder="Email" autocomplete="off">
+</div>  
+
+<div class="form-group">
+	<label for="bank_code">Bank code :</label>
+	<input type="text" id="bank_code" name="bank_code" class="form-control" placeholder="Bank code" autocomplete="off">
 </div> 
+
+<div class="form-group">
+	<label for="account_holder">Account holder :</label>
+	<input type="text" id="account_holder" name="account_holder" class="form-control" placeholder="Account Holder" autocomplete="off">
+</div> 
+
+<div class="form-group">
+	<label for="account_number">Account number :</label>
+	<input type="text" id="account_number" name="account_number" class="form-control" placeholder="Account number" autocomplete="off">
+</div> 
+
+
 
 	<button  class="btn btn-danger" type="button" onClick="$.fancybox.close();"><i class="fa fa-window-close"></i> Cancel</button>
 	<button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>

@@ -84,6 +84,10 @@ class VendorDataTable extends DataTable
             ["name" => "created_at", "title" => "created_at", "data" => "created_at", "orderable" => true, "visible" => false,'searchable' => false],
             ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px'],
             ["name" => "name", "title" => "Name", "data" => "name"],
+            ["name" => "contact_person", "title" => "Contact person", "data" => "contact_person"],
+            ["name" => "phone", "title" => "Phone", "data" => "phone"],
+            ["name" => "email", "title" => "Email", "data" => "email"],
+            ["name" => "account_number", "title" => "Account Number", "data" => "account_number"],
         ];
     }
 

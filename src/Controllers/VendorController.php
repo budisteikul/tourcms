@@ -49,9 +49,21 @@ class VendorController extends Controller
         }
 
         $name =  $request->input('name');
+        $contact_person =  $request->input('contact_person');
+        $phone =  $request->input('phone');
+        $email =  $request->input('email');
+        $bank_code =  $request->input('bank_code');
+        $account_holder =  $request->input('account_holder');
+        $account_number =  $request->input('account_number');
 
         $vendor = new Vendor();
         $vendor->name = $name;
+        $vendor->contact_person = $contact_person;
+        $vendor->phone = $phone;
+        $vendor->email = $email;
+        $vendor->bank_code = $bank_code;
+        $vendor->account_holder = $account_holder;
+        $vendor->account_number = $account_number;
         $vendor->save();
 
         return response()->json([
@@ -101,8 +113,21 @@ class VendorController extends Controller
         }
 
         $name =  $request->input('name');
+        $contact_person =  $request->input('contact_person');
+        $phone =  $request->input('phone');
+        $email =  $request->input('email');
+        $bank_code =  $request->input('bank_code');
+        $account_holder =  $request->input('account_holder');
+        $account_number =  $request->input('account_number');
+        
         
         $vendor->name = $name;
+        $vendor->contact_person = $contact_person;
+        $vendor->phone = $phone;
+        $vendor->email = $email;
+        $vendor->bank_code = $bank_code;
+        $vendor->account_holder = $account_holder;
+        $vendor->account_number = $account_number;
         $vendor->save();
 
         return response()->json([
