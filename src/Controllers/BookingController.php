@@ -33,7 +33,6 @@ class BookingController extends Controller
 {
     public function __construct()
     {
-        
         $this->bookingChannelUUID = env("BOKUN_BOOKING_CHANNEL");
         $this->currency = env("BOKUN_CURRENCY");
         $this->lang = env("BOKUN_LANG");
@@ -53,11 +52,11 @@ class BookingController extends Controller
 
     public function checkout(Request $request)
     {
+
         $sessionId = self::shoppingcart_session();
         
         $shoppingcart = Cache::get('_'. $sessionId, 'empty');
 
-        
         if($shoppingcart=="empty")
         {
             return redirect(route('route_tourcms_booking.index'));
@@ -161,10 +160,7 @@ class BookingController extends Controller
                 $shoppingcart= BookingHelper::create_payment($sessionId,"none");
             }
             
-            
             $shoppingcart = BookingHelper::confirm_booking($sessionId,false);
-            
-            
             
             return response()->json([
                     "message" => 'success'
@@ -179,23 +175,8 @@ class BookingController extends Controller
      */
     public function show($id)
     {
-        $sessionId = self::shoppingcart_session();
-        $shoppingcart = Cache::get('_'. $sessionId, 'empty');
-        if($shoppingcart=="empty")
-        {
-            return redirect(route('route_tourcms_booking.index'));
-        }
-        if($shoppingcart->products==NULL)
-        {
-            Cache::forget('_'. $sessionId);
-            return redirect(route('route_tourcms_booking.index'));
-        }
-        $channels = Channel::get();
-        return view('tourcms::booking.checkout')
-                ->with([
-                        'shoppingcart'=>$shoppingcart,
-                        'channels'=>$channels
-                    ]);
+        $shoppingcart = Shoppingcart::where('id',$id)->firstOrFail();
+        return view('tourcms::booking.show')->with(['shoppingcart'=>$shoppingcart]);
     }
 
     /**
@@ -268,8 +249,6 @@ class BookingController extends Controller
                 $shoppingcart->shoppingcart_payment->payment_status = 3;
                 $shoppingcart->shoppingcart_payment->save();
             }
-
-            
             
             return response()->json([
                         "id"=>"1",
@@ -282,6 +261,18 @@ class BookingController extends Controller
             $shoppingcart = Shoppingcart::findOrFail($id);
 
             BookingHelper::change_booking_status($shoppingcart,"CANCELED");
+
+            return response()->json([
+                        "id"=>"1",
+                        "message"=>'success'
+                    ]);
+        }
+
+        if($request->input('action')=="confirm")
+        {
+            $shoppingcart = Shoppingcart::findOrFail($id);
+
+            BookingHelper::change_booking_status($shoppingcart,"CONFIRMED");
 
             return response()->json([
                         "id"=>"1",

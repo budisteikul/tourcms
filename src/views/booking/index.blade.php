@@ -77,6 +77,16 @@
 			modal: false,
    		});	
 	}
+
+  function SHOW(id)
+  {
+    $.fancybox.open({
+          type: 'ajax',
+          src: '{{ route('route_tourcms_booking.index') }}/'+ id,
+          touch: false,
+          modal: false,
+      }); 
+  }
 	
 	function CANCEL(id)
   {
@@ -96,6 +106,42 @@
                         data: {
                           "_token": $("meta[name=csrf-token]").attr("content"),
                           "action": 'cancel',
+      
+                        },
+                        type: 'PUT',
+                        url: '{{ route('route_tourcms_booking.index') }}/'+ id
+                        }).done(function( data ) {
+                          table.ajax.reload( null, false );
+                        });
+
+                }
+            },
+            cancel: function(){
+                  console.log('the user clicked cancel');
+            }
+        }
+    });
+    
+  }
+
+  function CONFIRM(id)
+  {
+    $.confirm({
+        title: 'Warning',
+        content: 'Are you sure?',
+        type: 'green',
+      icon: 'fa fa-ban',
+        buttons: {   
+            ok: {
+                text: "OK",
+                btnClass: 'btn-success',
+                keys: ['enter'],
+                action: function(){
+                     var table = $('#dataTableBuilder').DataTable();
+                     $.ajax({
+                        data: {
+                          "_token": $("meta[name=csrf-token]").attr("content"),
+                          "action": 'confirm',
       
                         },
                         type: 'PUT',

@@ -22,6 +22,7 @@ Route::resource('/cms/page','budisteikul\tourcms\Controllers\PageController',[ '
 	->middleware(['web','auth','verified','CoreMiddleware']);
 
 //Booking
+Route::get('/cms/booking/checkout','budisteikul\tourcms\Controllers\BookingController@checkout')->middleware(['web','auth','verified','CoreMiddleware']);
 Route::resource('/cms/booking','budisteikul\tourcms\Controllers\BookingController',[ 'names' => 'route_tourcms_booking' ])
 	->middleware(['web','auth','verified','CoreMiddleware']);
 
