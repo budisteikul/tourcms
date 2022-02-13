@@ -88,7 +88,7 @@ class ReviewController extends Controller
      */
     public function show(Review $review)
     {
-        //
+        return view('tourcms::review.show',['review'=>$review]);
     }
 
     /**

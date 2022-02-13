@@ -57,11 +57,11 @@
 		
 	}
 
-  function SHOW()
+  function SHOW(id)
   {
     $.fancybox.open({
           type: 'ajax',
-          src: '{{ route('route_tourcms_review.index') }}/structure',
+          src: '{{ route('route_tourcms_review.index') }}/'+ id,
       modal: false,
       });
     

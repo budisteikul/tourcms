@@ -10,6 +10,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use Illuminate\Support\Str;
 
 class ReviewDataTable extends DataTable
 {
@@ -23,20 +24,26 @@ class ReviewDataTable extends DataTable
     {
         return datatables($query)
                 ->addIndexColumn()
-                ->editColumn('user', function($id){
-                    return '<a href="#" onClick="SHOW(\''.$id->id.'\'); return false;"><b>'. $id->user .'</b></a>';
-                })
                 ->editColumn('date', function($id){
                     return GeneralHelper::dateFormat($id->date,4);
                 })
-                ->addColumn('channel', function($id){
-                    return $id->channel->name;
-                })
-                ->addColumn('product', function($id){
-                    return $id->product->name;
-                })
-                ->addColumn('rate', function($id){
-                    return ReviewHelper::star($id->rating);
+                ->addColumn('review', function($id){
+                    $review = '';
+
+                    $review .= '<b>'. $id->user .'</b> '. GeneralHelper::dateFormat($id->date,4) .'<br />';
+                    $review .= 'Review of : <b>'. $id->product->name .'</b><br />';
+                    $review .= ReviewHelper::star($id->rating) .'<br />';
+                    if($id->title!="") $review .= '<b>'. $id->title .'</b><br />';
+                    $review .= Str::words($id->text, 15) .'<br />';
+                    if($id->link=="")
+                    {
+                        $review .= $id->channel->name;
+                    }
+                    else
+                    {
+                        $review .= '<a class="text-decoration-none" href="'. $id->link .'" target="_blank">'.$id->channel->name.'</a>';
+                    }
+                    return $review;
                 })
                 ->addColumn('action', function ($id) {
                 return '
@@ -49,7 +56,7 @@ class ReviewDataTable extends DataTable
                     </div>
                 </div>';
                 })
-                ->rawColumns(['action','rate','user']);
+                ->rawColumns(['action','channel_id','review']);
     }
 
     /**
@@ -60,7 +67,7 @@ class ReviewDataTable extends DataTable
      */
     public function query(Review $model)
     {
-        return $model->with('product')->with('channel')->newQuery();
+        return $model->newQuery();
     }
 
     /**
@@ -100,11 +107,7 @@ class ReviewDataTable extends DataTable
         return [
             ["name" => "created_at", "title" => "created_at", "data" => "created_at", "orderable" => true, "visible" => false,'searchable' => false],
             ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px'],
-            ["name" => "user", "title" => "User", "data" => "user", "orderable" => false],
-            ["name" => "date", "title" => "Date", "data" => "date", "orderable" => false],
-            ["name" => "channel.name", "title" => "Channel", "data" => "channel", "orderable" => false],
-            ["name" => "product.name", "title" => "Product", "data" => "product", "orderable" => false],
-            ["name" => "rate", "title" => "Rate", "data" => "rate", "orderable" => false],
+            ["name" => "review", "title" => "Review", "data" => "review", "orderable" => false],
         ];
     }
 
