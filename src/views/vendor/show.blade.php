@@ -14,7 +14,7 @@
                     Name
                 </div>
                 <div class="col">
-                    : {{$vendor->name}}
+                    {{$vendor->name}}
                 </div>
             </div>
             <div class="row">
@@ -22,7 +22,7 @@
                     Contact Person
                 </div>
                 <div class="col">
-                    : {{$vendor->contact_person}}
+                    {{$vendor->contact_person}}
                 </div>
             </div>
             <div class="row">
@@ -30,7 +30,7 @@
                     Phone
                 </div>
                 <div class="col">
-                    : {{$vendor->phone}}
+                    {{$vendor->phone}}
                 </div>
             </div>
             <div class="row">
@@ -38,7 +38,7 @@
                     Email
                 </div>
                 <div class="col">
-                    : {{$vendor->email}}
+                    {{$vendor->email}}
                 </div>
             </div>
             <div class="row">
@@ -46,7 +46,7 @@
                     Bank Code
                 </div>
                 <div class="col">
-                    : {{$vendor->bank_code}}
+                    {{$vendor->bank_code}}
                 </div>
             </div>
             <div class="row">
@@ -54,7 +54,7 @@
                     Account Holder
                 </div>
                 <div class="col">
-                    : {{$vendor->account_holder}}
+                    {{$vendor->account_holder}}
                 </div>
             </div>
             <div class="row">
@@ -62,7 +62,7 @@
                     Account Number
                 </div>
                 <div class="col">
-                    : {{$vendor->account_number}}
+                    {{$vendor->account_number}}
                 </div>
             </div>
 

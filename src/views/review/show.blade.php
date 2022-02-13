@@ -3,7 +3,7 @@
 <div class="h-100" style="width:99%">       
  
     <div class="row justify-content-center">
-        <div class="col-md-8 pr-0 pl-0 pt-0 pb-0">
+        <div class="col-md-12 pr-0 pl-0 pt-0 pb-0">
              <div class="card">
              
     <div class="card-header">Review Detail</div>
@@ -16,7 +16,7 @@
                     User
                 </div>
                 <div class="col">
-                    : {{$review->user}}
+                    {{$review->user}}
                 </div>
             </div>
 
@@ -25,7 +25,7 @@
                     Channel
                 </div>
                 <div class="col">
-                    : {{$review->channel->name}}
+                    {{$review->channel->name}}
                 </div>
             </div>
 
@@ -34,7 +34,7 @@
                     Date
                 </div>
                 <div class="col">
-                    : {{$GeneralHelper->dateFormat($review->date,4)}}
+                    {{$GeneralHelper->dateFormat($review->date,4)}}
                 </div>
             </div>
 
@@ -43,7 +43,7 @@
                     Product
                 </div>
                 <div class="col">
-                    : {{$review->product->name}}
+                    {{$review->product->name}}
                 </div>
             </div>
 
@@ -52,7 +52,7 @@
                     Rate
                 </div>
                 <div class="col">
-                    : {!!$ReviewHelper->star($review->rating)!!}
+                    {!!$ReviewHelper->star($review->rating)!!}
                 </div>
             </div>
 
@@ -62,7 +62,7 @@
                     Title
                 </div>
                 <div class="col">
-                    : {{$review->title}}
+                    {{$review->title}}
                 </div>
             </div>
             @endif
@@ -72,7 +72,7 @@
                     Text
                 </div>
                 <div class="col">
-                    : {{$review->text}}
+                    {{$review->text}}
                 </div>
             </div>
 
@@ -81,7 +81,7 @@
                     Link
                 </div>
                 <div class="col">
-                    : {{$review->link}}
+                    {{$review->link}}
                 </div>
             </div>
             
