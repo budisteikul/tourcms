@@ -56,6 +56,7 @@
                 </div>
             </div>
 
+            @if($review->title!="")
             <div class="row">
                 <div class="col-lg-1 font-weight-bold">
                     Title
@@ -64,6 +65,7 @@
                     : {{$review->title}}
                 </div>
             </div>
+            @endif
 
             <div class="row">
                 <div class="col-lg-1 font-weight-bold">
