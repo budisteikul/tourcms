@@ -21,6 +21,9 @@ class VendorDataTable extends DataTable
     {
         return datatables($query)
                 ->addIndexColumn()
+                ->editColumn('name', function($id){
+                    return '<a href="#" onClick="SHOW(\''.$id->id.'\'); return false;"><b>'. $id->name .'</b></a>';
+                })
                 ->addColumn('action', function ($id) {
                 return '
                 <div class="btn-toolbar justify-content-end">
@@ -32,7 +35,7 @@ class VendorDataTable extends DataTable
                     </div>
                 </div>';
                 })
-                ->rawColumns(['action']);
+                ->rawColumns(['action','name']);
     }
 
     /**

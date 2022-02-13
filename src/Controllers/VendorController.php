@@ -80,7 +80,7 @@ class VendorController extends Controller
      */
     public function show(Vendor $vendor)
     {
-        //
+        return view('tourcms::vendor.show',['vendor'=>$vendor]);
     }
 
     /**
