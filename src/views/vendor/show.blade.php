@@ -10,58 +10,58 @@
         <div class="col-sm-12 justify-content-left">
 
             <div class="row">
-                <div class="col-lg-1 font-weight-bold">
+                <div class="col-lg-2 font-weight-bold">
                     Name
                 </div>
-                <div class="col">
+                <div class="col-md-auto">
                     {{$vendor->name}}
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-1 font-weight-bold">
+                <div class="col-lg-2 font-weight-bold">
                     Contact Person
                 </div>
-                <div class="col">
+                <div class="col-md-auto">
                     {{$vendor->contact_person}}
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-1 font-weight-bold">
+                <div class="col-lg-2 font-weight-bold">
                     Phone
                 </div>
-                <div class="col">
+                <div class="col-md-auto">
                     {{$vendor->phone}}
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-1 font-weight-bold">
+                <div class="col-lg-2 font-weight-bold">
                     Email
                 </div>
-                <div class="col">
+                <div class="col-md-auto">
                     {{$vendor->email}}
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-1 font-weight-bold">
+                <div class="col-lg-2 font-weight-bold">
                     Bank Code
                 </div>
-                <div class="col">
+                <div class="col-md-auto">
                     {{$vendor->bank_code}}
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-1 font-weight-bold">
+                <div class="col-lg-2 font-weight-bold">
                     Account Holder
                 </div>
-                <div class="col">
+                <div class="col-md-auto">
                     {{$vendor->account_holder}}
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-1 font-weight-bold">
+                <div class="col-lg-2 font-weight-bold">
                     Account Number
                 </div>
-                <div class="col">
+                <div class="col-md-auto">
                     {{$vendor->account_number}}
                 </div>
             </div>
