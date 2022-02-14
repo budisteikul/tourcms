@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Fields;
 use budisteikul\toursdk\Helpers\GeneralHelper;
 //use Illuminate\Support\Facades\Cache;
 
-class ProductDataTable
+class ProductDataTable extends DataTable
 {
     /**
      * Build DataTable class.
