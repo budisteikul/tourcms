@@ -23,6 +23,15 @@ class BookingDataTable extends DataTable
     {
         return datatables($query)
                 ->addIndexColumn()
+                ->editColumn('subtotal', function($id){
+                    return GeneralHelper::numberFormat($id->subtotal);
+                })
+                ->editColumn('discount', function($id){
+                    return GeneralHelper::numberFormat($id->discount);
+                })
+                ->editColumn('total', function($id){
+                    return GeneralHelper::numberFormat($id->total);
+                })
                 ->editColumn('confirmation_code', function($id){
                     return '<a href="#" onClick="SHOW(\''.$id->id.'\'); return false;"><b>'. $id->confirmation_code .'</b></a>';
                 })
