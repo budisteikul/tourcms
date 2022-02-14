@@ -10,7 +10,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use budisteikul\toursdk\Helpers\GeneralHelper;
-//use Illuminate\Support\Facades\Cache;
+use Yajra\DataTables\Services\DataTable;
 
 class ProductDataTable extends DataTable
 {
