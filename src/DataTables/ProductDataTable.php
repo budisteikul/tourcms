@@ -9,11 +9,10 @@ use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
-use Yajra\DataTables\Services\DataTable;
 use budisteikul\toursdk\Helpers\GeneralHelper;
 //use Illuminate\Support\Facades\Cache;
 
-class ProductDataTable extends DataTable
+class ProductDataTable
 {
     /**
      * Build DataTable class.
