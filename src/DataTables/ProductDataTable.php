@@ -10,6 +10,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use budisteikul\toursdk\Helpers\GeneralHelper;
+use budisteikul\toursdk\Helpers\ProductHelper;
 use Yajra\DataTables\Services\DataTable;
 
 class ProductDataTable extends DataTable
@@ -40,16 +41,20 @@ class ProductDataTable extends DataTable
 				->addColumn('action', function ($id) {
 
                 
-                $refresh = '<button id="refresh-'.$id->id.'" type="button" onClick="SYNC(\''.$id->id.'\'); return false;" class="btn btn-sm btn-primary"><i class="fas fa-sync-alt"></i></i> Sync</button>';
+                $button_refresh = '<button id="refresh-'.$id->id.'" type="button" onClick="SYNC(\''.$id->id.'\'); return false;" class="btn btn-sm btn-primary"><i class="fas fa-sync-alt"></i></i> Sync</button>';
+                $button_delete = '<button id="btn-del" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i> Delete</button>';
+                if(ProductHelper::have_review($id)) $button_delete = '';
+
                   
                 return '
                 <div class="btn-toolbar justify-content-end">
                     <div class="btn-group mr-2 mb-2" role="group">
                         
-                        '. $refresh .'
+                        '. $button_refresh .'
 
                         <button id="btn-edit" type="button" onClick="EDIT(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Edit</button>
-                        <button id="btn-del" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i> Delete</button>
+                        
+                        '. $button_delete .'
                         
                     </div>
                 </div>';
