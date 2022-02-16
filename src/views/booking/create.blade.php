@@ -11,7 +11,7 @@
                         @php
                             $cover = $ImageHelper->cover($product);
                         @endphp
-                        <img src="{{ $cover }}" alt="Yogyakarta Night Walking and Food Tours" class="card-img-top image-book">
+                        <img src="{{ $cover }}" alt="{{ $product->name }}" class="card-img-top image-book">
                     </div>
                     <div class="card-body mb-0 pb-0">
                         <h5 class="card-title">{{ $product->name }}</h5>
