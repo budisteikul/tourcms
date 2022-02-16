@@ -45,7 +45,7 @@
       @php
         $collapsed = 'collapsed';
         $show = '';        
-        if(request()->is('cms/booking*'))
+        if(request()->is('cms/booking*') || request()->is('cms/disbursement*'))
         {
           $collapsed = '';
           $show = 'show';
@@ -59,6 +59,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             
             <a class="collapse-item {{ (request()->is('cms/booking*')) ? 'active' : '' }}" href="{{ route('route_tourcms_booking.index') }}"><i class="far fa-circle"></i> {{ __('Booking') }}</a>
+            <a class="collapse-item {{ (request()->is('cms/disbursement*')) ? 'active' : '' }}" href="{{ route('route_tourcms_disbursement.index') }}"><i class="far fa-circle"></i> {{ __('Disbursement') }}</a>
             
            
           </div>
