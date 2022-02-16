@@ -79,6 +79,8 @@ class DisbursementController extends Controller
         if($amount<10000) $amount = 10000;
         $vendor = Vendor::findOrFail($vendor_id);
 
+        $transaction_id = OyHelper::get_transaction_id();
+
         $disbursement = new Disbursement();
         $disbursement->transaction_id = $transaction_id;
         $disbursement->vendor_id = $vendor->id;
