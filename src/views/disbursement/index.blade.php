@@ -3,7 +3,29 @@
 @push('scripts')
 
 <script type="text/javascript">
-  
+  	
+  	function TRANSFER(id)
+  	{
+  		$("#btn-trans-"+ id).attr("disabled", true);
+    	$("#btn-del-"+ id).attr("disabled", true);
+    	$("#btn-trans-"+ id).html('<i class="fa fa-spinner fa-spin"></i>');
+    	var table = $('#dataTableBuilder').DataTable();
+    	$.ajax({
+    		data: {
+          	"_token": $("meta[name=csrf-token]").attr("content")
+        	},
+    		type: 'PUT',
+    		url: "{{ route('route_tourcms_disbursement.index') }}/"+ id
+    	}).done(function( data ) {
+      		if(data.id=="1")
+      		{
+        		$("#btn-trans-"+ id).attr("disabled", false);
+    			$("#btn-del-"+ id).attr("disabled", false);
+        		$("#btn-trans-"+ id).html('<i class="far fa-money-bill-alt"></i> Transfer');
+        		table.ajax.reload( null, false );
+      		}
+    	});
+  	}
 
 	function DELETE(id)
 	{
@@ -49,25 +71,7 @@
 
 	}
 	
-	function EDIT(id)
-	{
-		$.fancybox.open({
-        	type: 'ajax',
-       	 	src: '{{ route('route_tourcms_disbursement.index') }}/'+ id +'/edit',
-			modal: true,
-   		});
-		
-	}
-
-  function SHOW(id)
-  {
-    $.fancybox.open({
-          type: 'ajax',
-          src: '{{ route('route_tourcms_disbursement.index') }}/'+ id,
-      modal: false,
-      });
-    
-  }
+	
 	</script>
 @endpush
 <div class="row justify-content-center">

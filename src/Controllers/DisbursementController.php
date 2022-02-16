@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use budisteikul\toursdk\Models\Disbursement;
 use budisteikul\toursdk\Models\Vendor;
 use budisteikul\toursdk\Models\Shoppingcart;
+use budisteikul\toursdk\Helpers\OyHelper;
 use budisteikul\tourcms\DataTables\DisbursementDataTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -121,9 +122,17 @@ class DisbursementController extends Controller
      * @param  \App\Models\Disbursement  $disbursement
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDisbursementRequest $request, Disbursement $disbursement)
+    public function update(Request $request, Disbursement $disbursement)
     {
-        //
+
+        $data = OyHelper::createDisbursement($disbursement);
+        $disbursement->transaction_id = $data->trx_id;
+        $disbursement->status = 1;
+        $disbursement->save();
+        return response()->json([
+                    "id" => "1",
+                    "message" => 'Success'
+                ]);
     }
 
     /**
