@@ -4,6 +4,7 @@ namespace budisteikul\tourcms\Controllers;
 use App\Http\Controllers\Controller;
 use budisteikul\toursdk\Models\Disbursement;
 use budisteikul\toursdk\Models\Vendor;
+use budisteikul\toursdk\Models\Shoppingcart;
 use budisteikul\tourcms\DataTables\DisbursementDataTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -27,22 +28,28 @@ class DisbursementController extends Controller
      */
     public function create(Request $request)
     {
-        
-
-        
         return view('tourcms::disbursement.create');
     }
 
-    public function search($id)
+    public function search($id,Request $request)
     {
+        if($id=="vendor")
+        {
+            $query = $request->input('query');
 
-        $data = [
-                "data" => "111",
-                "value" => "222",
-            ];
-        return response()->json([
-                    $data
+            $response = array();
+
+            $vendors = Vendor::where('name','like','%'. $query .'%')->get();
+
+            foreach($vendors as $vendor)
+            {
+                $response[] = array("data"=> $vendor->id,"value"=>$vendor->name);
+            }
+            
+            return response()->json([
+                    'suggestions' => $response
                 ]);
+        }
        
     }
 
@@ -52,9 +59,37 @@ class DisbursementController extends Controller
      * @param  \App\Http\Requests\StoreDisbursementRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreDisbursementRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'vendor_id' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return response()->json($errors);
+        }
+
+        $vendor_id =  $request->input('vendor_id');
+        $amount =  $request->input('amount');
+        $reference =  $request->input('reference');
+
+        if($amount<10000) $amount = 10000;
+        $vendor = Vendor::findOrFail($vendor_id);
+
+        $disbursement = new Disbursement();
+        $disbursement->vendor_id = $vendor->id;
+        $disbursement->vendor_name = $vendor->name;
+        $disbursement->amount = $amount;
+        $disbursement->reference = $reference;
+        $disbursement->bank_code = $vendor->bank_code;
+        $disbursement->account_number = $vendor->account_number;
+        $disbursement->save();
+
+        return response()->json([
+                    "id" => "1",
+                    "message" => 'Success'
+                ]);
     }
 
     /**
@@ -99,6 +134,6 @@ class DisbursementController extends Controller
      */
     public function destroy(Disbursement $disbursement)
     {
-        //
+        $disbursement->delete();
     }
 }

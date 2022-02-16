@@ -22,12 +22,22 @@ class DisbursementDataTable extends DataTable
         return datatables($query)
                 ->addIndexColumn()
                 ->addColumn('action', function ($id) {
+                
+                $button_transfer = '';
+                
+                $button_delete = '';
+
+                if($id->status==0) $button_transfer = '<button id="btn-prima" type="button" onClick="TRANSFER(\''. $id->id .'\')" class="btn btn-sm btn-primary"><i class="fa fa-square-dollar"></i> Transfer</button>';
+
+                if($id->status==0) $button_delete = '<button id="btn-del" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i> Delete</button>';
+                
                 return '
                 <div class="btn-toolbar justify-content-end">
                     <div class="btn-group mr-2 mb-2" role="group">
                         
-                        <button id="btn-edit" type="button" onClick="EDIT(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Edit</button>
-                        <button id="btn-del" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i> Delete</button>
+                        '. $button_transfer .'
+                        
+                        '. $button_delete .'
                         
                     </div>
                 </div>';
@@ -84,6 +94,10 @@ class DisbursementDataTable extends DataTable
             ["name" => "created_at", "title" => "created_at", "data" => "created_at", "orderable" => true, "visible" => false,'searchable' => false],
             ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px'],
             ["name" => "vendor_name", "title" => "Vendor Name", "data" => "vendor_name"],
+            ["name" => "amount", "title" => "Amount", "data" => "amount"],
+            ["name" => "bank_code", "title" => "Bank code", "data" => "bank_code"],
+            ["name" => "account_number", "title" => "Account number", "data" => "account_number"],
+            ["name" => "reference", "title" => "Reference", "data" => "reference"],
         ];
     }
 

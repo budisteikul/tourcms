@@ -1,18 +1,34 @@
-
-<script language="javascript">
-$('#vendor_name').autocomplete({
-    serviceUrl: '{{ route('route_tourcms_disbursement.index') }}/search/vendor',
-    onSelect: function (suggestion) {
-        alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
-    }
+<style>
+     .fancybox-container {
+         z-index: 10000 !important;
+     }
+</style>
+<script type="text/javascript">
+$( document ).ready(function() {
+	search_vendor();
 });
+
+function search_vendor()
+{
+	$('#vendor_name').autocomplete({
+    	serviceUrl: '{{ route('route_tourcms_disbursement.index') }}/search/vendor',
+    	minChars: 2,
+    	onSelect: function (suggestion) {
+    		$('#vendor_name').val(suggestion.value);
+    		$('#vendor_id').val(suggestion.data);
+        	//console.log('You selected: ' + suggestion.value + ', ' + suggestion.data);
+    	}
+	});
+	$('.autocomplete-suggestions').css('z-index', 10000);
+}
+
 
 function STORE()
 {
 	var error = false;
 	$("#submit").attr("disabled", true);
 	$('#submit').html('<i class="fa fa-spinner fa-spin"></i>');
-	var input = ["name"];
+	var input = ["vendor_id","amount","reference"];
 	
 	$.each(input, function( index, value ) {
   		$('#'+ value).removeClass('is-invalid');
@@ -24,6 +40,7 @@ function STORE()
         	"_token": $("meta[name=csrf-token]").attr("content"),
 			"vendor_id": $('#vendor_id').val(),
 			"amount": $('#amount').val(),
+			"reference": $('#reference').val(),
 			
         },
 		type: 'POST',
@@ -71,6 +88,7 @@ function STORE()
 <div class="form-group">
 	<label for="vendor_name">Vendor Name :</label>
 	<input type="text" id="vendor_name" name="reference" class="form-control" placeholder="Vendor Name" autocomplete="off">
+	<input type="hidden" id="vendor_id" name="vendor_id">
 </div>
 
 <div class="form-group">
