@@ -99,7 +99,7 @@ function STORE()
 
 <div class="form-group">
 	<label for="reference">Reference :</label>
-	<input type="text" id="reference" name="reference" class="form-control" placeholder="Reference" autocomplete="off">
+	<input type="text" id="reference" name="reference" value="{{ env('APP_NAME') }}" class="form-control" placeholder="Reference" autocomplete="off">
 </div>
 
 

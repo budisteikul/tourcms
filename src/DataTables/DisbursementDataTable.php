@@ -25,11 +25,10 @@ class DisbursementDataTable extends DataTable
                 
                 $button_transfer = '';
                 
-                $button_delete = '';
 
                 if($id->status==0) $button_transfer = '<button id="btn-trans-'.$id->id.'" type="button" onClick="TRANSFER(\''. $id->id .'\')" class="btn btn-sm btn-primary"><i class="far fa-money-bill-alt"></i> Transfer</button>';
 
-                if($id->status==0) $button_delete = '<button id="btn-del-'.$id->id.'" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i> Delete</button>';
+                $button_delete = '<button id="btn-del-'.$id->id.'" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i> Delete</button>';
                 
                 return '
                 <div class="btn-toolbar justify-content-end">
@@ -93,12 +92,12 @@ class DisbursementDataTable extends DataTable
         return [
             ["name" => "created_at", "title" => "created_at", "data" => "created_at", "orderable" => true, "visible" => false,'searchable' => false],
             ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px'],
+            ["name" => "transaction_id", "title" => "Transaction ID", "data" => "transaction_id"],
             ["name" => "vendor_name", "title" => "Vendor Name", "data" => "vendor_name"],
             ["name" => "amount", "title" => "Amount", "data" => "amount"],
             ["name" => "bank_code", "title" => "Bank code", "data" => "bank_code"],
             ["name" => "account_number", "title" => "Account number", "data" => "account_number"],
             ["name" => "reference", "title" => "Reference", "data" => "reference"],
-            ["name" => "transaction_id", "title" => "transaction_id", "data" => "transaction_id"],
         ];
     }
 

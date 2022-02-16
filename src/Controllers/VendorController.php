@@ -42,7 +42,7 @@ class VendorController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255|unique:vendors,name',
         ]);
-
+        
         if ($validator->fails()) {
             $errors = $validator->errors();
             return response()->json($errors);

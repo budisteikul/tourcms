@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 
 class DisbursementController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -79,6 +80,7 @@ class DisbursementController extends Controller
         $vendor = Vendor::findOrFail($vendor_id);
 
         $disbursement = new Disbursement();
+        $disbursement->transaction_id = $transaction_id;
         $disbursement->vendor_id = $vendor->id;
         $disbursement->vendor_name = $vendor->name;
         $disbursement->amount = $amount;
@@ -126,7 +128,6 @@ class DisbursementController extends Controller
     {
 
         $data = OyHelper::createDisbursement($disbursement);
-        $disbursement->transaction_id = $data->trx_id;
         $disbursement->status = 1;
         $disbursement->save();
         return response()->json([
