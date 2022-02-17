@@ -313,17 +313,18 @@ function DELETE()
 <div class="form-group">
 <label for="payment_type"><strong>Payment</strong></label>
 <select style="font-size:16px;height:47px;"  class="form-control" id="payment_type" name="payment_type">
-        <option value="none">NONE</option>
-        <option value="midtrans|bni_va">BANK TRANSFER (BNI)</option>
-        <option value="midtrans|permata_va">BANK TRANSFER (Permata)</option>
-        <!-- option value="oyindonesia|btpn">BANK TRANSFER (BTPN)</option>
-        <option value="oyindonesia|bri">BANK TRANSFER (BRI)</option>
-        <option value="oyindonesia|cimbniaga">BANK TRANSFER (CIMB NIAGA)</option>
-        <option value="oyindonesia|mandiri">BANK TRANSFER (MANDIRI)</option -->
+		<option value="doku|permata">DOKU PERMATA VA</option>
+		<option value="doku|doku">DOKU VA</option>
+        <option value="midtrans|bni_va">MIDTRANS BNI VA</option>
+        <option value="midtrans|permata_va">MIDTRANS PERMATA VA</option>
+        <option value="midtrans|gopay">MIDTRANS QRIS (Gopay)</option>
+        <option value="oyindonesia|btpn">OY BTPN</option>
+        <option value="oyindonesia|bri">OY BRI</option>
+        <option value="oyindonesia|cimbniaga">OY CIMB NIAGA</option>
+        <option value="oyindonesia|mandiri">OY MANDIRI</option>
         <option value="oyindonesia|paymentlink">OY Payment Link</option>
-        <option value="midtrans|gopay">QRIS (Gopay)</option>
-        <option value="doku|doku">DOKU VA</option>
-        <option value="doku|permata">DOKU PERMATA VA</option>
+        <option value="none">NONE</option>
+
 </select>
 </div>            
 <!-- ########################################### -->
