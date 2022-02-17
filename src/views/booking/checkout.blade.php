@@ -323,6 +323,7 @@ function DELETE()
         <option value="oyindonesia|paymentlink">OY Payment Link</option>
         <option value="midtrans|gopay">QRIS (Gopay)</option>
         <option value="doku|doku">DOKU VA</option>
+        <option value="doku|permata">DOKU PERMATA VA</option>
 </select>
 </div>            
 <!-- ########################################### -->
