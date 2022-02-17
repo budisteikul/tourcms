@@ -41,7 +41,7 @@ class DisbursementController extends Controller
 
             $response = array();
 
-            $vendors = Vendor::where('name','like','%'. $query .'%')->get();
+            $vendors = Vendor::whereLike('name', $query )->get();
 
             foreach($vendors as $vendor)
             {
