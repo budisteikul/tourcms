@@ -327,7 +327,6 @@ function DELETE()
         <option value="oyindonesia|cimbniaga">OY CIMB NIAGA VA</option>
         <option value="oyindonesia|permata">OY Permata VA</option>
         <option value="oyindonesia|bni">OY BNI VA</option>
-        <option value="oyindonesia|paymentlink">OY Payment Link</option>
         <option value="none">NONE</option>
 
 </select>
