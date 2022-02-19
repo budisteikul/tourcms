@@ -317,13 +317,10 @@ function DELETE()
 		<option value="doku|danamon">DOKU DANAMON VA</option>
 		<option value="doku|permata">DOKU PERMATA VA</option>
 		<option value="doku|doku">DOKU VA</option>
-        <option value="midtrans|bni_va">MIDTRANS BNI VA</option>
-        <option value="midtrans|permata_va">MIDTRANS PERMATA VA</option>
+		<option value="midtrans|mandiri">MIDTRANS MANDIRI BILL</option>
+        <option value="midtrans|bni">MIDTRANS BNI VA</option>
+        <option value="midtrans|permata">MIDTRANS PERMATA VA</option>
         <option value="midtrans|gopay">MIDTRANS QRIS (Gopay)</option>
-        <option value="oyindonesia|btpn">OY BTPN</option>
-        <option value="oyindonesia|bri">OY BRI</option>
-        <option value="oyindonesia|cimbniaga">OY CIMB NIAGA</option>
-        <option value="oyindonesia|mandiri">OY MANDIRI</option>
         <option value="oyindonesia|paymentlink">OY Payment Link</option>
         <option value="none">NONE</option>
 
