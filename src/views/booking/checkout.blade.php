@@ -316,9 +316,9 @@ function DELETE()
 		<option value="doku|mandiri">DOKU MANDIRI VA</option>
 		<option value="doku|danamon">DOKU DANAMON VA</option>
 		<option value="doku|permata">DOKU PERMATA VA</option>
-		<option value="doku|bri">BRI VA</option>
-		<option value="doku|danamon">DANAMON VA</option>
-		<option value="doku|cimb">CIMB NIAGA VA</option>
+		<option value="doku|bri">DOKU BRI VA</option>
+		<option value="doku|danamon">DOKU DANAMON VA</option>
+		<option value="doku|cimb">DOKU CIMB NIAGA VA</option>
 		<option value="doku|doku">DOKU VA</option>
 		<option value="midtrans|mandiri">MIDTRANS MANDIRI BILL</option>
         <option value="midtrans|bni">MIDTRANS BNI VA</option>
