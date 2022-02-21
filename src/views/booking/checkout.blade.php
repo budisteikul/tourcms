@@ -366,9 +366,12 @@ function DELETE()
 @endforeach
 
 @foreach($shoppingcart->products as $shoppingcart_product)
-	<h2>{{ $shoppingcart_product->title }}</h2>
-	<h5>{{ $ProductHelper->datetotext($shoppingcart_product->date) }}</h5>
 	
+	@if(@count($shoppingcart->questions) > 4)
+	<h2>Question for {{ $shoppingcart_product->title }}</h2>
+	<h5>{{ $ProductHelper->datetotext($shoppingcart_product->date) }}</h5>
+	@endif
+
 	@foreach($shoppingcart->questions as $question)
 		@if($question->booking_id == $shoppingcart_product->booking_id)
 			@if($question->when_to_ask=="booking")
