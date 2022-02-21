@@ -304,10 +304,13 @@ function DELETE()
                 
 
             <div class="col-lg-6 col-lg-auto mb-6 mt-4">
-            <div class="card mb-8 p-2">
+            <div class="card mb-8">
+            	<div class="card-header bg-success">Session ID : {{$shoppingcart->session_id}}</div>
  				 <div class="card-body" style="padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:15px;">
                  
 <form onSubmit="STORE(); return false;">
+
+
 <!-- ########################################### -->
 <h3>Payment Type</h3>
 <div class="form-group">
