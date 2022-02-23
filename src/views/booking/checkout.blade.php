@@ -327,6 +327,7 @@ function DELETE()
         <option value="midtrans|bni">MIDTRANS BNI VA</option>
         <option value="midtrans|permata">MIDTRANS PERMATA VA</option>
         <option value="midtrans|gopay">MIDTRANS QRIS (Gopay)</option>
+        <option value="oyindonesia|mandiri">OY</option>
         <option value="none">NONE</option>
 
 </select>
