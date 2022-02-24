@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Validator;
 class DisbursementController extends Controller
 {
 
+    public static function get_transaction_id()
+    {
+        $uuid = "DISB-". date('YmdHis') . rand(10,99);
+        while( Disbursement::where('transaction_id','=',$uuid)->first() ){
+            $uuid = "DISB-". date('YmdHis') . rand(10,99);
+        }
+        return $uuid;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -30,7 +39,7 @@ class DisbursementController extends Controller
      */
     public function create(Request $request)
     {
-        return view('tourcms::disbursement.create');
+         return view('tourcms::disbursement.create');
     }
 
     public function search($id,Request $request)
@@ -79,7 +88,7 @@ class DisbursementController extends Controller
         if($amount<10000) $amount = 10000;
         $vendor = Vendor::findOrFail($vendor_id);
 
-        $transaction_id = OyHelper::get_transaction_id();
+        $transaction_id = $this->get_transaction_id();
 
         $disbursement = new Disbursement();
         $disbursement->transaction_id = $transaction_id;
