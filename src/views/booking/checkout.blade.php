@@ -320,7 +320,7 @@ function DELETE()
 		<option value="doku|danamon">DOKU DANAMON VA</option>
 		<option value="doku|permata">DOKU PERMATA VA</option>
 		<option value="doku|bri">DOKU BRI VA</option>
-		<option value="doku|danamon">DOKU DANAMON VA</option>
+		<option value="doku|mandirisyariah">DOKU BSI VA</option>
 		<option value="doku|cimb">DOKU CIMB NIAGA VA</option>
 		<option value="doku|doku">DOKU VA</option>
 		<option value="midtrans|mandiri">MIDTRANS MANDIRI BILL</option>
