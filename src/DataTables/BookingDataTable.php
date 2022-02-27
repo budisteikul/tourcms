@@ -41,7 +41,7 @@ class BookingDataTable extends DataTable
                 ->editColumn('booking_status', function($id){
                     if($id->booking_status=="PENDING") return '<span class="text-warning font-weight-bold">PENDING</span>';
                     if($id->booking_status=="CANCELED") return '<span class="text-danger font-weight-bold">CANCELED</span>';
-                    if($id->booking_status=="CONFIRM") return '<span class="text-success font-weight-bold">CONFIRM</span>';
+                    if($id->booking_status=="CONFIRMED") return '<span class="text-success font-weight-bold">CONFIRMED</span>';
                 })
                 ->addColumn('action', function ($id) {
 
