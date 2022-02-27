@@ -38,6 +38,11 @@ class BookingDataTable extends DataTable
                 ->editColumn('created_at', function($id){
                     return GeneralHelper::dateFormat($id->created_at,10);
                 })
+                ->editColumn('booking_status', function($id){
+                    if($id->booking_status=="PENDING") return '<span class="text-warning font-weight-bold">PENDING</span>';
+                    if($id->booking_status=="CANCELED") return '<span class="text-danger font-weight-bold">CANCELED</span>';
+                    if($id->booking_status=="CONFIRM") return '<span class="text-success font-weight-bold">CONFIRM</span>';
+                })
                 ->addColumn('action', function ($id) {
 
                 if(isset($id->shoppingcart_payment->payment_status))
@@ -90,7 +95,7 @@ class BookingDataTable extends DataTable
                     </div>
                 </div>';
                 })
-                ->rawColumns(['action','confirmation_code']);
+                ->rawColumns(['action','confirmation_code','booking_status']);
     }
 
     /**
