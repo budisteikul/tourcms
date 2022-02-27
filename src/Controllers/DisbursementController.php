@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Validator;
 class DisbursementController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->midtransServerKey = env("MIDTRANS_SERVER_KEY",NULL);
+        $this->oyApiKey = env("OY_API_KEY",NULL);
+        $this->dokuSecretKey = env("DOKU_SECRET_KEY",NULL);
+        $this->env_appPaymentUrl = env("APP_PAYMENT_URL",NULL);
+    }
+
     public static function get_transaction_id()
     {
         $uuid = "DISB-". date('YmdHis') . rand(10,99);
@@ -128,17 +136,50 @@ class DisbursementController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateDisbursementRequest  $request
-     * @param  \App\Models\Disbursement  $disbursement
-     * @return \Illuminate\Http\Response
-     */
+    public function disbursement_connect($data)
+    {
+        //internal
+        //$url = self::env_appApiUrl();
+
+        //external
+        $url = $this->env_appPaymentUrl;
+
+        $endpoint = $url .'/api/disbursement/connect';
+
+        $headers = [
+              'Accept' => 'application/jsons',
+              'Content-Type' => 'application/json'
+          ];
+
+        $client = new \GuzzleHttp\Client(['headers' => $headers,'http_errors' => false]);
+        $response = $client->request('POST',$endpoint,
+          ['json' => $data]
+        );
+
+        $data = $response->getBody()->getContents();
+        $data = json_decode($data);
+
+        if(isset($data->response))
+        {
+            return $data->response;
+        }
+        else
+        {
+            return response()->json([
+                "id" => "1",
+                "redirect" => self::env_appUrl() .'/page/not/found'
+            ]);
+        }
+    }
+
     public function update(Request $request, Disbursement $disbursement)
     {
+        $data = new \stdClass();
+        $data->api_key = $this->oyApiKey;
+        $data->disbursement = $disbursement;
 
-        $data = OyHelper::createDisbursement($disbursement);
+        $response = self::disbursement_connect($data);
+
         $disbursement->status = 1;
         $disbursement->save();
         return response()->json([
