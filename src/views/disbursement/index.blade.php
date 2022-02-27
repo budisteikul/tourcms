@@ -71,7 +71,15 @@
 
 	}
 	
-	
+	function SHOW(id)
+  	{
+    $.fancybox.open({
+          type: 'ajax',
+          src: '{{ route('route_tourcms_disbursement.index') }}/'+ id,
+      modal: false,
+      });
+    
+  	}
 	</script>
 @endpush
 <div class="row justify-content-center">

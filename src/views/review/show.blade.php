@@ -11,74 +11,67 @@
 
         <div class="col-sm-12 justify-content-left">
 
-            <div class="row">
+            <div class="row border-bottom">
                 <div class="col-lg-2 font-weight-bold">
-                    User
+                    USER
                 </div>
                 <div class="col-md-auto">
                     {{$review->user}}
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row border-bottom">
                 <div class="col-lg-2 font-weight-bold">
-                    Channel
+                    CHANNEL
                 </div>
                 <div class="col-md-auto">
                     {{$review->channel->name}}
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row border-bottom">
                 <div class="col-lg-2 font-weight-bold">
-                    Date
+                    DATE
                 </div>
                 <div class="col-md-auto">
                     {{$GeneralHelper->dateFormat($review->date,4)}}
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row border-bottom">
                 <div class="col-lg-2 font-weight-bold">
-                    Product
+                    PRODUCT
                 </div>
                 <div class="col-md-auto">
                     {{$review->product->name}}
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row border-bottom">
                 <div class="col-lg-2 font-weight-bold">
-                    Rate
+                    RATE
                 </div>
                 <div class="col-md-auto">
                     {!!$ReviewHelper->star($review->rating)!!}
                 </div>
             </div>
-
-            @if($review->title!="")
-            <div class="row">
+            
+            <div class="row border-bottom">
                 <div class="col-lg-2 font-weight-bold">
-                    Title
+                    TEXT
                 </div>
                 <div class="col-md-auto">
+                    @if($review->title!="")
                     {{$review->title}}
-                </div>
-            </div>
-            @endif
-
-            <div class="row">
-                <div class="col-lg-2 font-weight-bold">
-                    Text
-                </div>
-                <div class="col-md-auto">
+                    <br />
+                    @endif
                     {{$review->text}}
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row border-bottom">
                 <div class="col-lg-2 font-weight-bold">
-                    Link
+                    LINK
                 </div>
                 <div class="col-md-auto">
                     {{$review->link}}

@@ -114,7 +114,7 @@ class DisbursementController extends Controller
      */
     public function show(Disbursement $disbursement)
     {
-        //
+        return view('tourcms::disbursement.show',['disbursement'=>$disbursement]);
     }
 
     /**

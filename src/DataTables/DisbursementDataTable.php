@@ -3,6 +3,8 @@
 namespace budisteikul\tourcms\DataTables;
 
 use budisteikul\toursdk\Models\Disbursement;
+use budisteikul\toursdk\Helpers\GeneralHelper;
+
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -21,6 +23,12 @@ class DisbursementDataTable extends DataTable
     {
         return datatables($query)
                 ->addIndexColumn()
+                ->editColumn('amount', function($id){
+                    return GeneralHelper::numberFormat($id->amount);
+                })
+                ->editColumn('transaction_id', function($id){
+                    return '<a href="#" onClick="SHOW(\''.$id->id.'\'); return false;"><b>'. $id->transaction_id .'</b></a>';
+                })
                 ->addColumn('action', function ($id) {
                 
                 $button_transfer = '';
@@ -41,7 +49,7 @@ class DisbursementDataTable extends DataTable
                     </div>
                 </div>';
                 })
-                ->rawColumns(['action']);
+                ->rawColumns(['action','transaction_id']);
     }
 
     /**
@@ -95,9 +103,6 @@ class DisbursementDataTable extends DataTable
             ["name" => "transaction_id", "title" => "Transaction ID", "data" => "transaction_id"],
             ["name" => "vendor_name", "title" => "Vendor Name", "data" => "vendor_name"],
             ["name" => "amount", "title" => "Amount", "data" => "amount"],
-            ["name" => "bank_code", "title" => "Bank code", "data" => "bank_code"],
-            ["name" => "account_number", "title" => "Account number", "data" => "account_number"],
-            ["name" => "reference", "title" => "Reference", "data" => "reference"],
         ];
     }
 
