@@ -26,6 +26,11 @@ class DisbursementDataTable extends DataTable
                 ->editColumn('amount', function($id){
                     return GeneralHelper::numberFormat($id->amount);
                 })
+                ->editColumn('status', function($id){
+                    if($id->status==1) return '<span class="badge badge-warning font-weight-bold">PROCESSING</span>';
+                    if($id->status==0) return '';
+                    if($id->status==2) return '<span class="badge badge-success font-weight-bold">TRANSFERED</span>';
+                })
                 ->editColumn('transaction_id', function($id){
                     return '<a href="#" onClick="SHOW(\''.$id->id.'\'); return false;"><b>'. $id->transaction_id .'</b></a>';
                 })
@@ -49,7 +54,7 @@ class DisbursementDataTable extends DataTable
                     </div>
                 </div>';
                 })
-                ->rawColumns(['action','transaction_id']);
+                ->rawColumns(['action','transaction_id','status']);
     }
 
     /**
@@ -103,6 +108,7 @@ class DisbursementDataTable extends DataTable
             ["name" => "transaction_id", "title" => "Transaction ID", "data" => "transaction_id"],
             ["name" => "vendor_name", "title" => "Vendor Name", "data" => "vendor_name"],
             ["name" => "amount", "title" => "Amount", "data" => "amount"],
+            ["name" => "status", "title" => "Status", "data" => "status"],
         ];
     }
 

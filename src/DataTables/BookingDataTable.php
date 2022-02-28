@@ -39,9 +39,9 @@ class BookingDataTable extends DataTable
                     return GeneralHelper::dateFormat($id->created_at,10);
                 })
                 ->editColumn('booking_status', function($id){
-                    if($id->booking_status=="PENDING") return '<span class="text-warning font-weight-bold">PENDING</span>';
-                    if($id->booking_status=="CANCELED") return '<span class="text-danger font-weight-bold">CANCELED</span>';
-                    if($id->booking_status=="CONFIRMED") return '<span class="text-success font-weight-bold">CONFIRMED</span>';
+                    if($id->booking_status=="PENDING") return '<span class="badge badge-warning font-weight-bold">WAITING FOR PAYMENT</span>';
+                    if($id->booking_status=="CANCELED") return '<span class="badge badge-danger font-weight-bold">CANCELED</span>';
+                    if($id->booking_status=="CONFIRMED") return '<span class="badge badge-success font-weight-bold">CONFIRMED</span>';
                 })
                 ->addColumn('action', function ($id) {
 
