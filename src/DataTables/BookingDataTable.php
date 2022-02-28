@@ -69,11 +69,11 @@ class BookingDataTable extends DataTable
                 $button_confirm = '';
                 $button_delete = '';
 
-                if($id->booking_status=="CANCELED")
+                if($id->booking_status=="CANCELED" || $id->booking_status=="PENDING")
                 {
                     $button_confirm = '<button id="btn-edit" type="button" onClick="CONFIRM(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success"><i class="fas fa-check"></i> Confirm</button>';
                 }
-                if($id->booking_status=="CONFIRMED")
+                if($id->booking_status=="CONFIRMED" || $id->booking_status=="PENDING")
                 {
                     $button_cancel = '<button id="btn-edit" type="button" onClick="CANCEL(\''.$id->id.'\'); return false;" class="btn btn-sm btn-warning"><i class="fa fa-ban"></i> Cancel</button>';
                 }
