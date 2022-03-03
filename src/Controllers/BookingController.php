@@ -234,16 +234,12 @@ class BookingController extends Controller
             if($update=="capture")
             {
                 PaypalHelper::captureAuth($shoppingcart->shoppingcart_payment->authorization_id);
-                $shoppingcart->booking_status = 'PENDING';
-                $shoppingcart->save();
-                BookingHelper::confirm_payment($shoppingcart,"CONFIRMED");
+                BookingHelper::confirm_payment($shoppingcart,"CONFIRMED",true);
             }
             if($update=="void")
             {
                 PaypalHelper::voidPaypal($shoppingcart->shoppingcart_payment->authorization_id);
-                $shoppingcart->booking_status = 'PENDING';
-                $shoppingcart->save();
-                BookingHelper::confirm_payment($shoppingcart,"CANCELED");
+                BookingHelper::confirm_payment($shoppingcart,"CANCELED",true);
             }
             
             return response()->json([
@@ -255,10 +251,7 @@ class BookingController extends Controller
         if($request->input('action')=="cancel")
         {
             $shoppingcart = Shoppingcart::findOrFail($id);
-            $shoppingcart->booking_status = "PENDING";
-            $shoppingcart->save();
-            
-            BookingHelper::confirm_payment($shoppingcart,"CANCELED");
+            BookingHelper::confirm_payment($shoppingcart,"CANCELED",true);
 
             return response()->json([
                         "id"=>"1",
@@ -269,11 +262,7 @@ class BookingController extends Controller
         if($request->input('action')=="confirm")
         {
             $shoppingcart = Shoppingcart::findOrFail($id);
-
-            $shoppingcart->booking_status = "PENDING";
-            $shoppingcart->save();
-
-            BookingHelper::confirm_payment($shoppingcart,"CONFIRMED");
+            BookingHelper::confirm_payment($shoppingcart,"CONFIRMED",true);
 
             return response()->json([
                         "id"=>"1",
@@ -292,7 +281,6 @@ class BookingController extends Controller
     public function destroy($id)
     {
         $shoppingcart = Shoppingcart::findOrFail($id);
-        $shoppingcart->delete();
-        FirebaseHelper::delete($shoppingcart,'receipt');
+        BookingHelper::delete_shoppingcart($shoppingcart);
     }
 }
