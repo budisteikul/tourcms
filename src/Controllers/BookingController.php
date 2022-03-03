@@ -238,18 +238,16 @@ class BookingController extends Controller
             if($update=="capture")
             {
                 PaypalHelper::captureAuth($shoppingcart->shoppingcart_payment->authorization_id);
-                $shoppingcart->booking_status = 'CONFIRMED';
+                $shoppingcart->booking_status = 'PENDING';
                 $shoppingcart->save();
-                $shoppingcart->shoppingcart_payment->payment_status = 2;
-                $shoppingcart->shoppingcart_payment->save();
+                BookingHelper::confirm_payment($shoppingcart,"CONFIRMED");
             }
             if($update=="void")
             {
                 PaypalHelper::voidPaypal($shoppingcart->shoppingcart_payment->authorization_id);
-                $shoppingcart->booking_status = 'CANCELED';
+                $shoppingcart->booking_status = 'PENDING';
                 $shoppingcart->save();
-                $shoppingcart->shoppingcart_payment->payment_status = 3;
-                $shoppingcart->shoppingcart_payment->save();
+                BookingHelper::confirm_payment($shoppingcart,"CANCELED");
             }
             
             return response()->json([
@@ -261,8 +259,10 @@ class BookingController extends Controller
         if($request->input('action')=="cancel")
         {
             $shoppingcart = Shoppingcart::findOrFail($id);
-
-            BookingHelper::change_booking_status($shoppingcart,"CANCELED");
+            $shoppingcart->booking_status = "PENDING";
+            $shoppingcart->save();
+            
+            BookingHelper::confirm_payment($shoppingcart,"CANCELED");
 
             return response()->json([
                         "id"=>"1",
@@ -274,7 +274,10 @@ class BookingController extends Controller
         {
             $shoppingcart = Shoppingcart::findOrFail($id);
 
-            BookingHelper::change_booking_status($shoppingcart,"CONFIRMED");
+            $shoppingcart->booking_status = "PENDING";
+            $shoppingcart->save();
+
+            BookingHelper::confirm_payment($shoppingcart,"CONFIRMED");
 
             return response()->json([
                         "id"=>"1",
