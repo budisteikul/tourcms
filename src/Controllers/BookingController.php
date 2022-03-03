@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use budisteikul\toursdk\Mail\BookingConfirmedMail;
 
-
+use budisteikul\toursdk\Helpers\FirebaseHelper;
 use budisteikul\toursdk\Models\Review;
 use budisteikul\toursdk\Models\ShoppingcartProduct;
 use budisteikul\toursdk\Models\ShoppingcartQuestion;
@@ -48,8 +48,6 @@ class BookingController extends Controller
         return Session::get('sessionId');
     }
 
-    
-
     public function checkout(Request $request)
     {
 
@@ -75,8 +73,6 @@ class BookingController extends Controller
                         'channels'=>$channels
                     ]);
     }
-
-    
 
     /**
      * Display a listing of the resource.
@@ -296,6 +292,7 @@ class BookingController extends Controller
     public function destroy($id)
     {
         $shoppingcart = Shoppingcart::findOrFail($id);
-        BookingHelper::change_booking_status($shoppingcart,"DELETED");
+        $shoppingcart->delete();
+        FirebaseHelper::delete($shoppingcart,'receipt');
     }
 }
