@@ -136,49 +136,12 @@ class DisbursementController extends Controller
         //
     }
 
-    public function disbursement_connect($data)
-    {
-        //internal
-        //$url = self::env_appApiUrl();
-
-        //external
-        $url = $this->env_appPaymentUrl;
-
-        $endpoint = $url .'/api/disbursement/connect';
-
-        $headers = [
-              'Accept' => 'application/jsons',
-              'Content-Type' => 'application/json'
-          ];
-
-        $client = new \GuzzleHttp\Client(['headers' => $headers,'http_errors' => false]);
-        $response = $client->request('POST',$endpoint,
-          ['json' => $data]
-        );
-
-        $data = $response->getBody()->getContents();
-        $data = json_decode($data);
-
-        if(isset($data->response))
-        {
-            return $data->response;
-        }
-        else
-        {
-            return response()->json([
-                "id" => "1",
-                "redirect" => self::env_appUrl() .'/page/not/found'
-            ]);
-        }
-    }
+    
 
     public function update(Request $request, Disbursement $disbursement)
     {
-        $data = new \stdClass();
-        $data->api_key = $this->oyApiKey;
-        $data->disbursement = $disbursement;
-
-        $response = self::disbursement_connect($data);
+        
+        OyHelper::createDisbursement($disbursement);
 
         $disbursement->status = 1;
         $disbursement->save();
