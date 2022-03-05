@@ -326,7 +326,8 @@ function DELETE()
 		<option value="midtrans|mandiri">MIDTRANS MANDIRI BILL</option>
         <option value="midtrans|bni">MIDTRANS BNI VA</option>
         <option value="midtrans|permata">MIDTRANS PERMATA VA</option>
-        <option value="midtrans|gopay">MIDTRANS QRIS (Gopay)</option>
+        <option value="midtrans|qris">MIDTRANS QRIS</option>
+        <option value="midtrans|gopay">MIDTRANS GOPAY</option>
         <option value="oyindonesia|mandiri">OY MANDIRI VA</option>
         <option value="oyindonesia|btpn">OY BTPN VA</option>
         <option value="oyindonesia|permata">OY PERMATA VA</option>
@@ -334,6 +335,7 @@ function DELETE()
         <option value="oyindonesia|cimb">OY CIMB NIAGA VA</option>
         <option value="oyindonesia|bni">OY BNI VA</option>
         <option value="oyindonesia|qris">OY QRIS</option>
+        <option value="oyindonesia|shopeepay">OY SHOPEEPAY</option>
         <option value="none">NONE</option>
 
 </select>
