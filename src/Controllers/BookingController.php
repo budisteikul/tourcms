@@ -138,6 +138,7 @@ class BookingController extends Controller
             $shoppingcart = Cache::get('_'.$sessionId);
 
             $shoppingcart->booking_channel = $data['bookingChannel'];
+            
             Cache::forget('_'.$sessionId);
             Cache::add('_'.$sessionId, $shoppingcart, 172800);
 
@@ -149,7 +150,6 @@ class BookingController extends Controller
             {
                 BookingHelper::set_bookingStatus($sessionId,'PENDING');
                 $payment_type_arr = explode("|", $data['payment_type']);
-               
                 $shoppingcart= BookingHelper::create_payment($sessionId,$payment_type_arr[0],$payment_type_arr[1]);
             }
             else
