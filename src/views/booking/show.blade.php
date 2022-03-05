@@ -23,7 +23,7 @@
             <div style="max-width: 300px;">
                 {!! $Booking->get_paymentStatus($shoppingcart) !!}
             </div>
-            <a class="btn btn-primary" href="{{ env('APP_URL') }}/booking/receipt/{{$shoppingcart->id}}/{{$shoppingcart->session_id}}" target="_blank"><b class="fa fa-eye"></b> View Receipt Page</a>
+            <a class="btn btn-primary" href="{{ env('APP_URL') }}/booking/receipt/{{$shoppingcart->session_id}}/{{$shoppingcart->confirmation_code}}" target="_blank"><b class="fa fa-eye"></b> View Receipt Page</a>
     </div>
     </div>
     
