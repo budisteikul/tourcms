@@ -174,6 +174,14 @@ class BookingController extends Controller
     public function show($id)
     {
         $shoppingcart = Shoppingcart::where('id',$id)->firstOrFail();
+        if($shoppingcart->booking_status=="PENDING")
+        {
+            $due_date = BookingHelper::due_date($shoppingcart,"database");
+            if(Carbon::parse($due_date)->isPast())
+            {
+                BookingHelper::confirm_payment($shoppingcart,"CANCELED");
+            }
+        }
         return view('tourcms::booking.show')->with(['shoppingcart'=>$shoppingcart]);
     }
 
