@@ -1,6 +1,11 @@
 @inject('Content', 'budisteikul\toursdk\Helpers\ContentHelper')
 @inject('Booking', 'budisteikul\toursdk\Helpers\BookingHelper')
 <script type="text/javascript">
+$( document ).ready(function() {
+    $("#qris-img").css("width","150");
+});
+
+
 function copyToClipboard(element) {
   var $temp = $("<input>");
   $("body").append($temp);
