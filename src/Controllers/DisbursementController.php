@@ -141,10 +141,9 @@ class DisbursementController extends Controller
     public function update(Request $request, Disbursement $disbursement)
     {
         
-        OyHelper::createDisbursement($disbursement);
-
         $disbursement->status = 1;
         $disbursement->save();
+        OyHelper::createDisbursement($disbursement);
         return response()->json([
                     "id" => "1",
                     "message" => 'Success'
