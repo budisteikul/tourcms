@@ -42,7 +42,6 @@
                     {{$disbursement->reference}}
                 </div>
             </div>
-            <br />
             <div class="row border-bottom">
                 <div class="col-lg-2 font-weight-bold">
                     CREATED
@@ -52,7 +51,7 @@
                 </div>
             </div>
 
-            @if($disbursement->status==1)
+            @if($disbursement->status>=1)
             <div class="row border-bottom">
                 <div class="col-lg-2 font-weight-bold">
                     TRANSFER
