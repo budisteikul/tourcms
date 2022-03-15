@@ -149,7 +149,7 @@ class BookingController extends Controller
             if($data['payment_type']!="none")
             {
                 BookingHelper::set_bookingStatus($sessionId,'PENDING');
-                $payment_type_arr = explode("|", $data['payment_type']);
+                $payment_type_arr = explode("-", $data['payment_type']);
                 $shoppingcart= BookingHelper::create_payment($sessionId,$payment_type_arr[0],$payment_type_arr[1]);
             }
             else
