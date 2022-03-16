@@ -76,7 +76,7 @@
     $.fancybox.open({
           type: 'ajax',
           src: '{{ route('route_tourcms_disbursement.index') }}/'+ id,
-      modal: false,
+      	  modal: false,
       });
     
   	}
