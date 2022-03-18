@@ -15,5 +15,12 @@
    		"psr-4": {
         	"budisteikul\\tourcms\\": "src/"
     	}
-	}
+	},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "budisteikul\\toursdk\\TourCMSServiceProvider"
+            ]
+        }
+    }
 }
