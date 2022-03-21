@@ -44,7 +44,7 @@ function hideTooltip(element) {
             {!! $Content->view_invoice($shoppingcart) !!}
             {!! $Content->view_product_detail($shoppingcart) !!}
             
-            <div style="max-width: 300px;">
+            <div style="max-width: 350px;">
                 {!! $Booking->get_paymentStatus($shoppingcart) !!}
             </div>
 

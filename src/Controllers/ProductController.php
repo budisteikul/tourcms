@@ -17,6 +17,7 @@ use budisteikul\toursdk\Helpers\CategoryHelper;
 use budisteikul\toursdk\Helpers\ImageHelper;
 use budisteikul\toursdk\Helpers\BokunHelper;
 
+
 class ProductController extends Controller
 {
     public static function product_api($path,$data)
@@ -110,6 +111,7 @@ class ProductController extends Controller
         $key = $request->input('key');
         $filetemps = FileTemp::where('key',$key)->get();
         $sort = 0 ;
+
         foreach($filetemps as $filetemp)
         {
                 $sort++;
@@ -121,6 +123,7 @@ class ProductController extends Controller
                 $image->secure_url = $response['secure_url'];
                 $image->sort = $sort;
                 $image->save();
+
                 $filetemp->delete();
         }
 

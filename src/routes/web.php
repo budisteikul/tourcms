@@ -34,3 +34,4 @@ Route::resource('/cms/vendor','budisteikul\tourcms\Controllers\VendorController'
 Route::get('/cms/disbursement/search/{id}','budisteikul\tourcms\Controllers\DisbursementController@search')->middleware(['web','auth','verified','CoreMiddleware']);	
 Route::resource('/cms/disbursement','budisteikul\tourcms\Controllers\DisbursementController',[ 'names' => 'route_tourcms_disbursement' ])
 	->middleware(['web','auth','verified','CoreMiddleware']);
+
