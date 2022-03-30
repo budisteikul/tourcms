@@ -7,6 +7,7 @@ use budisteikul\toursdk\Models\Vendor;
 use budisteikul\toursdk\Models\Shoppingcart;
 use budisteikul\toursdk\Helpers\GeneralHelper;
 use budisteikul\toursdk\Helpers\OyHelper;
+use budisteikul\toursdk\Helpers\BookingHelper;
 use budisteikul\tourcms\DataTables\DisbursementDataTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -22,15 +23,6 @@ class DisbursementController extends Controller
         $this->oyApiKey = env("OY_API_KEY",NULL);
         $this->dokuSecretKey = env("DOKU_SECRET_KEY",NULL);
         $this->env_appPaymentUrl = env("APP_PAYMENT_URL",NULL);
-    }
-
-    public static function get_disbursement_transaction_id()
-    {
-        $uuid = "DISB-". date('Ymd') .'-'. GeneralHelper::digitFormat(rand(000000,999999),6);
-        while( Disbursement::where('transaction_id','=',$uuid)->first() ){
-            $uuid = "DISB-". date('Ymd') .'-'. GeneralHelper::digitFormat(rand(000000,999999),6);
-        }
-        return $uuid;
     }
 
     /**
@@ -99,7 +91,7 @@ class DisbursementController extends Controller
         if($amount<10000) $amount = 10000;
         $vendor = Vendor::findOrFail($vendor_id);
 
-        $transaction_id = $this->get_disbursement_transaction_id();
+        $transaction_id = BookingHelper::get_disbursement_transaction_id();
 
         $disbursement = new Disbursement();
         $disbursement->transaction_id = $transaction_id;
