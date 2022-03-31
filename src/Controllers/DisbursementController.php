@@ -138,7 +138,7 @@ class DisbursementController extends Controller
         
         $disbursement->status = 1;
         $disbursement->save();
-        OyHelper::createDisbursement($disbursement);
+        @OyHelper::createDisbursement($disbursement);
         return response()->json([
                     "id" => "1",
                     "message" => 'Success'
