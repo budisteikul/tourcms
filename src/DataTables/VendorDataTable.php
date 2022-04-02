@@ -90,7 +90,6 @@ class VendorDataTable extends DataTable
             ["name" => "contact_person", "title" => "Contact person", "data" => "contact_person"],
             ["name" => "phone", "title" => "Phone", "data" => "phone"],
             ["name" => "email", "title" => "Email", "data" => "email"],
-            ["name" => "account_number", "title" => "Account Number", "data" => "account_number"],
         ];
     }
 

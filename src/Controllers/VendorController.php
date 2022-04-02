@@ -53,7 +53,6 @@ class VendorController extends Controller
         $phone =  $request->input('phone');
         $email =  $request->input('email');
         $bank_code =  $request->input('bank_code');
-        $account_holder =  $request->input('account_holder');
         $account_number =  $request->input('account_number');
 
         $vendor = new Vendor();
@@ -62,7 +61,6 @@ class VendorController extends Controller
         $vendor->phone = $phone;
         $vendor->email = $email;
         $vendor->bank_code = $bank_code;
-        $vendor->account_holder = $account_holder;
         $vendor->account_number = $account_number;
         $vendor->save();
 
@@ -117,7 +115,6 @@ class VendorController extends Controller
         $phone =  $request->input('phone');
         $email =  $request->input('email');
         $bank_code =  $request->input('bank_code');
-        $account_holder =  $request->input('account_holder');
         $account_number =  $request->input('account_number');
         
         
@@ -126,7 +123,6 @@ class VendorController extends Controller
         $vendor->phone = $phone;
         $vendor->email = $email;
         $vendor->bank_code = $bank_code;
-        $vendor->account_holder = $account_holder;
         $vendor->account_number = $account_number;
         $vendor->save();
 

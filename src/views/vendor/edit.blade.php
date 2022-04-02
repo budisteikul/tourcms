@@ -21,7 +21,6 @@ function UPDATE()
 			"phone": $('#phone').val(),
 			"email": $('#email').val(),
 			"bank_code": $('#bank_code').val(),
-			"account_holder": $('#account_holder').val(),
 			"account_number": $('#account_number').val(),
         },
 		type: 'PUT',
@@ -86,11 +85,6 @@ function UPDATE()
 <div class="form-group">
 	<label for="bank_code">Bank code :</label>
 	<input type="text" id="bank_code" name="bank_code" class="form-control" placeholder="Bank code" autocomplete="off" value="{{ $vendor->bank_code }}">
-</div>
-
-<div class="form-group">
-	<label for="account_holder">Account holder :</label>
-	<input type="text" id="account_holder" name="account_holder" class="form-control" placeholder="Account holder" autocomplete="off" value="{{ $vendor->account_holder }}">
 </div>
 
 <div class="form-group">

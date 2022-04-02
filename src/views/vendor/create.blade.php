@@ -20,7 +20,6 @@ function STORE()
 			"phone": $('#phone').val(),
 			"email": $('#email').val(),
 			"bank_code": $('#bank_code').val(),
-			"account_holder": $('#account_holder').val(),
 			"account_number": $('#account_number').val(),
 			
         },
@@ -89,11 +88,6 @@ function STORE()
 <div class="form-group">
 	<label for="bank_code">Bank code :</label>
 	<input type="text" id="bank_code" name="bank_code" class="form-control" placeholder="Bank code" autocomplete="off">
-</div> 
-
-<div class="form-group">
-	<label for="account_holder">Account holder :</label>
-	<input type="text" id="account_holder" name="account_holder" class="form-control" placeholder="Account Holder" autocomplete="off">
 </div> 
 
 <div class="form-group">

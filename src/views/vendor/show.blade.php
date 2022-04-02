@@ -41,20 +41,22 @@
                     {{$vendor->email}}
                 </div>
             </div>
+            
             <div class="row border-bottom">
                 <div class="col-lg-2 font-weight-bold">
-                    ACCOUNT HOLDER
+                    BANK CODE
                 </div>
                 <div class="col-md-auto">
-                    {{$vendor->account_holder}}
+                    {{$vendor->bank_code}}
                 </div>
             </div>
+
             <div class="row border-bottom">
                 <div class="col-lg-2 font-weight-bold">
                     ACCOUNT NUMBER
                 </div>
                 <div class="col-md-auto">
-                    {{$vendor->bank_code}} {{$vendor->account_number}}
+                    {{$vendor->account_number}}
                 </div>
             </div>
 
