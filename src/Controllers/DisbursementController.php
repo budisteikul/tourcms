@@ -153,6 +153,9 @@ class DisbursementController extends Controller
      */
     public function destroy(Disbursement $disbursement)
     {
-        $disbursement->delete();
+        if($disbursement->status!=2)
+        {
+            $disbursement->delete();
+        }
     }
 }
