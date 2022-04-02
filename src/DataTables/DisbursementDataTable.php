@@ -37,11 +37,11 @@ class DisbursementDataTable extends DataTable
                 ->addColumn('action', function ($id) {
                 
                 $button_transfer = '';
-                
+                $button_delete = '';
 
                 if($id->status==0) $button_transfer = '<button id="btn-trans-'.$id->id.'" type="button" onClick="TRANSFER(\''. $id->id .'\')" class="btn btn-sm btn-primary"><i class="far fa-money-bill-alt"></i> Transfer</button>';
 
-                $button_delete = '<button id="btn-del-'.$id->id.'" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i> Delete</button>';
+                if($id->status!=2) $button_delete = '<button id="btn-del-'.$id->id.'" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i> Delete</button>';
                 
                 return '
                 <div class="btn-toolbar justify-content-end">

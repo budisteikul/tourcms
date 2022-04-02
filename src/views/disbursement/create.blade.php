@@ -16,9 +16,9 @@ function search_vendor()
     	onSelect: function (suggestion) {
     		$('#vendor_name').val(suggestion.value);
     		$('#vendor_id').val(suggestion.data);
-        	//console.log('You selected: ' + suggestion.value + ', ' + suggestion.data);
     	}
 	});
+	$('.autocomplete-suggestions').css('position', 'fixed');
 	$('.autocomplete-suggestions').css('z-index', 10000);
 }
 
@@ -93,7 +93,7 @@ function STORE()
 
 <div class="form-group">
 	<label for="amount">Amount :</label>
-	<input type="number" id="amount" name="amount" class="form-control" placeholder="Amount" autocomplete="off">
+	<input type="number" id="amount" name="amount" class="form-control" placeholder="10000" autocomplete="off">
 </div>
 
 
