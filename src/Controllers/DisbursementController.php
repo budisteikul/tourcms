@@ -19,10 +19,7 @@ class DisbursementController extends Controller
 
     public function __construct()
     {
-        $this->midtransServerKey = env("MIDTRANS_SERVER_KEY",NULL);
-        $this->oyApiKey = env("OY_API_KEY",NULL);
-        $this->dokuSecretKey = env("DOKU_SECRET_KEY",NULL);
-        $this->env_appPaymentUrl = env("APP_PAYMENT_URL",NULL);
+        
     }
 
     /**
