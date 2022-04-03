@@ -44,7 +44,7 @@
             </div>
             <div class="row border-bottom">
                 <div class="col-lg-2 font-weight-bold">
-                    CREATED
+                    CREATED AT
                 </div>
                 <div class="col-md-auto">
                     {{$GeneralHelper->dateFormat($disbursement->created_at,10)}}
@@ -54,7 +54,7 @@
             @if($disbursement->status==2)
             <div class="row border-bottom">
                 <div class="col-lg-2 font-weight-bold">
-                    TRANSFER
+                    TRANSFERED AT
                 </div>
                 <div class="col-md-auto">
                     {{$GeneralHelper->dateFormat($disbursement->updated_at,10)}}
