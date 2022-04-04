@@ -111,9 +111,6 @@ class BookingController extends Controller
                 $validator = Validator::make(json_decode($request->getContent(), true), [
                     'sessionId' => ['required', 'string', 'max:255'],
                     'questions.firstName' => ['required', 'string'],
-                    'questions.lastName' => ['required', 'string'],
-                    'questions.phoneNumber' => ['required', 'string'],
-                    'questions.email' => ['required', 'string'],
                 ]);
 
                 if ($validator->fails()) {
