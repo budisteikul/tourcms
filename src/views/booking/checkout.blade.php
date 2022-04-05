@@ -316,6 +316,7 @@ function DELETE()
 <div class="form-group">
 <label for="payment_type"><strong>Payment</strong></label>
 <select style="font-size:16px;height:47px;"  class="form-control" id="payment_type" name="payment_type">
+		<option value="paydia-qris">PAYDIA QRIS</option>
 		<option value="doku-mandiri">DOKU MANDIRI VA</option>
 		<option value="doku-danamon">DOKU DANAMON VA</option>
 		<option value="doku-permata">DOKU PERMATA VA</option>
