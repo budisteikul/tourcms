@@ -88,7 +88,7 @@
 </div>
 
                 </div>
-                <a class="btn btn-success" href="{{route('route_tourcms_booking.index')}}/checkout"><i class="fas fa-shopping-cart"></i> <b>CHECKOUT</b></a>
+                <a style="height:47px;" class="btn btn-lg btn-block btn-success" href="{{route('route_tourcms_booking.index')}}/checkout"><i class="fas fa-shopping-cart"></i> <b>CHECKOUT</b></a>
             </div>
         </div>
  </div>

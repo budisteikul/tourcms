@@ -106,21 +106,7 @@ class BookingController extends Controller
             
             $data = json_decode($request->getContent(), true);
 
-            if($data['payment_type']!="none")
-            {
-                $validator = Validator::make(json_decode($request->getContent(), true), [
-                    'sessionId' => ['required', 'string', 'max:255'],
-                    'questions.firstName' => ['required', 'string'],
-                ]);
-
-                if ($validator->fails()) {
-                    $errors = $validator->errors();
-                    return response()->json($errors);
-                }
-            }
-            else
-            {
-                $validator = Validator::make(json_decode($request->getContent(), true), [
+            $validator = Validator::make(json_decode($request->getContent(), true), [
                     'sessionId' => ['required', 'string', 'max:255'],
                 ]);
 
@@ -128,7 +114,6 @@ class BookingController extends Controller
                     $errors = $validator->errors();
                     return response()->json($errors);
                 }
-            }
 
             $sessionId = $data['sessionId'];
 
