@@ -5,6 +5,7 @@
 <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
+
                 <div class="card-header">Create Booking for {{$contents->title}}</div>
                 <div class="card-body">
 
@@ -61,10 +62,10 @@
         onAvailabilitySelected: function(selectedRate, selectedDate, selectedAvailability) {
         },
         onAddedToCart: function(cart) {
-				$('.btn-primary').attr("disabled",true);
-				$('.btn-primary').html(' <i class="fa fa-spinner fa-spin fa-fw"></i>  processing... ');
+				//$('.btn-primary').attr("disabled",true);
+				//$('.btn-primary').html(' <i class="fa fa-spinner fa-spin fa-fw"></i>  processing... ');
 				
-                window.location.href = '{{route('route_tourcms_booking.index')}}/checkout';
+                //window.location.href = '{{route('route_tourcms_booking.index')}}/checkout';
         },
         
         calendarMonth: {!!$month!!},
@@ -87,6 +88,7 @@
 </div>
 
                 </div>
+                <a class="btn btn-success" href="{{route('route_tourcms_booking.index')}}/checkout"><i class="fas fa-shopping-cart"></i> <b>CHECKOUT</b></a>
             </div>
         </div>
  </div>
