@@ -317,21 +317,19 @@ function DELETE()
 <label for="payment_type"><strong>Payment</strong></label>
 <select style="font-size:16px;height:47px;"  class="form-control" id="payment_type" name="payment_type">
 		<option value="paydia-qris">PAYDIA QRIS</option>
-		<option value="midtrans-qris">MIDTRANS QRIS</option>
-		<option value="doku-qris">DOKU QRIS</option>
-		<option value="oyindonesia-qris">OY QRIS</option>
-
-		<!-- option value="doku-mandiri">DOKU MANDIRI VA</option>
+		<option value="doku-mandiri">DOKU MANDIRI VA</option>
 		<option value="doku-danamon">DOKU DANAMON VA</option>
 		<option value="doku-permata">DOKU PERMATA VA</option>
 		<option value="doku-bri">DOKU BRI VA</option>
 		<option value="doku-mandirisyariah">DOKU BSI VA</option>
 		<option value="doku-cimb">DOKU CIMB NIAGA VA</option>
 		<option value="doku-doku">DOKU VA</option>
+		<option value="doku-qris">DOKU QRIS</option>
 		<option value="midtrans-mandiri">MIDTRANS MANDIRI BILL</option>
         <option value="midtrans-bni">MIDTRANS BNI VA</option>
         <option value="midtrans-permata">MIDTRANS PERMATA VA</option>
         <option value="midtrans-gopay">MIDTRANS GOPAY</option>
+        <option value="midtrans-qris">MIDTRANS QRIS</option>
         <option value="oyindonesia-mandiri">OY MANDIRI VA</option>
         <option value="oyindonesia-btpn">OY BTPN VA</option>
         <option value="oyindonesia-permata">OY PERMATA VA</option>
@@ -340,7 +338,7 @@ function DELETE()
         <option value="oyindonesia-bni">OY BNI VA</option>
         <option value="oyindonesia-shopeepay">OY SHOPEEPAY</option>
         <option value="oyindonesia-linkaja">OY LINKAJA</option>
-        <option value="oyindonesia-dana">OY DANA</option -->
+        <option value="oyindonesia-qris">OY QRIS</option>
         <option value="none">NONE</option>
 
 </select>
