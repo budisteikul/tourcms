@@ -327,6 +327,7 @@ function DELETE()
 		<option value="doku-qris">DOKU QRIS</option>
 		<option value="midtrans-mandiri">MIDTRANS MANDIRI BILL</option>
         <option value="midtrans-bni">MIDTRANS BNI VA</option>
+        <option value="midtrans-bri">MIDTRANS BRI VA</option>
         <option value="midtrans-permata">MIDTRANS PERMATA VA</option>
         <option value="midtrans-gopay">MIDTRANS GOPAY</option>
         <option value="midtrans-qris">MIDTRANS QRIS</option>
