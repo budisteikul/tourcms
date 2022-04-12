@@ -71,8 +71,8 @@ function UPDATE()
 <div class="form-group">
     <label for="is_percentage">Percentage :</label>
     <select class="form-control" id="is_percentage">
-      <option value="0" {{ $voucher->is_percentage == 0 ? "selected" : "" }}>No</option>
       <option value="1" {{ $voucher->is_percentage == 1 ? "selected" : "" }}>Yes</option>
+      <option value="0" {{ $voucher->is_percentage == 0 ? "selected" : "" }}>No</option>
     </select>
 </div>
 

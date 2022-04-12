@@ -74,8 +74,8 @@ function STORE()
 <div class="form-group">
     <label for="is_percentage">Percentage :</label>
     <select class="form-control" id="is_percentage">
-      <option value="0">No</option>
       <option value="1">Yes</option>
+      <option value="0">No</option>
     </select>
 </div>
 
