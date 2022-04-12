@@ -1,8 +1,8 @@
 <?php
 
-namespace App\DataTables;
+namespace budisteikul\tourcms\DataTables;
 
-use App\Models\VoucherDataTable;
+use budisteikul\toursdk\Models\Voucher;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -19,9 +19,28 @@ class VoucherDataTable extends DataTable
      */
     public function dataTable($query)
     {
-        return datatables()
-            ->eloquent($query)
-            ->addColumn('action', 'voucherdatatable.action');
+        return datatables($query)
+                ->addIndexColumn()
+                ->editColumn('amount', function($id){
+                    if($id->is_percentage)
+                    {
+                        return $id->amount.'%';
+                    }
+                    return $id->amount;
+                    
+                })
+                ->addColumn('action', function ($id) {
+                return '
+                <div class="btn-toolbar justify-content-end">
+                    <div class="btn-group mr-2 mb-2" role="group">
+                        
+                        <button id="btn-edit" type="button" onClick="EDIT(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Edit</button>
+                        <button id="btn-del" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i> Delete</button>
+                        
+                    </div>
+                </div>';
+                })
+                ->rawColumns(['action']);
     }
 
     /**
@@ -30,7 +49,7 @@ class VoucherDataTable extends DataTable
      * @param \App\Models\VoucherDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(VoucherDataTable $model)
+    public function query(Voucher $model)
     {
         return $model->newQuery();
     }
@@ -43,18 +62,23 @@ class VoucherDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('voucherdatatable-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->buttons(
-                        Button::make('create'),
-                        Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    );
+                    ->addAction(['title' => '','width' => '300px','class' => 'text-center'])
+                    ->parameters([
+                        'language' => [
+                            'paginate' => [
+                                'previous'=>'<i class="fa fa-step-backward"></i>',
+                                'next'=>'<i class="fa fa-step-forward"></i>',
+                                'first'=>'<i class="fa fa-fast-backward"></i>',
+                                'last'=>'<i class="fa fa-fast-forward"></i>'
+                                ]
+                            ],
+                        'pagingType' => 'full_numbers',
+                        'responsive' => true,
+                        'order' => [0,'desc']
+                    ])
+                    ->ajax('/'.request()->path());
     }
 
     /**
@@ -65,15 +89,10 @@ class VoucherDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            ["name" => "created_at", "title" => "created_at", "data" => "created_at", "orderable" => true, "visible" => false,'searchable' => false],
+            ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px'],
+            ["name" => "code", "title" => "Code", "data" => "code"],
+            ["name" => "amount", "title" => "Amount", "data" => "amount"],
         ];
     }
 

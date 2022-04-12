@@ -15,10 +15,12 @@ function STORE()
 	$.ajax({
 		data: {
         	"_token": $("meta[name=csrf-token]").attr("content"),
-			"name": $('#name').val(),
+			"code": $('#code').val(),
+			"amount": $('#amount').val(),
+			"is_percentage": $('#is_percentage').val(),
         },
 		type: 'POST',
-		url: '{{ route('route_tourcms_channel.store') }}'
+		url: '{{ route('route_tourcms_voucher.store') }}'
 		}).done(function( data ) {
 			
 			if(data.id=="1")
@@ -52,7 +54,7 @@ function STORE()
         <div class="col-md-12 pr-0 pl-0 pt-0 pb-0">
              <div class="card">
              
-	<div class="card-header">Create Channel</div>
+	<div class="card-header">Create voucher</div>
 	<div class="card-body">
 				
 <form onSubmit="STORE(); return false;">
@@ -60,9 +62,22 @@ function STORE()
 <div id="result"></div>
 
 <div class="form-group">
-	<label for="name">Name :</label>
-	<input type="text" id="name" name="name" class="form-control" placeholder="Name" autocomplete="off">
+	<label for="code">Code :</label>
+	<input type="text" id="code" name="code" class="form-control" placeholder="Code" autocomplete="off">
 </div> 
+
+<div class="form-group">
+	<label for="amount">Amount :</label>
+	<input type="number" id="amount" name="amount" class="form-control" placeholder="Amount" autocomplete="off">
+</div> 
+
+<div class="form-group">
+    <label for="is_percentage">Percentage :</label>
+    <select class="form-control" id="is_percentage">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </select>
+</div>
 
 	<button  class="btn btn-danger" type="button" onClick="$.fancybox.close();"><i class="fa fa-window-close"></i> Cancel</button>
 	<button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>

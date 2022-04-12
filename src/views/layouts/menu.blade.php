@@ -5,12 +5,13 @@
         {{ (request()->is('cms/product*')) ? 'active' : '' }}
         {{ (request()->is('cms/category*')) ? 'active' : '' }}
         {{ (request()->is('cms/channel*')) ? 'active' : '' }}
+        {{ (request()->is('cms/voucher*')) ? 'active' : '' }}
       
       ">
       @php
         $collapsed = 'collapsed';
         $show = '';        
-        if(request()->is('cms/product*') || request()->is('cms/category*') || request()->is('cms/channel*') || request()->is('cms/vendor*'))
+        if(request()->is('cms/product*') || request()->is('cms/category*') || request()->is('cms/channel*') || request()->is('cms/vendor*') || request()->is('cms/voucher*'))
         {
           $collapsed = '';
           $show = 'show';
@@ -30,6 +31,8 @@
             <a class="collapse-item {{ (request()->is('cms/channel*')) ? 'active' : '' }}" href="{{ route('route_tourcms_channel.index') }}"><i class="far fa-circle"></i> {{ __('Channel') }}</a>
 
             <a class="collapse-item {{ (request()->is('cms/vendor*')) ? 'active' : '' }}" href="{{ route('route_tourcms_vendor.index') }}"><i class="far fa-circle"></i> {{ __('Vendor') }}</a>
+            
+            <a class="collapse-item {{ (request()->is('cms/voucher*')) ? 'active' : '' }}" href="{{ route('route_tourcms_voucher.index') }}"><i class="far fa-circle"></i> {{ __('Voucher') }}</a>
             
            
           </div>

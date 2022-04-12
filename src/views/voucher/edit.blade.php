@@ -16,11 +16,12 @@ function UPDATE()
 	$.ajax({
 		data: {
         	"_token": $("meta[name=csrf-token]").attr("content"),
-			"name": $('#name').val(),
-			"parent_id": $('#parent_id').val(),
+			"code": $('#code').val(),
+			"amount": $('#amount').val(),
+			"is_percentage": $('#is_percentage').val(),
         },
 		type: 'PUT',
-		url: '{{ route('route_tourcms_channel.update',$channel->id) }}'
+		url: '{{ route('route_tourcms_voucher.update',$voucher->id) }}'
 		}).done(function( data ) {
 			
 			if(data.id=="1")
@@ -51,18 +52,30 @@ function UPDATE()
     <div class="row justify-content-center">
         <div class="col-md-12 pr-0 pl-0 pt-0 pb-0">
              <div class="card">
-                <div class="card-header">Edit Category</div>
+                <div class="card-header">Edit voucher</div>
                 <div class="card-body">
 				
 <form onSubmit="UPDATE(); return false;">
 <div id="result"></div>
 
+<div class="form-group">
+	<label for="code">Code :</label>
+	<input type="text" id="code" name="code" class="form-control" placeholder="Code" autocomplete="off" value="{{ $voucher->code }}">
+</div> 
 
 <div class="form-group">
-	<label for="name">Name :</label>
-	<input type="text" id="name" name="name" class="form-control" placeholder="Name" autocomplete="off" value="{{ $channel->name }}">
+	<label for="amount">Amount :</label>
+	<input type="number" id="amount" name="amount" class="form-control" placeholder="Amount" autocomplete="off" value="{{ $voucher->amount }}">
+</div> 
+
+<div class="form-group">
+    <label for="is_percentage">Percentage :</label>
+    <select class="form-control" id="is_percentage">
+      <option value="0" {{ $voucher->is_percentage == 0 ? "selected" : "" }}>No</option>
+      <option value="1" {{ $voucher->is_percentage == 1 ? "selected" : "" }}>Yes</option>
+    </select>
 </div>
-     
+
 <button  class="btn btn-danger" type="button" onClick="$.fancybox.close();"><i class="fa fa-window-close"></i> Cancel</button>
 <button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
 </form>

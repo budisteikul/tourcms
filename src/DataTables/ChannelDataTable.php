@@ -1,5 +1,4 @@
 <?php
-
 namespace budisteikul\tourcms\DataTables;
 
 use budisteikul\toursdk\Models\Channel;

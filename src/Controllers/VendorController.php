@@ -8,7 +8,6 @@ use budisteikul\tourcms\DataTables\VendorDataTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-
 class VendorController extends Controller
 {
     /**
