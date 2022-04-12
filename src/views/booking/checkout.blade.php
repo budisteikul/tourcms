@@ -340,6 +340,7 @@ function DELETE()
         <option value="oyindonesia-shopeepay">OY SHOPEEPAY</option>
         <option value="oyindonesia-linkaja">OY LINKAJA</option>
         <option value="oyindonesia-qris">OY QRIS</option>
+        <option value="oyindonesia-dana">OY DANA</option>
         <option value="none">NONE</option>
 
 </select>
