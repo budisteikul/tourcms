@@ -12,6 +12,7 @@ function UPDATE()
   		$('#span-'+ value).remove();
 	});
 	
+	var products = $('input[name="products\\[\\]"]:checked').map(function(i, elem) { return $(this).val(); }).get();
 
 	$.ajax({
 		data: {
@@ -19,6 +20,7 @@ function UPDATE()
 			"code": $('#code').val(),
 			"amount": $('#amount').val(),
 			"is_percentage": $('#is_percentage').val(),
+			"products": products,
         },
 		type: 'PUT',
 		url: '{{ route('route_tourcms_voucher.update',$voucher->id) }}'
@@ -74,6 +76,16 @@ function UPDATE()
       <option value="1" {{ $voucher->is_percentage == 1 ? "selected" : "" }}>Yes</option>
       <option value="0" {{ $voucher->is_percentage == 0 ? "selected" : "" }}>No</option>
     </select>
+</div>
+
+<div class="form-group">
+    <label for="by_qty">Product :</label>
+    @foreach($products as $product)
+	<div class="form-check">
+    	<input type="checkbox" class="form-check-input" name="products[]" value="{{ $product->id }}" id="product_{{ $product->id }}" {{ ($product->vouchers->contains($voucher->id)) ? 'checked' : '' }}>
+    	<label class="form-check-label" for="product_{{ $product->id }}">{{ $product->name }}</label>
+  	</div>
+  	@endforeach
 </div>
 
 <button  class="btn btn-danger" type="button" onClick="$.fancybox.close();"><i class="fa fa-window-close"></i> Cancel</button>

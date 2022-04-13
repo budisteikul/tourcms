@@ -61,6 +61,9 @@ class VoucherController extends Controller
         $voucher->is_percentage = $is_percentage;
         $voucher->save();
 
+        $products =  $request->input('products');
+        $voucher->products()->attach($products);
+
         return response()->json([
                     "id" => "1",
                     "message" => 'Success'
@@ -86,7 +89,8 @@ class VoucherController extends Controller
      */
     public function edit(Voucher $voucher)
     {
-        return view('tourcms::voucher.edit',['voucher'=>$voucher]);
+        $products = Product::orderBy('name')->get();
+        return view('tourcms::voucher.edit',['voucher'=>$voucher,'products'=>$products]);
     }
 
     /**
@@ -118,6 +122,10 @@ class VoucherController extends Controller
         $voucher->is_percentage = $is_percentage;
         $voucher->save();
 
+        $voucher->products()->detach();
+        $products =  $request->input('products');
+        $voucher->products()->attach($products);
+        
         return response()->json([
                     "id" => "1",
                     "message" => 'Success'
