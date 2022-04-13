@@ -4,6 +4,7 @@ namespace budisteikul\tourcms\Controllers;
 
 use App\Http\Controllers\Controller;
 use budisteikul\toursdk\Models\Voucher;
+use budisteikul\toursdk\Models\Product;
 use budisteikul\tourcms\DataTables\VoucherDataTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -27,7 +28,8 @@ class VoucherController extends Controller
      */
     public function create()
     {
-        return view('tourcms::voucher.create');
+        $products = Product::orderBy('name')->get();
+        return view('tourcms::voucher.create',['products'=>$products]);
     }
 
     /**

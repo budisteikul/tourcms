@@ -12,12 +12,15 @@ function STORE()
   		$('#span-'+ value).remove();
 	});
 	
+	var products = $('input[name="products\\[\\]"]:checked').map(function(i, elem) { return $(this).val(); }).get();
+
 	$.ajax({
 		data: {
         	"_token": $("meta[name=csrf-token]").attr("content"),
 			"code": $('#code').val(),
 			"amount": $('#amount').val(),
 			"is_percentage": $('#is_percentage').val(),
+			"products": products,
         },
 		type: 'POST',
 		url: '{{ route('route_tourcms_voucher.store') }}'
@@ -77,6 +80,16 @@ function STORE()
       <option value="1">Yes</option>
       <option value="0">No</option>
     </select>
+</div>
+
+<div class="form-group">
+    <label for="by_qty">Product :</label>
+    @foreach($products as $product)
+	<div class="form-check">
+    	<input type="checkbox" class="form-check-input" name="products[]" value="{{ $product->id }}" id="product_{{ $product->id }}">
+    	<label class="form-check-label" for="product_{{ $product->id }}">{{ $product->name }}</label>
+  	</div>
+  	@endforeach
 </div>
 
 	<button  class="btn btn-danger" type="button" onClick="$.fancybox.close();"><i class="fa fa-window-close"></i> Cancel</button>
