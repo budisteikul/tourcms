@@ -55,6 +55,7 @@ class BookingController extends Controller
         
         $shoppingcart = Cache::get('_'. $sessionId, 'empty');
 
+        print_r($shoppingcart);
 
         if($shoppingcart=="empty")
         {
