@@ -6,6 +6,7 @@
         {{ (request()->is('cms/category*')) ? 'active' : '' }}
         {{ (request()->is('cms/channel*')) ? 'active' : '' }}
         {{ (request()->is('cms/voucher*')) ? 'active' : '' }}
+        {{ (request()->is('cms/vendor*')) ? 'active' : '' }}
       
       ">
       @php
@@ -17,11 +18,11 @@
           $show = 'show';
         }
       @endphp
-        <a class="nav-link {{$collapsed}}" href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+        <a class="nav-link {{$collapsed}}" href="#" data-toggle="collapse" data-target="#menu-library" aria-expanded="false" aria-controls="menu-library">
           <i class="fas fa-tag"></i>
           <span>LIBRARY</span>
         </a>
-        <div id="collapse1" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
+        <div id="menu-library" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             
             <a class="collapse-item {{ (request()->is('cms/product*')) ? 'active' : '' }}" href="{{ route('route_tourcms_product.index') }}"><i class="far fa-circle"></i> {{ __('Product') }}</a>
@@ -54,11 +55,11 @@
           $show = 'show';
         }
       @endphp
-        <a class="nav-link {{$collapsed}}" href="#" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+        <a class="nav-link {{$collapsed}}" href="#" data-toggle="collapse" data-target="#menu-order" aria-expanded="true" aria-controls="menu-order">
           <i class="fas fa-shopping-cart"></i>
           <span>ORDER</span>
         </a>
-        <div id="collapse2" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
+        <div id="menu-order" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             
             <a class="collapse-item {{ (request()->is('cms/booking*')) ? 'active' : '' }}" href="{{ route('route_tourcms_booking.index') }}"><i class="far fa-circle"></i> {{ __('Booking') }}</a>
@@ -68,70 +69,7 @@
           </div>
         </div>
       </li>
-      <!-- ##################################################################### -->
-      <hr class="sidebar-divider my-0">
-      <li class="nav-item 
-      
-        {{ (request()->is('cms/review*')) ? 'active' : '' }}
-      
-      ">
-      @php
-        $collapsed = 'collapsed';
-        $show = '';        
-        if(request()->is('cms/review*'))
-        {
-          $collapsed = '';
-          $show = 'show';
-        }
-      @endphp
-        <a class="nav-link {{$collapsed}}" href="#" data-toggle="collapse" data-target="#collapse3" aria-expanded="true" aria-controls="collapse3">
-          <i class="fas fa-comment"></i>
-          <span>FEEDBACK</span>
-        </a>
-        <div id="collapse3" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            
-            <a class="collapse-item {{ (request()->is('cms/review*')) ? 'active' : '' }}" href="{{ route('route_tourcms_review.index') }}"><i class="far fa-circle"></i> {{ __('Review') }}</a>
-            
-           
-          </div>
-        </div>
-      </li>
-
- <!-- ##################################################################### -->
-
- <hr class="sidebar-divider my-0">
-      <li class="nav-item 
-      
-        {{ (request()->is('cms/page*')) ? 'active' : '' }}
-      
-      ">
-      @php
-        $collapsed = 'collapsed';
-        $show = '';        
-        if(request()->is('cms/page*'))
-        {
-          $collapsed = '';
-          $show = 'show';
-        }
-      @endphp
-        <a class="nav-link {{$collapsed}}" href="#" data-toggle="collapse" data-target="#collapse4" aria-expanded="true" aria-controls="collapse4">
-          <i class="fas fa-globe-asia"></i>
-          <span>WEBSITE</span>
-        </a>
-        <div id="collapse4" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            
-            <a class="collapse-item {{ (request()->is('cms/page*')) ? 'active' : '' }}" href="{{ route('route_tourcms_page.index') }}"><i class="far fa-circle"></i> {{ __('Page') }}</a>
-            
-           
-          </div>
-        </div>
-      </li>
-
- <!-- ##################################################################### -->
-
- <!-- ##################################################################### -->
+<!-- ##################################################################### -->
 
  <hr class="sidebar-divider my-0">
       <li class="nav-item 
@@ -148,11 +86,11 @@
           $show = 'show';
         }
       @endphp
-        <a class="nav-link {{$collapsed}}" href="#" data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapse4">
+        <a class="nav-link {{$collapsed}}" href="#" data-toggle="collapse" data-target="#menu-payment" aria-expanded="true" aria-controls="menu-payment">
           <i class="fa fa-credit-card"></i>
           <span>PAYMENT</span>
         </a>
-        <div id="collapse5" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
+        <div id="menu-payment" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             
             <a class="collapse-item {{ (request()->is('cms/disbursement*')) ? 'active' : '' }}" href="{{ route('route_tourcms_disbursement.index') }}"><i class="far fa-circle"></i> {{ __('Disbursement') }}</a>
@@ -163,3 +101,39 @@
       </li>
 
  <!-- ##################################################################### -->
+ <!-- ##################################################################### -->
+
+ <hr class="sidebar-divider my-0">
+      <li class="nav-item 
+      
+        {{ (request()->is('cms/page*')) ? 'active' : '' }}
+        {{ (request()->is('cms/review*')) ? 'active' : '' }}
+      
+      ">
+      @php
+        $collapsed = 'collapsed';
+        $show = '';        
+        if(request()->is('cms/page*') || request()->is('cms/review*'))
+        {
+          $collapsed = '';
+          $show = 'show';
+        }
+      @endphp
+        <a class="nav-link {{$collapsed}}" href="#" data-toggle="collapse" data-target="#menu-website" aria-expanded="true" aria-controls="menu-website">
+          <i class="fas fa-globe-asia"></i>
+          <span>WEBSITE</span>
+        </a>
+        <div id="menu-website" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            
+            <a class="collapse-item {{ (request()->is('cms/page*')) ? 'active' : '' }}" href="{{ route('route_tourcms_page.index') }}"><i class="far fa-circle"></i> {{ __('Page') }}</a>
+            <a class="collapse-item {{ (request()->is('cms/review*')) ? 'active' : '' }}" href="{{ route('route_tourcms_review.index') }}"><i class="far fa-circle"></i> {{ __('Review') }}</a>
+            
+           
+          </div>
+        </div>
+      </li>
+
+ <!-- ##################################################################### -->
+
+ 
