@@ -1,6 +1,16 @@
 @extends('coresdk::layouts.app')
 @section('content')
-
+<script language="javascript">
+function CREATE()
+    {
+        $.fancybox.open({
+            type: 'ajax',
+            src: '{{ route('route_tourcms_booking.create') }}',
+            touch: false,
+            modal: false,
+        }); 
+    }
+</script>
 <script src="{{ asset('assets/javascripts/widgets/687035c46b475965b2131d0e804b858e-widget-utils.js') }}"></script>
 <div class="row justify-content-center">
         <div class="col-md-12">
@@ -88,7 +98,17 @@
 </div>
 
                 </div>
-                <a style="height:47px;" class="btn btn-lg btn-block btn-success" href="{{route('route_tourcms_booking.index')}}/checkout"><i class="fas fa-shopping-cart"></i> <b>CHECKOUT</b></a>
+
+               
+   <div class="row">
+    <div class="col-sm">
+      <a style="height:47px;" class="btn btn-lg btn-block btn-secondary text-white" onclick="CREATE(); return false;"><b class="fa fa-plus-square"></b> <b>Add product to shopping cart</b></a>
+    </div>
+    <div class="col-sm">
+       <a style="height:47px;" class="btn btn-lg btn-block btn-success" href="{{route('route_tourcms_booking.index')}}/checkout"><i class="fas fa-shopping-cart"></i> <b>CHECKOUT</b></a>
+    </div>
+  </div>
+               
             </div>
         </div>
  </div>

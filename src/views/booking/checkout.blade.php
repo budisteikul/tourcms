@@ -185,7 +185,7 @@ function REMOVE(id)
                     </div>
                 </div>
                 @endif
-                <button type="button" class="btn btn-secondary mt-4"  onclick="CREATE(); return false;"><b class="fa fa-plus-square"></b> Add product to shopping cart</button>
+                <a class="btn btn-lg btn-block btn-secondary text-white" onclick="CREATE(); return false;"><b class="fa fa-plus-square"></b> <b>Add product to shopping cart</b></a>
                 </div>
 <!-- ################################################################### -->
 @if(!isset($shoppingcart->promo_code))
