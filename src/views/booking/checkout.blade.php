@@ -350,7 +350,7 @@ function DELETE()
 <div class="form-group">
 <label for="bookingChannel"><strong>Channel</strong></label>
 <select style="font-size:16px;height:47px;"  class="form-control" id="bookingChannel" name="bookingChannel">
-        <option value="Internal Booking">Internal Booking</option>
+        <option value="WEBSITE">WEBSITE</option>
         @foreach($channels as $channel)
         <option value="{{$channel->name}}">{{$channel->name}}</option>
         @endforeach
