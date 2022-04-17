@@ -206,7 +206,7 @@ class ProductController extends Controller
         }
         
         $product->name = $name;
-        $product->slug = Str::slug($name,'-');
+        //$product->slug = Str::slug($name,'-');
 		$product->bokun_id = $bokun_id;
         $product->deposit_percentage = $deposit_percentage;
         $product->deposit_amount = $deposit_amount;
