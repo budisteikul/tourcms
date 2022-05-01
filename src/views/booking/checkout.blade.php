@@ -331,7 +331,8 @@ function DELETE()
         <option value="midtrans-permata">MIDTRANS PERMATA VA</option>
         <option value="midtrans-gopay">MIDTRANS GOPAY</option>
         <option value="midtrans-shopeepay">MIDTRANS SHOPEEPAY</option>
-        <option value="midtrans-qris">MIDTRANS QRIS</option>
+        <option value="midtrans-qris_gopay">MIDTRANS QRIS GOPAY</option>
+        <option value="midtrans-qris_shopeepay">MIDTRANS QRIS SHOPEEPAY</option>
         <option value="oyindonesia-mandiri">OY MANDIRI VA</option>
         <option value="oyindonesia-btpn">OY BTPN VA</option>
         <option value="oyindonesia-permata">OY PERMATA VA</option>
