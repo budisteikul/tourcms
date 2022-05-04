@@ -22,8 +22,7 @@ function SHOW(id)
                 <div class="container ml-0 pl-0">
                 
                 </div>  
-       
-      	
+      
         <hr>
         
 		{!! $dataTable->table(['class'=>'table table-sm table-bordered table-hover table-striped table-responsive w-100 d-block d-md-table']) !!}
