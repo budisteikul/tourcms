@@ -44,7 +44,7 @@ class ScheduleDataTable extends DataTable
      */
     public function query(ShoppingcartProduct $model)
     {
-        $model = $model->whereNotNull('date')->newQuery();
+        $model = $model->where('date', '>=', date('Y-m-d'))->whereNotNull('date')->newQuery();
         return $model;
     }
 
