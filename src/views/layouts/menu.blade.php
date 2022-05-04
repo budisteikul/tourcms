@@ -6,13 +6,12 @@
         {{ (request()->is('cms/category*')) ? 'active' : '' }}
         {{ (request()->is('cms/channel*')) ? 'active' : '' }}
         {{ (request()->is('cms/voucher*')) ? 'active' : '' }}
-        {{ (request()->is('cms/vendor*')) ? 'active' : '' }}
       
       ">
       @php
         $collapsed = 'collapsed';
         $show = '';        
-        if(request()->is('cms/product*') || request()->is('cms/category*') || request()->is('cms/channel*') || request()->is('cms/vendor*') || request()->is('cms/voucher*'))
+        if(request()->is('cms/product*') || request()->is('cms/category*') || request()->is('cms/channel*') || request()->is('cms/voucher*'))
         {
           $collapsed = '';
           $show = 'show';
@@ -31,8 +30,6 @@
             
             <a class="collapse-item {{ (request()->is('cms/channel*')) ? 'active' : '' }}" href="{{ route('route_tourcms_channel.index') }}"><i class="far fa-circle"></i> {{ __('Channel') }}</a>
 
-            <a class="collapse-item {{ (request()->is('cms/vendor*')) ? 'active' : '' }}" href="{{ route('route_tourcms_vendor.index') }}"><i class="far fa-circle"></i> {{ __('Vendor') }}</a>
-            
             <a class="collapse-item {{ (request()->is('cms/voucher*')) ? 'active' : '' }}" href="{{ route('route_tourcms_voucher.index') }}"><i class="far fa-circle"></i> {{ __('Voucher') }}</a>
             
            
@@ -69,38 +66,7 @@
           </div>
         </div>
       </li>
-<!-- ##################################################################### -->
 
- <hr class="sidebar-divider my-0">
-      <li class="nav-item 
-      
-        {{ (request()->is('cms/disbursement*')) ? 'active' : '' }}
-      
-      ">
-      @php
-        $collapsed = 'collapsed';
-        $show = '';        
-        if(request()->is('cms/disbursement*'))
-        {
-          $collapsed = '';
-          $show = 'show';
-        }
-      @endphp
-        <a class="nav-link {{$collapsed}}" href="#" data-toggle="collapse" data-target="#menu-payment" aria-expanded="true" aria-controls="menu-payment">
-          <i class="fa fa-credit-card"></i>
-          <span>PAYMENT</span>
-        </a>
-        <div id="menu-payment" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            
-            <a class="collapse-item {{ (request()->is('cms/disbursement*')) ? 'active' : '' }}" href="{{ route('route_tourcms_disbursement.index') }}"><i class="far fa-circle"></i> {{ __('Disbursement') }}</a>
-            
-           
-          </div>
-        </div>
-      </li>
-
- <!-- ##################################################################### -->
  <!-- ##################################################################### -->
 
  <hr class="sidebar-divider my-0">
