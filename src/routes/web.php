@@ -31,4 +31,8 @@ Route::resource('/cms/booking','budisteikul\tourcms\Controllers\BookingControlle
 Route::resource('/cms/voucher','budisteikul\tourcms\Controllers\VoucherController',[ 'names' => 'route_tourcms_voucher' ])
 	->middleware(['web','auth','verified','CoreMiddleware']);
 
+//Schedule
+Route::resource('/cms/schedule','budisteikul\tourcms\Controllers\ScheduleController',[ 'names' => 'route_tourcms_schedule' ])
+	->middleware(['web','auth','verified','CoreMiddleware']);
+
 
