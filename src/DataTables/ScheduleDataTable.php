@@ -2,6 +2,7 @@
 namespace budisteikul\tourcms\DataTables;
 
 use budisteikul\toursdk\Models\ShoppingcartProduct;
+use budisteikul\toursdk\Helpers\ProductHelper;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -23,6 +24,9 @@ class ScheduleDataTable extends DataTable
                     $shoppingcart_id = $id->shoppingcart->id;
                     $title = '<a href="#" onClick="SHOW(\''.$shoppingcart_id.'\'); return false;">'. $id->title .'</a>';
                     return $title;
+                })
+                ->addColumn('date_text', function($id){
+                    return ProductHelper::datetotext($id->date);
                 })
                 ->addColumn('people', function($id){
                     $people = 0;
@@ -69,7 +73,7 @@ class ScheduleDataTable extends DataTable
                             ],
                         'pagingType' => 'full_numbers',
                         'responsive' => true,
-                        'order' => [2,'desc']
+                        'order' => [0,'desc']
                     ])
                     ->ajax('/'.request()->path());
     }
@@ -82,10 +86,12 @@ class ScheduleDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            ["name" => "date", "title" => "Date", "data" => "date", 'orderable' => true, "visible" => false],
             ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px'],
             ["name" => "title", "title" => "Product Title", "data" => "title", 'orderable' => false],
-            ["name" => "date", "title" => "Date", "data" => "date", 'orderable' => true],
+            ["name" => "date_text", "title" => "Date", "data" => "date_text", 'orderable' => false],
             ["name" => "people", "title" => "People", "data" => "people", 'orderable' => false],
+
         ];
     }
 
