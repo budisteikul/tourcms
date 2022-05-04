@@ -2,7 +2,7 @@
 namespace budisteikul\tourcms\DataTables;
 
 use budisteikul\toursdk\Models\ShoppingcartProduct;
-use budisteikul\toursdk\Helpers\ProductHelper;
+use budisteikul\toursdk\Helpers\GeneralHelper;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -26,7 +26,7 @@ class ScheduleDataTable extends DataTable
                     return $title;
                 })
                 ->addColumn('date_text', function($id){
-                    return ProductHelper::datetotext($id->date);
+                    return GeneralHelper::dateFormat($id->date,10);
                 })
                 ->addColumn('people', function($id){
                     $people = 0;
