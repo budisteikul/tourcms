@@ -73,7 +73,7 @@ class ScheduleDataTable extends DataTable
                             ],
                         'pagingType' => 'full_numbers',
                         'responsive' => true,
-                        'order' => [0,'desc']
+                        'order' => [0,'asc']
                     ])
                     ->ajax('/'.request()->path());
     }
