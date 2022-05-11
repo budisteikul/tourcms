@@ -318,6 +318,10 @@ function DELETE()
 <select style="font-size:16px;height:47px;"  class="form-control" id="payment_type" name="payment_type">
 		<option value="rapyd-paynow">RAPYD PAYNOW</option>
 		<option value="rapyd-fast">RAPYD FAST</option>
+		<option value="rapyd-maybank">RAPYD MAYBANK</option>
+		<option value="rapyd-cimb">RAPYD CIMB NIAGA VA</option>
+		<option value="rapyd-permata">RAPYD PERMATA</option>
+		<option value="rapyd-mandiri">RAPYD MANDIRI</option>
 		<option value="paydia-qris">PAYDIA QRIS</option>
 		<option value="doku-mandiri">DOKU MANDIRI VA</option>
 		<option value="doku-danamon">DOKU DANAMON VA</option>
