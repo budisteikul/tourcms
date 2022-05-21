@@ -316,6 +316,7 @@ function DELETE()
 <div class="form-group">
 <label for="payment_type"><strong>Payment</strong></label>
 <select style="font-size:16px;height:47px;"  class="form-control" id="payment_type" name="payment_type">
+		<option value="duitku-sampoerna">DUITKU SAHABAT SAMPOERNA</option>
 		<option value="rapyd-paynow">RAPYD PAYNOW</option>
 		<option value="rapyd-fast">RAPYD FAST</option>
 		<option value="rapyd-cimb">RAPYD CIMB NIAGA VA</option>
