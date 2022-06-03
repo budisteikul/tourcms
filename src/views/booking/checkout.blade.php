@@ -318,6 +318,8 @@ function DELETE()
 <select style="font-size:16px;height:47px;"  class="form-control" id="payment_type" name="payment_type">
 		<option value="dana-dana">DANA</option>
 		<option value="tazapay-paynow">TAZAPAY PAYNOW</option>
+		<option value="duitku-linkaja">DUITKU LINKAJA</option>
+		<option value="duitku-linkaja_qris">DUITKU LINKAJA QRIS</option>
         <option value="duitku-dana">DUITKU DANA</option>
 		<option value="rapyd-paynow">RAPYD PAYNOW</option>
 		<option value="rapyd-fast">RAPYD FAST</option>
