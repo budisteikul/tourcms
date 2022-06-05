@@ -322,6 +322,7 @@ function DELETE()
 		<option value="duitku-linkaja">DUITKU LINKAJA</option>
 		<option value="duitku-linkaja_qris">DUITKU LINKAJA QRIS</option>
         <option value="duitku-dana">DUITKU DANA</option>
+        <option value="rapyd-poli">RAPYD POLI</option>
 		<option value="rapyd-paynow">RAPYD PAYNOW</option>
 		<option value="rapyd-fast">RAPYD FAST</option>
 		<option value="rapyd-cimb">RAPYD CIMB NIAGA VA</option>
