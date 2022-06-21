@@ -98,7 +98,7 @@ function UPDATE()
 	<div class="row">
 		@foreach($product->images->sortBy('sort') as $image)
 				<div class="col-auto" style="margin-top:10px;">
-					<img style=" height:150px; " class="image-photo rounded" src="{{ $ImageHelper->urlImageCloudinary($image->public_id,'250','250') }}" >
+					<img style=" height:150px; " class="image-photo rounded" src="{{ $ImageHelper->urlImageGoogle($image->public_id,'250','250') }}" >
 					<div class="form-row align-items-center pt-1">
                     	<div class="col-auto">
 							<input type="text" class="form-control text-center" style="width:50px;" id="image_{{ str_ireplace("-","_",$image->id) }}" name="image_{{ str_ireplace("-","_",$image->id) }}" value="{{ $image->sort }}">
@@ -130,7 +130,7 @@ var settings = {
 	dragDrop:true,
 	maxFileCount:-1,
     fileName: "myfile",
-    allowedTypes:"jpg,jpeg,png",	
+    allowedTypes:"jpg,jpeg",	
     returnType:"json",
 	acceptFiles:"image/*",
 	uploadStr:"<i class=\"fa fa-folder-open\"></i> Browse",

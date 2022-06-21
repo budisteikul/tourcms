@@ -115,8 +115,9 @@ class ProductController extends Controller
         foreach($filetemps as $filetemp)
         {
                 $sort++;
-                $response = ImageHelper::uploadImageCloudinary($filetemp->file);
-                
+                //$response = ImageHelper::uploadImageCloudinary($filetemp->file);
+                $response = ImageHelper::uploadImageGoogle($filetemp->file);
+
                 $image = new Image();
                 $image->product_id = $product->id;
                 $image->public_id = $response['public_id'];
@@ -225,7 +226,7 @@ class ProductController extends Controller
             
             if($check=="hapus")
             {
-                ImageHelper::deleteImageCloudinary($image->public_id);
+                ImageHelper::deleteImageGoogle($image->public_id);
                 $image->delete();
             }
             
@@ -237,7 +238,8 @@ class ProductController extends Controller
         foreach($filetemps as $filetemp)
         {
                 $sort++;
-                $response = ImageHelper::uploadImageCloudinary($filetemp->file);
+                //$response = ImageHelper::uploadImageCloudinary($filetemp->file);
+                $response = ImageHelper::uploadImageGoogle($filetemp->file);
                 $image = new Image();
                 $image->product_id = $product->id;
                 $image->public_id = $response['public_id'];
@@ -265,7 +267,7 @@ class ProductController extends Controller
         self::product_api('/product/remove',$product->bokun_id);
         foreach($product->images as $image)
         {
-            ImageHelper::deleteImageCloudinary($image->public_id);
+            ImageHelper::deleteImageGoogle($image->public_id);
         }
 
         $product->delete();

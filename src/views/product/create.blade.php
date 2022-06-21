@@ -100,7 +100,7 @@ var settings = {
 	dragDrop:true,
 	maxFileCount:-1,
     fileName: "myfile",
-    allowedTypes:"jpg,jpeg,png",	
+    allowedTypes:"jpg,jpeg",	
     returnType:"json",
 	acceptFiles:"image/*",
 	uploadStr:"<i class=\"fa fa-folder-open\"></i> Browse",
