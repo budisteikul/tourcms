@@ -28,11 +28,27 @@ class RemittanceDataTable extends DataTable
                 ->addColumn('booking_channel', function($id){
                     return $id->shoppingcart->booking_channel;
                 })
-                 ->addColumn('payment_provider', function($id){
-                    return strtoupper($id->shoppingcart->shoppingcart_payment->payment_provider);
+                ->addColumn('payment_provider', function($id){
+                    if(isset($id->shoppingcart->shoppingcart_payment->payment_provider))
+                    {
+                        return strtoupper($id->shoppingcart->shoppingcart_payment->payment_provider);
+                    }
+                    else
+                    {
+                        return '';
+                    }
+                    
                 })
                 ->addColumn('amount', function($id){
-                    return $id->shoppingcart->shoppingcart_payment->amount .' '. $id->shoppingcart->shoppingcart_payment->currency;
+                    if(isset($id->shoppingcart->shoppingcart_payment->amount) && isset($id->shoppingcart->shoppingcart_payment->currency))
+                    {
+                        return $id->shoppingcart->shoppingcart_payment->amount .' '. $id->shoppingcart->shoppingcart_payment->currency;
+                    }
+                    else
+                    {
+                        return '';
+                    }
+                    
                 })
                 ->addColumn('date_text', function($id){
                     return GeneralHelper::dateFormat($id->date,10);
