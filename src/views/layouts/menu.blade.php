@@ -47,7 +47,7 @@
       @php
         $collapsed = 'collapsed';
         $show = '';        
-        if(request()->is('cms/booking*') || request()->is('cms/schedule*') || request()->is('cms/past*'))
+        if(request()->is('cms/booking*') || request()->is('cms/schedule*') || request()->is('cms/remittance*'))
         {
           $collapsed = '';
           $show = 'show';
@@ -64,7 +64,7 @@
 
             <a class="collapse-item {{ (request()->is('cms/schedule*')) ? 'active' : '' }}" href="{{ route('route_tourcms_schedule.index') }}"><i class="far fa-circle"></i> {{ __('Schedule') }}</a>
 
-            <a class="collapse-item {{ (request()->is('cms/past*')) ? 'active' : '' }}" href="{{ route('route_tourcms_past.index') }}"><i class="far fa-circle"></i> {{ __('Past') }}</a>
+            <a class="collapse-item {{ (request()->is('cms/remittance*')) ? 'active' : '' }}" href="{{ route('route_tourcms_remittance.index') }}"><i class="far fa-circle"></i> {{ __('Remittance') }}</a>
             
             
            

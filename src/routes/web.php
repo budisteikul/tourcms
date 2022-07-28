@@ -36,7 +36,7 @@ Route::resource('/cms/schedule','budisteikul\tourcms\Controllers\ScheduleControl
 	->middleware(['web','auth','verified','CoreMiddleware']);
 
 //Past
-Route::resource('/cms/past','budisteikul\tourcms\Controllers\PastController',[ 'names' => 'route_tourcms_past' ])
+Route::resource('/cms/remittance','budisteikul\tourcms\Controllers\RemittanceController',[ 'names' => 'route_tourcms_remittance' ])
 	->middleware(['web','auth','verified','CoreMiddleware']);
 
 

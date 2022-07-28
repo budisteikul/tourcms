@@ -9,7 +9,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class PastDataTable extends DataTable
+class RemittanceDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -29,7 +29,7 @@ class PastDataTable extends DataTable
                     return $id->shoppingcart->booking_channel;
                 })
                 ->addColumn('amount', function($id){
-                    return $id->shoppingcart->shoppingcart_payment->amount;
+                    return $id->shoppingcart->shoppingcart_payment->amount .' '. $id->shoppingcart->shoppingcart_payment->currency;
                 })
                 ->addColumn('date_text', function($id){
                     return GeneralHelper::dateFormat($id->date,10);
@@ -110,6 +110,6 @@ class PastDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Past_' . date('YmdHis');
+        return 'Remittance_' . date('YmdHis');
     }
 }

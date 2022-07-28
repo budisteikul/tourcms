@@ -16,7 +16,7 @@ function SHOW(id)
 <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Past</div>
+                <div class="card-header">Remittance</div>
                 <div class="card-body">
         		
                 <div class="container ml-0 pl-0">
