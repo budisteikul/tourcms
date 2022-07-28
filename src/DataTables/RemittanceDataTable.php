@@ -28,6 +28,9 @@ class RemittanceDataTable extends DataTable
                 ->addColumn('booking_channel', function($id){
                     return $id->shoppingcart->booking_channel;
                 })
+                 ->addColumn('payment_provider', function($id){
+                    return $id->shoppingcart->shoppingcart_payment->payment_provider;
+                })
                 ->addColumn('amount', function($id){
                     return $id->shoppingcart->shoppingcart_payment->amount .' '. $id->shoppingcart->shoppingcart_payment->currency;
                 })
@@ -98,6 +101,7 @@ class RemittanceDataTable extends DataTable
             ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px'],
             ["name" => "date_text", "title" => "Date", "data" => "date_text", 'orderable' => false],
             ["name" => "people", "title" => "People", "data" => "people", 'orderable' => false],
+            ["name" => "payment_provider", "title" => "Payment Provider", "data" => "payment_provider", 'orderable' => false],
             ["name" => "amount", "title" => "Amount", "data" => "amount", 'orderable' => false],
 
         ];
