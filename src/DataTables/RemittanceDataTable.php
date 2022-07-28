@@ -29,7 +29,7 @@ class RemittanceDataTable extends DataTable
                     return $id->shoppingcart->booking_channel;
                 })
                  ->addColumn('payment_provider', function($id){
-                    return $id->shoppingcart->shoppingcart_payment->payment_provider;
+                    return strtoupper($id->shoppingcart->shoppingcart_payment->payment_provider);
                 })
                 ->addColumn('amount', function($id){
                     return $id->shoppingcart->shoppingcart_payment->amount .' '. $id->shoppingcart->shoppingcart_payment->currency;
