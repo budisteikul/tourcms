@@ -28,6 +28,9 @@ class PastDataTable extends DataTable
                 ->addColumn('booking_channel', function($id){
                     return $id->shoppingcart->booking_channel;
                 })
+                ->addColumn('amount', function($id){
+                    return $id->shoppingcart->shoppingcart_payment->amount;
+                })
                 ->addColumn('date_text', function($id){
                     return GeneralHelper::dateFormat($id->date,10);
                 })
@@ -52,7 +55,7 @@ class PastDataTable extends DataTable
     public function query(ShoppingcartProduct $model)
     {
         $model = $model->whereHas('shoppingcart', function ($query) {
-                return $query->where('booking_status','CONFIRMED');
+                return $query->where('booking_status','CONFIRMED')->where('booking_channel','WEBSITE');
         })->where('date', '<=', date('Y-m-d'))->whereNotNull('date')->orderBy('date', 'DESC')->newQuery();
         return $model;
     }
@@ -93,10 +96,9 @@ class PastDataTable extends DataTable
         return [
             ["name" => "date", "title" => "Date", "data" => "date", 'orderable' => true, "visible" => false],
             ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px'],
-            ["name" => "title", "title" => "Product Title", "data" => "title", 'orderable' => false],
-            ["name" => "booking_channel", "title" => "Booking Channel", "data" => "booking_channel", 'orderable' => false],
             ["name" => "date_text", "title" => "Date", "data" => "date_text", 'orderable' => false],
             ["name" => "people", "title" => "People", "data" => "people", 'orderable' => false],
+            ["name" => "amount", "title" => "Amount", "data" => "amount", 'orderable' => false],
 
         ];
     }
