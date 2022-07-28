@@ -35,4 +35,8 @@ Route::resource('/cms/voucher','budisteikul\tourcms\Controllers\VoucherControlle
 Route::resource('/cms/schedule','budisteikul\tourcms\Controllers\ScheduleController',[ 'names' => 'route_tourcms_schedule' ])
 	->middleware(['web','auth','verified','CoreMiddleware']);
 
+//Past
+Route::resource('/cms/past','budisteikul\tourcms\Controllers\PastController',[ 'names' => 'route_tourcms_past' ])
+	->middleware(['web','auth','verified','CoreMiddleware']);
+
 
