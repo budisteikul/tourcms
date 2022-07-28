@@ -99,6 +99,7 @@ class RemittanceDataTable extends DataTable
         return [
             ["name" => "date", "title" => "Date", "data" => "date", 'orderable' => true, "visible" => false],
             ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px'],
+            ["name" => "title", "title" => "Product Title", "data" => "title", 'orderable' => false],
             ["name" => "date_text", "title" => "Date", "data" => "date_text", 'orderable' => false],
             ["name" => "people", "title" => "People", "data" => "people", 'orderable' => false],
             ["name" => "payment_provider", "title" => "Payment Provider", "data" => "payment_provider", 'orderable' => false],
