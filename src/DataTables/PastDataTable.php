@@ -53,7 +53,7 @@ class PastDataTable extends DataTable
     {
         $model = $model->whereHas('shoppingcart', function ($query) {
                 return $query->where('booking_status','CONFIRMED');
-        })->where('date', '<=', date('Y-m-d'))->whereNotNull('date')->newQuery();
+        })->where('date', '<=', date('Y-m-d'))->whereNotNull('date')->orderBy('date', 'DESC')->newQuery();
         return $model;
     }
 
