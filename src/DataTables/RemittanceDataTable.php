@@ -2,6 +2,7 @@
 namespace budisteikul\tourcms\DataTables;
 
 use budisteikul\toursdk\Models\ShoppingcartProduct;
+use budisteikul\toursdk\Helpers\BookingHelper;
 use budisteikul\toursdk\Helpers\GeneralHelper;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -22,7 +23,9 @@ class RemittanceDataTable extends DataTable
         return datatables($query)
                 ->editColumn('title', function($id){
                     $shoppingcart_id = $id->shoppingcart->id;
-                    $title = '<a href="#" onClick="SHOW(\''.$shoppingcart_id.'\'); return false;">'. $id->title .'</a>';
+                    $question = BookingHelper::get_answer_contact($id->shoppingcart);
+                    $name = $question->firstName .' '. $question->lastName;
+                    $title = '<a href="#" onClick="SHOW(\''.$shoppingcart_id.'\'); return false;">'. $name .'</a>';
                     return $title;
                 })
                 ->addColumn('booking_channel', function($id){
