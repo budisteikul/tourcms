@@ -3,6 +3,7 @@ namespace budisteikul\tourcms\DataTables;
 
 use budisteikul\toursdk\Models\ShoppingcartProduct;
 use budisteikul\toursdk\Helpers\GeneralHelper;
+use budisteikul\toursdk\Helpers\BookingHelper;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -20,10 +21,12 @@ class ScheduleDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-                ->editColumn('title', function($id){
+                ->addColumn('name', function($id){
                     $shoppingcart_id = $id->shoppingcart->id;
-                    $title = '<a href="#" onClick="SHOW(\''.$shoppingcart_id.'\'); return false;">'. $id->title .'</a>';
-                    return $title;
+                    $question = BookingHelper::get_answer_contact($id->shoppingcart);
+                    $name = $question->firstName .' '. $question->lastName;
+                    $name = '<a href="#" onClick="SHOW(\''.$shoppingcart_id.'\'); return false;">'. $name .'</a>';
+                    return $name;
                 })
                 ->addColumn('date_text', function($id){
                     return GeneralHelper::dateFormat($id->date,10);
@@ -37,7 +40,7 @@ class ScheduleDataTable extends DataTable
                     return $people;
                 })
                 ->addIndexColumn()
-                ->rawColumns(['title']);
+                ->rawColumns(['name']);
     }
 
     /**
@@ -90,7 +93,7 @@ class ScheduleDataTable extends DataTable
         return [
             ["name" => "date", "title" => "Date", "data" => "date", 'orderable' => true, "visible" => false],
             ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px'],
-            ["name" => "title", "title" => "Product Title", "data" => "title", 'orderable' => false],
+            ["name" => "name", "title" => "Name", "data" => "name", 'orderable' => false],
             ["name" => "date_text", "title" => "Date", "data" => "date_text", 'orderable' => false],
             ["name" => "people", "title" => "People", "data" => "people", 'orderable' => false],
 
