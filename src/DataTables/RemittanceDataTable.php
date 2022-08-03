@@ -78,7 +78,8 @@ class RemittanceDataTable extends DataTable
     {
         $model = $model->whereHas('shoppingcart', function ($query) {
                 return $query->where('booking_status','CONFIRMED')->where('booking_channel','WEBSITE');
-        })->where('date', '<=', date('Y-m-d'))->whereNotNull('date')->orderBy('date', 'DESC')->newQuery();
+        //})->where('date', '<=', date('Y-m-d'))->whereNotNull('date')->orderBy('date', 'DESC')->newQuery();
+        })->whereNotNull('date')->orderBy('date', 'DESC')->newQuery();
         return $model;
     }
 
