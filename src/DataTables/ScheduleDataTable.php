@@ -10,8 +10,6 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-use budisteikul\toursdk\Helpers\CalendarHelper;
-
 class ScheduleDataTable extends DataTable
 {
     /**
@@ -28,8 +26,6 @@ class ScheduleDataTable extends DataTable
                     $question = BookingHelper::get_answer_contact($id->shoppingcart);
                     $name = $question->firstName .' '. $question->lastName;
                     $name = '<a href="#" onClick="SHOW(\''.$shoppingcart_id.'\'); return false;">'. $name .'</a>';
-
-                    
 
                     return $name;
                 })
