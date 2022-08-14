@@ -30,7 +30,8 @@ class ScheduleDataTable extends DataTable
                     return $name;
                 })
                 ->addColumn('date_text', function($id){
-                    return GeneralHelper::dateFormat($id->date,10);
+                    $date_text = '<a href="#" onClick="EDIT(\''.$id->id.'\'); return false;">'. GeneralHelper::dateFormat($id->date,10) .'</a>';
+                    return $date_text;
                 })
                 ->addColumn('people', function($id){
                     $people = 0;
@@ -41,7 +42,7 @@ class ScheduleDataTable extends DataTable
                     return $people;
                 })
                 ->addIndexColumn()
-                ->rawColumns(['name']);
+                ->rawColumns(['name','date_text']);
     }
 
     /**
@@ -96,7 +97,7 @@ class ScheduleDataTable extends DataTable
             ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px'],
             ["name" => "name", "title" => "Name", "data" => "name", 'orderable' => false],
             ["name" => "date_text", "title" => "Date", "data" => "date_text", 'orderable' => false],
-            ["name" => "people", "title" => "People", "data" => "people", 'orderable' => false],
+            ["name" => "people", "title" => "Person", "data" => "people", 'orderable' => false],
 
         ];
     }

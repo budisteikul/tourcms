@@ -10,6 +10,17 @@ function SHOW(id)
           touch: false,
           modal: false,
       }); 
+  }
+
+function EDIT(id)
+  {
+    $.fancybox.open({
+          type: 'ajax',
+          src: '{{ route('route_tourcms_schedule.index') }}/'+ id +'/edit',
+          modal: true,
+          autoFocus: false
+      });
+    
   }  
 </script>
 @endpush
