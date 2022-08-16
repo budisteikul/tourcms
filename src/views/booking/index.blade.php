@@ -171,10 +171,10 @@
         		    
                 <div class="row w-100">
                   <div class="col  text-left">
-                    <button type="button" class="btn btn-secondary"  onclick="CREATE(); return false;"><b class="fa fa-plus-square"></b> Create Booking</button>
+                    <button type="button" class="btn btn-primary"  onclick="CREATE(); return false;"><b class="fa fa-plus-square"></b> Create Booking</button>
                     </div>
                     <div class="col-auto text-right mr-0 pr-0">
-                    <a class="btn btn-success" href="{{route('route_tourcms_booking.index')}}/checkout"><i class="fas fa-shopping-cart"></i> Shopping Cart</a>
+                    <a class="btn btn-secondary" href="{{route('route_tourcms_booking.index')}}/checkout"><i class="fas fa-shopping-cart"></i> Shopping Cart</a>
                     </div>
                 </div>
    

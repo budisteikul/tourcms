@@ -77,10 +77,10 @@
                
                 <div class="row w-100">
                 	<div class="col  text-left">
-                    <button type="button" class="btn btn-secondary"  onclick="CREATE(); return false;"><b class="fa fa-plus-square"></b> Create Category</button>
+                    <button type="button" class="btn btn-primary"  onclick="CREATE(); return false;"><b class="fa fa-plus-square"></b> Create Category</button>
                     </div>
                     <div class="col-auto text-right mr-0 pr-0">
-                    <button type="button" class="btn btn-success"  onclick="SHOW(); return false;"><b class="fa fa-eye"></b> Show Structure</button>
+                    <button type="button" class="btn btn-secondary"  onclick="SHOW(); return false;"><b class="fa fa-eye"></b> Show Structure</button>
                     </div>
                 </div>
                 

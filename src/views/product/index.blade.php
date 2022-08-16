@@ -92,7 +92,7 @@
                 <div class="container ml-0 pl-0">
                 <div class="row">
                 	<div class="col">
-                    <button type="button" class="btn btn-secondary"  onclick="CREATE(); return false;"><b class="fa fa-plus-square"></b> Create Product</button>
+                    <button type="button" class="btn btn-primary"  onclick="CREATE(); return false;"><b class="fa fa-plus-square"></b> Create Product</button>
                     </div>
                     
                 </div>
