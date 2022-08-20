@@ -316,19 +316,15 @@ function DELETE()
 <div class="form-group">
 <label for="payment_type"><strong>Payment</strong></label>
 <select style="font-size:16px;height:47px;"  class="form-control" id="payment_type" name="payment_type">
+		<option value="none">NONE</option>
 		<option value="tazapay-poli">TAZAPAY POLI</option>
 		<option value="tazapay-paynow">TAZAPAY PAYNOW</option>
-		<option value="dana-dana">DANA</option>
-		<option value="duitku-linkaja">DUITKU LINKAJA</option>
-		<option value="duitku-linkaja_qris">DUITKU LINKAJA QRIS</option>
-        <option value="duitku-dana">DUITKU DANA</option>
         <option value="rapyd-poli">RAPYD POLI</option>
 		<option value="rapyd-paynow">RAPYD PAYNOW</option>
 		<option value="rapyd-fast">RAPYD FAST</option>
 		<option value="rapyd-cimb">RAPYD CIMB NIAGA VA</option>
 		<option value="rapyd-permata">RAPYD PERMATA VA</option>
 		<option value="rapyd-mandiri">RAPYD MANDIRI VA</option>
-		<option value="paydia-qris">PAYDIA QRIS</option>
 		<option value="doku-mandiri">DOKU MANDIRI VA</option>
 		<option value="doku-danamon">DOKU DANAMON VA</option>
 		<option value="doku-permata">DOKU PERMATA VA</option>
@@ -345,18 +341,6 @@ function DELETE()
         <option value="midtrans-shopeepay">MIDTRANS SHOPEEPAY</option>
         <option value="midtrans-gopay_qris">MIDTRANS QRIS GOPAY</option>
         <option value="midtrans-shopeepay_qris">MIDTRANS QRIS SHOPEEPAY</option>
-        <option value="oyindonesia-mandiri">OY MANDIRI VA</option>
-        <option value="oyindonesia-btpn">OY BTPN VA</option>
-        <option value="oyindonesia-permata">OY PERMATA VA</option>
-        <option value="oyindonesia-bri">OY BRI VA</option>
-        <option value="oyindonesia-cimb">OY CIMB NIAGA VA</option>
-        <option value="oyindonesia-bni">OY BNI VA</option>
-        <option value="oyindonesia-shopeepay">OY SHOPEEPAY</option>
-        <option value="oyindonesia-linkaja">OY LINKAJA</option>
-        <option value="oyindonesia-qris">OY QRIS</option>
-        <option value="oyindonesia-dana">OY DANA</option>
-        <option value="none">NONE</option>
-
 </select>
 </div>            
 <!-- ########################################### -->
