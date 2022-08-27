@@ -69,18 +69,20 @@ class BookingDataTable extends DataTable
                 $button_confirm = '';
                 $button_delete = '';
 
-                if($id->booking_status=="CANCELED" || $id->booking_status=="PENDING")
-                {
-                    $button_confirm = '<button id="btn-edit" type="button" onClick="CONFIRM(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success"><i class="fas fa-check"></i> Confirm</button>';
-                }
-                if($id->booking_status=="CONFIRMED" || $id->booking_status=="PENDING")
+                if($id->booking_status=="PENDING")
                 {
                     $button_cancel = '<button id="btn-edit" type="button" onClick="CANCEL(\''.$id->id.'\'); return false;" class="btn btn-sm btn-warning"><i class="fa fa-ban"></i> Cancel</button>';
                 }
-                if($id->booking_status!="PENDING")
+                if($id->booking_status=="CANCELED")
                 {
+                    //$button_confirm = '<button id="btn-edit" type="button" onClick="CONFIRM(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success"><i class="fas fa-check"></i> Confirm</button>';
                     $button_delete = '<button id="btn-del" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i> Delete</button>';
                 }
+                if($id->booking_status=="CONFIRMED")
+                {
+                    $button_cancel = '<button id="btn-edit" type="button" onClick="CANCEL(\''.$id->id.'\'); return false;" class="btn btn-sm btn-warning"><i class="fa fa-ban"></i> Cancel</button>';
+                }
+                
 
                 return '
                 <div class="btn-toolbar justify-content-end">
