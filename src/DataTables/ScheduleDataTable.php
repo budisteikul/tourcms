@@ -9,6 +9,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use budisteikul\toursdk\Helpers\CalendarHelper;
 
 class ScheduleDataTable extends DataTable
 {
@@ -20,13 +21,17 @@ class ScheduleDataTable extends DataTable
      */
     public function dataTable($query)
     {
+       
         return datatables($query)
+                ->addColumn('calendar', function($id){
+                    CalendarHelper::create_calendar($id->shoppingcart->confirmation_code);
+                    return '';
+                })
                 ->addColumn('name', function($id){
                     $shoppingcart_id = $id->shoppingcart->id;
                     $question = BookingHelper::get_answer_contact($id->shoppingcart);
                     $name = $question->firstName .' '. $question->lastName;
                     $name = '<a href="#" onClick="SHOW(\''.$shoppingcart_id.'\'); return false;">'. $name .'</a>';
-
                     return $name;
                 })
                 ->addColumn('date_text', function($id){
