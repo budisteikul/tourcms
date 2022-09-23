@@ -7,6 +7,7 @@ use budisteikul\toursdk\Models\Shoppingcart;
 use budisteikul\toursdk\Helpers\BokunHelper;
 use budisteikul\toursdk\Helpers\PaypalHelper;
 use budisteikul\toursdk\Helpers\BookingHelper;
+use budisteikul\toursdk\Helpers\CalendarHelper;
 use budisteikul\toursdk\Models\Channel;
 use budisteikul\toursdk\Models\Product;
 
@@ -225,6 +226,7 @@ class BookingController extends Controller
             {
                 PaypalHelper::voidPaypal($shoppingcart->shoppingcart_payment->authorization_id);
                 BookingHelper::confirm_payment($shoppingcart,"CANCELED",true);
+                CalendarHelper::update_calendar($shoppingcart->confirmation_code);
             }
             
             return response()->json([
@@ -237,7 +239,8 @@ class BookingController extends Controller
         {
             $shoppingcart = Shoppingcart::findOrFail($id);
             BookingHelper::confirm_payment($shoppingcart,"CANCELED",true);
-
+            CalendarHelper::update_calendar($shoppingcart->confirmation_code);
+            
             return response()->json([
                         "id"=>"1",
                         "message"=>'success'

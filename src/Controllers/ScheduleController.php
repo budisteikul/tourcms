@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use budisteikul\tourcms\DataTables\ScheduleDataTable;
 use budisteikul\toursdk\Models\ShoppingcartProduct;
 use Illuminate\Support\Facades\Validator;
+use budisteikul\toursdk\Helpers\CalendarHelper;
 
 class ScheduleController extends Controller
 {
@@ -34,12 +35,17 @@ class ScheduleController extends Controller
 
         $date =  $request->input('date');
         $shoppingcart_product = ShoppingcartProduct::findOrFail($id);
+
+        CalendarHelper::update_calendar($shoppingcart_product->shoppingcart->confirmation_code);
+
         $shoppingcart_product->date = $date;
         $shoppingcart_product->save();
 
+        CalendarHelper::create_calendar($shoppingcart_product->shoppingcart->confirmation_code);
+
         return response()->json([
                     "id" => "1",
-                    "message" => 'Success'
+                    "message" => $shoppingcart_product->shoppingcart->confirmation_code
                 ]);
 
     }
