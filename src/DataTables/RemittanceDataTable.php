@@ -34,7 +34,7 @@ class RemittanceDataTable extends DataTable
                 ->addColumn('payment_provider', function($id){
                     if(isset($id->shoppingcart->shoppingcart_payment->payment_provider))
                     {
-                        return strtoupper($id->shoppingcart->shoppingcart_payment->payment_provider);
+                        return strtoupper($id->shoppingcart->shoppingcart_payment->payment_provider) .' ('.$id->shoppingcart->shoppingcart_payment->authorization_id.')';
                     }
                     else
                     {
