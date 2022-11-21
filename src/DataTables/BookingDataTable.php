@@ -154,7 +154,7 @@ class BookingDataTable extends DataTable
             ["name" => "subtotal", "title" => "Subtotal", "data" => "subtotal", "orderable" => false],
             ["name" => "discount", "title" => "Discount", "data" => "discount", "orderable" => false],
             ["name" => "total", "title" => "Total", "data" => "total", "orderable" => false],
-            ["name" => "booking_status", "title" => "Status", "data" => "booking_status", "orderable" => false],
+            //["name" => "booking_status", "title" => "Status", "data" => "booking_status", "orderable" => false],
         ];
     }
 
