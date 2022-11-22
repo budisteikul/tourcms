@@ -158,7 +158,7 @@ class BookingController extends Controller
     public function show($id)
     {
         $shoppingcart = Shoppingcart::where('id',$id)->firstOrFail();
-        BookingHelper::booking_expired($shoppingcart);
+        //BookingHelper::booking_expired($shoppingcart);
         return view('tourcms::booking.show')->with(['shoppingcart'=>$shoppingcart]);
     }
 
