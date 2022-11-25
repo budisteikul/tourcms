@@ -317,7 +317,8 @@ function DELETE()
 <label for="payment_type"><strong>Payment</strong></label>
 <select style="font-size:16px;height:47px;"  class="form-control" id="payment_type" name="payment_type">
 		<option value="none">NONE</option>
-		<option value="tazapay-poli">TAZAPAY POLI</option>
+		<option value="rapyd-permata">BANK TRANSFER</option>
+		<!-- option value="tazapay-poli">TAZAPAY POLI</option>
 		<option value="tazapay-paynow">TAZAPAY PAYNOW</option>
         <option value="rapyd-poli">RAPYD POLI</option>
 		<option value="rapyd-paynow">RAPYD PAYNOW</option>
@@ -340,7 +341,7 @@ function DELETE()
         <option value="midtrans-gopay">MIDTRANS GOPAY</option>
         <option value="midtrans-shopeepay">MIDTRANS SHOPEEPAY</option>
         <option value="midtrans-gopay_qris">MIDTRANS QRIS GOPAY</option>
-        <option value="midtrans-shopeepay_qris">MIDTRANS QRIS SHOPEEPAY</option>
+        <option value="midtrans-shopeepay_qris">MIDTRANS QRIS SHOPEEPAY</option -->
 </select>
 </div>            
 <!-- ########################################### -->
