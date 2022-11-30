@@ -88,14 +88,12 @@ class BookingDataTable extends DataTable
 
                 return '
                 <div class="btn-toolbar justify-content-end">
-                    <div class="btn-group mr-2 mb-2" role="group">
+                    <div class="btn-group mr-2 " role="group">
                         
                         '.$button_confirm.'
                         '.$button_cancel.'
                         '.$button_delete.'
 
-                        
-                        
                     </div>
                 </div>';
                 })
@@ -124,7 +122,7 @@ class BookingDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    //->addAction(['title' => '','class' => 'text-center'])
+                    ->addAction(['title' => '','class' => 'text-center'])
                     ->parameters([
                         'language' => [
                             'paginate' => [
