@@ -236,7 +236,7 @@ class BookingController extends Controller
         if($request->input('action')=="cancel")
         {
             $shoppingcart = Shoppingcart::findOrFail($id);
-            BookingHelper::confirm_payment($shoppingcart,"CANCELED",true);
+            BookingHelper::confirm_payment($shoppingcart,"CANCELED");
             
             return response()->json([
                         "id"=>"1",
@@ -247,7 +247,7 @@ class BookingController extends Controller
         if($request->input('action')=="confirm")
         {
             $shoppingcart = Shoppingcart::findOrFail($id);
-            BookingHelper::confirm_payment($shoppingcart,"CONFIRMED",true);
+            BookingHelper::confirm_payment($shoppingcart,"CONFIRMED");
 
             return response()->json([
                         "id"=>"1",
