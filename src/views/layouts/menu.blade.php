@@ -2,6 +2,42 @@
       <hr class="sidebar-divider my-0">
       <li class="nav-item 
       
+        {{ (request()->is('cms/booking*')) ? 'active' : '' }}
+        {{ (request()->is('cms/schedule*')) ? 'active' : '' }}
+      
+      ">
+      @php
+        $collapsed = 'collapsed';
+        $show = '';        
+        if(request()->is('cms/booking*') || request()->is('cms/schedule*') || request()->is('cms/remittance*'))
+        {
+          $collapsed = '';
+          $show = 'show';
+        }
+      @endphp
+        <a class="nav-link {{$collapsed}}" href="#" data-toggle="collapse" data-target="#menu-order" aria-expanded="true" aria-controls="menu-order">
+          <i class="fas fa-shopping-cart"></i>
+          <span>ORDER</span>
+        </a>
+        <div id="menu-order" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            
+            <a class="collapse-item {{ (request()->is('cms/booking*')) ? 'active' : '' }}" href="{{ route('route_tourcms_booking.index') }}"><i class="far fa-circle"></i> {{ __('Booking') }}</a>
+
+            <a class="collapse-item {{ (request()->is('cms/schedule*')) ? 'active' : '' }}" href="{{ route('route_tourcms_schedule.index') }}"><i class="far fa-circle"></i> {{ __('Schedule') }}</a>
+
+            <a class="collapse-item {{ (request()->is('cms/remittance*')) ? 'active' : '' }}" href="{{ route('route_tourcms_remittance.index') }}"><i class="far fa-circle"></i> {{ __('Remittance') }}</a>
+            
+            
+           
+          </div>
+        </div>
+      </li>
+<!-- ##################################################################### -->
+<!-- ##################################################################### -->
+      <hr class="sidebar-divider my-0">
+      <li class="nav-item 
+      
         {{ (request()->is('cms/product*')) ? 'active' : '' }}
         {{ (request()->is('cms/category*')) ? 'active' : '' }}
         {{ (request()->is('cms/channel*')) ? 'active' : '' }}
@@ -36,45 +72,11 @@
           </div>
         </div>
       </li>
-      <!-- ##################################################################### -->
-      <hr class="sidebar-divider my-0">
-      <li class="nav-item 
       
-        {{ (request()->is('cms/booking*')) ? 'active' : '' }}
-        {{ (request()->is('cms/schedule*')) ? 'active' : '' }}
-      
-      ">
-      @php
-        $collapsed = 'collapsed';
-        $show = '';        
-        if(request()->is('cms/booking*') || request()->is('cms/schedule*') || request()->is('cms/remittance*'))
-        {
-          $collapsed = '';
-          $show = 'show';
-        }
-      @endphp
-        <a class="nav-link {{$collapsed}}" href="#" data-toggle="collapse" data-target="#menu-order" aria-expanded="true" aria-controls="menu-order">
-          <i class="fas fa-shopping-cart"></i>
-          <span>ORDER</span>
-        </a>
-        <div id="menu-order" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            
-            <a class="collapse-item {{ (request()->is('cms/booking*')) ? 'active' : '' }}" href="{{ route('route_tourcms_booking.index') }}"><i class="far fa-circle"></i> {{ __('Booking') }}</a>
+<!-- ##################################################################### -->
+<!-- ##################################################################### -->
 
-            <a class="collapse-item {{ (request()->is('cms/schedule*')) ? 'active' : '' }}" href="{{ route('route_tourcms_schedule.index') }}"><i class="far fa-circle"></i> {{ __('Schedule') }}</a>
-
-            <a class="collapse-item {{ (request()->is('cms/remittance*')) ? 'active' : '' }}" href="{{ route('route_tourcms_remittance.index') }}"><i class="far fa-circle"></i> {{ __('Remittance') }}</a>
-            
-            
-           
-          </div>
-        </div>
-      </li>
-
- <!-- ##################################################################### -->
-
- <hr class="sidebar-divider my-0">
+    <hr class="sidebar-divider my-0">
       <li class="nav-item 
       
         {{ (request()->is('cms/page*')) ? 'active' : '' }}
@@ -104,7 +106,6 @@
           </div>
         </div>
       </li>
-
- <!-- ##################################################################### -->
+<!-- ##################################################################### -->
 
  
