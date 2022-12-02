@@ -46,9 +46,17 @@ class RemittanceDataTable extends DataTable
                     
                 })
                 ->addColumn('amount', function($id){
+                    
+                    
                     if(isset($id->shoppingcart->shoppingcart_payment->amount) && isset($id->shoppingcart->shoppingcart_payment->currency))
                     {
-                        return $id->shoppingcart->shoppingcart_payment->amount .' '. $id->shoppingcart->shoppingcart_payment->currency;
+                        $amount = $id->due_now;
+                        $amount = $amount / $id->shoppingcart->shoppingcart_payment->rate;
+                        //number_format((float)$shoppingcart->due_now / $amount, 2, '.', '');
+                        $amount = number_format((float)$amount, 2, '.', '');
+                        $amount = number_format($amount,2);
+                        return $amount .' '. $id->shoppingcart->shoppingcart_payment->currency;
+                        //return $id->shoppingcart->shoppingcart_payment->amount .' '. $id->shoppingcart->shoppingcart_payment->currency;
                     }
                     else
                     {
@@ -81,8 +89,6 @@ class RemittanceDataTable extends DataTable
     {
         $model = $model->whereHas('shoppingcart', function ($query) {
                 return $query->where('booking_status','CONFIRMED')->where('booking_channel','WEBSITE');
-                //return $query->where('booking_status','CONFIRMED');
-        
         })->whereNotNull('date')->orderBy('date', 'DESC')->newQuery();
         return $model;
     }
