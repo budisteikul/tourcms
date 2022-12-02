@@ -31,10 +31,13 @@ class RemittanceDataTable extends DataTable
                 ->addColumn('booking_channel', function($id){
                     return $id->shoppingcart->booking_channel;
                 })
+                ->addColumn('authorization_id', function($id){
+                    return $id->shoppingcart->shoppingcart_payment->authorization_id;
+                })
                 ->addColumn('payment_provider', function($id){
                     if(isset($id->shoppingcart->shoppingcart_payment->payment_provider))
                     {
-                        return strtoupper($id->shoppingcart->shoppingcart_payment->payment_provider) .' '.$id->shoppingcart->shoppingcart_payment->authorization_id;
+                        return strtoupper($id->shoppingcart->shoppingcart_payment->payment_provider);
                     }
                     else
                     {
@@ -124,6 +127,7 @@ class RemittanceDataTable extends DataTable
             ["name" => "date_text", "title" => "Date", "data" => "date_text", 'orderable' => false],
             ["name" => "people", "title" => "People", "data" => "people", 'orderable' => false],
             ["name" => "payment_provider", "title" => "Payment Provider", "data" => "payment_provider", 'orderable' => false],
+            ["name" => "authorization_id", "title" => "Authorization ID", "data" => "authorization_id", 'orderable' => false],
             ["name" => "amount", "title" => "Amount", "data" => "amount", 'orderable' => false],
 
         ];

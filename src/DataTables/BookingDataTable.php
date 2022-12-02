@@ -122,7 +122,7 @@ class BookingDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['title' => '','class' => 'text-center'])
+                    //->addAction(['title' => '','class' => 'text-center'])
                     ->parameters([
                         'language' => [
                             'paginate' => [
