@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace budisteikul\tourcms\Controllers;
+use App\Http\Controllers\Controller;
 
-use App\Http\Requests\StoreCloseOutRequest;
-use App\Http\Requests\UpdateCloseOutRequest;
-use App\Models\CloseOut;
+use budisteikul\toursdk\Models\CloseOut;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use budisteikul\tourcms\DataTables\CloseOutDataTable;
 
 class CloseOutController extends Controller
 {
@@ -13,9 +15,9 @@ class CloseOutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(CloseOutDataTable $dataTable)
     {
-        //
+        return $dataTable->render('tourcms::closeout.index');
     }
 
     /**
@@ -25,7 +27,7 @@ class CloseOutController extends Controller
      */
     public function create()
     {
-        //
+        return view('tourcms::closeout.create');
     }
 
     /**
@@ -34,9 +36,27 @@ class CloseOutController extends Controller
      * @param  \App\Http\Requests\StoreCloseOutRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCloseOutRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'date' => 'required|unique:close_outs,date',
+        ]);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return response()->json($errors);
+        }
+
+        $date =  $request->input('date');
+
+        $closeout = new CloseOut();
+        $closeout->date = $date;
+        $closeout->save();
+
+        return response()->json([
+                    "id" => "1",
+                    "message" => 'Success'
+                ]);
     }
 
     /**
@@ -56,9 +76,9 @@ class CloseOutController extends Controller
      * @param  \App\Models\CloseOut  $closeOut
      * @return \Illuminate\Http\Response
      */
-    public function edit(CloseOut $closeOut)
+    public function edit(CloseOut $closeout)
     {
-        //
+        return view('tourcms::closeout.edit',['closeout'=>$closeout]);
     }
 
     /**
@@ -68,9 +88,26 @@ class CloseOutController extends Controller
      * @param  \App\Models\CloseOut  $closeOut
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCloseOutRequest $request, CloseOut $closeOut)
+    public function update(Request $request, CloseOut $closeout)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'date' => 'required|unique:close_outs,date,'.$closeout->id,
+        ]);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return response()->json($errors);
+        }
+
+        $date =  $request->input('date');
+        
+        $closeout->date = $date;
+        $closeout->save();
+
+        return response()->json([
+                    "id" => "1",
+                    "message" => 'Success'
+                ]);
     }
 
     /**
@@ -79,8 +116,8 @@ class CloseOutController extends Controller
      * @param  \App\Models\CloseOut  $closeOut
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CloseOut $closeOut)
+    public function destroy(CloseOut $closeout)
     {
-        //
+        $closeout->delete();
     }
 }
