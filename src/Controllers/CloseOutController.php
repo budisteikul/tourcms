@@ -7,6 +7,7 @@ use budisteikul\toursdk\Models\CloseOut;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use budisteikul\tourcms\DataTables\CloseOutDataTable;
+use budisteikul\toursdk\Models\Product;
 
 class CloseOutController extends Controller
 {
@@ -27,7 +28,8 @@ class CloseOutController extends Controller
      */
     public function create()
     {
-        return view('tourcms::closeout.create');
+        $products = Product::orderBy('name')->get();
+        return view('tourcms::closeout.create',['products'=>$products]);
     }
 
     /**
@@ -38,18 +40,21 @@ class CloseOutController extends Controller
      */
     public function store(Request $request)
     {
+        $bokun_id =  $request->input('bokun_id');
+        $date =  $request->input('date');
+
         $validator = Validator::make($request->all(), [
-            'date' => 'required|unique:close_outs,date',
+            'bokun_id' => 'required|unique:close_outs,bokun_id,NULL,id,date,'.$date,
+            'date' => 'required',
         ]);
 
         if ($validator->fails()) {
             $errors = $validator->errors();
             return response()->json($errors);
         }
-
-        $date =  $request->input('date');
-
+        
         $closeout = new CloseOut();
+        $closeout->bokun_id = $bokun_id;
         $closeout->date = $date;
         $closeout->save();
 
@@ -78,7 +83,8 @@ class CloseOutController extends Controller
      */
     public function edit(CloseOut $closeout)
     {
-        return view('tourcms::closeout.edit',['closeout'=>$closeout]);
+        $products = Product::orderBy('name')->get();
+        return view('tourcms::closeout.edit',['closeout'=>$closeout,'products'=>$products]);
     }
 
     /**
@@ -90,8 +96,12 @@ class CloseOutController extends Controller
      */
     public function update(Request $request, CloseOut $closeout)
     {
+        $date =  $request->input('date');
+        $bokun_id =  $request->input('bokun_id');
+
         $validator = Validator::make($request->all(), [
-            'date' => 'required|unique:close_outs,date,'.$closeout->id,
+            'bokun_id' => 'required|unique:close_outs,bokun_id,'.$closeout->id.',id,date,'.$date,
+            'date' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -99,9 +109,10 @@ class CloseOutController extends Controller
             return response()->json($errors);
         }
 
-        $date =  $request->input('date');
+        
         
         $closeout->date = $date;
+        $closeout->bokun_id = $bokun_id;
         $closeout->save();
 
         return response()->json([

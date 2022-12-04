@@ -5,17 +5,18 @@ function STORE()
 	var error = false;
 	$("#submit").attr("disabled", true);
 	$('#submit').html('<i class="fa fa-spinner fa-spin"></i>');
-	var input = ["name"];
+	var input = ["date","bokun_id"];
 	
 	$.each(input, function( index, value ) {
-  		$('#datetimepicker1').removeClass('is-invalid');
-  		$('#span-datetimepicker1').remove();
+  		$('#'+ value).removeClass('is-invalid');
+  		$('#span-'+ value).remove();
 	});
 	
 	$.ajax({
 		data: {
         	"_token": $("meta[name=csrf-token]").attr("content"),
 			"date": $('#date').val(),
+			"bokun_id": $('#bokun_id').val(),
         },
 		type: 'POST',
 		url: '{{ route('route_tourcms_closeout.store') }}'
@@ -30,10 +31,10 @@ function STORE()
 			else
 			{
 				$.each( data, function( index, value ) {
-					$('#datetimepicker1').addClass('is-invalid');
+					$('#'+ index).addClass('is-invalid');
 						if(value!="")
 						{
-							$('#datetimepicker1').after('<span id="span-datetimepicker1" class="invalid-feedback" role="alert"><strong>'+ value +'</strong></span>');
+							$('#'+ index).after('<span id="span-'+ index  +'" class="invalid-feedback" role="alert"><strong>'+ value +'</strong></span>');
 						}
 					});
 				$("#submit").attr("disabled", false);
@@ -58,6 +59,15 @@ function STORE()
 <form onSubmit="STORE(); return false;">
 
 <div id="result"></div>
+
+<div class="form-group">
+    <label for="category_id">Product</label>
+    <select class="form-control" id="bokun_id">
+      @foreach($products as $product)
+      <option value="{{ $product->bokun_id }}">{{ $product->name }}</option>
+      @endforeach
+    </select>
+</div>
 
 <div class="form-group">   
 				 <label for="datetimepicker1">Date :</label>           

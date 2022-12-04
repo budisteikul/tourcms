@@ -9,6 +9,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 use budisteikul\toursdk\Helpers\GeneralHelper;
+use budisteikul\toursdk\Models\Product;
 
 class CloseOutDataTable extends DataTable
 {
@@ -24,6 +25,10 @@ class CloseOutDataTable extends DataTable
                 ->addIndexColumn()
                 ->editColumn('date', function($id){
                     return GeneralHelper::dateFormat($id->date,4);
+                })
+                ->editColumn('bokun_id', function($id){
+                    $product = Product::where('bokun_id', $id->bokun_id)->first();
+                    return $product->name;
                 })
                 ->addColumn('action', function ($id) {
                 return '
@@ -87,6 +92,7 @@ class CloseOutDataTable extends DataTable
     {
         return [
             ["name" => "date", "title" => "Date", "data" => "date", "orderable" => false],
+            ["name" => "bokun_id", "title" => "Product", "data" => "bokun_id", "orderable" => false],
         ];
     }
 
