@@ -47,6 +47,7 @@ class CloseOutDataTable extends DataTable
      */
     public function query(CloseOut $model)
     {
+        CloseOut::where('date','<',date('Y-m-d'))->delete();
         return $model->where('date','>=',date('Y-m-d'))->orderBy('date', 'ASC')->newQuery();
     }
 
