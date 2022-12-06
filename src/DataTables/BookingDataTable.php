@@ -72,17 +72,17 @@ class BookingDataTable extends DataTable
 
                 if($id->booking_status=="PENDING")
                 {
-                    $button_confirm = '<button id="btn-edit" type="button" onClick="CONFIRM(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success"><i class="fas fa-check"></i> Confirm</button>';
-                    $button_cancel = '<button id="btn-edit" type="button" onClick="CANCEL(\''.$id->id.'\'); return false;" class="btn btn-sm btn-warning"><i class="fa fa-ban"></i> Cancel</button>';
+                    $button_confirm = '<button id="btn-edit pt-0 pb-0 pl-1 pr-1" type="button" onClick="CONFIRM(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success pt-0 pb-0 pl-1 pr-1"><i class="fas fa-check"></i> Confirm this booking</button>';
+                    $button_cancel = '<button id="btn-edit pt-0 pb-0 pl-1 pr-1" type="button" onClick="CANCEL(\''.$id->id.'\'); return false;" class="btn btn-sm btn-warning pt-0 pb-0 pl-1 pr-1"><i class="fa fa-ban"></i> Cancel this booking</button>';
                 }
                 if($id->booking_status=="CANCELED")
                 {
                     //$button_confirm = '<button id="btn-edit" type="button" onClick="CONFIRM(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success"><i class="fas fa-check"></i> Confirm</button>';
-                    //$button_delete = '<button id="btn-del" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i> Delete</button>';
+                    //$button_delete = '<button id="btn-del" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i> Delete this booking</button>';
                 }
                 if($id->booking_status=="CONFIRMED")
                 {
-                    $button_cancel = '<button id="btn-edit" type="button" onClick="CANCEL(\''.$id->id.'\'); return false;" class="btn btn-sm btn-warning"><i class="fa fa-ban"></i> Cancel</button>';
+                    $button_cancel = '<button id="btn-edit" type="button" onClick="CANCEL(\''.$id->id.'\'); return false;" class="btn btn-sm btn-warning pt-0 pb-0 pl-1 pr-1"><i class="fa fa-ban"></i> Cancel this booking</button>';
                 }
                 
 
@@ -122,7 +122,7 @@ class BookingDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    //->addAction(['title' => '','class' => 'text-center'])
+                    ->addAction(['title' => '','class' => 'text-center'])
                     ->parameters([
                         'language' => [
                             'paginate' => [
