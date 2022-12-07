@@ -48,7 +48,7 @@ class ProductDataTable extends DataTable
                   
                 return '
                 <div class="btn-toolbar justify-content-end">
-                    <div class="btn-group mr-2 mb-2" role="group">
+                    <div class="btn-group mr-2" role="group">
                         
                         '. $button_refresh .'
 
