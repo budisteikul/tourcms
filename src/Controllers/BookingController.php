@@ -159,6 +159,7 @@ class BookingController extends Controller
 
                 $shoppingcart->fee = $fee;
                 $shoppingcart->total = $shoppingcart->subtotal - $shoppingcart->discount - $fee;
+                $shoppingcart->due_now = $shoppingcart->subtotal - $shoppingcart->discount - $fee;
                 $shoppingcart->save();
 
                 //Fee per product
@@ -167,6 +168,7 @@ class BookingController extends Controller
                 {
                     $shoppingcart_product->fee = $fee_product;
                     $shoppingcart_product->total = $shoppingcart_product->subtotal - $shoppingcart_product->discount - $shoppingcart_product->fee;
+                    $shoppingcart_product->due_now = $shoppingcart_product->subtotal - $shoppingcart_product->discount - $shoppingcart_product->fee;
                     $shoppingcart_product->save();
 
                     //Fee per product detail
