@@ -20,6 +20,14 @@ class ChannelDataTable extends DataTable
     {
         return datatables($query)
                 ->addIndexColumn()
+                ->editColumn('fee', function($id){
+                    if($id->is_percentage)
+                    {
+                        return $id->fee.'%';
+                    }
+                    return $id->fee;
+                    
+                })
                 ->addColumn('action', function ($id) {
                 return '
                 <div class="btn-toolbar justify-content-end">
@@ -83,6 +91,7 @@ class ChannelDataTable extends DataTable
             ["name" => "created_at", "title" => "created_at", "data" => "created_at", "orderable" => true, "visible" => false,'searchable' => false],
             ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px'],
             ["name" => "name", "title" => "Name", "data" => "name"],
+            ["name" => "fee", "title" => "Fee", "data" => "fee"],
         ];
     }
 

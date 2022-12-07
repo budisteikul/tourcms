@@ -29,6 +29,9 @@ class BookingDataTable extends DataTable
                 ->editColumn('discount', function($id){
                     return GeneralHelper::numberFormat($id->discount);
                 })
+                ->editColumn('fee', function($id){
+                    return GeneralHelper::numberFormat($id->fee);
+                })
                 ->editColumn('total', function($id){
                     return GeneralHelper::numberFormat($id->total);
                 })
@@ -153,6 +156,7 @@ class BookingDataTable extends DataTable
             ["name" => "created_at", "title" => "Created", "data" => "created_at", "orderable" => false],
             ["name" => "subtotal", "title" => "Subtotal", "data" => "subtotal", "orderable" => false],
             ["name" => "discount", "title" => "Discount", "data" => "discount", "orderable" => false],
+            ["name" => "fee", "title" => "Fee", "data" => "fee", "orderable" => false],
             ["name" => "total", "title" => "Total", "data" => "total", "orderable" => false],
             ["name" => "booking_status", "title" => "Status", "data" => "booking_status", "orderable" => false],
         ];

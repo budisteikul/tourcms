@@ -144,6 +144,24 @@ class BookingController extends Controller
             
             $shoppingcart = BookingHelper::confirm_booking($sessionId,false);
             
+            //Fee
+            $channel = Channel::where('name',$shoppingcart->booking_channel)->first();
+            if($channel)
+            {
+                if($channel->is_percentage)
+                {
+                    $fee = $shoppingcart->subtotal * $channel->fee / 100;
+                }
+                else
+                {
+                    $fee = $channel->fee;
+                }
+
+                $shoppingcart->fee = $fee;
+                $shoppingcart->total = $shoppingcart->subtotal - $shoppingcart->discount - $fee;
+                $shoppingcart->save();
+            }
+
             return response()->json([
                     "message" => 'success'
                 ]);

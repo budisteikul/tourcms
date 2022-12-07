@@ -5,7 +5,7 @@ function STORE()
 	var error = false;
 	$("#submit").attr("disabled", true);
 	$('#submit').html('<i class="fa fa-spinner fa-spin"></i>');
-	var input = ["name"];
+	var input = ["name","fee","is_percentage"];
 	
 	$.each(input, function( index, value ) {
   		$('#'+ value).removeClass('is-invalid');
@@ -16,6 +16,8 @@ function STORE()
 		data: {
         	"_token": $("meta[name=csrf-token]").attr("content"),
 			"name": $('#name').val(),
+			"fee": $('#fee').val(),
+			"is_percentage": $('#is_percentage').val(),
         },
 		type: 'POST',
 		url: '{{ route('route_tourcms_channel.store') }}'
@@ -63,6 +65,19 @@ function STORE()
 	<label for="name">Name :</label>
 	<input type="text" id="name" name="name" class="form-control" placeholder="Name" autocomplete="off">
 </div> 
+
+<div class="form-group">
+	<label for="fee">Fee :</label>
+	<input type="number" id="fee" name="fee" class="form-control" placeholder="Fee" autocomplete="off">
+</div> 
+
+<div class="form-group">
+    <label for="is_percentage">Percentage :</label>
+    <select class="form-control" id="is_percentage">
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select>
+</div>
 
 	<button  class="btn btn-danger" type="button" onClick="$.fancybox.close();"><i class="fa fa-window-close"></i> Cancel</button>
 	<button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
