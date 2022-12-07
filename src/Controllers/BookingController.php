@@ -144,7 +144,7 @@ class BookingController extends Controller
             
             $shoppingcart = BookingHelper::confirm_booking($sessionId,false);
             
-            //Fee
+            //Fee ========================================================================
             $channel = Channel::where('name',$shoppingcart->booking_channel)->first();
             if($channel)
             {
@@ -160,6 +160,24 @@ class BookingController extends Controller
                 $shoppingcart->fee = $fee;
                 $shoppingcart->total = $shoppingcart->subtotal - $shoppingcart->discount - $fee;
                 $shoppingcart->save();
+
+                //Fee per product
+                $fee_product = $fee / $shoppingcart->shoppingcart_products->count();
+                foreach($shoppingcart->shoppingcart_products as $shoppingcart_product)
+                {
+                    $shoppingcart_product->fee = $fee_product;
+                    $shoppingcart_product->total = $shoppingcart_product->subtotal - $shoppingcart_product->discount - $shoppingcart_product->fee;
+                    $shoppingcart_product->save();
+
+                    //Fee per product detail
+                    $fee_product_detail = $fee_product / $shoppingcart_product->shoppingcart_product_details->count();
+                    foreach($shoppingcart_product->shoppingcart_product_details as $shoppingcart_product_detail)
+                    {
+                        $shoppingcart_product_detail->fee = $fee_product;
+                        $shoppingcart_product_detail->total = $shoppingcart_product_detail->subtotal - $shoppingcart_product_detail->discount - $shoppingcart_product_detail->fee;
+                        $shoppingcart_product_detail->save();
+                    }
+                }
             }
 
             return response()->json([
