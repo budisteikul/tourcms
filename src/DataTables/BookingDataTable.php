@@ -59,8 +59,8 @@ class BookingDataTable extends DataTable
                 <div class="btn-toolbar justify-content-end">
                     <div class="btn-group mr-2" role="group">
                         
-                        <button id="void-'.$id->id.'" type="button" onClick="STATUS(\''.$id->id.'\',\'void\'); return false;" class="btn btn-sm btn-warning payment"><i class="fa fa-ban"></i> Void</button>
-                        <button id="capture-'.$id->id.'" type="button" onClick="STATUS(\''. $id->id .'\',\'capture\')" class="btn btn-sm btn-primary payment"><i class="fa fa-money-check"></i> Capture</button>
+                        <button id="void-'.$id->id.'" type="button" onClick="STATUS(\''.$id->id.'\',\'void\'); return false;" class="btn btn-sm btn-warning payment pt-0 pb-0 pl-1 pr-1"><i class="fa fa-ban"></i> Void</button>
+                        <button id="capture-'.$id->id.'" type="button" onClick="STATUS(\''. $id->id .'\',\'capture\')" class="btn btn-sm btn-primary payment pt-0 pb-0 pl-1 pr-1"><i class="fa fa-money-check"></i> Capture</button>
                         
                     </div>
                 </div>';
@@ -75,8 +75,8 @@ class BookingDataTable extends DataTable
 
                 if($id->booking_status=="PENDING")
                 {
-                    $button_confirm = '<button id="btn-edit pt-0 pb-0 pl-1 pr-1" type="button" onClick="CONFIRM(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success pt-0 pb-0 pl-1 pr-1"><i class="fas fa-check"></i> Confirm this booking</button>';
-                    $button_cancel = '<button id="btn-edit pt-0 pb-0 pl-1 pr-1" type="button" onClick="CANCEL(\''.$id->id.'\'); return false;" class="btn btn-sm btn-warning pt-0 pb-0 pl-1 pr-1"><i class="fa fa-ban"></i> Cancel this booking</button>';
+                    $button_confirm = '<button id="btn-edit" type="button" onClick="CONFIRM(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success pt-0 pb-0 pl-1 pr-1"><i class="fas fa-check"></i> Confirm this booking</button>';
+                    $button_cancel = '<button id="btn-edit" type="button" onClick="CANCEL(\''.$id->id.'\'); return false;" class="btn btn-sm btn-warning pt-0 pb-0 pl-1 pr-1"><i class="fa fa-ban"></i> Cancel this booking</button>';
                 }
                 if($id->booking_status=="CANCELED")
                 {
