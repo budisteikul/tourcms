@@ -317,7 +317,8 @@ function DELETE()
 <label for="payment_type"><strong>Payment</strong></label>
 <select style="font-size:16px;height:47px;"  class="form-control" id="payment_type" name="payment_type">
 		<option value="none">NONE</option>
-		<option value="rapyd-permata">BANK TRANSFER</option>
+		<option value="rapyd-permata">ID RAPYD BANK TRANSFER</option>
+		<option value="rapyd-paynow">SG RAPYD PAYNOW</option>
 		<!-- option value="tazapay-poli">TAZAPAY POLI</option>
 		<option value="tazapay-paynow">TAZAPAY PAYNOW</option>
         <option value="rapyd-poli">RAPYD POLI</option>
