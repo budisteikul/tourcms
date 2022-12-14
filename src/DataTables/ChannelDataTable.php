@@ -7,6 +7,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use budisteikul\toursdk\Helpers\ReviewHelper;
 
 class ChannelDataTable extends DataTable
 {
@@ -29,12 +30,18 @@ class ChannelDataTable extends DataTable
                     
                 })
                 ->addColumn('action', function ($id) {
+
+                $button_delete = '<button id="btn-del" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i> Delete</button>';
+                $button_edit = '<button id="btn-edit" type="button" onClick="EDIT(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Edit</button>';
+                if(ReviewHelper::channel_have_review($id)) $button_delete = '';
                 return '
                 <div class="btn-toolbar justify-content-end">
                     <div class="btn-group mr-2" role="group">
                         
-                        <button id="btn-edit" type="button" onClick="EDIT(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Edit</button>
-                        <button id="btn-del" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i> Delete</button>
+                        '. $button_edit .'
+
+                        '. $button_delete .'
+                        
                         
                     </div>
                 </div>';

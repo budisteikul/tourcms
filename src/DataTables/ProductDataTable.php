@@ -5,6 +5,8 @@ namespace budisteikul\tourcms\DataTables;
 use budisteikul\toursdk\Models\Product;
 use budisteikul\toursdk\Models\Category;
 use budisteikul\toursdk\Helpers\CategoryHelper;
+use budisteikul\toursdk\Helpers\ReviewHelper;
+
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -43,7 +45,7 @@ class ProductDataTable extends DataTable
                 
                 $button_refresh = '<button id="refresh-'.$id->id.'" type="button" onClick="SYNC(\''.$id->id.'\'); return false;" class="btn btn-sm btn-primary"><i class="fas fa-sync-alt"></i></i> Sync</button>';
                 $button_delete = '<button id="btn-del" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i> Delete</button>';
-                if(ProductHelper::have_review($id)) $button_delete = '';
+                if(ReviewHelper::product_have_review($id)) $button_delete = '';
 
                   
                 return '
