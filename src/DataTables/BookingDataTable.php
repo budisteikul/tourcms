@@ -42,7 +42,7 @@ class BookingDataTable extends DataTable
                     return GeneralHelper::dateFormat($id->created_at,10);
                 })
                 ->editColumn('booking_status', function($id){
-                    BookingHelper::booking_expired($id);
+                    
                     if($id->booking_status=="PENDING") return '<span class="badge badge-info font-weight-bold">WAITING FOR PAYMENT</span>';
                     if($id->booking_status=="CANCELED") return '<span class="badge badge-danger font-weight-bold">CANCELED</span>';
                     if($id->booking_status=="CONFIRMED") return '<span class="badge badge-success font-weight-bold">CONFIRMED</span>';
@@ -111,7 +111,7 @@ class BookingDataTable extends DataTable
      */
     public function query(Shoppingcart $model)
     {
-
+        BookingHelper::booking_expired($model);
         return $model->newQuery();
     }
 
