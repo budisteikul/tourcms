@@ -319,6 +319,7 @@ function DELETE()
 		<option value="none">NONE</option>
 		<option value="rapyd-permata">ID RAPYD BANK TRANSFER</option>
 		<option value="rapyd-paynow">SG RAPYD PAYNOW</option>
+		<option value="rapyd-alfa">ID RAPYD ALFAMART</option>
 		<!-- option value="tazapay-poli">TAZAPAY POLI</option>
 		<option value="tazapay-paynow">TAZAPAY PAYNOW</option>
         <option value="rapyd-poli">RAPYD POLI</option>
