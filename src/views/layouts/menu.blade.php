@@ -4,14 +4,13 @@
       
         {{ (request()->is('cms/booking*')) ? 'active' : '' }}
         {{ (request()->is('cms/schedule*')) ? 'active' : '' }}
-        {{ (request()->is('cms/remittance*')) ? 'active' : '' }}
-        {{ (request()->is('cms/closeout*')) ? 'active' : '' }}
+        
       
       ">
       @php
         $collapsed = 'collapsed';
         $show = '';        
-        if(request()->is('cms/booking*') || request()->is('cms/schedule*') || request()->is('cms/remittance*') || request()->is('cms/closeout*'))
+        if(request()->is('cms/booking*') || request()->is('cms/schedule*'))
         {
           $collapsed = '';
           $show = 'show';
@@ -28,9 +27,9 @@
 
             <a class="collapse-item {{ (request()->is('cms/schedule*')) ? 'active' : '' }}" href="{{ route('route_tourcms_schedule.index') }}"><i class="far fa-circle"></i> {{ __('Schedule') }}</a>
 
-            <a class="collapse-item {{ (request()->is('cms/remittance*')) ? 'active' : '' }}" href="{{ route('route_tourcms_remittance.index') }}"><i class="far fa-circle"></i> {{ __('Remittance') }}</a>
+            
 
-            <a class="collapse-item {{ (request()->is('cms/closeout*')) ? 'active' : '' }}" href="{{ route('route_tourcms_closeout.index') }}"><i class="far fa-circle"></i> {{ __('Close Out') }}</a>
+            
             
             
            
@@ -46,12 +45,13 @@
         {{ (request()->is('cms/category*')) ? 'active' : '' }}
         {{ (request()->is('cms/channel*')) ? 'active' : '' }}
         {{ (request()->is('cms/voucher*')) ? 'active' : '' }}
-      
+        {{ (request()->is('cms/closeout*')) ? 'active' : '' }}
+
       ">
       @php
         $collapsed = 'collapsed';
         $show = '';        
-        if(request()->is('cms/product*') || request()->is('cms/category*') || request()->is('cms/channel*') || request()->is('cms/voucher*'))
+        if(request()->is('cms/product*') || request()->is('cms/category*') || request()->is('cms/channel*') || request()->is('cms/voucher*') || request()->is('cms/closeout*'))
         {
           $collapsed = '';
           $show = 'show';
@@ -72,7 +72,8 @@
 
             <a class="collapse-item {{ (request()->is('cms/voucher*')) ? 'active' : '' }}" href="{{ route('route_tourcms_voucher.index') }}"><i class="far fa-circle"></i> {{ __('Voucher') }}</a>
             
-           
+           <a class="collapse-item {{ (request()->is('cms/closeout*')) ? 'active' : '' }}" href="{{ route('route_tourcms_closeout.index') }}"><i class="far fa-circle"></i> {{ __('Close Out') }}</a>
+
           </div>
         </div>
       </li>
@@ -104,6 +105,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             
             <a class="collapse-item {{ (request()->is('cms/page*')) ? 'active' : '' }}" href="{{ route('route_tourcms_page.index') }}"><i class="far fa-circle"></i> {{ __('Page') }}</a>
+            
             <a class="collapse-item {{ (request()->is('cms/review*')) ? 'active' : '' }}" href="{{ route('route_tourcms_review.index') }}"><i class="far fa-circle"></i> {{ __('Review') }}</a>
             
            
