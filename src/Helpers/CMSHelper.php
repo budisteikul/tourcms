@@ -9,19 +9,20 @@ class CMSHelper {
 
 	public static function cache_saldo_forget($date)
     {
-                $start_year = Str::substr($date, 0,4);
-                $start_month = Str::substr($date, 5,2);
-
                 $newDateTime = Carbon::parse($date)->subMonths(1);
-                $tahun = Str::substr($newDateTime, 0,4);
-                $bulan = Str::substr($newDateTime, 5,2);
+                $start_year = Str::substr($newDateTime, 0,4);
+                $start_month = Str::substr($newDateTime, 5,2);
 
-                for($i=$start_year;$i<=$tahun;$i++)
+                $tahun_now = date('Y');
+                $bulan_now = date('m');
+                //print_r($bulan);
+
+                for($i=$start_year;$i<=$tahun_now;$i++)
                 {
                     $xbulan = $start_month;
                     if($i!=$start_year) $xbulan = 1;
 
-                    $ybulan = $bulan;
+                    $ybulan = $bulan_now;
                     if($i!=date('Y')) $ybulan = 12;
 
                     for($j=$xbulan;$j<=$ybulan;$j++)
