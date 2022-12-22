@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use budisteikul\tourcms\DataTables\ScheduleDataTable;
 use budisteikul\toursdk\Models\ShoppingcartProduct;
 use Illuminate\Support\Facades\Validator;
+use budisteikul\tourcms\Helpers\CMSHelper;
 
 class ScheduleController extends Controller
 {
@@ -39,6 +40,7 @@ class ScheduleController extends Controller
         $shoppingcart_product->date = $date;
         $shoppingcart_product->save();
 
+        CMSHelper::cache_saldo_forget($date);
 
         return response()->json([
                     "id" => "1",
