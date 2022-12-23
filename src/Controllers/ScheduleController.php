@@ -40,7 +40,7 @@ class ScheduleController extends Controller
         $shoppingcart_product->date = $date;
         $shoppingcart_product->save();
 
-        //CMSHelper::cache_saldo_forget($date);
+        CMSHelper::cache_saldo_forget($date);
 
         return response()->json([
                     "id" => "1",
