@@ -27,7 +27,7 @@ class CMSHelper {
 
                     for($j=$xbulan;$j<=$ybulan;$j++)
                     {
-                            Cache::forget('_finLastMonthSaldo_'. $i .'_'. GeneralHelper::digitFormat($j,2));
+                            Cache::forget('_saldo_'. $i .'_'. GeneralHelper::digitFormat($j,2));
                     }
                 }
     }
