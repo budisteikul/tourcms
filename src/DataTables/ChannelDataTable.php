@@ -17,7 +17,7 @@ class ChannelDataTable extends DataTable
      * @param mixed $query Results from query() method.
      * @return \Yajra\DataTables\DataTableAbstract
      */
-    public function dataTable($query)
+    public function dataTable($query): EloquentDataTable
     {
         return datatables($query)
                 ->addIndexColumn()
@@ -55,7 +55,7 @@ class ChannelDataTable extends DataTable
      * @param \App\App\ChannelDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Channel $model)
+    public function query(Channel $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -65,7 +65,7 @@ class ChannelDataTable extends DataTable
      *
      * @return \Yajra\DataTables\Html\Builder
      */
-    public function html()
+    public function html(): HtmlBuilder
     {
         return $this->builder()
                     ->columns($this->getColumns())
@@ -92,7 +92,7 @@ class ChannelDataTable extends DataTable
      *
      * @return array
      */
-    protected function getColumns()
+    protected function getColumns(): array
     {
         return [
             ["name" => "created_at", "title" => "created_at", "data" => "created_at", "orderable" => true, "visible" => false,'searchable' => false],
@@ -107,7 +107,7 @@ class ChannelDataTable extends DataTable
      *
      * @return string
      */
-    protected function filename()
+    protected function filename(): string
     {
         return 'Channel_' . date('YmdHis');
     }

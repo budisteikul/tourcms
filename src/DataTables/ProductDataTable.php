@@ -23,7 +23,7 @@ class ProductDataTable extends DataTable
      * @param mixed $query Results from query() method.
      * @return \Yajra\DataTables\DataTableAbstract
      */
-    public function dataTable($query)
+    public function dataTable($query): EloquentDataTable
     {
         return datatables($query)
                 ->addIndexColumn()
@@ -70,7 +70,7 @@ class ProductDataTable extends DataTable
      * @param \App\App\ProductDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Product $model)
+    public function query(Product $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -80,7 +80,7 @@ class ProductDataTable extends DataTable
      *
      * @return \Yajra\DataTables\Html\Builder
      */
-    public function html()
+    public function html(): HtmlBuilder
     {
         return $this->builder()
                     ->columns($this->getColumns())
@@ -107,7 +107,7 @@ class ProductDataTable extends DataTable
      *
      * @return array
      */
-    protected function getColumns()
+    protected function getColumns(): array
     {
         return [
             ["name" => "created_at", "title" => "created_at", "data" => "created_at", "orderable" => true, "visible" => false,'searchable' => false],
@@ -123,7 +123,7 @@ class ProductDataTable extends DataTable
      *
      * @return string
      */
-    protected function filename()
+    protected function filename(): string
     {
         return 'Product_' . date('YmdHis');
     }

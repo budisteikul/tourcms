@@ -18,7 +18,7 @@ class ScheduleDataTable extends DataTable
      * @param mixed $query Results from query() method.
      * @return \Yajra\DataTables\DataTableAbstract
      */
-    public function dataTable($query)
+    public function dataTable($query): EloquentDataTable
     {
        
         return datatables($query)
@@ -52,7 +52,7 @@ class ScheduleDataTable extends DataTable
      * @param \App\App\ChannelDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(ShoppingcartProduct $model)
+    public function query(ShoppingcartProduct $model): QueryBuilder
     {
         $model = $model->whereHas('shoppingcart', function ($query) {
                 return $query->where('booking_status','CONFIRMED');
@@ -65,7 +65,7 @@ class ScheduleDataTable extends DataTable
      *
      * @return \Yajra\DataTables\Html\Builder
      */
-    public function html()
+    public function html(): HtmlBuilder
     {
         return $this->builder()
                     ->columns($this->getColumns())
@@ -91,7 +91,7 @@ class ScheduleDataTable extends DataTable
      *
      * @return array
      */
-    protected function getColumns()
+    protected function getColumns(): array
     {
         return [
             ["name" => "date", "title" => "Date", "data" => "date", 'orderable' => true, "visible" => false],
@@ -108,7 +108,7 @@ class ScheduleDataTable extends DataTable
      *
      * @return string
      */
-    protected function filename()
+    protected function filename(): string
     {
         return 'Schedule_' . date('YmdHis');
     }
