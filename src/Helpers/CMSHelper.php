@@ -9,7 +9,7 @@ class CMSHelper {
 
 	public static function cache_saldo_forget($date)
     {
-                $newDateTime = Carbon::parse($date)->subMonths(1);
+                $newDateTime = Carbon::parse($date);
                 $start_year = Str::substr($newDateTime, 0,4);
                 $start_month = Str::substr($newDateTime, 5,2);
 
@@ -28,6 +28,7 @@ class CMSHelper {
                     for($j=$xbulan;$j<=$ybulan;$j++)
                     {
                             Cache::forget('_saldo_'. $i .'_'. GeneralHelper::digitFormat($j,2));
+                            //print_r('_saldo_'. $i .'_'. GeneralHelper::digitFormat($j,2) .'<br />');
                     }
                 }
     }
