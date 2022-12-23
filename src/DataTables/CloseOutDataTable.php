@@ -19,7 +19,7 @@ class CloseOutDataTable extends DataTable
      * @param mixed $query Results from query() method.
      * @return \Yajra\DataTables\DataTableAbstract
      */
-    public function dataTable($query): EloquentDataTable
+    public function dataTable($query)
     {
         return datatables($query)
                 ->addIndexColumn()
@@ -50,7 +50,7 @@ class CloseOutDataTable extends DataTable
      * @param \App\Models\CloseOutDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(CloseOut $model): QueryBuilder
+    public function query(CloseOut $model)
     {
         CloseOut::where('date','<',date('Y-m-d'))->delete();
         return $model->where('date','>=',date('Y-m-d'))->orderBy('date', 'ASC')->newQuery();
@@ -61,7 +61,7 @@ class CloseOutDataTable extends DataTable
      *
      * @return \Yajra\DataTables\Html\Builder
      */
-    public function html(): HtmlBuilder
+    public function html()
     {
         return $this->builder()
                     ->columns($this->getColumns())
@@ -88,7 +88,7 @@ class CloseOutDataTable extends DataTable
      *
      * @return array
      */
-    protected function getColumns(): array
+    protected function getColumns()
     {
         return [
             ["name" => "date", "title" => "Date", "data" => "date", "orderable" => false],

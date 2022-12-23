@@ -18,7 +18,7 @@ class RemittanceDataTable extends DataTable
      * @param mixed $query Results from query() method.
      * @return \Yajra\DataTables\DataTableAbstract
      */
-    public function dataTable($query): EloquentDataTable
+    public function dataTable($query)
     {
         return datatables($query)
                 ->addColumn('name', function($id){
@@ -85,7 +85,7 @@ class RemittanceDataTable extends DataTable
      * @param \App\App\ChannelDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(ShoppingcartProduct $model): QueryBuilder
+    public function query(ShoppingcartProduct $model)
     {
         $model = $model->whereHas('shoppingcart', function ($query) {
                 return $query->where('booking_status','CONFIRMED')->where('booking_channel','WEBSITE');
@@ -98,7 +98,7 @@ class RemittanceDataTable extends DataTable
      *
      * @return \Yajra\DataTables\Html\Builder
      */
-    public function html(): HtmlBuilder
+    public function html()
     {
         return $this->builder()
                     ->columns($this->getColumns())
@@ -124,7 +124,7 @@ class RemittanceDataTable extends DataTable
      *
      * @return array
      */
-    protected function getColumns(): array
+    protected function getColumns()
     {
         return [
             ["name" => "date", "title" => "Date", "data" => "date", 'orderable' => true, "visible" => false],
