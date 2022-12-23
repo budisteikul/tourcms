@@ -9,8 +9,7 @@
     ],
 	"require": {
         "budisteikul/coresdk": "dev-master",
-        "budisteikul/toursdk": "dev-master",
-        "psr/simple-cache": "^2.0"
+        "budisteikul/toursdk": "dev-master"
     },
     "autoload": {
    		"psr-4": {
