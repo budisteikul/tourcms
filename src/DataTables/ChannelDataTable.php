@@ -96,9 +96,9 @@ class ChannelDataTable extends DataTable
     {
         return [
             ["name" => "created_at", "title" => "created_at", "data" => "created_at", "orderable" => true, "visible" => false,'searchable' => false],
-            ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px'],
-            ["name" => "name", "title" => "Name", "data" => "name"],
-            ["name" => "fee", "title" => "Fee", "data" => "fee"],
+            ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px', "class" => "align-middle text-center"],
+            ["name" => "name", "title" => "Name", "data" => "name", "class" => "align-middle"],
+            ["name" => "fee", "title" => "Fee", "data" => "fee", "class" => "align-middle"],
         ];
     }
 

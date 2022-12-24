@@ -99,12 +99,12 @@ class ReviewDataTable extends DataTable
     {
         return [
             ["name" => "created_at", "title" => "created_at", "data" => "created_at", "orderable" => true, "visible" => false,'searchable' => false],
-            ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px'],
-            ["name" => "user", "title" => "User", "data" => "user", "orderable" => false],
-            ["name" => "date", "title" => "Date", "data" => "date", "orderable" => false],
-            ["name" => "channel.name", "title" => "Channel", "data" => "channel", "orderable" => false],
-            ["name" => "product.name", "title" => "Product", "data" => "product", "orderable" => false],
-            ["name" => "rate", "title" => "Rate", "data" => "rate", "orderable" => false],
+            ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px', "class" => "align-middle text-center"],
+            ["name" => "user", "title" => "User", "data" => "user", "orderable" => false, "class" => "align-middle"],
+            ["name" => "date", "title" => "Date", "data" => "date", "orderable" => false, "class" => "align-middle"],
+            ["name" => "channel.name", "title" => "Channel", "data" => "channel", "orderable" => false, "class" => "align-middle"],
+            ["name" => "product.name", "title" => "Product", "data" => "product", "orderable" => false, "class" => "align-middle"],
+            ["name" => "rate", "title" => "Rate", "data" => "rate", "orderable" => false, "class" => "align-middle"],
         ];
     }
 

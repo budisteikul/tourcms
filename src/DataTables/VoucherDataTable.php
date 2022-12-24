@@ -90,9 +90,9 @@ class VoucherDataTable extends DataTable
     {
         return [
             ["name" => "created_at", "title" => "created_at", "data" => "created_at", "orderable" => true, "visible" => false,'searchable' => false],
-            ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px'],
-            ["name" => "code", "title" => "Code", "data" => "code"],
-            ["name" => "amount", "title" => "Amount", "data" => "amount"],
+            ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px', "class" => "align-middle text-center"],
+            ["name" => "code", "title" => "Code", "data" => "code", "class" => "align-middle"],
+            ["name" => "amount", "title" => "Amount", "data" => "amount", "class" => "align-middle"],
         ];
     }
 

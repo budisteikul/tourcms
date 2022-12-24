@@ -151,14 +151,14 @@ class BookingDataTable extends DataTable
     {
         return [
             ["name" => "created_at", "title" => "created_at", "data" => "created_at", "orderable" => true, "visible" => false,'searchable' => false],
-            ["name" => "confirmation_code", "title" => "Transaction ID", "data" => "confirmation_code", "orderable" => false],
-            ["name" => "booking_channel", "title" => "Channel", "data" => "booking_channel", "orderable" => false],
-            ["name" => "created_at", "title" => "Created", "data" => "created_at", "orderable" => false],
-            ["name" => "subtotal", "title" => "Subtotal", "data" => "subtotal", "orderable" => false],
-            ["name" => "discount", "title" => "Discount", "data" => "discount", "orderable" => false],
-            ["name" => "fee", "title" => "Fee", "data" => "fee", "orderable" => false],
-            ["name" => "total", "title" => "Total", "data" => "total", "orderable" => false],
-            ["name" => "booking_status", "title" => "Status", "data" => "booking_status", "orderable" => false],
+            ["name" => "confirmation_code", "title" => "Transaction ID", "data" => "confirmation_code", "orderable" => false, "class" => "align-middle"],
+            ["name" => "booking_channel", "title" => "Channel", "data" => "booking_channel", "orderable" => false, "class" => "align-middle"],
+            ["name" => "created_at", "title" => "Created", "data" => "created_at", "orderable" => false, "class" => "align-middle"],
+            ["name" => "subtotal", "title" => "Subtotal", "data" => "subtotal", "orderable" => false, "class" => "align-middle"],
+            ["name" => "discount", "title" => "Discount", "data" => "discount", "orderable" => false, "class" => "align-middle"],
+            ["name" => "fee", "title" => "Fee", "data" => "fee", "orderable" => false, "class" => "align-middle"],
+            ["name" => "total", "title" => "Total", "data" => "total", "orderable" => false, "class" => "align-middle"],
+            ["name" => "booking_status", "title" => "Status", "data" => "booking_status", "orderable" => false, "class" => "align-middle"],
         ];
     }
 

@@ -85,9 +85,9 @@ class PageDataTable extends DataTable
     {
         return [
             ["name" => "created_at", "title" => "created_at", "data" => "created_at", "orderable" => true, "visible" => false,'searchable' => false],
-            ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px'],
-            ["name" => "title", "title" => "Title", "data" => "title"],
-            ["name" => "url", "title" => "URL", "data" => "url"],
+            ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px', "class" => "align-middle text-center"],
+            ["name" => "title", "title" => "Title", "data" => "title", "class" => "align-middle"],
+            ["name" => "url", "title" => "URL", "data" => "url", "class" => "align-middle"],
         ];
     }
 

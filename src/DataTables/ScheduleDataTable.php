@@ -95,10 +95,10 @@ class ScheduleDataTable extends DataTable
     {
         return [
             ["name" => "date", "title" => "Date", "data" => "date", 'orderable' => true, "visible" => false],
-            ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px'],
-            ["name" => "name", "title" => "Name", "data" => "name", 'orderable' => false],
-            ["name" => "date_text", "title" => "Date", "data" => "date_text", 'orderable' => false],
-            ["name" => "people", "title" => "Person", "data" => "people", 'orderable' => false],
+            ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px', "class" => "align-middle text-center"],
+            ["name" => "name", "title" => "Name", "data" => "name", 'orderable' => false, "class" => "align-middle"],
+            ["name" => "date_text", "title" => "Date", "data" => "date_text", 'orderable' => false, "class" => "align-middle"],
+            ["name" => "people", "title" => "Person", "data" => "people", 'orderable' => false, "class" => "align-middle"],
 
         ];
     }

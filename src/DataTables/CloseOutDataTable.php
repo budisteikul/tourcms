@@ -91,8 +91,8 @@ class CloseOutDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            ["name" => "date", "title" => "Date", "data" => "date", "orderable" => false],
-            ["name" => "bokun_id", "title" => "Product", "data" => "bokun_id", "orderable" => false],
+            ["name" => "date", "title" => "Date", "data" => "date", "orderable" => false, "class" => "align-middle"],
+            ["name" => "bokun_id", "title" => "Product", "data" => "bokun_id", "orderable" => false, "class" => "align-middle"],
         ];
     }
 
