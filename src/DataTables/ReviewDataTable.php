@@ -105,7 +105,6 @@ class ReviewDataTable extends DataTable
                   ->title('No')
                   ->orderable(false)
                   ->searchable(false)
-                  ->render(null)
                   ->addClass('text-center align-middle'),
 
             Column::make('user')->title('User')->orderable(false)->addClass('align-middle'),

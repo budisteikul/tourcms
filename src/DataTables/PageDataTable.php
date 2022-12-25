@@ -91,7 +91,6 @@ class PageDataTable extends DataTable
                   ->title('No')
                   ->orderable(false)
                   ->searchable(false)
-                  ->render(null)
                   ->addClass('text-center align-middle'),
 
             Column::make('title')->title('Title')->orderable(false)->addClass('align-middle'),

@@ -157,7 +157,6 @@ class BookingDataTable extends DataTable
                   ->title('No')
                   ->orderable(false)
                   ->searchable(false)
-                  ->render(null)
                   ->addClass('text-center align-middle'),
 
             Column::make('confirmation_code')->title('Transaction ID')->orderable(false)->addClass('align-middle'),

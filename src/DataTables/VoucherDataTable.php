@@ -96,7 +96,6 @@ class VoucherDataTable extends DataTable
                   ->title('No')
                   ->orderable(false)
                   ->searchable(false)
-                  ->render(null)
                   ->addClass('text-center align-middle'),
 
             Column::make('code')->title('Code')->orderable(false)->addClass('align-middle'),
