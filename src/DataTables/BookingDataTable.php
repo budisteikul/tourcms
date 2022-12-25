@@ -154,11 +154,11 @@ class BookingDataTable extends DataTable
             ["name" => "confirmation_code", "title" => "Transaction ID", "data" => "confirmation_code", "orderable" => false, "class" => "align-middle"],
             ["name" => "booking_channel", "title" => "Channel", "data" => "booking_channel", "orderable" => false, "class" => "align-middle"],
             ["name" => "created_at", "title" => "Created", "data" => "created_at", "orderable" => false, "class" => "align-middle"],
-            ["name" => "subtotal", "title" => "Subtotal", "data" => "subtotal", "orderable" => false, "class" => "align-middle"],
-            ["name" => "discount", "title" => "Discount", "data" => "discount", "orderable" => false, "class" => "align-middle"],
-            ["name" => "fee", "title" => "Fee", "data" => "fee", "orderable" => false, "class" => "align-middle"],
-            ["name" => "total", "title" => "Total", "data" => "total", "orderable" => false, "class" => "align-middle"],
-            ["name" => "booking_status", "title" => "Status", "data" => "booking_status", "orderable" => false, "class" => "align-middle"],
+            ["name" => "subtotal", "title" => "Subtotal", "data" => "subtotal", "orderable" => false, "class" => "align-middle text-right"],
+            ["name" => "discount", "title" => "Discount", "data" => "discount", "orderable" => false, "class" => "align-middle text-right"],
+            ["name" => "fee", "title" => "Fee", "data" => "fee", "orderable" => false, "class" => "align-middle text-right"],
+            ["name" => "total", "title" => "Total", "data" => "total", "orderable" => false, "class" => "align-middle text-right"],
+            ["name" => "booking_status", "title" => "Status", "data" => "booking_status", "orderable" => false, "class" => "align-middle text-right"],
         ];
     }
 
