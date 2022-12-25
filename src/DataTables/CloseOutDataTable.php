@@ -66,7 +66,6 @@ class CloseOutDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['title' => '','width' => '300px','class' => 'text-center'])
                     ->parameters([
                         'language' => [
                             'paginate' => [
@@ -91,9 +90,29 @@ class CloseOutDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            ["name" => "date", "title" => "Date", "data" => "date", "orderable" => false, "class" => "align-middle"],
-            ["name" => "bokun_id", "title" => "Product", "data" => "bokun_id", "orderable" => false, "class" => "align-middle"],
+            Column::make('created_at')
+                  ->visible(false)
+                  ->searchable(false),
+            Column::computed('DT_RowIndex')
+                  ->width(30)
+                  ->title('No')
+                  ->orderable(false)
+                  ->searchable(false)
+                  ->render(null)
+                  ->addClass('text-center align-middle'),
+
+            Column::make('date')->title('Date')->orderable(false)->addClass('align-middle'),
+            Column::make('bokun_id')->title('Product')->orderable(false)->addClass('align-middle'),
+            
+            Column::computed('action')
+                  ->exportable(false)
+                  ->printable(false)
+                  ->width(220)
+                  ->addClass('text-center'),
+            
         ];
+
+        
     }
 
     /**

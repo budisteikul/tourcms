@@ -127,16 +127,33 @@ class RemittanceDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            ["name" => "date", "title" => "Date", "data" => "date", 'orderable' => true, "visible" => false],
-            ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px'],
-            ["name" => "name", "title" => "Name", "data" => "name", 'orderable' => false],
-            ["name" => "date_text", "title" => "Date", "data" => "date_text", 'orderable' => false],
-            ["name" => "people", "title" => "People", "data" => "people", 'orderable' => false],
-            ["name" => "payment_provider", "title" => "Payment Provider", "data" => "payment_provider", 'orderable' => false],
-            ["name" => "authorization_id", "title" => "Authorization ID", "data" => "authorization_id", 'orderable' => false],
-            ["name" => "amount", "title" => "Amount", "data" => "amount", 'orderable' => false],
+            Column::make('created_at')
+                  ->visible(false)
+                  ->searchable(false),
+            Column::computed('DT_RowIndex')
+                  ->width(30)
+                  ->title('No')
+                  ->orderable(false)
+                  ->searchable(false)
+                  ->render(null)
+                  ->addClass('text-center align-middle'),
 
+            Column::make('name')->title('Name')->orderable(false)->addClass('align-middle'),
+            Column::make('date_text')->title('Date')->orderable(false)->addClass('align-middle'),
+            Column::make('people')->title('People')->orderable(false)->addClass('align-middle'),
+            Column::make('payment_provider')->title('Payment Provider')->orderable(false)->addClass('align-middle'),
+            Column::make('authorization_id')->title('Authorization ID')->orderable(false)->addClass('align-middle'),
+            Column::make('amount')->title('Amount')->orderable(false)->addClass('align-middle'),
+            
+            Column::computed('action')
+                  ->exportable(false)
+                  ->printable(false)
+                  ->width(220)
+                  ->addClass('text-center'),
+            
         ];
+
+        
     }
 
     /**

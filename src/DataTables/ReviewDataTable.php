@@ -73,7 +73,6 @@ class ReviewDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['title' => '','width' => '300px','class' => 'text-center'])
                     ->parameters([
                         'language' => [
                             'paginate' => [
@@ -98,14 +97,32 @@ class ReviewDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            ["name" => "created_at", "title" => "created_at", "data" => "created_at", "orderable" => true, "visible" => false,'searchable' => false],
-            ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px', "class" => "align-middle text-center"],
-            ["name" => "user", "title" => "User", "data" => "user", "orderable" => false, "class" => "align-middle"],
-            ["name" => "date", "title" => "Date", "data" => "date", "orderable" => false, "class" => "align-middle"],
-            ["name" => "channel.name", "title" => "Channel", "data" => "channel", "orderable" => false, "class" => "align-middle"],
-            ["name" => "product.name", "title" => "Product", "data" => "product", "orderable" => false, "class" => "align-middle"],
-            ["name" => "rate", "title" => "Rate", "data" => "rate", "orderable" => false, "class" => "align-middle"],
+            Column::make('created_at')
+                  ->visible(false)
+                  ->searchable(false),
+            Column::computed('DT_RowIndex')
+                  ->width(30)
+                  ->title('No')
+                  ->orderable(false)
+                  ->searchable(false)
+                  ->render(null)
+                  ->addClass('text-center align-middle'),
+
+            Column::make('user')->title('User')->orderable(false)->addClass('align-middle'),
+            Column::make('date')->title('Date')->orderable(false)->addClass('align-middle'),
+            Column::make('channel')->title('Channel')->orderable(false)->addClass('align-middle'),
+            Column::make('product')->title('Product')->orderable(false)->addClass('align-middle'),
+            Column::make('rate')->title('Rate')->orderable(false)->addClass('align-middle'),
+            
+            Column::computed('action')
+                  ->exportable(false)
+                  ->printable(false)
+                  ->width(220)
+                  ->addClass('text-center'),
+            
         ];
+
+        
     }
 
     /**

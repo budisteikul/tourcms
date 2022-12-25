@@ -64,7 +64,6 @@ class VoucherDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['title' => '','width' => '300px','class' => 'text-center'])
                     ->parameters([
                         'language' => [
                             'paginate' => [
@@ -89,11 +88,29 @@ class VoucherDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            ["name" => "created_at", "title" => "created_at", "data" => "created_at", "orderable" => true, "visible" => false,'searchable' => false],
-            ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px', "class" => "align-middle text-center"],
-            ["name" => "code", "title" => "Code", "data" => "code", "class" => "align-middle"],
-            ["name" => "amount", "title" => "Amount", "data" => "amount", "class" => "align-middle"],
+            Column::make('created_at')
+                  ->visible(false)
+                  ->searchable(false),
+            Column::computed('DT_RowIndex')
+                  ->width(30)
+                  ->title('No')
+                  ->orderable(false)
+                  ->searchable(false)
+                  ->render(null)
+                  ->addClass('text-center align-middle'),
+
+            Column::make('code')->title('Code')->orderable(false)->addClass('align-middle'),
+            Column::make('amount')->title('Amount')->orderable(false)->addClass('align-middle'),
+            
+            Column::computed('action')
+                  ->exportable(false)
+                  ->printable(false)
+                  ->width(220)
+                  ->addClass('text-center'),
+            
         ];
+
+        
     }
 
     /**

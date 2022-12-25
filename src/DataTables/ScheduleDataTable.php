@@ -94,13 +94,27 @@ class ScheduleDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            ["name" => "date", "title" => "Date", "data" => "date", 'orderable' => true, "visible" => false],
-            ["name" => "DT_RowIndex", "title" => "No", "data" => "DT_RowIndex", "orderable" => false, "render" => null,'searchable' => false, 'width' => '30px', "class" => "align-middle text-center"],
-            ["name" => "name", "title" => "Name", "data" => "name", 'orderable' => false, "class" => "align-middle"],
-            ["name" => "date_text", "title" => "Date", "data" => "date_text", 'orderable' => false, "class" => "align-middle"],
-            ["name" => "people", "title" => "Person", "data" => "people", 'orderable' => false, "class" => "align-middle"],
+            Column::make('date')
+                  ->visible(false)
+                  ->searchable(false)
+                  ->orderable(true),
+            Column::computed('DT_RowIndex')
+                  ->width(30)
+                  ->title('No')
+                  ->orderable(false)
+                  ->searchable(false)
+                  ->render(null)
+                  ->addClass('text-center align-middle'),
 
+            Column::make('name')->title('Name')->orderable(false)->addClass('align-middle'),
+            Column::make('date_text')->title('Date')->orderable(false)->addClass('align-middle'),
+            Column::make('people')->title('Person')->orderable(false)->addClass('align-middle'),
+            
+            
+            
         ];
+
+        
     }
 
     /**
