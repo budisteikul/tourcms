@@ -1,6 +1,9 @@
 <?php
 namespace budisteikul\tourcms\DataTables;
 
+use Illuminate\Database\Eloquent\Builder as QueryBuilder;
+use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use budisteikul\toursdk\Models\Shoppingcart;
 use budisteikul\toursdk\Helpers\GeneralHelper;
 use budisteikul\toursdk\Helpers\BookingHelper;
@@ -19,7 +22,7 @@ class BookingDataTable extends DataTable
      * @param mixed $query Results from query() method.
      * @return \Yajra\DataTables\DataTableAbstract
      */
-    public function dataTable($query)
+    public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return datatables($query)
                 ->addIndexColumn()
@@ -109,7 +112,7 @@ class BookingDataTable extends DataTable
      * @param \App\Models\BookingDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Shoppingcart $model)
+    public function query(Shoppingcart $model): QueryBuilder
     {
         BookingHelper::booking_expired($model);
         return $model->newQuery();
@@ -120,7 +123,7 @@ class BookingDataTable extends DataTable
      *
      * @return \Yajra\DataTables\Html\Builder
      */
-    public function html()
+    public function html(): HtmlBuilder
     {
         return $this->builder()
                     ->columns($this->getColumns())
@@ -146,7 +149,7 @@ class BookingDataTable extends DataTable
      *
      * @return array
      */
-    protected function getColumns()
+    protected function getColumns(): array
     {
         return [
             Column::make('created_at')

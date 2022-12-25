@@ -3,6 +3,10 @@
 namespace budisteikul\tourcms\DataTables;
 
 use budisteikul\toursdk\Models\Voucher;
+
+use Illuminate\Database\Eloquent\Builder as QueryBuilder;
+use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -17,7 +21,7 @@ class VoucherDataTable extends DataTable
      * @param mixed $query Results from query() method.
      * @return \Yajra\DataTables\DataTableAbstract
      */
-    public function dataTable($query)
+    public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return datatables($query)
                 ->addIndexColumn()
@@ -49,7 +53,7 @@ class VoucherDataTable extends DataTable
      * @param \App\Models\VoucherDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Voucher $model)
+    public function query(Voucher $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -59,7 +63,7 @@ class VoucherDataTable extends DataTable
      *
      * @return \Yajra\DataTables\Html\Builder
      */
-    public function html()
+    public function html(): HtmlBuilder
     {
         return $this->builder()
                     ->columns($this->getColumns())
@@ -85,7 +89,7 @@ class VoucherDataTable extends DataTable
      *
      * @return array
      */
-    protected function getColumns()
+    public function getColumns(): array
     {
         return [
             Column::make('created_at')

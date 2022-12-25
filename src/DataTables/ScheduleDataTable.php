@@ -4,6 +4,10 @@ namespace budisteikul\tourcms\DataTables;
 use budisteikul\toursdk\Models\ShoppingcartProduct;
 use budisteikul\toursdk\Helpers\GeneralHelper;
 use budisteikul\toursdk\Helpers\BookingHelper;
+
+use Illuminate\Database\Eloquent\Builder as QueryBuilder;
+use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -18,7 +22,7 @@ class ScheduleDataTable extends DataTable
      * @param mixed $query Results from query() method.
      * @return \Yajra\DataTables\DataTableAbstract
      */
-    public function dataTable($query)
+    public function dataTable(QueryBuilder $query): EloquentDataTable
     {
        
         return datatables($query)
@@ -52,7 +56,7 @@ class ScheduleDataTable extends DataTable
      * @param \App\App\ChannelDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(ShoppingcartProduct $model)
+    public function query(ShoppingcartProduct $model): QueryBuilder
     {
         $model = $model->whereHas('shoppingcart', function ($query) {
                 return $query->where('booking_status','CONFIRMED');
@@ -65,7 +69,7 @@ class ScheduleDataTable extends DataTable
      *
      * @return \Yajra\DataTables\Html\Builder
      */
-    public function html()
+    public function html(): HtmlBuilder
     {
         return $this->builder()
                     ->columns($this->getColumns())
@@ -91,7 +95,7 @@ class ScheduleDataTable extends DataTable
      *
      * @return array
      */
-    protected function getColumns()
+    public function getColumns(): array
     {
         return [
             Column::make('date')
