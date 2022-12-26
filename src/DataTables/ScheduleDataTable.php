@@ -109,11 +109,9 @@ class ScheduleDataTable extends DataTable
                   ->searchable(false)
                   ->addClass('text-center align-middle'),
 
-            Column::make('name')->title('Name')->orderable(false)->addClass('align-middle'),
+            Column::make('name')->title('Main Contact')->orderable(false)->addClass('align-middle'),
             Column::make('date_text')->title('Date')->orderable(false)->addClass('align-middle'),
-            Column::make('people')->title('Person')->orderable(false)->addClass('align-middle'),
-            
-            
+            Column::make('people')->title('People')->orderable(false)->addClass('align-middle'),
             
         ];
 

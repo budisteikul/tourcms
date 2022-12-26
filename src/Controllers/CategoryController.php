@@ -11,9 +11,23 @@ use budisteikul\toursdk\Helpers\CategoryHelper;
 use budisteikul\tourcms\DataTables\CategoryDataTable;
 use Illuminate\Support\Str;
 
+use budisteikul\toursdk\Models\ShoppingcartProduct;
+
 class CategoryController extends Controller
 {
     
+    public function test(ShoppingcartProduct $model)
+    {
+        $aaaa = $model->query()->with('shoppingcart', function ($query) {
+                    $query->with('shoppingcart_questions', function ($query) {
+                        $query->where('question_id','firstName')->orWhere('question_id','lastName');
+                    })->where('booking_status','CONFIRMED');
+        })->where('date', '>=', date('Y-m-d'))->whereNotNull('date')->first();
+        foreach($aaaa->shoppingcart->shoppingcart_questions as $bbb)
+        {
+            print_r($bbb->answer);
+        }
+    }
 
     public function structure()
     {
