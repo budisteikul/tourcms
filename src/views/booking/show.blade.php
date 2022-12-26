@@ -38,7 +38,7 @@ function hideTooltip(element) {
         <div class="col-md-12 pr-0 pl-0 pt-0 pb-0">
              <div class="card">
              
-    <div class="card-header">Booking Detail {{ $shoppingcart->confirmation_code }}</div>
+    <div class="card-header">Booking Detail <a href="{{ env('APP_URL') }}/booking/receipt/{{$shoppingcart->session_id}}/{{$shoppingcart->confirmation_code}}" target="_blank" class="text-decoration-none text-white">{{ $shoppingcart->confirmation_code }}</a></div>
     <div class="card-body">
 
             {!! $Content->view_invoice($shoppingcart) !!}
@@ -48,8 +48,8 @@ function hideTooltip(element) {
                 {!! $Booking->get_paymentStatus($shoppingcart) !!}
             </div>
 
+            <!-- a class="btn btn-primary" href="{{ env('APP_URL') }}/booking/receipt/{{$shoppingcart->session_id}}/{{$shoppingcart->confirmation_code}}" target="_blank"><b class="fa fa-eye"></b> View Receipt Page</a -->
             
-            <!-- a class="btn btn-primary" href="{{ env('APP_URL') }}/booking/receipt/{{$shoppingcart->session_id}}/{{$shoppingcart->confirmation_code}}" target="_blank"><b class="fa fa-eye"></b> View Receipt Page</a  -->
 
     </div>
     </div>
