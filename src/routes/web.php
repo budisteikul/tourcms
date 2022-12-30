@@ -26,7 +26,6 @@ Route::get('/cms/booking/checkout','budisteikul\tourcms\Controllers\BookingContr
 Route::resource('/cms/booking','budisteikul\tourcms\Controllers\BookingController',[ 'names' => 'route_tourcms_booking' ])
 	->middleware(['web','auth','verified','CoreMiddleware']);
 
-
 //Voucher	
 Route::resource('/cms/voucher','budisteikul\tourcms\Controllers\VoucherController',[ 'names' => 'route_tourcms_voucher' ])
 	->middleware(['web','auth','verified','CoreMiddleware']);
