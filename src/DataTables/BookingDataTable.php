@@ -46,9 +46,11 @@ class BookingDataTable extends DataTable
                 })
                 ->editColumn('booking_status', function($id){
                     
-                    if($id->booking_status=="PENDING") return '<span class="badge badge-info font-weight-bold">WAITING FOR PAYMENT</span>';
-                    if($id->booking_status=="CANCELED") return '<span class="badge badge-danger font-weight-bold">CANCELED</span>';
-                    if($id->booking_status=="CONFIRMED") return '<span class="badge badge-success font-weight-bold">CONFIRMED</span>';
+                    //if($id->booking_status=="PENDING") return '<span class="badge badge-info font-weight-bold">WAITING FOR PAYMENT</span>';
+                    //if($id->booking_status=="CANCELED") return '<span class="badge badge-danger font-weight-bold">CANCELED</span>';
+                    //if($id->booking_status=="CONFIRMED") return '<span class="badge badge-success font-weight-bold">CONFIRMED</span>';
+
+                    return $id->booking_status;
                 })
                 ->addColumn('action', function ($id) {
 
@@ -165,16 +167,16 @@ class BookingDataTable extends DataTable
             Column::make('confirmation_code')->title('Transaction ID')->orderable(false)->addClass('align-middle'),
             Column::make('booking_channel')->title('Channel')->orderable(false)->addClass('align-middle'),
             Column::make('created_at')->title('Created')->orderable(false)->addClass('align-middle'),
-            Column::make('subtotal')->title('Subtotal')->orderable(false)->addClass('align-middle'),
-            Column::make('discount')->title('Subtotal')->orderable(false)->addClass('align-middle'),
-            Column::make('fee')->title('Fee')->orderable(false)->addClass('align-middle'),
-            Column::make('total')->title('Total')->orderable(false)->addClass('align-middle'),
+            //Column::make('subtotal')->title('Subtotal')->orderable(false)->addClass('align-middle'),
+            //Column::make('discount')->title('Subtotal')->orderable(false)->addClass('align-middle'),
+            //Column::make('fee')->title('Fee')->orderable(false)->addClass('align-middle'),
+            //Column::make('total')->title('Total')->orderable(false)->addClass('align-middle'),
             Column::make('booking_status')->title('Status')->orderable(false)->addClass('align-middle'),
             
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(220)
+                  ->width(325)
                   ->addClass('text-center align-middle'),
             
         ];

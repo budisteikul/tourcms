@@ -5,6 +5,9 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cache;
 use budisteikul\toursdk\Helpers\GeneralHelper;
 
+use budisteikul\toursdk\Models\ShoppingcartProduct;
+use Ramsey\Uuid\Uuid;
+
 class CMSHelper {
 
 	public static function cache_saldo_forget($date)
@@ -31,6 +34,18 @@ class CMSHelper {
                             //print_r('_saldo_'. $i .'_'. GeneralHelper::digitFormat($j,2) .'<br />');
                     }
                 }
+    }
+
+    public static function reset_session_beta()
+    {
+        $shoppingcart_products = ShoppingcartProduct::whereHas('shoppingcart', function ($query) {
+                return $query->where('booking_status','CONFIRMED');
+        })->whereNotNull('date')->where('date', '<', date('Y-m-d H:i:s') )->orderBy('date', 'DESC')->get();
+        foreach($shoppingcart_products as $shoppingcart_product)
+        {
+            $shoppingcart_product->shoppingcart->session_id = Uuid::uuid4()->toString();
+            $shoppingcart_product->shoppingcart->save();
+        }
     }
 
 }
