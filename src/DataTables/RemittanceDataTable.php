@@ -148,11 +148,7 @@ class RemittanceDataTable extends DataTable
             Column::make('authorization_id')->title('Authorization ID')->orderable(false)->addClass('align-middle'),
             Column::make('amount')->title('Amount')->orderable(false)->addClass('align-middle'),
             
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(220)
-                  ->addClass('text-center'),
+            
             
         ];
 
