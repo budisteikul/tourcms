@@ -317,9 +317,15 @@ function DELETE()
 <label for="payment_type"><strong>Payment</strong></label>
 <select style="font-size:16px;height:47px;"  class="form-control" id="payment_type" name="payment_type">
 		<option value="none">NONE</option>
-		<option value="rapyd-alfamart">CASH IDR</option>
-		<option value="rapyd-permata">BANK TRANSFER IDR</option>
-		<option value="rapyd-fast">BANK TRANSFER SGD</option>
+		<option value="rapyd-alfamart">ALFAMART CASH IDR</option>
+		<option value="rapyd-permata">PERMATA BANK TRANSFER IDR</option>
+		<option value="rapyd-cimb">CIMBNIAGA BANK TRANSFER IDR</option>
+		<option value="rapyd-bri">BRI BANK TRANSFER IDR</option>
+		<option value="rapyd-bni">BNI BANK TRANSFER IDR</option>
+		<option value="rapyd-danamon">DANAMON BANK TRANSFER IDR</option>
+		<option value="rapyd-maybank">MAYBANK BANK TRANSFER IDR</option>
+		<option value="rapyd-sinarmas">SINARMAS BANK TRANSFER IDR</option>
+		<option value="rapyd-fast">DBS FAST TRANSFER SGD</option>
 		<option value="rapyd-paynow">PAYNOW QR SGD</option>
 		<!-- option value="tazapay-poli">TAZAPAY POLI</option>
 		<option value="tazapay-paynow">TAZAPAY PAYNOW</option>
