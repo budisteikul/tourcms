@@ -90,7 +90,7 @@ class BookingDataTable extends DataTable
                 }
                 if($id->booking_status=="CONFIRMED")
                 {
-                    $button_cancel = '<button id="btn-edit" type="button" onClick="CANCEL(\''.$id->id.'\'); return false;" class="btn btn-sm btn-warning pt-0 pb-0 pl-1 pr-1"><i class="fa fa-ban"></i> Cancel this booking</button>';
+                    $button_cancel = '<button id="btn-edit" type="button" onClick="CANCEL(\''.$id->id.'\',\''.$id->confirmation_code.'\'); return false;" class="btn btn-sm btn-danger pt-0 pb-0 pl-1 pr-1"><i class="fa fa-ban"></i> Cancel this booking</button>';
                 }
                 
 

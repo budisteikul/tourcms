@@ -88,17 +88,17 @@
       }); 
   }
 	
-	function CANCEL(id)
+	function CANCEL(id,transaction_id)
   {
     $.confirm({
         title: 'Warning',
-        content: 'Are you sure?',
-        type: 'orange',
+        content: 'Are you sure want to cancel order with booking number '+ transaction_id +'?',
+        type: 'red',
       icon: 'fa fa-ban',
         buttons: {   
             ok: {
                 text: "OK",
-                btnClass: 'btn-warning',
+                btnClass: 'btn-danger',
                 keys: ['enter'],
                 action: function(){
                      var table = $('#dataTableBuilder').DataTable();
