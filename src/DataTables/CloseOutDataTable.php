@@ -82,8 +82,7 @@ class CloseOutDataTable extends DataTable
                         'pagingType' => 'full_numbers',
                         'responsive' => true,
                         'order' => [0,'desc']
-                    ])
-                    ->ajax('/'.request()->path());
+                    ]);
     }
 
     /**
