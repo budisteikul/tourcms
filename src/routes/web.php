@@ -1,5 +1,14 @@
 <?php
 
+//Booking
+Route::get('/cms/booking/checkout','budisteikul\tourcms\Controllers\BookingController@checkout')->middleware(['web','auth','verified','CoreMiddleware']);
+Route::resource('/cms/booking','budisteikul\tourcms\Controllers\BookingController',[ 'names' => 'route_tourcms_booking' ])
+	->middleware(['web','auth','verified','CoreMiddleware']);
+
+//Schedule
+Route::resource('/cms/schedule','budisteikul\tourcms\Controllers\ScheduleController',[ 'names' => 'route_tourcms_schedule' ])
+	->middleware(['web','auth','verified','CoreMiddleware']);
+
 //Category
 Route::get('/cms/category/structure','budisteikul\tourcms\Controllers\CategoryController@structure')->middleware(['web','auth','verified','CoreMiddleware']);
 Route::resource('/cms/category','budisteikul\tourcms\Controllers\CategoryController',[ 'names' => 'route_tourcms_category' ])
@@ -21,17 +30,8 @@ Route::resource('/cms/review','budisteikul\tourcms\Controllers\ReviewController'
 Route::resource('/cms/page','budisteikul\tourcms\Controllers\PageController',[ 'names' => 'route_tourcms_page' ])
 	->middleware(['web','auth','verified','CoreMiddleware']);
 
-//Booking
-Route::get('/cms/booking/checkout','budisteikul\tourcms\Controllers\BookingController@checkout')->middleware(['web','auth','verified','CoreMiddleware']);
-Route::resource('/cms/booking','budisteikul\tourcms\Controllers\BookingController',[ 'names' => 'route_tourcms_booking' ])
-	->middleware(['web','auth','verified','CoreMiddleware']);
-
 //Voucher	
 Route::resource('/cms/voucher','budisteikul\tourcms\Controllers\VoucherController',[ 'names' => 'route_tourcms_voucher' ])
-	->middleware(['web','auth','verified','CoreMiddleware']);
-
-//Schedule
-Route::resource('/cms/schedule','budisteikul\tourcms\Controllers\ScheduleController',[ 'names' => 'route_tourcms_schedule' ])
 	->middleware(['web','auth','verified','CoreMiddleware']);
 
 //Past
