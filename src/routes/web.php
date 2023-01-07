@@ -12,33 +12,33 @@ Route::resource('/cms/schedule','budisteikul\tourcms\Controllers\ScheduleControl
 //Category
 Route::get('/cms/category/structure','budisteikul\tourcms\Controllers\CategoryController@structure')->middleware(['web','auth','verified','CoreMiddleware']);
 Route::resource('/cms/category','budisteikul\tourcms\Controllers\CategoryController',[ 'names' => 'route_tourcms_category' ])
-	->middleware(['web','auth','verified','CoreMiddleware']);
+	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
 
 //Product
 Route::resource('/cms/product','budisteikul\tourcms\Controllers\ProductController',[ 'names' => 'route_tourcms_product' ])
-	->middleware(['web','auth','verified','CoreMiddleware']);
+	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
 
 //Channel	
 Route::resource('/cms/channel','budisteikul\tourcms\Controllers\ChannelController',[ 'names' => 'route_tourcms_channel' ])
-	->middleware(['web','auth','verified','CoreMiddleware']);
+	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
 
 //Review
 Route::resource('/cms/review','budisteikul\tourcms\Controllers\ReviewController',[ 'names' => 'route_tourcms_review' ])
-	->middleware(['web','auth','verified','CoreMiddleware']);
+	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
 
 //Page
 Route::resource('/cms/page','budisteikul\tourcms\Controllers\PageController',[ 'names' => 'route_tourcms_page' ])
-	->middleware(['web','auth','verified','CoreMiddleware']);
+	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
 
 //Voucher	
 Route::resource('/cms/voucher','budisteikul\tourcms\Controllers\VoucherController',[ 'names' => 'route_tourcms_voucher' ])
-	->middleware(['web','auth','verified','CoreMiddleware']);
+	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
 
 //Past
 Route::resource('/cms/remittance','budisteikul\tourcms\Controllers\RemittanceController',[ 'names' => 'route_tourcms_remittance' ])
-	->middleware(['web','auth','verified','CoreMiddleware']);
+	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
 
 //CloseOut	
 Route::resource('/cms/closeout','budisteikul\tourcms\Controllers\CloseOutController',[ 'names' => 'route_tourcms_closeout' ])
-	->middleware(['web','auth','verified','CoreMiddleware']);
+	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
 
