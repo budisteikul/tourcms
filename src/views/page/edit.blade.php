@@ -88,7 +88,7 @@ function UPDATE()
     <textarea class="form-control tinymce" id="mycontent" name="mycontent" rows="8">{{ $page->content }}</textarea>
 </div>
 
-<button  class="btn btn-danger" type="button" onClick="tinymce.remove();$.fancybox.close();"><i class="fa fa-window-close"></i> Cancel</button>
+<button  class="btn btn-danger" type="button" onClick="tinymce.remove();$.fancybox.close();"><i class="fa fa-window-close"></i> Close</button>
 <button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
 </form>
 </div>

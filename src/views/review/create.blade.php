@@ -144,7 +144,7 @@ function STORE()
 	<input type="text" id="link" name="link" class="form-control" placeholder="Link" value="">
 </div>
 
-	<button  class="btn btn-danger" type="button" onClick="$.fancybox.close();"><i class="fa fa-window-close"></i> Cancel</button>
+	<button  class="btn btn-danger" type="button" onClick="$.fancybox.close();"><i class="fa fa-window-close"></i> Close</button>
 	<button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
 	</form>
 	</div>

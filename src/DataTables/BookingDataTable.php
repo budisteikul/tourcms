@@ -13,6 +13,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class BookingDataTable extends DataTable
 {
@@ -152,7 +153,9 @@ class BookingDataTable extends DataTable
      */
     protected function getColumns(): array
     {
-        return [
+        if(Auth::user()->id==1)
+        {
+            return [
             Column::make('created_at')
                   ->visible(false)
                   ->searchable(false),
@@ -178,7 +181,32 @@ class BookingDataTable extends DataTable
                   ->width(325)
                   ->addClass('text-center align-middle'),
             
-        ];
+            ];
+        }
+        else
+        {
+            return [
+            Column::make('created_at')
+                  ->visible(false)
+                  ->searchable(false),
+            Column::computed('DT_RowIndex')
+                  ->width(30)
+                  ->title('No')
+                  ->orderable(false)
+                  ->searchable(false)
+                  ->addClass('text-center align-middle'),
+
+            Column::make('confirmation_code')->title('Transaction ID')->orderable(false)->addClass('align-middle'),
+            Column::make('booking_channel')->title('Channel')->orderable(false)->addClass('align-middle'),
+            Column::make('created_at')->title('Created')->orderable(false)->addClass('align-middle'),
+            
+            Column::make('booking_status')->title('Status')->orderable(false)->addClass('align-middle'),
+            
+            
+            
+            ];
+        }
+        
     }
 
     /**

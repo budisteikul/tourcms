@@ -50,8 +50,9 @@ function hideTooltip(element) {
 
             <!-- a class="btn btn-primary" href="{{ env('APP_URL') }}/booking/receipt/{{$shoppingcart->session_id}}/{{$shoppingcart->confirmation_code}}" target="_blank"><b class="fa fa-eye"></b> View Receipt Page</a -->
             
-
+<button  class="btn btn-danger" type="button" onClick="$.fancybox.close();"><i class="fa fa-window-close"></i> Close</button>
     </div>
+
     </div>
     
         
