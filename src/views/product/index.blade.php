@@ -57,7 +57,7 @@
 		$.fancybox.open({
         	type: 'ajax',
        	 	src: '{{ route('route_tourcms_product.create') }}',
-			modal: true,
+			    modal: true,
           touch: false,
           autoFocus: false
    		});	
