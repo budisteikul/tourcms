@@ -46,7 +46,10 @@ function UPDATE()
 			{
 					tinymce.remove();
        				$('#dataTableBuilder').DataTable().ajax.reload( null, false );
-					$.fancybox.close();	
+					$("#result").empty().append('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><b>Success!</b></div>').hide().fadeIn();
+       				setTimeout(function (){
+  						$.fancybox.close();
+					}, 1000);
 			}
 			else
 			{
