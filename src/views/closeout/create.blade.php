@@ -53,7 +53,20 @@ function STORE()
         <div class="col-md-12 pr-0 pl-0 pt-0 pb-0">
              <div class="card">
              
-	<div class="card-header">Create Close Out</div>
+	<div class="card-header pr-0">
+                <div class="row align-items-center w-100">
+                    <div class="col text-left">
+                        <div class="d-flex align-self-center">
+                        Create Close Out
+                        </div>
+                    </div>
+                    <div class="col-auto text-right mr-0 pr-0">
+                        <div class="btn-toolbar justify-content-end">
+                            <button class="btn btn-sm btn-danger mr-0" type="button" onClick="$.fancybox.close();"><i class="fa fa-window-close"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
 	<div class="card-body">
 				
 <form onSubmit="STORE(); return false;">
@@ -98,7 +111,6 @@ function STORE()
         </script>    
 </div> 
 
-	<button  class="btn btn-danger" type="button" onClick="$.fancybox.close();"><i class="fa fa-window-close"></i> Close</button>
 	<button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
 	</form>
 	</div>

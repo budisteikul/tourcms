@@ -57,8 +57,9 @@
 		$.fancybox.open({
         	type: 'ajax',
        	 	src: '{{ route('route_tourcms_product.create') }}',
-			touch: false,
 			modal: true,
+          touch: false,
+          autoFocus: false
    		});	
 	}
 	
@@ -68,6 +69,8 @@
         	type: 'ajax',
        	 	src: '{{ route('route_tourcms_product.index') }}/'+ id +'/edit',
 			modal: true,
+          touch: false,
+          autoFocus: false
    		});
 		
 	}
@@ -77,7 +80,9 @@
     $.fancybox.open({
           type: 'ajax',
           src: '{{ route('route_tourcms_product.index') }}/structure',
-      modal: false,
+      modal: true,
+          touch: false,
+          autoFocus: false
       });
     
   }

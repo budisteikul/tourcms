@@ -7,8 +7,9 @@ function SHOW(id)
     $.fancybox.open({
           type: 'ajax',
           src: '{{ route('route_tourcms_booking.index') }}/'+ id,
+          modal: true,
           touch: false,
-          modal: false,
+          autoFocus: false
       }); 
   }
 
@@ -18,6 +19,7 @@ function EDIT(id)
           type: 'ajax',
           src: '{{ route('route_tourcms_schedule.index') }}/'+ id +'/edit',
           modal: true,
+          touch: false,
           autoFocus: false
       });
     

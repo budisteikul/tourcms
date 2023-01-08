@@ -73,8 +73,9 @@
 		$.fancybox.open({
         	type: 'ajax',
        	 	src: '{{ route('route_tourcms_booking.create') }}',
-			touch: false,
-			modal: false,
+			    modal: true,
+          touch: false,
+          autoFocus: false
    		});	
 	}
 
@@ -83,8 +84,9 @@
     $.fancybox.open({
           type: 'ajax',
           src: '{{ route('route_tourcms_booking.index') }}/'+ id,
+          modal: true,
           touch: false,
-          modal: false,
+          autoFocus: false
       }); 
   }
 	

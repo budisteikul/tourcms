@@ -37,8 +37,21 @@ function hideTooltip(element) {
     <div class="row justify-content-center">
         <div class="col-md-12 pr-0 pl-0 pt-0 pb-0">
              <div class="card">
-             
-    <div class="card-header">Booking Detail <a href="{{ env('APP_URL') }}/booking/receipt/{{$shoppingcart->session_id}}/{{$shoppingcart->confirmation_code}}" target="_blank" class="text-decoration-none text-white">{{ $shoppingcart->confirmation_code }}</a></div>
+    <div class="card-header pr-0">
+                <div class="row align-items-center w-100">
+                    <div class="col text-left">
+                        <div class="d-flex align-self-center">
+                        Booking Detail&nbsp;<a href="{{ env('APP_URL') }}/booking/receipt/{{$shoppingcart->session_id}}/{{$shoppingcart->confirmation_code}}" target="_blank" class="text-decoration-none text-white">{{ $shoppingcart->confirmation_code }}</a>
+                        </div>
+                    </div>
+                    <div class="col-auto text-right mr-0 pr-0">
+                        <div class="btn-toolbar justify-content-end">
+                            <button class="btn btn-sm btn-danger mr-0" type="button" onClick="$.fancybox.close();"><i class="fa fa-window-close"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    
     <div class="card-body">
 
             {!! $Content->view_invoice($shoppingcart) !!}
@@ -48,9 +61,8 @@ function hideTooltip(element) {
                 {!! $Booking->get_paymentStatus($shoppingcart) !!}
             </div>
 
-            <!-- a class="btn btn-primary" href="{{ env('APP_URL') }}/booking/receipt/{{$shoppingcart->session_id}}/{{$shoppingcart->confirmation_code}}" target="_blank"><b class="fa fa-eye"></b> View Receipt Page</a -->
             
-<button  class="btn btn-danger" type="button" onClick="$.fancybox.close();"><i class="fa fa-window-close"></i> Close</button>
+            
     </div>
 
     </div>
