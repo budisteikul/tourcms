@@ -41,7 +41,7 @@ function hideTooltip(element) {
                 <div class="row align-items-center w-100">
                     <div class="col text-left">
                         <div class="d-flex align-self-center">
-                        Booking Detail&nbsp;<a href="{{ env('APP_URL') }}/booking/receipt/{{$shoppingcart->session_id}}/{{$shoppingcart->confirmation_code}}" target="_blank" class="text-decoration-none text-white">{{ $shoppingcart->confirmation_code }}</a>
+                        Booking Detail&nbsp;{{ $shoppingcart->confirmation_code }}
                         </div>
                     </div>
                     <div class="col-auto text-right mr-0 pr-0">
