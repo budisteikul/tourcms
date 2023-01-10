@@ -35,8 +35,7 @@ class ScheduleDataTable extends DataTable
                     return $name;
                 })
                 ->addColumn('date_text', function($id){
-                    $date_text = '<a href="#" onClick="EDIT(\''.$id->id.'\'); return false;">'. GeneralHelper::dateFormat($id->date,10) .'</a>';
-                    return $date_text;
+                    return GeneralHelper::dateFormat($id->date,10);
                 })
                 ->addColumn('people', function($id){
                     $people = 0;
@@ -46,8 +45,18 @@ class ScheduleDataTable extends DataTable
                     }
                     return $people;
                 })
+                ->addColumn('action', function ($id) {
+                return '
+                <div class="btn-toolbar justify-content-end">
+                    <div class="btn-group mr-2" role="group">
+                        
+                        <button id="btn-edit" type="button" onClick="EDIT(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success  pt-0 pb-0 pl-1 pr-1"><i class="fa fa-edit"></i> Edit Schedule</button>
+                        
+                    </div>
+                </div>';
+                })
                 ->addIndexColumn()
-                ->rawColumns(['name','date_text']);
+                ->rawColumns(['name','date_text','action']);
     }
 
     /**
@@ -111,7 +120,12 @@ class ScheduleDataTable extends DataTable
             Column::make('name')->title('Main Contact')->orderable(false)->addClass('align-middle'),
             Column::make('date_text')->title('Date')->orderable(false)->addClass('align-middle'),
             Column::make('people')->title('People')->orderable(false)->addClass('align-middle'),
-            
+
+            Column::computed('action')
+                  ->exportable(false)
+                  ->printable(false)
+                  ->width(220)
+                  ->addClass('text-center'),
         ];
 
         
