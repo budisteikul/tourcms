@@ -67,6 +67,12 @@ function STORE()
 	
 	return false;
 }
+
+function CLOSE()
+{
+	tinymce.remove();
+	$.fancybox.close();
+}
 </script>
  
 <div class="h-100" style="width:99%">		
@@ -84,7 +90,7 @@ function STORE()
                     </div>
                     <div class="col-auto text-right mr-0 pr-0">
                         <div class="btn-toolbar justify-content-end">
-                            <button class="btn btn-sm btn-danger mr-0" type="button" onClick="$.fancybox.close();"><i class="fa fa-window-close"></i> Close</button>
+                            <button class="btn btn-sm btn-danger mr-0" type="button" onClick="CLOSE(); return false;"><i class="fa fa-window-close"></i> Close</button>
                         </div>
                     </div>
                 </div>
