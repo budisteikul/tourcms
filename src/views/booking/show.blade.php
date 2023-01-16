@@ -52,14 +52,27 @@ function hideTooltip(element) {
                 </div>
     </div>
     
+
     <div class="card-body">
 
             {!! $Content->view_invoice($shoppingcart) !!}
             {!! $Content->view_product_detail($shoppingcart) !!}
             
-            <div style="max-width: 350px;">
+            <div class="card mb-2">
+                <div class="card-header">PAYMENT 
+                @if($shoppingcart->shoppingcart_payment->authorization_id != "")
+                 <b>{{ $shoppingcart->shoppingcart_payment->authorization_id }}</b>
+                @endif
+                </div>
+            <div class="card-body bg-light">
+               
+                <div style="max-width: 350px;margin-top: 10px;">
                 {!! $Booking->get_paymentStatus($shoppingcart) !!}
+                </div>
             </div>
+            </div>
+
+            
 
             
             
