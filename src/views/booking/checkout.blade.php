@@ -335,14 +335,6 @@ function DELETE()
 		<option value="rapyd-cimb">RAPYD CIMB NIAGA VA</option>
 		<option value="rapyd-permata">RAPYD PERMATA VA</option>
 		<option value="rapyd-mandiri">RAPYD MANDIRI VA</option>
-		<option value="doku-mandiri">DOKU MANDIRI VA</option>
-		<option value="doku-danamon">DOKU DANAMON VA</option>
-		<option value="doku-permata">DOKU PERMATA VA</option>
-		<option value="doku-bri">DOKU BRI VA</option>
-		<option value="doku-mandirisyariah">DOKU BSI VA</option>
-		<option value="doku-cimb">DOKU CIMB NIAGA VA</option>
-		<option value="doku-doku">DOKU VA</option>
-		<option value="doku-qris">DOKU QRIS</option>
 		<option value="midtrans-mandiri">MIDTRANS MANDIRI BILL</option>
         <option value="midtrans-bni">MIDTRANS BNI VA</option>
         <option value="midtrans-bri">MIDTRANS BRI VA</option>
