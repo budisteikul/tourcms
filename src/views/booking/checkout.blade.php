@@ -327,6 +327,7 @@ function DELETE()
 		<option value="rapyd-sinarmas">SINARMAS BANK TRANSFER IDR</option>
 		<option value="rapyd-fast">DBS FAST TRANSFER SGD</option>
 		<option value="rapyd-paynow">PAYNOW QR SGD</option>
+		<option value="xendit-qris">QRIS</option>
 		<!-- option value="tazapay-poli">TAZAPAY POLI</option>
 		<option value="tazapay-paynow">TAZAPAY PAYNOW</option>
         <option value="rapyd-poli">RAPYD POLI</option>
