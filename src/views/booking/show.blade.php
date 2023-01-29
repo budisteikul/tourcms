@@ -54,6 +54,7 @@ function hideTooltip(element) {
     
 
     <div class="card-body">
+            
 
             {!! $Content->view_invoice($shoppingcart) !!}
             {!! $Content->view_product_detail($shoppingcart) !!}
@@ -74,12 +75,19 @@ function hideTooltip(element) {
 
             
 
-            
+            @if(Auth::user()->id==1)
+            <div class="card mb-2">
+                <div class="card-body bg-light">
+                    {{ env('APP_URL') }}/{{ $shoppingcart->session_id }}/{{ $shoppingcart->confirmation_code }}
+                </div>
+            </div>
+            @endif
             
     </div>
-
+        
     </div>
     
+
         
             </div>
 
