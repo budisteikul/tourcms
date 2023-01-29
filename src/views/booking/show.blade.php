@@ -78,13 +78,13 @@ function hideTooltip(element) {
             @if(Auth::user()->id==1)
             <div class="card mb-2">
                 <div class="card-body bg-light">
-                    {{ env('APP_URL') }}/{{ $shoppingcart->session_id }}/{{ $shoppingcart->confirmation_code }}
+                    {{ env('APP_URL') }}/booking/receipt/{{ $shoppingcart->session_id }}/{{ $shoppingcart->confirmation_code }}
                 </div>
             </div>
             @endif
             
     </div>
-        
+
     </div>
     
 
