@@ -316,6 +316,8 @@ function DELETE()
 <div class="form-group">
 <label for="payment_type"><strong>Payment</strong></label>
 <select style="font-size:16px;height:47px;"  class="form-control" id="payment_type" name="payment_type">
+		<option value="tazapay-paynow">TAZAPAY PAYNOW</option>
+		<option value="tazapay-promptpay">TAZAPAY PROMPTPAY</option>
 		<option value="none">NONE</option>
 		<option value="rapyd-creditcard">CREDIT CARD IDR</option>
 		<option value="rapyd-alfamart">ALFAMART CASH IDR</option>
