@@ -316,11 +316,9 @@ function DELETE()
 <div class="form-group">
 <label for="payment_type"><strong>Payment</strong></label>
 <select style="font-size:16px;height:47px;"  class="form-control" id="payment_type" name="payment_type">
-		<option value="tazapay-paynow">TAZAPAY PAYNOW</option>
-		<option value="tazapay-promptpay">TAZAPAY PROMPTPAY</option>
 		<option value="none">NONE</option>
-		<option value="rapyd-creditcard">CREDIT CARD IDR</option>
 		<option value="rapyd-alfamart">ALFAMART CASH IDR</option>
+		<option value="rapyd-mandiri">MANDIRI BANK TRANSFER IDR</option>
 		<option value="rapyd-permata">PERMATA BANK TRANSFER IDR</option>
 		<option value="rapyd-cimb">CIMBNIAGA BANK TRANSFER IDR</option>
 		<option value="rapyd-bri">BRI BANK TRANSFER IDR</option>
@@ -332,22 +330,9 @@ function DELETE()
 		<option value="rapyd-paynow">PAYNOW QR SGD</option>
 		<option value="xendit-bss">XENDIT BANK SAHABAT SAMPOERNA</option>
 		<option value="xendit-qris">XENDIT QRIS</option>
-		<!-- option value="tazapay-poli">TAZAPAY POLI</option>
-		<option value="tazapay-paynow">TAZAPAY PAYNOW</option>
-        <option value="rapyd-poli">RAPYD POLI</option>
-		<option value="rapyd-paynow">RAPYD PAYNOW</option>
-		<option value="rapyd-fast">RAPYD FAST</option>
-		<option value="rapyd-cimb">RAPYD CIMB NIAGA VA</option>
-		<option value="rapyd-permata">RAPYD PERMATA VA</option>
-		<option value="rapyd-mandiri">RAPYD MANDIRI VA</option>
-		<option value="midtrans-mandiri">MIDTRANS MANDIRI BILL</option>
-        <option value="midtrans-bni">MIDTRANS BNI VA</option>
-        <option value="midtrans-bri">MIDTRANS BRI VA</option>
-        <option value="midtrans-permata">MIDTRANS PERMATA VA</option>
-        <option value="midtrans-gopay">MIDTRANS GOPAY</option>
-        <option value="midtrans-shopeepay">MIDTRANS SHOPEEPAY</option>
-        <option value="midtrans-gopay_qris">MIDTRANS QRIS GOPAY</option>
-        <option value="midtrans-shopeepay_qris">MIDTRANS QRIS SHOPEEPAY</option -->
+		<option value="midtrans-gopay_qris">MIDTRANS QRIS GOPAY</option>
+		<option value="midtrans-shopeepay_qris">MIDTRANS QRIS SHOPEEPAY</option>
+		<option value="tazapay-promptpay">TAZAPAY PROMPTPAY</option>
 </select>
 </div>            
 <!-- ########################################### -->
