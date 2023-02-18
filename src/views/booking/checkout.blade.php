@@ -333,7 +333,6 @@ function DELETE()
 		<option value="midtrans-gopay_qris">MIDTRANS QRIS GOPAY</option>
 		<option value="midtrans-shopeepay_qris">MIDTRANS QRIS SHOPEEPAY</option>
 		<option value="tazapay-promptpay">TAZAPAY PROMPTPAY</option>
-		<option value="tazapay-paynow">TAZAPAY PAYNOW</option>
 </select>
 </div>            
 <!-- ########################################### -->
