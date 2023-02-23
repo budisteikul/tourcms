@@ -316,8 +316,6 @@ function DELETE()
 <div class="form-group">
 <label for="payment_type"><strong>Payment</strong></label>
 <select style="font-size:16px;height:47px;"  class="form-control" id="payment_type" name="payment_type">
-		<option value="finmo-paynow">FINMO PAYNOW</option>
-		<option value="finmo-promptpay">FINMO PROMPTPAY</option>
 		<option value="none">NONE</option>
 		<option value="rapyd-alfamart">ALFAMART CASH IDR</option>
 		<option value="rapyd-mandiri">MANDIRI BANK TRANSFER IDR</option>
@@ -337,6 +335,8 @@ function DELETE()
 		<option value="tazapay-promptpay">TAZAPAY PROMPTPAY</option>
 		<option value="rapyd-qris">RAPYD QRIS</option>
 		<option value="rapyd-promptpay">RAPYD PROMPTPAY</option>
+		<option value="finmo-paynow">FINMO PAYNOW</option>
+		<option value="finmo-promptpay">FINMO PROMPTPAY</option>
 </select>
 </div>            
 <!-- ########################################### -->
