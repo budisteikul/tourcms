@@ -317,26 +317,27 @@ function DELETE()
 <label for="payment_type"><strong>Payment</strong></label>
 <select style="font-size:16px;height:47px;"  class="form-control" id="payment_type" name="payment_type">
 		<option value="none">NONE</option>
-		<option value="rapyd-alfamart">ALFAMART CASH IDR</option>
-		<option value="rapyd-mandiri">MANDIRI BANK TRANSFER IDR</option>
-		<option value="rapyd-permata">PERMATA BANK TRANSFER IDR</option>
-		<option value="rapyd-cimb">CIMBNIAGA BANK TRANSFER IDR</option>
-		<option value="rapyd-bri">BRI BANK TRANSFER IDR</option>
-		<option value="rapyd-bni">BNI BANK TRANSFER IDR</option>
-		<option value="rapyd-danamon">DANAMON BANK TRANSFER IDR</option>
-		<option value="rapyd-maybank">MAYBANK BANK TRANSFER IDR</option>
-		<option value="rapyd-sinarmas">SINARMAS BANK TRANSFER IDR</option>
-		<option value="rapyd-fast">DBS FAST TRANSFER SGD</option>
-		<option value="rapyd-paynow">PAYNOW QR SGD</option>
+		<option value="rapyd-alfamart">RAPYD ALFAMART</option>
+		<option value="rapyd-mandiri">RAPYD MANDIRI</option>
+		<option value="rapyd-permata">RAPYD PERMATA</option>
+		<option value="rapyd-cimb">RAPYD CIMBNIAGA</option>
+		<option value="rapyd-bri">RAPYD BRI BANK</option>
+		<option value="rapyd-bni">RAPYD BNI BANK</option>
+		<option value="rapyd-danamon">RAPYD DANAMON</option>
+		<option value="rapyd-maybank">RAPYD MAYBANK</option>
+		<option value="rapyd-sinarmas">RAPYD SINARMAS</option>
+		<option value="rapyd-fast">RAPYD FAST</option>
+		<option value="rapyd-paynow">RAPYD PAYNOW</option>
 		<option value="xendit-bss">XENDIT BANK SAHABAT SAMPOERNA</option>
 		<option value="xendit-qris">XENDIT QRIS</option>
+		<option value="midtrans-permata">MIDTRANS PERMATA</option>
 		<option value="midtrans-gopay_qris">MIDTRANS QRIS GOPAY</option>
 		<option value="midtrans-shopeepay_qris">MIDTRANS QRIS SHOPEEPAY</option>
 		<option value="tazapay-promptpay">TAZAPAY PROMPTPAY</option>
-		<option value="rapyd-qris">RAPYD QRIS</option>
-		<option value="rapyd-promptpay">RAPYD PROMPTPAY</option>
-		<option value="finmo-paynow">FINMO PAYNOW</option>
-		<option value="finmo-promptpay">FINMO PROMPTPAY</option>
+		<option value="rapyd-qris">RAPYD QRIS (now work)</option>
+		<option value="rapyd-promptpay">RAPYD PROMPTPAY (now work)</option>
+		<option value="finmo-paynow">FINMO PAYNOW (now work)</option>
+		<option value="finmo-promptpay">FINMO PROMPTPAY (now work)</option>
 </select>
 </div>            
 <!-- ########################################### -->
