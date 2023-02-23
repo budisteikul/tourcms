@@ -328,11 +328,17 @@ function DELETE()
 		<option value="rapyd-sinarmas">RAPYD SINARMAS</option>
 		<option value="rapyd-fast">RAPYD FAST</option>
 		<option value="rapyd-paynow">RAPYD PAYNOW</option>
+		<option value="rapyd-poli">RAPYD POLI</option>
 		<option value="xendit-bss">XENDIT BANK SAHABAT SAMPOERNA</option>
 		<option value="xendit-qris">XENDIT QRIS</option>
+		<option value="xendit-dana">XENDIT DANA</option>
 		<option value="midtrans-permata">MIDTRANS PERMATA</option>
+		<option value="midtrans-bri">MIDTRANS BRI</option>
+		<option value="midtrans-bni">MIDTRANS BNI</option>
 		<option value="midtrans-gopay_qris">MIDTRANS QRIS GOPAY</option>
 		<option value="midtrans-shopeepay_qris">MIDTRANS QRIS SHOPEEPAY</option>
+		<option value="midtrans-gopay">MIDTRANS GOPAY</option>
+		<option value="midtrans-shopeepay">MIDTRANS SHOPEEPAY</option>
 		<option value="tazapay-promptpay">TAZAPAY PROMPTPAY</option>
 		<option value="rapyd-qris">RAPYD QRIS (now work)</option>
 		<option value="rapyd-promptpay">RAPYD PROMPTPAY (now work)</option>
