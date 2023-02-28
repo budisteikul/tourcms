@@ -316,8 +316,7 @@ function DELETE()
 <div class="form-group">
 <label for="payment_type"><strong>Payment</strong></label>
 <select style="font-size:16px;height:47px;"  class="form-control" id="payment_type" name="payment_type">
-		<option value="duitku-linkaja_qris">DUITKU LINKAJA QRIS</option>
-		<option value="duitku-linkaja">DUITKU LINKAJA</option>
+		
 		<option value="none">NONE</option>
 		<option value="rapyd-alfamart">RAPYD ALFAMART</option>
 		<option value="rapyd-mandiri">RAPYD MANDIRI</option>
@@ -342,10 +341,12 @@ function DELETE()
 		<option value="midtrans-gopay">MIDTRANS GOPAY</option>
 		<option value="midtrans-shopeepay">MIDTRANS SHOPEEPAY</option>
 		<option value="tazapay-promptpay">TAZAPAY PROMPTPAY</option>
-		<option value="rapyd-qris">RAPYD QRIS (now work)</option>
-		<option value="rapyd-promptpay">RAPYD PROMPTPAY (now work)</option>
-		<option value="finmo-paynow">FINMO PAYNOW (now work)</option>
-		<option value="finmo-promptpay">FINMO PROMPTPAY (now work)</option>
+		<option value="duitku-linkaja_qris">DUITKU LINKAJA QRIS</option>
+		<option value="duitku-linkaja">DUITKU LINKAJA</option>
+		<option value="rapyd-qris">RAPYD QRIS (not work)</option>
+		<option value="rapyd-promptpay">RAPYD PROMPTPAY (not work)</option>
+		<option value="finmo-paynow">FINMO PAYNOW (not work)</option>
+		<option value="finmo-promptpay">FINMO PROMPTPAY (not work)</option>
 </select>
 </div>            
 <!-- ########################################### -->
