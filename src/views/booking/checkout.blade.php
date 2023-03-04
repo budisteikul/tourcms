@@ -318,6 +318,7 @@ function DELETE()
 <select style="font-size:16px;height:47px;"  class="form-control" id="payment_type" name="payment_type">
 		
 		<option value="none">NONE</option>
+		<option value="rapyd-creditcard">RAPYD CREDIT CARD</option>
 		<option value="rapyd-alfamart">RAPYD ALFAMART</option>
 		<option value="rapyd-mandiri">RAPYD MANDIRI</option>
 		<option value="rapyd-permata">RAPYD PERMATA</option>
