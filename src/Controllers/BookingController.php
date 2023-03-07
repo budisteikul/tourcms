@@ -142,6 +142,10 @@ class BookingController extends Controller
                 $shoppingcart= BookingHelper::create_payment($sessionId,"none");
             }
             
+
+
+
+            /*
             $shoppingcart = BookingHelper::confirm_booking($sessionId,false);
             
             //Fee ========================================================================
@@ -181,7 +185,8 @@ class BookingController extends Controller
                     }
                 }
             }
-
+            */
+            
             return response()->json([
                     "message" => 'success'
                 ]);

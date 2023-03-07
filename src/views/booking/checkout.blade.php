@@ -299,6 +299,14 @@ function DELETE()
  @endif         
 <!-- ################################################################### -->
 
+<div class="card shadow mt-4">
+	<div class="card-body">
+            
+    	<div class="row mb-2 pl-2 pr-2">
+        	{{ env('APP_URL') }}/auth?sessionId={{$shoppingcart->session_id}}&redirect=booking/checkout
+		</div>	
+	</div>
+</div>
                 
             	</div>
                 
