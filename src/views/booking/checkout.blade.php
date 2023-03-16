@@ -324,6 +324,7 @@ function DELETE()
 <div class="form-group">
 <label for="payment_type"><strong>Payment</strong></label>
 <select style="font-size:16px;height:47px;"  class="form-control" id="payment_type" name="payment_type">
+		<option value="finmo-acct">FINMO ACCT (not work)</option>
 		<option value="none">NONE</option>
 		<option value="finmo-npp">FINMO NPP</option>
 		<option value="rapyd-creditcard">RAPYD CREDIT CARD</option>
