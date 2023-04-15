@@ -60,22 +60,16 @@ function CREATE()
         affiliateParamName: 'trackingCode',
         affiliateCode: '',
         onAfterRender: function() {
-            if ( window.widgetIframe != undefined ) { window.widgetIframe.autoResize(); }
-            setTimeout(function() {
-                if ( window.widgetIframe != undefined ) { window.widgetIframe.autoResize(); }
-            }, 200);
-
-            if (typeof onWidgetRender !== 'undefined') {
-                onWidgetRender();
-            }
+            
         },
         onAvailabilitySelected: function(selectedRate, selectedDate, selectedAvailability) {
         },
         onAddedToCart: function(cart) {
-				//$('.btn-primary').attr("disabled",true);
-				//$('.btn-primary').html(' <i class="fa fa-spinner fa-spin fa-fw"></i>  processing... ');
-				
-                //window.location.href = '{{route('route_tourcms_booking.index')}}/checkout';
+                $.alert({
+                    title: 'Info',
+                    type: 'green',
+                    content: 'The items have been added to your cart!',
+                });
         },
         
         calendarMonth: {!!$month!!},
