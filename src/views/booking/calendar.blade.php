@@ -99,7 +99,7 @@ function CREATE()
       <a style="height:47px;" class="btn btn-lg btn-block btn-secondary text-white" onclick="CREATE(); return false;"><b class="fas fa-tag"></b> <b>CHANGE PRODUCT</b></a>
     </div>
     <div class="col-sm">
-       <a style="height:47px;" class="btn btn-lg btn-block btn-success" href="{{route('route_tourcms_booking.index')}}/checkout"><i class="fas fa-shopping-cart"></i> <b>CHECKOUT</b></a>
+       <a style="height:47px;" class="btn btn-lg btn-block btn-success" href="{{route('route_tourcms_booking.index')}}/checkout"><i class="fas fa-shopping-cart"></i> <b>VIEW CART</b></a>
     </div>
   </div>
                
