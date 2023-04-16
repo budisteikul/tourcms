@@ -25,14 +25,6 @@ class ChannelDataTable extends DataTable
     {
         return datatables($query)
                 ->addIndexColumn()
-                ->editColumn('fee', function($id){
-                    if($id->is_percentage)
-                    {
-                        return $id->fee.'%';
-                    }
-                    return $id->fee;
-                    
-                })
                 ->addColumn('action', function ($id) {
 
                 $button_delete = '<button id="btn-del" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger pt-0 pb-0 pl-1 pr-1"><i class="fa fa-trash-alt"></i> Delete</button>';
@@ -107,7 +99,6 @@ class ChannelDataTable extends DataTable
                   ->searchable(false)
                   ->addClass('text-center align-middle'),
             Column::make('name')->title('Name')->orderable(false)->addClass('align-middle'),
-            Column::make('fee')->title('Fee')->orderable(false)->addClass('align-middle'),
             
             Column::computed('action')
                   ->exportable(false)

@@ -151,25 +151,8 @@ class BookingController extends Controller
 
             
             //Fee ========================================================================
-            $fee = $data['fee'];
-            if($fee=="") $fee = 0;
-
-            if($fee==0)
-            {
-                $channel = Channel::where('name',$shoppingcart->booking_channel)->first();
-                if($channel)
-                {
-                    if($channel->is_percentage)
-                    {
-                        $fee = $shoppingcart->subtotal * $channel->fee / 100;
-                    }
-                    else
-                    {
-                        $fee = $channel->fee;
-                    }
-                }
-            }
-            
+                $fee = $data['fee'];
+                if($fee=="") $fee = 0;
 
                 $shoppingcart->fee = $fee;
                 $shoppingcart->total = $shoppingcart->subtotal - $shoppingcart->discount - $fee;

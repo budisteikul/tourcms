@@ -5,7 +5,7 @@ function UPDATE()
 	var error = false;
 	$("#submit").attr("disabled", true);
 	$('#submit').html('<i class="fa fa-spinner fa-spin"></i>');
-	var input = ["name","fee","is_percentage"];
+	var input = ["name"];
 	
 	$.each(input, function( index, value ) {
   		$('#'+ value).removeClass('is-invalid');
@@ -16,9 +16,7 @@ function UPDATE()
 	$.ajax({
 		data: {
         	"_token": $("meta[name=csrf-token]").attr("content"),
-			"name": $('#name').val(),
-			"fee": $('#fee').val(),
-			"is_percentage": $('#is_percentage').val(),
+			"name": $('#name').val()
         },
 		type: 'PUT',
 		url: '{{ route('route_tourcms_channel.update',$channel->id) }}'
@@ -74,23 +72,9 @@ function UPDATE()
 <form onSubmit="UPDATE(); return false;">
 <div id="result"></div>
 
-
 <div class="form-group">
 	<label for="name">Name :</label>
 	<input type="text" id="name" name="name" class="form-control" placeholder="Name" autocomplete="off" value="{{ $channel->name }}">
-</div>
-
-<div class="form-group">
-	<label for="fee">Fee :</label>
-	<input type="number" id="fee" name="fee" class="form-control" value="{{ $channel->fee }}" placeholder="Fee" autocomplete="off">
-</div> 
-
-<div class="form-group">
-    <label for="is_percentage">Percentage :</label>
-    <select class="form-control" id="is_percentage">
-      <option value="1" {{ $channel->is_percentage == 1 ? "selected" : "" }}>Yes</option>
-      <option value="0" {{ $channel->is_percentage == 0 ? "selected" : "" }}>No</option>
-    </select>
 </div>
 
 <button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>

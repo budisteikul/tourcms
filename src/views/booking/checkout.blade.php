@@ -317,10 +317,7 @@ function DELETE()
  				 <div class="card-body" style="padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:15px;">
                  
 <form onSubmit="STORE(); return false;">
-<h3>Fee</h3>
-<div class="form-group">
-	<input type="number" id="fee" value="0" style="height:47px;" name="fee" class="form-control">
-</div>
+
 <!-- ########################################### -->
 <h3>Payment Type</h3>
 <div class="form-group">
@@ -371,6 +368,10 @@ function DELETE()
         <option value="{{$channel->name}}">{{$channel->name}}</option>
         @endforeach
 </select>
+</div>
+<div class="form-group">
+	<label for="fee"><strong>Fee</strong></label>
+	<input type="number" id="fee" value="0" style="height:47px;" name="fee" class="form-control">
 </div>
 <!-- ########################################### -->
 <h3>Main Contact</h3>

@@ -40,9 +40,7 @@ class ChannelController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255|unique:channels,name',
-            'fee' => 'required|integer',
-            'is_percentage' => 'required',
+            'name' => 'required|string|max:255|unique:channels,name'
 
         ]);
 
@@ -52,13 +50,9 @@ class ChannelController extends Controller
         }
 
         $name =  $request->input('name');
-        $fee =  $request->input('fee');
-        $is_percentage =  $request->input('is_percentage');
 
         $channel = new Channel();
         $channel->name = $name;
-        $channel->fee = $fee;
-        $channel->is_percentage = $is_percentage;
         $channel->save();
 
         return response()->json([
@@ -99,9 +93,7 @@ class ChannelController extends Controller
     public function update(Request $request, Channel $channel)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255|unique:channels,name,'.$channel->id,
-            'fee' => 'required|integer',
-            'is_percentage' => 'required',
+            'name' => 'required|string|max:255|unique:channels,name,'.$channel->id
         ]);
 
         if ($validator->fails()) {
@@ -110,12 +102,8 @@ class ChannelController extends Controller
         }
 
         $name =  $request->input('name');
-        $fee =  $request->input('fee');
-        $is_percentage =  $request->input('is_percentage');
         
         $channel->name = $name;
-        $channel->fee = $fee;
-        $channel->is_percentage = $is_percentage;
         $channel->save();
 
         return response()->json([
