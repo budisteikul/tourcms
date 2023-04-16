@@ -317,8 +317,10 @@ function DELETE()
  				 <div class="card-body" style="padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:15px;">
                  
 <form onSubmit="STORE(); return false;">
-
-
+<h3>Fee</h3>
+<div class="form-group">
+	<input type="number" id="fee" value="0" style="height:47px;" name="fee" class="form-control">
+</div>
 <!-- ########################################### -->
 <h3>Payment Type</h3>
 <div class="form-group">
@@ -538,6 +540,7 @@ function STORE()
 	$.ajax({
 		data: JSON.stringify({
             "bookingChannel": $("#bookingChannel").val(),
+            "fee": $("#fee").val(),
             "payment_type": $("#payment_type").val(),
             "sessionId": '{{$shoppingcart->session_id}}',
             "questions": questions,
