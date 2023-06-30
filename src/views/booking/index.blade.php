@@ -104,6 +104,8 @@
                 keys: ['enter'],
                 action: function(){
                      var table = $('#dataTableBuilder').DataTable();
+                     $("#btn-del").attr("disabled", true);
+                     $('#btn-del').html('<i class="fa fa-spinner fa-spin"></i>');
                      $.ajax({
                         data: {
                           "_token": $("meta[name=csrf-token]").attr("content"),
@@ -114,6 +116,9 @@
                         url: '{{ route('route_tourcms_booking.index') }}/'+ id
                         }).done(function( data ) {
                           table.ajax.reload( null, false );
+                          setTimeout(function (){
+                              $.fancybox.close();
+                            }, 1000);
                         });
 
                 }

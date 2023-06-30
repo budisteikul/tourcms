@@ -82,7 +82,7 @@ class BookingDataTable extends DataTable
                 if($id->booking_status=="PENDING")
                 {
                     $button_confirm = '<button id="btn-edit" type="button" onClick="CONFIRM(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success pt-0 pb-0 pl-1 pr-1"><i class="fas fa-check"></i> Confirm this booking</button>';
-                    $button_cancel = '<button id="btn-edit" type="button" onClick="CANCEL(\''.$id->id.'\'); return false;" class="btn btn-sm btn-warning pt-0 pb-0 pl-1 pr-1"><i class="fa fa-ban"></i> Cancel this booking</button>';
+                    $button_cancel = '<button id="btn-edit" type="button" onClick="CANCEL(\''.$id->id.'\',\''.$id->confirmation_code.'\'); return false;" class="btn btn-sm btn-warning pt-0 pb-0 pl-1 pr-1"><i class="fa fa-ban"></i> Cancel this booking</button>';
                 }
                 if($id->booking_status=="CANCELED")
                 {
@@ -153,38 +153,7 @@ class BookingDataTable extends DataTable
      */
     protected function getColumns(): array
     {
-        if(Auth::user()->id==1)
-        {
-            return [
-            Column::make('created_at')
-                  ->visible(false)
-                  ->searchable(false),
-            Column::computed('DT_RowIndex')
-                  ->width(30)
-                  ->title('No')
-                  ->orderable(false)
-                  ->searchable(false)
-                  ->addClass('text-center align-middle'),
-
-            Column::make('confirmation_code')->title('Transaction ID')->orderable(false)->addClass('align-middle'),
-            Column::make('booking_channel')->title('Channel')->orderable(false)->addClass('align-middle'),
-            Column::make('created_at')->title('Created')->orderable(false)->addClass('align-middle'),
-            //Column::make('subtotal')->title('Subtotal')->orderable(false)->addClass('align-middle'),
-            //Column::make('discount')->title('Subtotal')->orderable(false)->addClass('align-middle'),
-            //Column::make('fee')->title('Fee')->orderable(false)->addClass('align-middle'),
-            //Column::make('total')->title('Total')->orderable(false)->addClass('align-middle'),
-            Column::make('booking_status')->title('Status')->orderable(false)->addClass('align-middle'),
-            
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(325)
-                  ->addClass('text-center align-middle'),
-            
-            ];
-        }
-        else
-        {
+        
             return [
             Column::make('created_at')
                   ->visible(false)
@@ -205,7 +174,7 @@ class BookingDataTable extends DataTable
             
             
             ];
-        }
+        
         
     }
 

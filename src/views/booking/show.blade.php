@@ -59,6 +59,7 @@ function hideTooltip(element) {
             {!! $Content->view_invoice($shoppingcart) !!}
             {!! $Content->view_product_detail($shoppingcart) !!}
             
+            @if($shoppingcart->booking_channel=="WEBSITE")
             <div class="card mb-2">
                 <div class="card-header">PAYMENT 
                 @if($shoppingcart->shoppingcart_payment->authorization_id != "")
@@ -72,15 +73,17 @@ function hideTooltip(element) {
                 </div>
             </div>
             </div>
-
+            @endif
             
 
             @if(Auth::user()->id==1)
+            @if($shoppingcart->booking_status!="CANCELED")
             <div class="card mb-2">
                 <div class="card-body bg-light">
-                    {{ env('APP_URL') }}/booking/receipt/{{ $shoppingcart->session_id }}/{{ $shoppingcart->confirmation_code }}
+                    <button id="btn-del" type="button" onClick="CANCEL('{{ $shoppingcart->id }}','{{ $shoppingcart->confirmation_code }}'); return false;" class="btn btn-block btn-danger mr-0"><i class="fa fa-ban"></i> <b>Cancel this booking</b></button>
                 </div>
             </div>
+            @endif
             @endif
             
     </div>

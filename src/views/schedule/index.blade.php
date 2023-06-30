@@ -23,7 +23,49 @@ function EDIT(id)
           autoFocus: false
       });
     
-  }  
+  }
+
+
+function CANCEL(id,transaction_id)
+  {
+    $.confirm({
+        title: 'Warning',
+        content: 'Are you sure want to cancel order with booking number '+ transaction_id +'?',
+        type: 'red',
+      icon: 'fa fa-ban',
+        buttons: {   
+            ok: {
+                text: "OK",
+                btnClass: 'btn-danger',
+                keys: ['enter'],
+                action: function(){
+                     var table = $('#dataTableBuilder').DataTable();
+                     $("#btn-del").attr("disabled", true);
+                     $('#btn-del').html('<i class="fa fa-spinner fa-spin"></i>');
+                     $.ajax({
+                        data: {
+                          "_token": $("meta[name=csrf-token]").attr("content"),
+                          "action": 'cancel',
+      
+                        },
+                        type: 'PUT',
+                        url: '{{ route('route_tourcms_booking.index') }}/'+ id
+                        }).done(function( data ) {
+                          table.ajax.reload( null, false );
+                          setTimeout(function (){
+                              $.fancybox.close();
+                            }, 1000);
+                        });
+
+                }
+            },
+            cancel: function(){
+                  console.log('the user clicked cancel');
+            }
+        }
+    });
+    
+  }
 </script>
 @endpush
 <div class="row justify-content-center">
