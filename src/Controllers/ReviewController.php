@@ -31,7 +31,8 @@ class ReviewController extends Controller
     {
         $products = Product::orderBy('name')->get();
         $channels = Channel::orderBy('name')->get();
-        return view('tourcms::review.create',['products'=>$products,'channels'=>$channels]);
+        $reviews = Review::select('link')->groupBy('link')->get();
+        return view('tourcms::review.create',['products'=>$products,'channels'=>$channels,'reviews'=>$reviews]);
     }
 
     /**
