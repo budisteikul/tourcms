@@ -59,6 +59,7 @@ function hideTooltip(element) {
             {!! $Content->view_invoice($shoppingcart) !!}
             {!! $Content->view_product_detail($shoppingcart) !!}
             
+            @if(Auth::user()->id==1)
             @if($shoppingcart->booking_channel=="WEBSITE")
             <div class="card mb-2">
                 <div class="card-header">PAYMENT 
@@ -74,7 +75,7 @@ function hideTooltip(element) {
             </div>
             </div>
             @endif
-            
+            @endif
 
             @if(Auth::user()->id==1)
             @if($shoppingcart->booking_status!="CANCELED")

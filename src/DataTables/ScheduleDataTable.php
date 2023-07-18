@@ -13,6 +13,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use Illuminate\Support\Facades\Auth;
 
 class ScheduleDataTable extends DataTable
 {
@@ -105,7 +106,9 @@ class ScheduleDataTable extends DataTable
      */
     public function getColumns(): array
     {
-        return [
+        if(Auth::user()->id==1)
+        {
+            return [
             Column::make('date')
                   ->visible(false)
                   ->searchable(false)
@@ -126,7 +129,28 @@ class ScheduleDataTable extends DataTable
                   ->printable(false)
                   ->width(220)
                   ->addClass('text-center'),
-        ];
+            ];
+        }
+        else
+        {
+            return [
+            Column::make('date')
+                  ->visible(false)
+                  ->searchable(false)
+                  ->orderable(true),
+            Column::computed('DT_RowIndex')
+                  ->width(30)
+                  ->title('No')
+                  ->orderable(false)
+                  ->searchable(false)
+                  ->addClass('text-center align-middle'),
+
+            Column::make('name')->title('Main Contact')->orderable(false)->addClass('align-middle'),
+            Column::make('date_text')->title('Date')->orderable(false)->addClass('align-middle'),
+            Column::make('people')->title('People')->orderable(false)->addClass('align-middle')
+            ];
+        }
+        
 
         
     }
