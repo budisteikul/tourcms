@@ -1,5 +1,6 @@
 @extends('coresdk::layouts.app')
 @section('content')
+
 @push('scripts')
 <script type="text/javascript">
   
