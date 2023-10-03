@@ -38,6 +38,9 @@ class ScheduleDataTable extends DataTable
                 ->addColumn('date_text', function($id){
                     return GeneralHelper::dateFormat($id->date,10);
                 })
+                ->addColumn('booking_channel', function($id){
+                    return $id->shoppingcart->booking_channel;
+                })
                 ->addColumn('people', function($id){
                     $people = 0;
                     foreach($id->shoppingcart_product_details as $shoppingcart_product_detail)
@@ -121,6 +124,7 @@ class ScheduleDataTable extends DataTable
                   ->addClass('text-center align-middle'),
 
             Column::make('name')->title('Main Contact')->orderable(false)->addClass('align-middle'),
+            Column::make('booking_channel')->title('Channel')->orderable(false)->addClass('align-middle'),
             Column::make('date_text')->title('Date')->orderable(false)->addClass('align-middle'),
             Column::make('people')->title('People')->orderable(false)->addClass('align-middle'),
 
@@ -146,6 +150,7 @@ class ScheduleDataTable extends DataTable
                   ->addClass('text-center align-middle'),
 
             Column::make('name')->title('Main Contact')->orderable(false)->addClass('align-middle'),
+            Column::make('booking_channel')->title('Channel')->orderable(false)->addClass('align-middle'),
             Column::make('date_text')->title('Date')->orderable(false)->addClass('align-middle'),
             Column::make('people')->title('People')->orderable(false)->addClass('align-middle')
             ];
