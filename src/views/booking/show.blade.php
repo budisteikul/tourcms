@@ -1,6 +1,7 @@
 @inject('Content', 'budisteikul\toursdk\Helpers\ContentHelper')
 @inject('Booking', 'budisteikul\toursdk\Helpers\BookingHelper')
 
+
 <div class="h-100" style="width:99%">       
  
     <div class="row justify-content-center">
