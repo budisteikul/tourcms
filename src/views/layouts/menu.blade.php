@@ -26,9 +26,9 @@
             
             <a class="collapse-item {{ (request()->is('cms/booking*')) ? 'active' : '' }}" href="{{ route('route_tourcms_booking.index') }}"><i class="far fa-circle"></i> {{ __('Booking') }}</a>
 
-            <a class="collapse-item {{ (request()->is('cms/schedule*')) ? 'active' : '' }}" href="{{ route('route_tourcms_schedule.index') }}"><i class="far fa-circle"></i> {{ __('Schedule') }}</a>
+            <a class="collapse-item {{ (request()->is('cms/schedule*')) ? 'active' : '' }}" href="{{ route('route_tourcms_schedule.index') }}"><i class="far fa-circle"></i> {{ __('Tour Schedule') }}</a>
 
-            <a class="collapse-item {{ (request()->is('cms/competed*')) ? 'active' : '' }}" href="{{ route('route_tourcms_completed.index') }}"><i class="far fa-circle"></i> {{ __('Completed') }}</a>
+            <a class="collapse-item {{ (request()->is('cms/competed*')) ? 'active' : '' }}" href="{{ route('route_tourcms_completed.index') }}"><i class="far fa-circle"></i> {{ __('Tour Completed') }}</a>
 
             
 
