@@ -9,6 +9,10 @@ Route::resource('/cms/booking','budisteikul\tourcms\Controllers\BookingControlle
 Route::resource('/cms/schedule','budisteikul\tourcms\Controllers\ScheduleController',[ 'names' => 'route_tourcms_schedule' ])
 	->middleware(['web','auth','verified','CoreMiddleware']);
 
+//Completed
+Route::resource('/cms/completed','budisteikul\tourcms\Controllers\CompletedController',[ 'names' => 'route_tourcms_completed' ])
+	->middleware(['web','auth','verified','CoreMiddleware']);
+
 //Category
 Route::get('/cms/category/structure','budisteikul\tourcms\Controllers\CategoryController@structure')->middleware(['web','auth','verified','CoreMiddleware']);
 Route::resource('/cms/category','budisteikul\tourcms\Controllers\CategoryController',[ 'names' => 'route_tourcms_category' ])
