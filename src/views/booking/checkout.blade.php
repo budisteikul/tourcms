@@ -325,7 +325,7 @@ function DELETE()
 <select style="font-size:16px;height:47px;"  class="form-control" id="payment_type" name="payment_type">
 		<option value="none">NONE</option>
 		<option value="xendit-invoice">XENDIT INVOICE</option>
-		<option value="tazapay-promptpay">TAZAPAY PROMPTPAY</option>
+		<!-- option value="tazapay-promptpay">TAZAPAY PROMPTPAY</option>
 		<option value="tazapay-paynow">TAZAPAY PAYNOW</option>
 		<option value="finmo-npp">FINMO NPP</option>
 		<option value="rapyd-creditcard">RAPYD CREDIT CARD</option>
@@ -357,7 +357,7 @@ function DELETE()
 		<option value="rapyd-qris">RAPYD QRIS (not work)</option>
 		<option value="rapyd-promptpay">RAPYD PROMPTPAY (not work)</option>
 		<option value="finmo-paynow">FINMO PAYNOW (not work)</option>
-		<option value="finmo-promptpay">FINMO PROMPTPAY (not work)</option>
+		<option value="finmo-promptpay">FINMO PROMPTPAY (not work)</option -->
 </select>
 </div>            
 <!-- ########################################### -->
