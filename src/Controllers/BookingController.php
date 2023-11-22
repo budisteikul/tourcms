@@ -254,7 +254,9 @@ class BookingController extends Controller
             $update = $request->input('update');
             if($update=="capture")
             {
-                PaypalHelper::captureAuth($shoppingcart->shoppingcart_payment->authorization_id);
+                $captureId = PaypalHelper::captureAuth($shoppingcart->shoppingcart_payment->authorization_id);
+                $shoppingcart->shoppingcart_payment->authorization_id = $captureId;
+                $shoppingcart->shoppingcart_payment->save();
                 BookingHelper::confirm_payment($shoppingcart,"CONFIRMED",true);
             }
             if($update=="void")
