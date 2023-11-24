@@ -61,7 +61,7 @@ function CANCEL(id,transaction_id)
 <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Completed</div>
+                <div class="card-header">Finished</div>
                 <div class="card-body">
         		
                 <div class="container ml-0 pl-0">
