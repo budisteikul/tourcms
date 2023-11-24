@@ -65,11 +65,14 @@ function CREATE()
         onAvailabilitySelected: function(selectedRate, selectedDate, selectedAvailability) {
         },
         onAddedToCart: function(cart) {
+                window.location = '/cms/booking/checkout';
+                /*
                 $.alert({
                     title: 'Info',
                     type: 'green',
                     content: 'The items have been added to your cart!',
                 });
+                */
         },
         
         calendarMonth: {!!$month!!},
