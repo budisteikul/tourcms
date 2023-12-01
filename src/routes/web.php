@@ -47,3 +47,7 @@ Route::resource('/cms/remittance','budisteikul\tourcms\Controllers\RemittanceCon
 Route::resource('/cms/closeout','budisteikul\tourcms\Controllers\CloseOutController',[ 'names' => 'route_tourcms_closeout' ])
 	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
 
+//Setting
+Route::resource('/cms/setting','budisteikul\tourcms\Controllers\SettingController',[ 'names' => 'route_tourcms_setting' ])
+	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
+

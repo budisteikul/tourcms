@@ -52,12 +52,13 @@
         {{ (request()->is('cms/voucher*')) ? 'active' : '' }}
         {{ (request()->is('cms/page*')) ? 'active' : '' }}
         {{ (request()->is('cms/review*')) ? 'active' : '' }}
+        {{ (request()->is('cms/setting*')) ? 'active' : '' }}
 
       ">
       @php
         $collapsed = 'collapsed';
         $show = '';        
-        if(request()->is('cms/booking*') || request()->is('cms/product*') || request()->is('cms/category*') || request()->is('cms/channel*') || request()->is('cms/voucher*') || request()->is('cms/page*') || request()->is('cms/review*'))
+        if(request()->is('cms/setting*') || request()->is('cms/booking*') || request()->is('cms/product*') || request()->is('cms/category*') || request()->is('cms/channel*') || request()->is('cms/voucher*') || request()->is('cms/page*') || request()->is('cms/review*'))
         {
           $collapsed = '';
           $show = 'show';
@@ -83,6 +84,8 @@
            <a class="collapse-item {{ (request()->is('cms/page*')) ? 'active' : '' }}" href="{{ route('route_tourcms_page.index') }}"><i class="far fa-circle"></i> {{ __('Page') }}</a>
             
             <a class="collapse-item {{ (request()->is('cms/review*')) ? 'active' : '' }}" href="{{ route('route_tourcms_review.index') }}"><i class="far fa-circle"></i> {{ __('Review') }}</a>
+
+            <a class="collapse-item {{ (request()->is('cms/setting*')) ? 'active' : '' }}" href="{{ route('route_tourcms_setting.index') }}"><i class="far fa-circle"></i> {{ __('Setting') }}</a>
 
           </div>
         </div>
