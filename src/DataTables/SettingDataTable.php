@@ -32,7 +32,7 @@ class SettingDataTable extends DataTable
                     </div>
                 </div>';
                 })
-                ->rawColumns(['action']);
+                ->rawColumns(['action','value']);
     }
 
     
