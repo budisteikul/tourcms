@@ -7,6 +7,7 @@ use budisteikul\toursdk\Models\Shoppingcart;
 use budisteikul\toursdk\Helpers\BokunHelper;
 use budisteikul\toursdk\Helpers\PaypalHelper;
 use budisteikul\toursdk\Helpers\BookingHelper;
+use budisteikul\toursdk\Helpers\PaymentHelper;
 use budisteikul\toursdk\Models\Channel;
 use budisteikul\toursdk\Models\Product;
 
@@ -134,12 +135,12 @@ class BookingController extends Controller
             {
                 BookingHelper::set_bookingStatus($sessionId,'PENDING');
                 $payment_type_arr = explode("-", $data['payment_type']);
-                $shoppingcart= BookingHelper::create_payment($sessionId,$payment_type_arr[0],$payment_type_arr[1]);
+                $shoppingcart= PaymentHelper::create_payment($sessionId,$payment_type_arr[0],$payment_type_arr[1]);
             }
             else
             {
                 BookingHelper::set_bookingStatus($sessionId,'CONFIRMED');
-                $shoppingcart= BookingHelper::create_payment($sessionId,"none");
+                $shoppingcart= PaymentHelper::create_payment($sessionId,"none");
             }
             
 
@@ -257,12 +258,12 @@ class BookingController extends Controller
                 $captureId = PaypalHelper::captureAuth($shoppingcart->shoppingcart_payment->authorization_id);
                 $shoppingcart->shoppingcart_payment->authorization_id = $captureId;
                 $shoppingcart->shoppingcart_payment->save();
-                BookingHelper::confirm_payment($shoppingcart,"CONFIRMED",true);
+                PaymentHelper::confirm_payment($shoppingcart,"CONFIRMED",true);
             }
             if($update=="void")
             {
                 PaypalHelper::voidPaypal($shoppingcart->shoppingcart_payment->authorization_id);
-                BookingHelper::confirm_payment($shoppingcart,"CANCELED",true);
+                PaymentHelper::confirm_payment($shoppingcart,"CANCELED",true);
             }
             
             return response()->json([
@@ -274,7 +275,7 @@ class BookingController extends Controller
         if($request->input('action')=="cancel")
         {
             $shoppingcart = Shoppingcart::findOrFail($id);
-            BookingHelper::confirm_payment($shoppingcart,"CANCELED");
+            PaymentHelper::confirm_payment($shoppingcart,"CANCELED");
             
             return response()->json([
                         "id"=>"1",
@@ -285,7 +286,7 @@ class BookingController extends Controller
         if($request->input('action')=="confirm")
         {
             $shoppingcart = Shoppingcart::findOrFail($id);
-            BookingHelper::confirm_payment($shoppingcart,"CONFIRMED");
+            PaymentHelper::confirm_payment($shoppingcart,"CONFIRMED");
 
             return response()->json([
                         "id"=>"1",

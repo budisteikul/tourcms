@@ -1,6 +1,6 @@
 @inject('Content', 'budisteikul\toursdk\Helpers\ContentHelper')
 @inject('Booking', 'budisteikul\toursdk\Helpers\BookingHelper')
-
+@inject('Payment', 'budisteikul\toursdk\Helpers\PaymentHelper')
 
 <div class="h-100" style="width:99%">       
  
@@ -40,7 +40,7 @@
             <div class="card-body bg-light">
                
                 <div style="max-width: 350px;margin-top: 10px;">
-                {!! $Booking->get_paymentStatus($shoppingcart) !!}
+                {!! $Payment->get_paymentStatus($shoppingcart) !!}
                 </div>
             </div>
             </div>
