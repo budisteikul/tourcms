@@ -317,50 +317,6 @@ function DELETE()
  				 <div class="card-body" style="padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:15px;">
                  
 <form onSubmit="STORE(); return false;">
-
-<!-- ########################################### -->
-<h3>Payment Type</h3>
-<div class="form-group">
-<label for="payment_type"><strong>Payment</strong></label>
-<select style="font-size:16px;height:47px;"  class="form-control" id="payment_type" name="payment_type">
-		<option value="none">NONE</option>
-		<option value="xendit-invoice">XENDIT INVOICE</option>
-		<!-- option value="tazapay-promptpay">TAZAPAY PROMPTPAY</option>
-		<option value="tazapay-paynow">TAZAPAY PAYNOW</option>
-		<option value="finmo-npp">FINMO NPP</option>
-		<option value="rapyd-creditcard">RAPYD CREDIT CARD</option>
-		<option value="rapyd-alfamart">RAPYD ALFAMART</option>
-		<option value="rapyd-mandiri">RAPYD MANDIRI</option>
-		<option value="rapyd-permata">RAPYD PERMATA</option>
-		<option value="rapyd-cimb">RAPYD CIMBNIAGA</option>
-		<option value="rapyd-bri">RAPYD BRI BANK</option>
-		<option value="rapyd-bni">RAPYD BNI BANK</option>
-		<option value="rapyd-danamon">RAPYD DANAMON</option>
-		<option value="rapyd-maybank">RAPYD MAYBANK</option>
-		<option value="rapyd-sinarmas">RAPYD SINARMAS</option>
-		<option value="rapyd-fast">RAPYD FAST</option>
-		<option value="rapyd-paynow">RAPYD PAYNOW</option>
-		<option value="rapyd-poli">RAPYD POLI</option>
-		<option value="xendit-bss">XENDIT BANK SAHABAT SAMPOERNA</option>
-		<option value="xendit-qris">XENDIT QRIS</option>
-		<option value="xendit-dana">XENDIT DANA</option>
-		<option value="midtrans-permata">MIDTRANS PERMATA</option>
-		<option value="midtrans-bri">MIDTRANS BRI</option>
-		<option value="midtrans-bni">MIDTRANS BNI</option>
-		<option value="midtrans-gopay_qris">MIDTRANS QRIS GOPAY</option>
-		<option value="midtrans-shopeepay_qris">MIDTRANS QRIS SHOPEEPAY</option>
-		<option value="midtrans-gopay">MIDTRANS GOPAY</option>
-		<option value="midtrans-shopeepay">MIDTRANS SHOPEEPAY</option>
-		<option value="duitku-dana">DUITKU DANA</option>
-		<option value="duitku-linkaja_qris">DUITKU LINKAJA QRIS</option>
-		<option value="duitku-linkaja">DUITKU LINKAJA</option>
-		<option value="rapyd-qris">RAPYD QRIS (not work)</option>
-		<option value="rapyd-promptpay">RAPYD PROMPTPAY (not work)</option>
-		<option value="finmo-paynow">FINMO PAYNOW (not work)</option>
-		<option value="finmo-promptpay">FINMO PROMPTPAY (not work)</option -->
-</select>
-</div>            
-<!-- ########################################### -->
 <h3>Booking Channel</h3>
 <div class="form-group">
 <label for="bookingChannel"><strong>Channel</strong></label>
@@ -370,10 +326,6 @@ function DELETE()
         <option value="{{$channel->name}}">{{$channel->name}}</option>
         @endforeach
 </select>
-</div>
-<div class="form-group">
-	<label for="fee"><strong>Fee</strong></label>
-	<input type="number" id="fee" value="0" style="height:47px;" name="fee" class="form-control">
 </div>
 <!-- ########################################### -->
 <h3>Main Contact</h3>
@@ -543,8 +495,6 @@ function STORE()
 	$.ajax({
 		data: JSON.stringify({
             "bookingChannel": $("#bookingChannel").val(),
-            "fee": $("#fee").val(),
-            "payment_type": $("#payment_type").val(),
             "sessionId": '{{$shoppingcart->session_id}}',
             "questions": questions,
         }),

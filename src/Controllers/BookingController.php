@@ -130,28 +130,13 @@ class BookingController extends Controller
             $shoppingcart = BookingHelper::save_question_json($sessionId,$data);
 
             BookingHelper::set_confirmationCode($sessionId);
+            BookingHelper::set_bookingStatus($sessionId,'CONFIRMED');
 
-            if($data['payment_type']!="none")
-            {
-                BookingHelper::set_bookingStatus($sessionId,'PENDING');
-                $payment_type_arr = explode("-", $data['payment_type']);
-                $shoppingcart= PaymentHelper::create_payment($sessionId,$payment_type_arr[0],$payment_type_arr[1]);
-            }
-            else
-            {
-                BookingHelper::set_bookingStatus($sessionId,'CONFIRMED');
-                $shoppingcart= PaymentHelper::create_payment($sessionId,"none");
-            }
-            
-
-
-
-            
+            $shoppingcart= PaymentHelper::create_payment($sessionId,"none");
             $shoppingcart = BookingHelper::confirm_booking($sessionId,false);
 
-
-            
             //Fee ========================================================================
+            /*
                 $fee = $data['fee'];
                 if($fee=="") $fee = 0;
 
@@ -178,7 +163,7 @@ class BookingController extends Controller
                         $shoppingcart_product_detail->save();
                     }
                 }
-            
+            */
             
             
             return response()->json([
