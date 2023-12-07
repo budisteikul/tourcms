@@ -61,9 +61,11 @@ class CategoryController extends Controller
 
         $name =  $request->input('name');
         $parent_id =  $request->input('parent_id');
+        $description =  $request->input('description');
 
         $category = new Category();
         $category->name = $name;
+        $category->description = $description;
         $category->parent_id = $parent_id;
         $category->slug = Str::slug($name,"-");
         $category->save();
@@ -118,8 +120,10 @@ class CategoryController extends Controller
 
         $name =  $request->input('name');
         $parent_id =  $request->input('parent_id');
-        
+        $description =  $request->input('description');
+
         $category->name = $name;
+        $category->description = $description;
         $category->parent_id = $parent_id;
         $category->slug = Str::slug($name,"-");
         $category->save();

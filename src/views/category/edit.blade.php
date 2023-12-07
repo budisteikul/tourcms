@@ -30,6 +30,11 @@
 	<input type="text" id="name" name="name" class="form-control" placeholder="Name" autocomplete="off" value="{{ $category->name }}">
 </div>
 
+<div class="form-group">
+	<label for="description">Description :</label>
+	<input type="text" id="description" name="description" class="form-control" placeholder="Description" autocomplete="off" value="{{ $category->description }}">
+</div>
+
   <div class="form-group">
     <label for="parent_id">Parent</label>
     <select class="form-control" id="parent_id">
@@ -75,6 +80,7 @@ function UPDATE()
         	"_token": $("meta[name=csrf-token]").attr("content"),
 			"name": $('#name').val(),
 			"parent_id": $('#parent_id').val(),
+			"description": $('#description').val(),
         },
 		type: 'PUT',
 		url: '{{ route('route_tourcms_category.update',$category->id) }}'

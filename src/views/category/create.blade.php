@@ -33,6 +33,11 @@
 </div> 
 
 <div class="form-group">
+	<label for="description">Desription :</label>
+	<input type="text" id="description" name="description" class="form-control" placeholder="Description" autocomplete="off">
+</div> 
+
+<div class="form-group">
     <label for="parent_id">Parent</label>
     <select class="form-control" id="parent_id">
       <option value="0">No Parent</option>
@@ -62,7 +67,7 @@ function STORE()
 	var error = false;
 	$("#submit").attr("disabled", true);
 	$('#submit').html('<i class="fa fa-spinner fa-spin"></i>');
-	var input = ["name"];
+	var input = ["name","description"];
 	
 	$.each(input, function( index, value ) {
   		$('#'+ value).removeClass('is-invalid');
@@ -73,6 +78,7 @@ function STORE()
 		data: {
         	"_token": $("meta[name=csrf-token]").attr("content"),
 			"name": $('#name').val(),
+			"description": $('#description').val(),
 			"parent_id": $('#parent_id').val(),
         },
 		type: 'POST',

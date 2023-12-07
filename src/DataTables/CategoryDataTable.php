@@ -99,6 +99,7 @@ class CategoryDataTable extends DataTable
                   ->addClass('text-center align-middle'),
             Column::make('name')->title('Name')->orderable(false)->addClass('align-middle'),
             Column::make('detail')->title('Detail')->orderable(false)->addClass('align-middle'),
+            Column::make('description')->title('Description')->orderable(false)->addClass('align-middle'),
             
             Column::computed('action')
                   ->exportable(false)
