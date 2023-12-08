@@ -49,12 +49,21 @@
 
             @if(Auth::user()->id==1)
             @if($shoppingcart->booking_status!="CANCELED")
+                @if($shoppingcart->shoppingcart_payment->payment_provider=="none")
             <div class="card mb-2">
                 <div class="card-body bg-light">
                     <button id="btn-del" type="button" onClick="CANCEL('{{ $shoppingcart->id }}','{{ $shoppingcart->confirmation_code }}'); return false;" class="btn btn-block btn-danger mr-0"><i class="fa fa-ban"></i> <b>Cancel this booking</b></button>
                 </div>
             </div>
+                @else
+                <div class="card mb-2">
+                <div class="card-body bg-light">
+                    <button id="btn-ref" type="button" onClick="REFUND('{{ $shoppingcart->id }}','{{ $shoppingcart->session_id }}','{{ $shoppingcart->confirmation_code }}'); return false;" class="btn btn-block btn-danger mr-0"><i class="fa fa-ban"></i> <b>Cancel and refund this booking</b></button>
+                </div>
+            </div>
+                @endif
             @endif
+            
             @endif
             
     </div>

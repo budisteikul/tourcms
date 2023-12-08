@@ -261,7 +261,6 @@ class BookingController extends Controller
         {
             $shoppingcart = Shoppingcart::findOrFail($id);
             PaymentHelper::confirm_payment($shoppingcart,"CANCELED");
-            PaymentHelper::create_refund($shoppingcart);
             return response()->json([
                         "id"=>"1",
                         "message"=>'success'
@@ -272,7 +271,6 @@ class BookingController extends Controller
         {
             $shoppingcart = Shoppingcart::findOrFail($id);
             PaymentHelper::confirm_payment($shoppingcart,"CONFIRMED");
-
             return response()->json([
                         "id"=>"1",
                         "message"=>'success'
