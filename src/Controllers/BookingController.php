@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Mail;
 use budisteikul\toursdk\Mail\BookingConfirmedMail;
 
 use budisteikul\toursdk\Helpers\FirebaseHelper;
+use budisteikul\toursdk\Helpers\SettingHelper;
 use budisteikul\toursdk\Models\Review;
 use budisteikul\toursdk\Models\ShoppingcartProduct;
 use budisteikul\toursdk\Models\ShoppingcartQuestion;
@@ -35,7 +36,7 @@ class BookingController extends Controller
     public function __construct()
     {
         $this->bookingChannelUUID = env("BOKUN_BOOKING_CHANNEL");
-        $this->currency = env("BOKUN_CURRENCY");
+        $this->currency = SettingHelper::getSetting('currency');
         $this->lang = env("BOKUN_LANG");
 
     }
