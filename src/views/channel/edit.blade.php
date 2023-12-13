@@ -14,7 +14,7 @@
                     </div>
                     <div class="col-auto text-right mr-0 pr-0">
                         <div class="btn-toolbar justify-content-end">
-                            <button class="btn btn-sm btn-danger mr-0" type="button" onClick="$.fancybox.close();"><i class="fa fa-window-close"></i> Close</button>
+                            <button class="btn btn-sm btn-danger mr-0" type="button" onClick="CLOSE(); return false;"><i class="fa fa-window-close"></i> Close</button>
                         </div>
                     </div>
                 </div>
@@ -27,6 +27,16 @@
 <div class="form-group">
 	<label for="name">Name :</label>
 	<input type="text" id="name" name="name" class="form-control" placeholder="Name" autocomplete="off" value="{{ $channel->name }}">
+</div>
+
+<div class="form-group">
+	<label for="company">Company :</label>
+	<input type="text" id="company" name="company" class="form-control" placeholder="Company" autocomplete="off" value="{{ $channel->company }}">
+</div> 
+
+<div class="form-group">
+	<label for="address">Address :</label>
+    <textarea class="form-control tinymce" id="address" name="address" rows="3">{{ $channel->address }}</textarea>
 </div>
 
 <button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
@@ -43,7 +53,31 @@
 
 </div>
 
+<script>
+$( document ).ready(function() {
+    	tinymce.init({
+  		selector: 'textarea.tinymce',
+ 		height: 500,
+  		menubar: false,
+  		plugins: [
+    	'advlist autolink lists link image charmap print preview anchor',
+    	'searchreplace visualblocks code fullscreen',
+    	'insertdatetime media table paste code help wordcount'
+  		],
+  		toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+  		content_css: [
+    	'//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+    	'//www.tiny.cloud/css/codepen.min.css'
+  		]
+		});	
+});
 
+function CLOSE()
+{
+	tinymce.remove();
+	$.fancybox.close();
+}
+</script>
 <script language="javascript">
 function UPDATE()
 {
