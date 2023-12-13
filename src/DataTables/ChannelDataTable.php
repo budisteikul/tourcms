@@ -42,7 +42,7 @@ class ChannelDataTable extends DataTable
                     </div>
                 </div>';
                 })
-                ->rawColumns(['action']);
+                ->rawColumns(['action','description']);
     }
 
     /**
@@ -98,10 +98,9 @@ class ChannelDataTable extends DataTable
                   ->orderable(false)
                   ->searchable(false)
                   ->addClass('text-center align-middle'),
-                  
+
             Column::make('name')->title('Name')->orderable(false)->addClass('align-middle'),
-            Column::make('company')->title('Company')->orderable(false)->addClass('align-middle'),
-            Column::make('address')->title('Address')->orderable(false)->addClass('align-middle'),
+            Column::make('description')->title('Description')->orderable(false)->addClass('align-middle'),
             
             
             Column::computed('action')

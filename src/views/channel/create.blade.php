@@ -33,13 +33,8 @@
 </div> 
 
 <div class="form-group">
-	<label for="company">Company :</label>
-	<input type="text" id="company" name="company" class="form-control" placeholder="Company" autocomplete="off">
-</div> 
-
-<div class="form-group">
-	<label for="address">Address :</label>
-    <textarea class="form-control tinymce" id="address" name="address" rows="3"></textarea>
+	<label for="description">Description :</label>
+    <textarea class="form-control tinymce" id="description" name="description" rows="3"></textarea>
 </div>
 
 	<button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
@@ -58,7 +53,7 @@
 $( document ).ready(function() {
     	tinymce.init({
   		selector: 'textarea.tinymce',
- 		height: 500,
+ 		height: 200,
   		menubar: false,
   		plugins: [
     	'advlist autolink lists link image charmap print preview anchor',
@@ -83,10 +78,12 @@ function CLOSE()
 <script language="javascript">
 function STORE()
 {
+	tinymce.triggerSave();
+	
 	var error = false;
 	$("#submit").attr("disabled", true);
 	$('#submit').html('<i class="fa fa-spinner fa-spin"></i>');
-	var input = ["name"];
+	var input = ["name","description"];
 	
 	$.each(input, function( index, value ) {
   		$('#'+ value).removeClass('is-invalid');
@@ -97,6 +94,7 @@ function STORE()
 		data: {
         	"_token": $("meta[name=csrf-token]").attr("content"),
 			"name": $('#name').val(),
+			"description": $('#description').val()
         },
 		type: 'POST',
 		url: '{{ route('route_tourcms_channel.store') }}'
@@ -108,6 +106,7 @@ function STORE()
        				$('#dataTableBuilder').DataTable().ajax.reload( null, false );
 					$("#result").empty().append('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><b>Success!</b></div>').hide().fadeIn();
        				setTimeout(function (){
+       					tinymce.remove();
   						$.fancybox.close();
 					}, 1000);
 			}
