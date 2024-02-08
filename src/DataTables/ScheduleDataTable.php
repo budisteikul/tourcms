@@ -32,7 +32,10 @@ class ScheduleDataTable extends DataTable
                     $shoppingcart_id = $id->shoppingcart->id;
                     $question = BookingHelper::get_answer_contact($id->shoppingcart);
                     $name = $question->firstName .' '. $question->lastName;
-                    $name = '<a href="#" onClick="SHOW(\''.$shoppingcart_id.'\'); return false;">'. $name .'</a>';
+                    if(Auth::user()->id==1) {
+                        $name = '<a href="#" onClick="SHOW(\''.$shoppingcart_id.'\'); return false;">'. $name .'</a>';
+                    }
+                    
                     return $name;
                 })
                 ->addColumn('date_text', function($id){

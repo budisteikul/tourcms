@@ -28,11 +28,11 @@
 
             <a class="collapse-item {{ (request()->is('cms/schedule*')) ? 'active' : '' }}" href="{{ route('route_tourcms_schedule.index') }}"><i class="far fa-circle"></i> {{ __('Upcoming') }}</a>
 
+            @if(Auth::user()->id==1)
             <a class="collapse-item {{ (request()->is('cms/completed*')) ? 'active' : '' }}" href="{{ route('route_tourcms_completed.index') }}"><i class="far fa-circle"></i> {{ __('Finished') }}</a>
-
             
             <a class="collapse-item {{ (request()->is('cms/closeout*')) ? 'active' : '' }}" href="{{ route('route_tourcms_closeout.index') }}"><i class="far fa-circle"></i> {{ __('Close Out') }}</a>
-            
+            @endif
             
             
            
