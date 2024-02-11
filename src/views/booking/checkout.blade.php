@@ -355,10 +355,26 @@ function DELETE()
 
 @foreach($shoppingcart->products as $shoppingcart_product)
 	
-	@if(@count($shoppingcart->questions) > 4)
+	@php
+		$have_question = false;
+		foreach($shoppingcart->questions as $question)
+		{
+			if($question->booking_id == $shoppingcart_product->booking_id)
+			{
+				$have_question = true;
+			}
+		}
+
+	@endphp
+
+	@if($have_question)
 	<h2>Question for {{ $shoppingcart_product->title }}</h2>
 	<h5>{{ $ProductHelper->datetotext($shoppingcart_product->date) }}</h5>
 	@endif
+
+	
+
+	
 
 	@foreach($shoppingcart->questions as $question)
 		@if($question->booking_id == $shoppingcart_product->booking_id)
@@ -375,6 +391,7 @@ function DELETE()
 						@endphp
     					<option value="{{ $question_option->value }}" {{ $answer==1 ? "selected" : "" }}>{{ $question_option->label }}</option>
     				@endforeach
+    				</select>
 				@else
 					<input type="text" id="{{ $question->question_id }}" value="{{ $question->answer }}" style="height:47px;" name="{{ $question->question_id }}" class="form-control">
 				@endif
@@ -460,7 +477,16 @@ function DELETE()
         </div>
 	</div>
 
-<script language="javascript">
+
+
+
+		
+                </div>
+            </div>
+        </div>
+ </div>
+
+ <script language="javascript">
 function STORE()
 {
 	var error = false;
@@ -532,11 +558,4 @@ function STORE()
 	return false;
 }
 </script>
-
-
-		
-                </div>
-            </div>
-        </div>
- </div>
 @endsection
