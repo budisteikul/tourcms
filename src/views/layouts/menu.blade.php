@@ -2,7 +2,6 @@
       <hr class="sidebar-divider my-0">
       <li class="nav-item 
       
-       
         {{ (request()->is('cms/partner*')) ? 'active' : '' }}
       
       ">
@@ -15,11 +14,11 @@
           $show = 'show';
         }
       @endphp
-        <a class="nav-link {{$collapsed}}" href="#" data-toggle="collapse" data-target="#menu-order" aria-expanded="true" aria-controls="menu-order">
+        <a class="nav-link {{$collapsed}}" href="#" data-toggle="collapse" data-target="#menu-1" aria-expanded="true" aria-controls="menu-1">
           <i class="fas fa-handshake"></i>
           <span>PARTNER</span>
         </a>
-        <div id="menu-order" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
+        <div id="menu-1" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             
             
@@ -50,11 +49,11 @@
           $show = 'show';
         }
       @endphp
-        <a class="nav-link {{$collapsed}}" href="#" data-toggle="collapse" data-target="#menu-order" aria-expanded="true" aria-controls="menu-order">
+        <a class="nav-link {{$collapsed}}" href="#" data-toggle="collapse" data-target="#menu-2" aria-expanded="true" aria-controls="menu-2">
           <i class="far fa-calendar-alt"></i>
           <span>SCHEDULE</span>
         </a>
-        <div id="menu-order" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
+        <div id="menu-2" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             
             
@@ -97,11 +96,11 @@
           $show = 'show';
         }
       @endphp
-        <a class="nav-link {{$collapsed}}" href="#" data-toggle="collapse" data-target="#menu-library" aria-expanded="false" aria-controls="menu-library">
+        <a class="nav-link {{$collapsed}}" href="#" data-toggle="collapse" data-target="#menu-3" aria-expanded="false" aria-controls="menu-3">
           <i class="fas fa-globe-asia"></i>
           <span>WEBSITE</span>
         </a>
-        <div id="menu-library" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
+        <div id="menu-3" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             
             <a class="collapse-item {{ (request()->is('cms/booking*')) ? 'active' : '' }}" href="{{ route('route_tourcms_booking.index') }}"><i class="far fa-circle"></i> {{ __('Booking') }}</a>

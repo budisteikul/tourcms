@@ -20,6 +20,9 @@ class PartnerDataTable extends DataTable
     {
         return datatables($query)
             ->addIndexColumn()
+            ->addColumn('url', function($id){
+                    return ''. env('APP_URL') .'?ref='.$id->tracking_code .'';
+                })
             ->addColumn('action', function ($id) {
                 return '
                 <div class="btn-toolbar justify-content-end">
@@ -31,7 +34,7 @@ class PartnerDataTable extends DataTable
                     </div>
                 </div>';
             })
-            ->rawColumns(['action']);
+            ->rawColumns(['action','url']);
     }
 
     
@@ -74,7 +77,7 @@ class PartnerDataTable extends DataTable
                   ->searchable(false)
                   ->addClass('text-center align-middle'),
             Column::make('name')->title('Name')->orderable(false)->addClass('align-middle'),
-            Column::make('tracking_code')->title('Code')->orderable(false)->addClass('align-middle'),
+            Column::make('url')->title('Code')->orderable(false)->addClass('align-middle'),
             
             Column::computed('action')
                   ->exportable(false)
