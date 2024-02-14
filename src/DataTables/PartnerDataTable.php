@@ -21,7 +21,7 @@ class PartnerDataTable extends DataTable
         return datatables($query)
             ->addIndexColumn()
             ->addColumn('url', function($id){
-                    return ''. env('APP_URL') .'?ref='.$id->tracking_code .'';
+                    return ''. env('APP_URL') .'/?ref='.$id->tracking_code .'';
                 })
             ->addColumn('action', function ($id) {
                 return '
