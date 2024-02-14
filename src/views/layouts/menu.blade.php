@@ -3,6 +3,39 @@
       <li class="nav-item 
       
        
+        {{ (request()->is('cms/partner*')) ? 'active' : '' }}
+      
+      ">
+      @php
+        $collapsed = 'collapsed';
+        $show = '';        
+        if(request()->is('cms/partner*'))
+        {
+          $collapsed = '';
+          $show = 'show';
+        }
+      @endphp
+        <a class="nav-link {{$collapsed}}" href="#" data-toggle="collapse" data-target="#menu-order" aria-expanded="true" aria-controls="menu-order">
+          <i class="fas fa-handshake"></i>
+          <span>PARTNER</span>
+        </a>
+        <div id="menu-order" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            
+            
+
+            <a class="collapse-item {{ (request()->is('cms/partner*')) ? 'active' : '' }}" href="{{ route('route_tourcms_partner.index') }}"><i class="far fa-circle"></i> {{ __('Partner') }}</a>
+
+           
+          </div>
+        </div>
+      </li>
+<!-- ##################################################################### -->
+<!-- ##################################################################### -->
+      <hr class="sidebar-divider my-0">
+      <li class="nav-item 
+      
+       
         {{ (request()->is('cms/schedule*')) ? 'active' : '' }}
         {{ (request()->is('cms/completed*')) ? 'active' : '' }}
         {{ (request()->is('cms/closeout*')) ? 'active' : '' }}

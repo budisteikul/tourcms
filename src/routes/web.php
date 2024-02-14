@@ -51,3 +51,7 @@ Route::resource('/cms/closeout','budisteikul\tourcms\Controllers\CloseOutControl
 Route::resource('/cms/setting','budisteikul\tourcms\Controllers\SettingController',[ 'names' => 'route_tourcms_setting' ])
 	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);
 
+//Partner	
+Route::resource('/cms/partner','budisteikul\tourcms\Controllers\PartnerController',[ 'names' => 'route_tourcms_partner' ])
+	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);
+
