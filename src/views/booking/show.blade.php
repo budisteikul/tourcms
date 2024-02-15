@@ -25,8 +25,12 @@
 
     <div class="card-body">
             
+            @if(Auth::user()->id==1)
+                {!! $Content->view_invoice($shoppingcart) !!}
+            @else
+                {!! $Content->view_invoice_limited($shoppingcart) !!}
+            @endif
             
-            {!! $Content->view_invoice($shoppingcart) !!}
             
 
             {!! $Content->view_product_detail($shoppingcart) !!}

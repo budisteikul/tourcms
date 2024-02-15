@@ -22,8 +22,9 @@
           <div class="bg-white py-2 collapse-inner rounded">
             
             
+            <a class="collapse-item {{ (request()->is('cms/partner/report*')) ? 'active' : '' }}" href="{{ route('route_tourcms_partner.index') }}/report"><i class="far fa-circle"></i> {{ __('Report') }}</a>
 
-            <a class="collapse-item {{ (request()->is('cms/partner*')) ? 'active' : '' }}" href="{{ route('route_tourcms_partner.index') }}"><i class="far fa-circle"></i> {{ __('Partner') }}</a>
+            
 
            
           </div>

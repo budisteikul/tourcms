@@ -7,6 +7,7 @@ use budisteikul\toursdk\Models\Partner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use budisteikul\tourcms\DataTables\PartnerDataTable;
+use budisteikul\tourcms\DataTables\PartnerReportDataTable;
 use Illuminate\Support\Str;
 use Ramsey\Uuid\Uuid;
 
@@ -18,6 +19,10 @@ class PartnerController extends Controller
         return $dataTable->render('tourcms::partner.index');
     }
 
+    public function report(PartnerReportDataTable $dataTable)
+    {
+        return $dataTable->render('tourcms::partner.report');
+    }
     
     public function create()
     {
@@ -51,13 +56,6 @@ class PartnerController extends Controller
                     "message" => 'Success'
                 ]);
     }
-
-    
-    public function show(Partner $partner)
-    {
-        
-    }
-
     
     public function edit(Partner $partner)
     {

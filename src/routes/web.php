@@ -52,6 +52,7 @@ Route::resource('/cms/setting','budisteikul\tourcms\Controllers\SettingControlle
 	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);
 
 //Partner	
+Route::get('/cms/partner/report','budisteikul\tourcms\Controllers\PartnerController@report')->middleware(['web','auth','verified','CoreMiddleware','SettingMiddleware']);
 Route::resource('/cms/partner','budisteikul\tourcms\Controllers\PartnerController',[ 'names' => 'route_tourcms_partner' ])
 	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);
 
