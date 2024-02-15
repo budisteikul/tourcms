@@ -9,7 +9,7 @@
                 @if(Auth::user()->id==1)
                 <div class="row w-100">
                     <div class="col  text-left">
-                    <a class="btn btn-primary"  href="{{ route('route_tourcms_partner.index') }}"><b class="fa fa-plus-square"></b> Partners</a>
+                    <a class="btn btn-primary"  href="{{ route('route_tourcms_partner.index') }}"><i class="fas fa-list"></i> Partners</a>
                     </div>
                     
                 </div>
