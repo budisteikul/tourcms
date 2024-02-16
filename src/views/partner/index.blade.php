@@ -3,6 +3,10 @@
 @push('scripts')
 <script type="text/javascript">
   
+	function SHOW(id)
+  	{
+  		window.location.href = "{{ route('route_tourcms_partner.index') }}/"+ id;
+  	}
 
 	function DELETE(id)
 	{

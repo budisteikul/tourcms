@@ -10,6 +10,8 @@ use budisteikul\tourcms\DataTables\PartnerDataTable;
 use budisteikul\tourcms\DataTables\PartnerReportDataTable;
 use Illuminate\Support\Str;
 use Ramsey\Uuid\Uuid;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\Storage;
 
 class PartnerController extends Controller
 {
@@ -22,6 +24,17 @@ class PartnerController extends Controller
     public function report(PartnerReportDataTable $dataTable)
     {
         return $dataTable->render('tourcms::partner.report');
+    }
+
+    public function show(Partner $partner)
+    {
+        $qrcode = QrCode::errorCorrection('H')->format('png')->margin(0)->size(630)->generate(''. env('APP_URL') .'/?ref='.$partner->tracking_code .'');
+        $qrcode = 'data:image/png;base64, '. base64_encode($qrcode);
+        list($type, $qrcode) = explode(';', $qrcode);
+        list(, $qrcode)      = explode(',', $qrcode);
+        $qrcode = base64_decode($qrcode);
+        $path = Storage::disk('local')->put($partner->name .'.png', $qrcode);
+        return response()->download(storage_path('app').'/'.$partner->name .'.png')->deleteFileAfterSend(true);
     }
     
     public function create()
