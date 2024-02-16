@@ -26,15 +26,20 @@ class PartnerController extends Controller
         return $dataTable->render('tourcms::partner.report');
     }
 
-    public function show(Partner $partner)
+    public function show($id)
     {
-        $qrcode = QrCode::errorCorrection('H')->format('png')->margin(0)->size(630)->generate(''. env('APP_URL') .'/?ref='.$partner->tracking_code .'');
-        $qrcode = 'data:image/png;base64, '. base64_encode($qrcode);
-        list($type, $qrcode) = explode(';', $qrcode);
-        list(, $qrcode)      = explode(',', $qrcode);
-        $qrcode = base64_decode($qrcode);
-        $path = Storage::disk('local')->put($partner->name .'.png', $qrcode);
-        return response()->download(storage_path('app').'/'.$partner->name .'.png')->deleteFileAfterSend(true);
+
+        $partner = Partner::where('id',$id)->first();
+        if($partner)
+        {
+            $qrcode = QrCode::errorCorrection('H')->format('png')->margin(0)->size(630)->generate(''. env('APP_URL') .'/?ref='.$partner->tracking_code .'');
+            $qrcode = 'data:image/png;base64, '. base64_encode($qrcode);
+            list($type, $qrcode) = explode(';', $qrcode);
+            list(, $qrcode)      = explode(',', $qrcode);
+            $qrcode = base64_decode($qrcode);
+            $path = Storage::disk('local')->put($partner->name .'.png', $qrcode);
+            return response()->download(storage_path('app').'/'.$partner->name .'.png')->deleteFileAfterSend(true);
+        }
     }
     
     public function create()
@@ -55,7 +60,7 @@ class PartnerController extends Controller
         }
 
         $name =  $request->input('name');
-        $tracking_code =  Uuid::uuid4()->toString();
+        $tracking_code =  str_replace("-","",Str::slug($name,"-"));
         $description =  $request->input('description');
 
         $partner = new Partner();
