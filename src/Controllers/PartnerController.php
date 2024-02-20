@@ -109,12 +109,7 @@ class PartnerController extends Controller
    
     public function destroy(Partner $partner)
     {
-        $shoppingcart = Shoppingcart::where('referer',$partner->tracking_code)->first();
-        if($shoppingcart)
-        {
-            $shoppingcart->referer = null;
-            $shoppingcart->save();
-        }
+        Shoppingcart::where('referer',$partner->tracking_code)->update(['referer' => null]);
 		$partner->delete();
     }
 }
