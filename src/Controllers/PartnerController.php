@@ -4,6 +4,7 @@ namespace budisteikul\tourcms\Controllers;
 use App\Http\Controllers\Controller;
 
 use budisteikul\toursdk\Models\Partner;
+use budisteikul\toursdk\Models\Shoppingcart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use budisteikul\tourcms\DataTables\PartnerDataTable;
@@ -108,6 +109,12 @@ class PartnerController extends Controller
    
     public function destroy(Partner $partner)
     {
+        $shoppingcart = Shoppingcart::where('referer',$partner->tracking_code)->first();
+        if($shoppingcart)
+        {
+            $shoppingcart->referer = null;
+            $shoppingcart->save();
+        }
 		$partner->delete();
     }
 }
