@@ -125,7 +125,7 @@ class CategoryController extends Controller
         $category->name = $name;
         $category->description = $description;
         $category->parent_id = $parent_id;
-        $category->slug = Str::slug($name,"-");
+        //$category->slug = Str::slug($name,"-");
         $category->save();
 
         return response()->json([
