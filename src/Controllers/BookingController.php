@@ -131,9 +131,19 @@ class BookingController extends Controller
             $shoppingcart = BookingHelper::save_question_json($sessionId,$data);
 
             BookingHelper::set_confirmationCode($sessionId);
-            BookingHelper::set_bookingStatus($sessionId,'CONFIRMED');
+            
+            if($data['invoice']=="yes")
+            {
+                BookingHelper::set_bookingStatus($sessionId,'PENDING');
+                $shoppingcart= PaymentHelper::create_payment($sessionId,"xendit","invoice");
+            }
+            else
+            {
+                BookingHelper::set_bookingStatus($sessionId,'CONFIRMED');
+                $shoppingcart= PaymentHelper::create_payment($sessionId,"none");
+            }
 
-            $shoppingcart= PaymentHelper::create_payment($sessionId,"none");
+            
             $shoppingcart = BookingHelper::confirm_booking($sessionId,false);
 
             //Fee ========================================================================
@@ -181,8 +191,9 @@ class BookingController extends Controller
     public function show($id)
     {
         $shoppingcart = Shoppingcart::where('id',$id)->firstOrFail();
+        $contact = BookingHelper::get_answer_contact($shoppingcart);
         //BookingHelper::booking_expired($shoppingcart);
-        return view('tourcms::booking.show')->with(['shoppingcart'=>$shoppingcart]);
+        return view('tourcms::booking.show')->with(['shoppingcart'=>$shoppingcart,'contact'=>$contact]);
     }
 
     /**

@@ -317,7 +317,7 @@ function DELETE()
  				 <div class="card-body" style="padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:15px;">
                  
 <form onSubmit="STORE(); return false;">
-<h3>Booking Channel</h3>
+<h3>Configuration</h3>
 <div class="form-group">
 <label for="bookingChannel"><strong>Channel</strong></label>
 <select style="font-size:16px;height:47px;"  class="form-control" id="bookingChannel" name="bookingChannel">
@@ -325,6 +325,14 @@ function DELETE()
         @foreach($channels as $channel)
         <option value="{{$channel->name}}">{{$channel->name}}</option>
         @endforeach
+</select>
+</div>
+<!-- ########################################### -->
+<div class="form-group">
+<label for="invoice"><strong>Invoice</strong></label>
+<select style="font-size:16px;height:47px;"  class="form-control" id="invoice" name="invoice">
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
 </select>
 </div>
 <!-- ########################################### -->
@@ -521,6 +529,7 @@ function STORE()
 	$.ajax({
 		data: JSON.stringify({
             "bookingChannel": $("#bookingChannel").val(),
+            "invoice": $("#invoice").val(),
             "sessionId": '{{$shoppingcart->session_id}}',
             "questions": questions,
         }),
