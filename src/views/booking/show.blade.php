@@ -27,10 +27,10 @@
     <div class="card-body">
             
             @if(Auth::user()->id==1)
-            <div class="card mb-2">
-                <div class="card-header">CUSTOMER</div>
+            <div class="card mb-2 ">
+                <div class="card-header bg-secondary">CUSTOMER</div>
                   <ul class="list-group list-group-flush ml-0 mr-0 pl-0 pr-0">
-                    <li class="list-group-item"><b>Invoice :</b> <a href="/api/pdf/invoice/{{ $shoppingcart->session_id }}/Invoice-{{ $shoppingcart->confirmation_code }}.pdf">Invoide-{{ $shoppingcart->confirmation_code }}.pdf</a></li>
+                    <li class="list-group-item"><a href="/api/pdf/invoice/{{ $shoppingcart->session_id }}/Invoice-{{ $shoppingcart->confirmation_code }}.pdf">Invoide-{{ $shoppingcart->confirmation_code }}.pdf</a></li>
                     <li class="list-group-item"><b>Name :</b> {{ $contact->firstName }} {{ $contact->lastName }}<input type="hidden" id="full_name" value="{{ $contact->firstName }} {{ $contact->lastName }}"> <button onclick="copyToClipboard('#full_name')" title="Copied" data-toggle="tooltip" data-placement="right" data-trigger="click" class="btn btn-light btn-sm invoice-hilang"><i class="far fa-copy"></i></button></li>
                     <li class="list-group-item"><b>Phone :</b> {{ $contact->phoneNumber }}</li>
                     <li class="list-group-item"><b>Email :</b> {{ $contact->email }}</li>
@@ -40,7 +40,7 @@
 
             @else
             <div class="card mb-2">
-                <div class="card-header">CUSTOMER</div>
+                <div class="card-header bg-secondary">CUSTOMER</div>
                   <ul class="list-group list-group-flush ml-0 mr-0 pl-0 pr-0">
                     <li class="list-group-item"><b>Name :</b> {{ $contact->firstName }} {{ $contact->lastName }}<input type="hidden" id="full_name" value="{{ $contact->firstName }} {{ $contact->lastName }}"> <button onclick="copyToClipboard('#full_name')" title="Copied" data-toggle="tooltip" data-placement="right" data-trigger="click" class="btn btn-light btn-sm invoice-hilang"><i class="far fa-copy"></i></button></li>
                     <li class="list-group-item"><b>Status :</b> {{ strtoupper($shoppingcart->booking_status) }}</li>
@@ -51,13 +51,13 @@
             @endif
             
             
-            <div class="card-header">PRODUCT</div>
+            <div class="card-header bg-secondary">PRODUCT</div>
             {!! $Content->view_product_detail($shoppingcart) !!}
             
             @if(Auth::user()->id==1)
             @if($shoppingcart->booking_channel=="WEBSITE")
-            <div class="card mb-2">
-                <div class="card-header">PAYMENT</div>
+            <div class="card mb-2" style="border-radius: 0px;">
+                <div class="card-header bg-secondary" style="border-radius: 0px;">PAYMENT</div>
             
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">
