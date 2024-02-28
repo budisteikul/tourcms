@@ -132,10 +132,12 @@ class BookingController extends Controller
 
             BookingHelper::set_confirmationCode($sessionId);
             
-            if($data['invoice']=="yes")
+            if($data['payment']!="none")
             {
+                $payment = ['CREDIT_CARD'];
+                if($data['payment']=="qris") $payment = ['QRIS'];
                 BookingHelper::set_bookingStatus($sessionId,'PENDING');
-                $shoppingcart= PaymentHelper::create_payment($sessionId,"xendit","invoice");
+                $shoppingcart= PaymentHelper::create_payment($sessionId,"xendit","invoice",$payment);
             }
             else
             {

@@ -329,10 +329,11 @@ function DELETE()
 </div>
 <!-- ########################################### -->
 <div class="form-group">
-<label for="invoice"><strong>Invoice</strong></label>
-<select style="font-size:16px;height:47px;"  class="form-control" id="invoice" name="invoice">
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
+<label for="payment"><strong>Payment</strong></label>
+<select style="font-size:16px;height:47px;"  class="form-control" id="payment" name="payment">
+        <option value="none">No Payment</option>
+        <option value="card">Card</option>
+        <option value="qris">QRIS</option>
 </select>
 </div>
 <!-- ########################################### -->
@@ -529,7 +530,7 @@ function STORE()
 	$.ajax({
 		data: JSON.stringify({
             "bookingChannel": $("#bookingChannel").val(),
-            "invoice": $("#invoice").val(),
+            "payment": $("#payment").val(),
             "sessionId": '{{$shoppingcart->session_id}}',
             "questions": questions,
         }),
