@@ -334,6 +334,9 @@ function DELETE()
         <option value="none">No Payment</option>
         <option value="card">Card</option>
         <option value="qris">QRIS</option>
+        <option value="virtual_account">Virtual Account</option>
+        <option value="ewallet">E-wallet</option>
+        <option value="paylater">Pay Later</option>
 </select>
 </div>
 <!-- ########################################### -->

@@ -136,6 +136,9 @@ class BookingController extends Controller
             {
                 $payment = ['CREDIT_CARD'];
                 if($data['payment']=="qris") $payment = ['QRIS'];
+                if($data['payment']=="virtual_account") $payment = ['BNI','BSI','BRI','MANDIRI','PERMATA','SAHABAT_SAMPOERNA'];
+                if($data['payment']=="ewallet") $payment = ['OVO','DANA'];
+                if($data['payment']=="paylater") $payment = ['AKULAKU','UANGME'];
                 BookingHelper::set_bookingStatus($sessionId,'PENDING');
                 $shoppingcart= PaymentHelper::create_payment($sessionId,"xendit","invoice",$payment);
             }
