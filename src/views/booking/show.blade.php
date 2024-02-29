@@ -61,8 +61,8 @@
             
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <b>Auth ID :</b> {{ $shoppingcart->shoppingcart_payment->authorization_id }}
-                        <input type="hidden" id="auth_id" value="{{ $shoppingcart->shoppingcart_payment->authorization_id }}"> <button onclick="copyToClipboard('#auth_id')" title="Copied" data-toggle="tooltip" data-placement="right" data-trigger="click" class="btn btn-light btn-sm invoice-hilang"><i class="far fa-copy"></i></button>
+                        <b>ID :</b> {{ $shoppingcart->shoppingcart_payment->order_id }}
+                        <input type="hidden" id="order_id" value="{{ $shoppingcart->shoppingcart_payment->order_id }}"> <button onclick="copyToClipboard('#order_id')" title="Copied" data-toggle="tooltip" data-placement="right" data-trigger="click" class="btn btn-light btn-sm invoice-hilang"><i class="far fa-copy"></i></button>
                     </li>
                     <li class="list-group-item"><b>Payment Provider :</b> {{ strtoupper($shoppingcart->shoppingcart_payment->payment_provider) }}</li>
                     <li class="list-group-item"><b>Total :</b> {{ strtoupper($shoppingcart->shoppingcart_payment->currency) }} {{ $General->numberFormat($shoppingcart->shoppingcart_payment->amount) }}</li>
