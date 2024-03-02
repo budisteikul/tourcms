@@ -72,6 +72,9 @@
                         <input type="hidden" id="redirect" value="{{ $shoppingcart->shoppingcart_payment->redirect }}"> <button onclick="copyToClipboard('#redirect')" title="Copied" data-toggle="tooltip" data-placement="right" data-trigger="click" class="btn btn-light btn-sm invoice-hilang"><i class="far fa-copy"></i></button>
                     </li>
                     @endif
+                    @if($shoppingcart->shoppingcart_payment->payment_status==4 && $shoppingcart->shoppingcart_payment->payment_provider=="none")
+                    <li class="list-group-item"><button id="btn-paid" type="button" onClick="PAID('{{ $shoppingcart->id }}','{{ $shoppingcart->confirmation_code }}'); return false;" class="btn btn-block btn-success mr-0"><b>Set payment as Paid</b></button></li>
+                    @endif
                   </ul>
                 
             </div>

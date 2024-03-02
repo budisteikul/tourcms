@@ -46,12 +46,14 @@ class BookingDataTable extends DataTable
                     return GeneralHelper::dateFormat($id->created_at,10);
                 })
                 ->editColumn('booking_status', function($id){
-                    
-                    if($id->booking_status=="PENDING") return '<span class="badge badge-info font-weight-bold">WAITING FOR PAYMENT</span>';
-                    if($id->booking_status=="CANCELED") return '<span class="badge badge-danger font-weight-bold">CANCELED</span>';
-                    if($id->booking_status=="CONFIRMED") return '<span class="badge badge-success font-weight-bold">CONFIRMED</span>';
+                    $booking_status = '';
+                    if($id->booking_status=="PENDING") $booking_status = '<span class="badge badge-warning font-weight-bold">PENDING</span>';
+                    if($id->booking_status=="CANCELED") $booking_status = '<span class="badge badge-danger font-weight-bold">CANCELED</span>';
+                    if($id->booking_status=="CONFIRMED") $booking_status = '<span class="badge badge-success font-weight-bold">CONFIRMED</span>';
 
-                    //return $id->booking_status;
+                    $payment_status = '';
+                    if($id->shoppingcart_payment->payment_status==4) $payment_status = '<span class="badge badge-info font-weight-bold">WAITING FOR PAYMENT</span>';
+                    return $booking_status .' '. $payment_status;
                 })
                 ->addColumn('action', function ($id) {
 
@@ -106,7 +108,7 @@ class BookingDataTable extends DataTable
                     </div>
                 </div>';
                 })
-                ->rawColumns(['action','confirmation_code','booking_status']);
+                ->rawColumns(['action','confirmation_code','booking_status','payment']);
     }
 
     /**
@@ -170,8 +172,6 @@ class BookingDataTable extends DataTable
             Column::make('created_at')->title('Created')->orderable(false)->addClass('align-middle'),
             
             Column::make('booking_status')->title('Status')->orderable(false)->addClass('align-middle'),
-            
-            
             
             ];
         

@@ -35,39 +35,6 @@
     });
   }
 
-	function DELETE(id)
-	{
-		$.confirm({
-    		title: 'Warning',
-    		content: 'Are you sure?',
-    		type: 'red',
-			icon: 'fa fa-trash',
-    		buttons: {   
-        		ok: {
-            		text: "OK",
-            		btnClass: 'btn-danger',
-            		keys: ['enter'],
-            		action: function(){
-                 		 var table = $('#dataTableBuilder').DataTable();
-							       $.ajax({
-							       beforeSend: function(request) {
-    							     request.setRequestHeader("X-CSRF-TOKEN", $("meta[name=csrf-token]").attr("content"));
-  						      },
-     						   type: 'DELETE',
-     						   url: '{{ route('route_tourcms_booking.index') }}/'+ id
-						        }).done(function( msg ) {
-							         table.ajax.reload( null, false );
-						        });	
-            		}
-        		},
-        		cancel: function(){
-                	console.log('the user clicked cancel');
-        		}
-    		}
-		});
-		
-	}
-	
 	function CREATE()
 	{
 		$.fancybox.open({
@@ -90,62 +57,6 @@
       }); 
   }
 	
-  function REFUND(id,sessionId,confirmationCode)
-  {
-
-      $.confirm({
-        title: 'Warning',
-        content: 'Are you sure want to cancel order with booking number '+ confirmationCode +'?',
-        type: 'red',
-        icon: 'fa fa-ban',
-        buttons: {   
-            ok: {
-                text: "OK",
-                btnClass: 'btn-danger',
-                keys: ['enter'],
-                action: function(){
-                     var table = $('#dataTableBuilder').DataTable();
-                     $("#btn-ref").attr("disabled", true);
-                     $('#btn-ref').html('<i class="fa fa-spinner fa-spin"></i>');
-                     $.ajax({
-                        data: {
-                          "_token": $("meta[name=csrf-token]").attr("content"),
-                          "action": 'cancel',
-      
-                        },
-                        type: 'PUT',
-                        url: '{{ route('route_tourcms_booking.index') }}/'+ id
-                        }).done(function( data ) {
-                          
-                          $.ajax({
-                              data: {
-                                "_token": $("meta[name=csrf-token]").attr("content"),
-                              },
-                              type: 'POST',
-                              url: '{{ env('APP_API_URL') }}/cancel/'+ sessionId +'/'+ confirmationCode
-                          }).done(function( data ) {
-                              table.ajax.reload( null, false );
-                              setTimeout(function (){
-                                  $.fancybox.close();
-                              }, 1000);
-                          });
-
-                        });
-
-                }
-            },
-            cancel: function(){
-                  console.log('the user clicked cancel');
-            }
-        }
-    });
-
-
-
-
-      
-  }
-
 
 	function CANCEL(id,transaction_id)
   {
@@ -188,11 +99,11 @@
     
   }
 
-  function CONFIRM(id)
+  function PAID(id,transaction_id)
   {
     $.confirm({
         title: 'Warning',
-        content: 'Are you sure?',
+        content: 'Are you sure want to set as paid on order with booking number '+ transaction_id +'?',
         type: 'green',
       icon: 'fa fa-ban',
         buttons: {   
@@ -202,16 +113,21 @@
                 keys: ['enter'],
                 action: function(){
                      var table = $('#dataTableBuilder').DataTable();
+                     $("#btn-paid").attr("disabled", true);
+                     $('#btn-paid').html('<i class="fa fa-spinner fa-spin"></i>');
                      $.ajax({
                         data: {
                           "_token": $("meta[name=csrf-token]").attr("content"),
-                          "action": 'confirm',
+                          "action": 'paid',
       
                         },
                         type: 'PUT',
                         url: '{{ route('route_tourcms_booking.index') }}/'+ id
                         }).done(function( data ) {
                           table.ajax.reload( null, false );
+                          setTimeout(function (){
+                              $.fancybox.close();
+                            }, 1000);
                         });
 
                 }

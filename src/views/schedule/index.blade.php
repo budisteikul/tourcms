@@ -25,46 +25,35 @@ function EDIT(id)
     
   }
 
-function REFUND(id,sessionId,confirmationCode)
+function PAID(id,transaction_id)
   {
-
-      $.confirm({
+    $.confirm({
         title: 'Warning',
-        content: 'Are you sure want to cancel order with booking number '+ confirmationCode +'?',
-        type: 'red',
-        icon: 'fa fa-ban',
+        content: 'Are you sure want to set as paid on order with booking number '+ transaction_id +'?',
+        type: 'green',
+      icon: 'fa fa-ban',
         buttons: {   
             ok: {
                 text: "OK",
-                btnClass: 'btn-danger',
+                btnClass: 'btn-success',
                 keys: ['enter'],
                 action: function(){
                      var table = $('#dataTableBuilder').DataTable();
-                     $("#btn-ref").attr("disabled", true);
-                     $('#btn-ref').html('<i class="fa fa-spinner fa-spin"></i>');
+                     $("#btn-paid").attr("disabled", true);
+                     $('#btn-paid').html('<i class="fa fa-spinner fa-spin"></i>');
                      $.ajax({
                         data: {
                           "_token": $("meta[name=csrf-token]").attr("content"),
-                          "action": 'cancel',
+                          "action": 'paid',
       
                         },
                         type: 'PUT',
                         url: '{{ route('route_tourcms_booking.index') }}/'+ id
                         }).done(function( data ) {
-                          
-                          $.ajax({
-                              data: {
-                                "_token": $("meta[name=csrf-token]").attr("content"),
-                              },
-                              type: 'POST',
-                              url: '{{ env('APP_API_URL') }}/cancel/'+ sessionId +'/'+ confirmationCode
-                          }).done(function( data ) {
-                              table.ajax.reload( null, false );
-                              setTimeout(function (){
-                                  $.fancybox.close();
-                              }, 1000);
-                          });
-
+                          table.ajax.reload( null, false );
+                          setTimeout(function (){
+                              $.fancybox.close();
+                            }, 1000);
                         });
 
                 }
@@ -74,11 +63,7 @@ function REFUND(id,sessionId,confirmationCode)
             }
         }
     });
-
-
-
-
-      
+    
   }
   
 function CANCEL(id,transaction_id)

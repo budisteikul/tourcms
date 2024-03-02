@@ -146,10 +146,16 @@ class BookingController extends Controller
             {
                 BookingHelper::set_bookingStatus($sessionId,'CONFIRMED');
                 $shoppingcart= PaymentHelper::create_payment($sessionId,"none");
+                if($data['bookingChannel']=="WEBSITE")
+                {
+                    $shoppingcart = PaymentHelper::set_paymentStatus($sessionId,4);
+                }
             }
 
             
             $shoppingcart = BookingHelper::confirm_booking($sessionId,false);
+
+            
 
             //Fee ========================================================================
             /*
@@ -242,37 +248,6 @@ class BookingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if($request->input('update')!="")
-        {
-            $validator = Validator::make($request->all(), [
-                    'update' => 'in:capture,void'
-            ]);
-                
-            if ($validator->fails()) {
-                $errors = $validator->errors();
-                return response()->json($errors);
-            }
-
-            $shoppingcart = Shoppingcart::findOrFail($id);
-            $update = $request->input('update');
-            if($update=="capture")
-            {
-                $captureId = PaypalHelper::captureAuth($shoppingcart->shoppingcart_payment->authorization_id);
-                $shoppingcart->shoppingcart_payment->authorization_id = $captureId;
-                $shoppingcart->shoppingcart_payment->save();
-                PaymentHelper::confirm_payment($shoppingcart,"CONFIRMED",true);
-            }
-            if($update=="void")
-            {
-                PaypalHelper::voidPaypal($shoppingcart->shoppingcart_payment->authorization_id);
-                PaymentHelper::confirm_payment($shoppingcart,"CANCELED",true);
-            }
-            
-            return response()->json([
-                        "id"=>"1",
-                        "message"=>'success'
-                    ]);
-        }
 
         if($request->input('action')=="cancel")
         {
@@ -284,10 +259,11 @@ class BookingController extends Controller
                     ]);
         }
 
-        if($request->input('action')=="confirm")
+        if($request->input('action')=="paid")
         {
             $shoppingcart = Shoppingcart::findOrFail($id);
-            PaymentHelper::confirm_payment($shoppingcart,"CONFIRMED");
+            $shoppingcart->shoppingcart_payment->payment_status = 2;
+            $shoppingcart->shoppingcart_payment->save();
             return response()->json([
                         "id"=>"1",
                         "message"=>'success'
