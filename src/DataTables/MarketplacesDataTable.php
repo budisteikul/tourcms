@@ -1,8 +1,8 @@
 <?php
 
-namespace App\DataTables;
+namespace budisteikul\tourcms\DataTables;
 
-use App\Models\Marketplace;
+use budisteikul\toursdk\Models\Marketplace;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -22,9 +22,23 @@ class MarketplacesDataTable extends DataTable
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
-        return (new EloquentDataTable($query))
-            ->addColumn('action', 'marketplaces.action')
-            ->setRowId('id');
+        return datatables($query)
+            ->addIndexColumn()
+            ->addColumn('product', function ($id) {
+                return $id->product->name;
+            })
+            ->addColumn('action', function ($id) {
+                return '
+                <div class="btn-toolbar justify-content-end">
+                    <div class="btn-group mr-2" role="group">
+                        
+                        <button id="btn-edit" type="button" onClick="EDIT(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success pt-0 pb-0 pl-1 pr-1"><i class="fa fa-edit"></i> Edit</button>
+                        <button id="btn-del" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger pt-0 pb-0 pl-1 pr-1"><i class="fa fa-trash-alt"></i> Delete</button>
+                        
+                    </div>
+                </div>';
+            })
+            ->rawColumns(['action']);
     }
 
     /**
@@ -46,19 +60,20 @@ class MarketplacesDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('marketplaces-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    //->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
+                    ->parameters([
+                        'language' => [
+                            'paginate' => [
+                                'previous'=>'<i class="fa fa-step-backward"></i>',
+                                'next'=>'<i class="fa fa-step-forward"></i>',
+                                'first'=>'<i class="fa fa-fast-backward"></i>',
+                                'last'=>'<i class="fa fa-fast-forward"></i>'
+                                ]
+                            ],
+                        'pagingType' => 'full_numbers',
+                        'responsive' => true,
+                        'order' => [0,'desc']
                     ]);
     }
 
@@ -70,16 +85,28 @@ class MarketplacesDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+            Column::make('created_at')
+                  ->visible(false)
+                  ->searchable(false),
+            Column::computed('DT_RowIndex')
+                  ->width(30)
+                  ->title('No')
+                  ->orderable(false)
+                  ->searchable(false)
+                  ->addClass('text-center align-middle'),
+
+            Column::make('product')->title('Product')->orderable(false)->addClass('align-middle'),
+            Column::make('name')->title('Name')->orderable(false)->addClass('align-middle'),
+            Column::make('link')->title('Link')->orderable(false)->addClass('align-middle'),
+            
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(60)
+                  ->width(300)
                   ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            
         ];
+
     }
 
     /**
