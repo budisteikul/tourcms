@@ -26,6 +26,7 @@ use budisteikul\toursdk\Models\ShoppingcartProduct;
 use budisteikul\toursdk\Models\ShoppingcartQuestion;
 use budisteikul\toursdk\Models\ShoppingcartQuestionOption;
 use budisteikul\toursdk\Models\ShoppingcartPayment;
+use budisteikul\toursdk\Models\ShoppingcartCancellation;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 
@@ -253,6 +254,23 @@ class BookingController extends Controller
         {
             $shoppingcart = Shoppingcart::findOrFail($id);
             PaymentHelper::confirm_payment($shoppingcart,"CANCELED");
+            
+            $cancel = New ShoppingcartCancellation();
+            $cancel->shoppingcart_id = $shoppingcart->id;
+            $cancel->currency = $shoppingcart->shoppingcart_payment->currency;
+            $cancel->amount = $shoppingcart->shoppingcart_payment->amount;
+            if($shoppingcart->booking_channel!="WEBSITE")
+            {
+                $cancel->refund = $shoppingcart->shoppingcart_payment->amount;
+            }
+            else
+            {
+                $cancel->refund = 0;
+            }
+            
+            $cancel->save();
+
+
             return response()->json([
                         "id"=>"1",
                         "message"=>'success'
