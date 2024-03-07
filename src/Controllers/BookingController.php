@@ -265,7 +265,15 @@ class BookingController extends Controller
             }
             else
             {
-                $cancel->refund = 0;
+                if($shoppingcart->shoppingcart_payment->payment_status==2)
+                {
+                    $cancel->refund = 0;
+                }
+                else
+                {
+                    $cancel->refund = $shoppingcart->shoppingcart_payment->amount;
+                }
+                
             }
             
             $cancel->save();
