@@ -36,8 +36,7 @@
 <div class="form-group">
     <label for="name">Name</label>
     <select class="form-control" id="name">
-      <option value="tripadvisor" {{ $marketplace->name == "tripadvisor" ? "selected" : "" }}>TripAdvisor</option>
-      <option value="airbnb" {{ $marketplace->name == "airbnb" ? "selected" : "" }}>Airbnb</option>
+      <option value="viator" {{ $marketplace->name == "viator" ? "selected" : "" }}>Viator</option>
       <option value="getyourguide" {{ $marketplace->name == "getyourguide" ? "selected" : "" }}>GetYourGuide</option>
     </select>
 </div>

@@ -39,8 +39,7 @@
 <div class="form-group">
     <label for="name">Name</label>
     <select class="form-control" id="name">
-      <option value="tripadvisor">TripAdvisor</option>
-      <option value="airbnb">Airbnb</option>
+      <option value="viator">Viator</option>
       <option value="getyourguide">GetYourGuide</option>
     </select>
 </div>
