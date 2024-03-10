@@ -146,9 +146,9 @@
            
             <a class="collapse-item {{ (request()->is('cms/product*')) ? 'active' : '' }}" href="{{ route('route_tourcms_product.index') }}"><i class="far fa-circle"></i> {{ __('Product') }}</a>
             
-            <a class="collapse-item {{ (request()->is('cms/marketplaces*')) ? 'active' : '' }}" href="{{ route('route_tourcms_marketplaces.index') }}"><i class="far fa-circle"></i> {{ __('Marketplaces') }}</a>
-
             <a class="collapse-item {{ (request()->is('cms/category*')) ? 'active' : '' }}" href="{{ route('route_tourcms_category.index') }}"><i class="far fa-circle"></i> {{ __('Category') }}</a>
+
+            <a class="collapse-item {{ (request()->is('cms/marketplaces*')) ? 'active' : '' }}" href="{{ route('route_tourcms_marketplaces.index') }}"><i class="far fa-circle"></i> {{ __('Marketplaces') }}</a>
             
             <a class="collapse-item {{ (request()->is('cms/channel*')) ? 'active' : '' }}" href="{{ route('route_tourcms_channel.index') }}"><i class="far fa-circle"></i> {{ __('Channel') }}</a>
 
