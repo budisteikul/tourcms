@@ -113,6 +113,11 @@ var uploadObj = $("#mulitplefileuploader").uploadFile(settings);
 	<input type="number" id="deposit_amount" name="deposit_amount" class="form-control" placeholder="Deposit amount" autocomplete="off" value="0">
 </div> 
 
+<div class="form-group">
+	<label for="min_participant">Min participant :</label>
+	<input type="number" id="min_participant" name="min_participant" class="form-control" placeholder="Min participant" autocomplete="off" value="1">
+</div> 
+
 
 	<button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
 	</form>
@@ -153,6 +158,7 @@ function STORE()
 			"category_id": $('#category_id').val(),
 			"deposit_percentage": $('#deposit_percentage').is(':checked'),
 			"deposit_amount": $('#deposit_amount').val(),
+			"min_participant": $('#min_participant').val(),
 			"key": '{{ $file_key }}'
 			
         },

@@ -88,6 +88,8 @@ class ProductController extends Controller
         $deposit_percentage = $deposit_percentage === 'true'? true: false;
         $deposit_amount =  $request->input('deposit_amount');
 		if($deposit_amount=="") $deposit_amount = 0;
+        $min_participant =  $request->input('min_participant');
+        if($min_participant=="") $min_participant = 1;
 
 
         $value = BokunHelper::get_product($bokun_id);
@@ -105,6 +107,7 @@ class ProductController extends Controller
 		$product->bokun_id = $bokun_id;
         $product->deposit_percentage = $deposit_percentage;
         $product->deposit_amount = $deposit_amount;
+        $product->min_participant = $min_participant;
         $product->category_id = $category_id;
         $product->save();
 		
@@ -197,6 +200,8 @@ class ProductController extends Controller
         $deposit_percentage = $deposit_percentage === 'true'? true: false;
         $deposit_amount =  $request->input('deposit_amount');
         if($deposit_amount=="") $deposit_amount = 0;
+        $min_participant =  $request->input('min_participant');
+        if($min_participant=="") $min_participant = 1;
 
         $value = BokunHelper::get_product($bokun_id);
         if($value=="")
@@ -206,12 +211,15 @@ class ProductController extends Controller
                 ]);
         }
         
+
+
         $product->name = $name;
         //$product->slug = Str::slug($name,'-');
 		$product->bokun_id = $bokun_id;
         $product->deposit_percentage = $deposit_percentage;
         $product->deposit_amount = $deposit_amount;
 		$product->category_id = $category_id;
+        $product->min_participant = $min_participant;
         $product->save();
 
         foreach($product->images->sortBy('sort') as $image)
