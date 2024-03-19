@@ -33,6 +33,8 @@
                     <li class="list-group-item"><a href="/api/pdf/invoice/{{ $shoppingcart->session_id }}/Invoice-{{ $shoppingcart->confirmation_code }}.pdf"><i class="far fa-file-pdf"></i> Invoice-{{ $shoppingcart->confirmation_code }}.pdf</a></li>
                     <li class="list-group-item"><b>Name :</b> {{ $contact->firstName }} {{ $contact->lastName }}<input type="hidden" id="full_name" value="{{ $contact->firstName }} {{ $contact->lastName }}"> <button onclick="copyToClipboard('#full_name')" title="Copied" data-toggle="tooltip" data-placement="right" data-trigger="click" class="btn btn-light btn-sm invoice-hilang"><i class="far fa-copy"></i></button></li>
                     
+                    
+                    @if($contact->phoneNumber!="")
                     @php
                         $number = $contact->phoneNumber;
                         $number_array = explode(" ",$number);
@@ -49,9 +51,16 @@
                         $nomor = "+". $nomor;
                     @endphp
                     <li class="list-group-item"><b>Phone :</b> {{ $contact->phoneNumber }} <input type="hidden" id="Whatsapp" value="{{ $nomor }}"> <button onclick="copyToClipboard('#Whatsapp')" title="Copied" data-toggle="tooltip" data-placement="right" data-trigger="click" class="btn btn-light btn-sm invoice-hilang"><i class="far fa-copy"></i></button></li>
-                    <li class="list-group-item"><b>Whatsapp :</b> <a href="https://wa.me/{{ $nomor }}" class="btn btn-sm btn-success" target="_blank">Open {{ $nomor }}</a> </li>
+                    @endif
+                    @if($contact->email!="")
                     <li class="list-group-item"><b>Email :</b> {{ $contact->email }}</li>
+                    @endif
                     <li class="list-group-item"><b>Status :</b> {{ strtoupper($shoppingcart->booking_status) }}</li>
+                    @if($contact->phoneNumber!="")
+                    <li class="list-group-item">
+                        <a href="https://wa.me/{{ $nomor }}" class="btn btn-sm btn-success" target="_blank"><i class="fab fa-whatsapp"></i> {{ $nomor }}</a>
+                    </li>
+                    @endif
                   </ul>
             </div>
 
