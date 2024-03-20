@@ -82,7 +82,7 @@ class PartnerReportDataTable extends DataTable
                   ->addClass('text-center align-middle'),
 
             Column::make('confirmation_code')->title('Transaction ID')->orderable(false)->addClass('align-middle'),
-            Column::make('partners.name')->title('Referer')->orderable(false)->addClass('align-middle'),
+            Column::make('partners.name')->title('Partner')->orderable(false)->addClass('align-middle'),
             Column::make('created_at')->title('Created at')->orderable(false)->addClass('align-middle'),
             Column::make('booking_status')->title('Status')->orderable(false)->addClass('align-middle'),
             
