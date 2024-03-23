@@ -40,7 +40,7 @@ class SettingController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255|unique:settings,name',
-            'value' => 'required|string|max:255',
+            'value' => 'required|string',
         ]);
 
         if ($validator->fails()) {
@@ -95,7 +95,7 @@ class SettingController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255|unique:categories,name,'.$setting->id,
-            'value' => 'required|string|max:255',
+            'value' => 'required|string',
         ]);
 
         if ($validator->fails()) {
