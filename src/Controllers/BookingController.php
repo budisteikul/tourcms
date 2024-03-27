@@ -147,10 +147,7 @@ class BookingController extends Controller
             {
                 BookingHelper::set_bookingStatus($sessionId,'CONFIRMED');
                 $shoppingcart= PaymentHelper::create_payment($sessionId,"none");
-                if($data['bookingChannel']=="WEBSITE")
-                {
-                    $shoppingcart = PaymentHelper::set_paymentStatus($sessionId,4);
-                }
+                $shoppingcart = PaymentHelper::set_paymentStatus($sessionId,4);
             }
 
             
