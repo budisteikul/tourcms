@@ -81,7 +81,7 @@
             {!! $Content->view_product_detail($shoppingcart) !!}
             
             @if(Auth::user()->id==1)
-            @if($shoppingcart->booking_channel=="WEBSITE")
+            
             <div class="card mb-2" style="border-radius: 0px;">
                 <div class="card-header bg-secondary" style="border-radius: 0px;">PAYMENT</div>
             
@@ -104,7 +104,7 @@
                   </ul>
                 
             </div>
-            @endif
+            
             @endif
 
             @if(Auth::user()->id==1)
