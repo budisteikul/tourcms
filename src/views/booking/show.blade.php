@@ -2,6 +2,7 @@
 @inject('Booking', 'budisteikul\toursdk\Helpers\BookingHelper')
 @inject('Payment', 'budisteikul\toursdk\Helpers\PaymentHelper')
 @inject('General', 'budisteikul\toursdk\Helpers\GeneralHelper')
+@inject('Whatsapp', 'budisteikul\toursdk\Helpers\WhatsappHelper')
 
 <div class="h-100" style="width:99%">       
  
@@ -48,7 +49,7 @@
                         {
                             $nomor .= preg_replace("/[^0-9]/","",$no);
                         }
-                        $nomor = "+". $nomor;
+                        
                     @endphp
                     <li class="list-group-item"><b>Phone :</b> {{ $contact->phoneNumber }} <input type="hidden" id="Whatsapp" value="{{ $nomor }}"> <button onclick="copyToClipboard('#Whatsapp')" title="Copied" data-toggle="tooltip" data-placement="right" data-trigger="click" class="btn btn-light btn-sm invoice-hilang"><i class="far fa-copy"></i></button></li>
                     @endif
@@ -59,6 +60,9 @@
                     @if($contact->phoneNumber!="")
                     <li class="list-group-item">
                         <a href="https://wa.me/{{ $nomor }}" class="btn btn-sm btn-success" target="_blank"><i class="fab fa-whatsapp"></i> {{ $nomor }}</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/cms/whatsapp/chat/{{ $Whatsapp->contact($nomor, $contact->firstName .' '. $contact->lastName) }}" class="btn btn-sm btn-primary" target="_blank"> Web chat</a>
                     </li>
                     @endif
                   </ul>
