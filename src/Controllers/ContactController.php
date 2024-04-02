@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace budisteikul\tourcms\Controllers;
+use App\Http\Controllers\Controller;
 
 use App\Http\Requests\StoreContactRequest;
 use App\Http\Requests\UpdateContactRequest;
-use App\Models\Contact;
+
+use budisteikul\toursdk\Models\Contact;
+use budisteikul\toursdk\Models\Message;
 
 class ContactController extends Controller
 {
@@ -58,7 +61,8 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        //
+        $messages = Message::where('contact_id',$contact->id)->orderBy('created_at','asc')->get();
+        return view('tourcms::contact.edit',['contact'=>$contact,'messages'=>$messages]);
     }
 
     /**
