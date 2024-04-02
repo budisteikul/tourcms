@@ -4,11 +4,9 @@
 @foreach($messages as $message)
 @php
   $style1 = 'card bg-light mb-2';
-  $style2 = 'card-text mb-0';
   if($message->from==null)
   {
-      $style2 = 'card text-white bg-success mb-2';
-      $style2 = 'card-text mb-0 text-right';
+      $style1 = 'card text-white bg-success mb-2';
   }
 
   $message_text = '';
