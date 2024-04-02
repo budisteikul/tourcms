@@ -62,7 +62,7 @@
                         <a href="https://wa.me/{{ $nomor }}" class="btn btn-sm btn-success" target="_blank"><i class="fab fa-whatsapp"></i> {{ $nomor }}</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="/cms/contact/{{ $Whatsapp->contact($nomor, $contact->firstName .' '. $contact->lastName) }}/edit" class="btn btn-sm btn-primary" target="_blank"> Web chat</a>
+                        <a href="/cms/contact/{{ $Whatsapp->contact($nomor, $contact->firstName) }}/edit" class="btn btn-sm btn-primary" target="_blank"> Web chat</a>
                     </li>
                     @endif
                   </ul>

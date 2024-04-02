@@ -24,6 +24,52 @@ class ContactController extends Controller
         return view('tourcms::contact.message',['messages'=>$messages]);
     }
 
+    public function template(Request $request)
+    {
+            $validator = Validator::make($request->all(), [
+                'template_id' => 'required|string|max:255',
+                'id' => 'required|string|max:255',
+            ]);
+
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return response()->json($errors);
+            }
+
+            $id = $request->input('id');
+            $template_id = $request->input('template_id');
+
+            $contact = Contact::where('id',$id)->firstOrFail();
+
+        $whatsapp = new WhatsappHelper;
+        switch($template_id)
+        {
+            case 1:
+                $whatsapp->sendText($contact->wa_id,"Hello ".$contact->name." 👋\nThank you for booking our tour 😊\nThe Yogyakarta Night Walking and Food Tours will start tonight at *6.45 PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)\n\nMap\nhttps://linktr.ee/foodtour");
+            break;
+            case 2:
+                $whatsapp->sendText($contact->wa_id,"Hello ".$contact->name." 👋\nThank you for booking our tour 😊\nThe Morning Food Tour in Yogyakarta will start tomorrow morning at *7.30 AM* and our meeting point is near *Lupis Mbah Satinem*\n\nMap\nhttps://linktr.ee/foodtour");
+            break;
+            case 3:
+                $whatsapp->sendText($contact->wa_id,"By the way, do you have any food allergy or dietary requirements?");
+            break;
+            case 4:
+                $whatsapp->sendText($contact->wa_id,"Got it 🫡 Thank you for your confirmation 🙏😊");
+            break;
+            case 5:
+                $whatsapp->sendImage($contact->wa_id,"https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/kalika.jpeg","Her name is Kalika Ratna. She will be the tour guide on duty and will be waiting for you at meeting point 😊");
+            break;
+            case 6:
+                $whatsapp->sendImage($contact->wa_id,"https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/anisa.jpeg","Her name is Anisa Rahma. She will be the tour guide on duty and will be waiting for you at meeting point 😊");
+            break;
+        }
+        //$whatsapp->sendText("6285743112112","Thank you for booking our tour 😊\nThe Yogyakarta Night Walking and Food Tours will start tonight at *6.45 PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)\n\nMap\nhttps://linktr.ee/foodtour");
+
+        //$whatsapp->sendText("6285743112112","By the way, do you have any food allergy or dietary requirements?");
+                
+        //$whatsapp->sendImage("6285743112112","https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/kalika.jpeg","Her name is Kalika Ratna. She will be the tour guide on duty and will be waiting for you at meeting point 😊");
+    }
+
     /**
      * Display a listing of the resource.
      *

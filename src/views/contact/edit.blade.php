@@ -11,10 +11,12 @@
                   
                     <div class="col  text-left">
                     <div class="mb-2"><strong>Template :</strong></div>
-                    <button type="button" class="btn btn-primary"  onclick="CREATE(); return false;"><b class="fa fa-plus-square"></b> Template 1</button>
-                    <button type="button" class="btn btn-primary"  onclick="CREATE(); return false;"><b class="fa fa-plus-square"></b> Template 2</button>
-                    <button type="button" class="btn btn-primary"  onclick="CREATE(); return false;"><b class="fa fa-plus-square"></b> Template 3</button>
-                    <button type="button" class="btn btn-primary"  onclick="CREATE(); return false;"><b class="fa fa-plus-square"></b> Template 4</button>
+                    <button type="button" class="btn btn-primary" id="template1"  onclick="sendTemplate(1); return false;"><b class="fa fa-plus-square"></b> Notif Night Food Tour</button>
+                    <button type="button" class="btn btn-primary" id="template2"  onclick="sendTemplate(2); return false;"><b class="fa fa-plus-square"></b> Notif Morning Food Tour</button>
+                    <button type="button" class="btn btn-primary" id="template3"  onclick="sendTemplate(3); return false;"><b class="fa fa-plus-square"></b> Ask dietary</button>
+                    <button type="button" class="btn btn-primary" id="template4"  onclick="sendTemplate(4); return false;"><b class="fa fa-plus-square"></b> Thanks for question</button>
+                    <button type="button" class="btn btn-primary" id="template5"  onclick="sendTemplate(5); return false;"><b class="fa fa-plus-square"></b> Kalika Guide</button>
+                    <button type="button" class="btn btn-primary" id="template6"  onclick="sendTemplate(6); return false;"><b class="fa fa-plus-square"></b> Anisa Guide</button>
                     </div>
                     <div class="col-auto text-right mr-0 pr-0">
                     
@@ -55,6 +57,27 @@
 fileUpload();
 getMessage();
 
+function sendTemplate(template_id)
+{
+    var old_text = '<b class="fa fa-plus-square"></b> '+ $("#template"+template_id).text();
+    
+    $("#template"+template_id).attr("disabled", true);
+    $("#template"+template_id).html('<i class="fa fa-spinner fa-spin"></i>');
+    $.ajax({
+    data: {
+      "_token": $("meta[name=csrf-token]").attr("content"),
+      "id": "{{ $contact->id }}",
+      "template_id": template_id
+        },
+    type: 'POST',
+    url: '{{ route('route_tourcms_contact.index') .'/template' }}'
+    }).done(function( data ) {
+      getMessage();
+      $("#template"+template_id).attr("disabled", false);
+      $("#template"+template_id).html(old_text);
+    });
+    return false;
+}
 
 function getMessage()
 {
@@ -104,7 +127,7 @@ function sendMessage()
               $(".ajax-file-upload-container").remove();
               
               fileUpload();
-              
+
           }, 1000);
       }
       else
