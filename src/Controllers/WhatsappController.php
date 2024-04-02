@@ -14,7 +14,7 @@ class WhatsappController extends Controller
         print_r("halooo");
     }
 
-    public function show($id)
+    public function show(WAContact $contact)
     {
 
         
@@ -33,9 +33,10 @@ class WhatsappController extends Controller
     
     public function edit(WAContact $contact)
     {
+        print_r($contact->wa_id);
         //$contact = WAContact::where('id',$id)->firstOrFail();
-        $messages = WAMessage::where('contact_id',$contact->id)->orderBy('created_at','asc')->get();
-        return view('tourcms::whatsapp.edit',['contact'=>$contact,'messages'=>$messages]);
+        //$messages = WAMessage::where('contact_id',$contact->id)->orderBy('created_at','asc')->get();
+        //return view('tourcms::whatsapp.edit',['contact'=>$contact,'messages'=>$messages]);
     }
 
     

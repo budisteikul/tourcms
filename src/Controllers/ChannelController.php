@@ -82,7 +82,8 @@ class ChannelController extends Controller
      */
     public function edit(Channel $channel)
     {
-        return view('tourcms::channel.edit',['channel'=>$channel]);
+        print_r($channel);
+        //return view('tourcms::channel.edit',['channel'=>$channel]);
     }
 
     /**
