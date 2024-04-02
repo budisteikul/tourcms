@@ -12,7 +12,7 @@ class WhatsappController extends Controller
     public function chat($id)
     {
         $contact = WAContact::where('id',$id)->firstOrFail();
-        $messages = WAMessage::where('contact_id',$contact->id)->orderBy('created_at','desc')->get();
+        $messages = WAMessage::where('contact_id',$contact->id)->orderBy('created_at','asc')->get();
         return view('tourcms::whatsapp.chat',['contact'=>$contact,'messages'=>$messages]);
     }
 

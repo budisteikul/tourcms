@@ -34,7 +34,7 @@
   if($message->type=="image")
   {
     $image = json_decode($message->image);
-    $image_text = '<img src="'.$image->storage_url.'">';
+    $image_text = '<img src="'.$image->storage_url.'" class="img-thumbnail" style="max-height: 100px;">';
     $message_text = $image_text;
     if(isset($image->caption)) $message_text = $image_text.'<br />'. $image->caption;
   }
@@ -47,7 +47,7 @@
 @endphp
 <div class="{{$style}}" >
   <div class="card-body">
-    <p class="card-text">{!!$message_text!!}</p>
+    <p class="card-text mb-0">{!! nl2br($message_text) !!}</p>
     <small>{{$message->created_at}}</small>
   </div>
 </div>
