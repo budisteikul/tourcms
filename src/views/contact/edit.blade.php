@@ -23,99 +23,22 @@
                 </div>
        	
 <hr>
-   
-@foreach($messages as $message)
-@php
-  $style1 = 'card bg-light mb-2';
-  $style2 = 'card-text mb-0';
-  if($message->from==null)
-  {
-      $style2 = 'card text-white bg-success mb-2';
-      $style2 = 'card-text mb-0 text-right';
-  }
 
-  $message_text = '';
-  if($message->type=="text")
-  {
-    $message_text = json_decode($message->text)->body;
-  }
-
-  if($message->type=="image")
-  {
-    $image = json_decode($message->image);
-    $image_text = '<img src="'.$image->storage_url.'" class="img-thumbnail" style="max-height: 100px;">';
-    $message_text = $image_text;
-    if(isset($image->caption)) $message_text = $image_text.'<br />'. $image->caption;
-  }
-
-  if($message->type=="template")
-  {
-    $message_text = json_decode($message->template)->name;
-  }
-
-@endphp
-<div class="{{$style1}}" >
-  <div class="card-body">
-    <p class="card-text mb-0">{!! nl2br($message_text) !!}</p>
-    <small>{{$message->created_at}}</small>
-  </div>
-</div>
-@endforeach
+<div id="message_chat"></div> 
 	
 <hr>
 
-<form method="post" action="">
+<form onSubmit="sendMessage(); return false;">
 
 <div class="form-group">
 <div id="status"></div>
+
 <div id="mulitplefileuploader"><b class="fa fa-plus"> Upload Imge </b></div>
-<script>
-$(document).ready(function()
-{
-var settings = {
-    url: "{{ route('route_coresdk_filetemp.index') }}",
-    multiple:true,
-  dragDrop:true,
-  maxFileCount:-1,
-    fileName: "myfile",
-    allowedTypes:"jpg,jpeg",  
-    returnType:"json",
-  acceptFiles:"image/*",
-  uploadStr:"<i class=\"fa fa-folder-open\"></i> Browse",
-  onSuccess:function(files,data,xhr)
-    {
-    $.each( data, function( index, value ) {
-    }); 
-    },
-    showDelete:true,
-  formData: { key: '' , _token: $("meta[name=csrf-token]").attr("content") },
-    deleteCallback: function(data,pd)
-  {
-    
-    for(var i=0;i<data.length;i++)
-    {
-            
-            $.ajax({
-              beforeSend: function(request) {
-                  request.setRequestHeader("X-CSRF-TOKEN", $("meta[name=csrf-token]").attr("content"));
-              },
-                type: 'DELETE',
-                url: '{{ route('route_coresdk_filetemp.index') }}/'+ data[i]
-            }).done(function( msg ) {
-              
-            }); 
-     }
-           
-    pd.statusbar.hide();
-  }
-}
-var uploadObj = $("#mulitplefileuploader").uploadFile(settings);
-});
-</script>
+
 </div>
 
 <div class="form-group">
-    <textarea class="form-control" id="text" name="text" rows="1"></textarea>
+    <textarea class="form-control" id="message_text" name="message_text" rows="1"></textarea>
 </div>
 
 <button id="submit" type="submit" class="btn btn-primary btn-block"><i class="fas fa-paper-plane"></i> Send</button>
@@ -127,5 +50,122 @@ var uploadObj = $("#mulitplefileuploader").uploadFile(settings);
     </div>
 
 
+<script language="javascript">
 
+fileUpload();
+getMessage();
+
+
+function getMessage()
+{
+  $.ajax({
+    data: {
+      "_token": $("meta[name=csrf-token]").attr("content"),
+      "id": "{{ $contact->id }}"
+        },
+    type: 'POST',
+    url: '{{ route('route_tourcms_contact.index') .'/message' }}'
+    }).done(function( data ) {
+      $("#message_chat").html(data);
+    });
+  return false;
+}
+
+function sendMessage()
+{
+  var error = false;
+  $("#submit").attr("disabled", true);
+  $('#submit').html('<i class="fa fa-spinner fa-spin"></i>');
+  var input = ["message_text"];
+  
+  $.each(input, function( index, value ) {
+      $('#'+ value).removeClass('is-invalid');
+      $('#span-'+ value).remove();
+  });
+  
+  $.ajax({
+    data: {
+      "_token": $("meta[name=csrf-token]").attr("content"),
+      "message_text": $('#message_text').val(),
+      "key": "{{$file_key}}",
+        },
+    type: 'PUT',
+    url: '{{ route('route_tourcms_contact.update',$contact->id) }}'
+    }).done(function( data ) {
+      
+      if(data.id=="1")
+      {
+          setTimeout(function (){
+              getMessage();
+              $("#message_text").val("");
+              $("#submit").attr("disabled", false);
+              $('#submit').html('<i class="fa fa-save"></i> {{ __('Save') }}');
+              
+              $(".ajax-file-upload-container").remove();
+              
+              fileUpload();
+              
+          }, 1000);
+      }
+      else
+      {
+        $.each( data, function( index, value ) {
+          $('#'+ index).addClass('is-invalid');
+            if(value!="")
+            {
+              $('#'+ index).after('<span id="span-'+ index  +'" class="invalid-feedback" role="alert"><strong>'+ value +'</strong></span>');
+            }
+          });
+        $("#submit").attr("disabled", false);
+        $('#submit').html('<i class="fa fa-save"></i> {{ __('Save') }}');
+      }
+    });
+  
+  
+  return false;
+}
+
+
+function fileUpload()
+  {
+    var settings = {
+    url: "{{ route('route_coresdk_filetemp.index') }}",
+    multiple:false,
+    dragDrop:true,
+    maxFileCount:1,
+    fileName: "myfile",
+    allowedTypes:"jpg,jpeg",  
+    returnType:"json",
+    acceptFiles:"image/*",
+    uploadStr:"<i class=\"fa fa-folder-open\"></i> Browse",
+    onSuccess:function(files,data,xhr)
+    {
+      $.each( data, function( index, value ) {
+
+      }); 
+    },
+    showDelete:true,
+    formData: { key: '{{$file_key}}' , _token: $("meta[name=csrf-token]").attr("content") },
+    deleteCallback: function(data,pd)
+    {
+    
+    for(var i=0;i<data.length;i++)
+    {
+            $.ajax({
+              beforeSend: function(request) {
+                  request.setRequestHeader("X-CSRF-TOKEN", $("meta[name=csrf-token]").attr("content"));
+              },
+                type: 'DELETE',
+                url: '{{ route('route_coresdk_filetemp.index') }}/'+ data[i]
+            }).done(function( msg ) {
+              
+            }); 
+     }
+           
+      pd.statusbar.hide();
+    }
+  }
+  uploadObj = $("#mulitplefileuploader").uploadFile(settings);
+  }
+</script>
 @endsection

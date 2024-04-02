@@ -59,7 +59,8 @@ Route::resource('/cms/closeout','budisteikul\tourcms\Controllers\CloseOutControl
 Route::resource('/cms/setting','budisteikul\tourcms\Controllers\SettingController',[ 'names' => 'route_tourcms_setting' ])
 	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);
 
-//Whatsapp	
+//Whatsapp
+Route::post('/cms/contact/message','budisteikul\tourcms\Controllers\ContactController@message')->middleware(['web','auth','verified','CoreMiddleware','SettingMiddleware']);
 Route::resource('/cms/contact','budisteikul\tourcms\Controllers\ContactController',[ 'names' => 'route_tourcms_contact' ])
 	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);
 
