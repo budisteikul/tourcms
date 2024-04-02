@@ -7,29 +7,21 @@
                 <div class="card-header">{{$contact->name}} +{{$contact->wa_id}}</div>
                 <div class="card-body">
         		    
-                <div class="row w-100">
-                  
-                    <div class="col  text-left">
-                    <div class="mb-2"><strong>Template :</strong></div>
-                    <button type="button" class="btn btn-primary" id="template1"  onclick="sendTemplate(1); return false;"><b class="fa fa-plus-square"></b> Notif Night Food Tour</button>
-                    <button type="button" class="btn btn-primary" id="template2"  onclick="sendTemplate(2); return false;"><b class="fa fa-plus-square"></b> Notif Morning Food Tour</button>
-                    <button type="button" class="btn btn-primary" id="template3"  onclick="sendTemplate(3); return false;"><b class="fa fa-plus-square"></b> Ask dietary</button>
-                    <button type="button" class="btn btn-primary" id="template4"  onclick="sendTemplate(4); return false;"><b class="fa fa-plus-square"></b> Thanks for question</button>
-                    <button type="button" class="btn btn-primary" id="template5"  onclick="sendTemplate(5); return false;"><b class="fa fa-plus-square"></b> Kalika Guide</button>
-                    <button type="button" class="btn btn-primary" id="template6"  onclick="sendTemplate(6); return false;"><b class="fa fa-plus-square"></b> Anisa Guide</button>
-                    </div>
-                    <div class="col-auto text-right mr-0 pr-0">
-                    
-                    </div>
-                  
-                </div>
+                
        	
 <hr>
 
 <div id="message_chat"></div> 
 	
 <hr>
-
+<div class="mb-2">
+<button type="button" class="btn btn-primary" id="template1"  onclick="sendTemplate(1); return false;"><b class="fa fa-plus-square"></b> Notif Night Food Tour</button>
+                    <button type="button" class="btn btn-primary" id="template2"  onclick="sendTemplate(2); return false;"><b class="fa fa-plus-square"></b> Notif Morning Food Tour</button>
+                    <button type="button" class="btn btn-primary" id="template3"  onclick="sendTemplate(3); return false;"><b class="fa fa-plus-square"></b> Ask dietary</button>
+                    <button type="button" class="btn btn-primary" id="template4"  onclick="sendTemplate(4); return false;"><b class="fa fa-plus-square"></b> Thanks for question</button>
+                    <button type="button" class="btn btn-primary" id="template5"  onclick="sendTemplate(5); return false;"><b class="fa fa-plus-square"></b> Kalika Guide</button>
+                    <button type="button" class="btn btn-primary" id="template6"  onclick="sendTemplate(6); return false;"><b class="fa fa-plus-square"></b> Anisa Guide</button>
+</div>
 <form onSubmit="sendMessage(); return false;">
 
 <div class="form-group">
