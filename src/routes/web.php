@@ -60,7 +60,8 @@ Route::resource('/cms/setting','budisteikul\tourcms\Controllers\SettingControlle
 	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);
 
 //Whatsapp
-Route::get('/cms/whatsapp/chat/{id}','budisteikul\tourcms\Controllers\WhatsappController@chat')->middleware(['web','auth','verified','CoreMiddleware','SettingMiddleware']);
+Route::resource('/cms/whatsapp','budisteikul\tourcms\Controllers\WhatsappController',[ 'names' => 'route_tourcms_whatsapp' ])
+	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);
 
 //Partner	
 Route::get('/cms/partner/report','budisteikul\tourcms\Controllers\PartnerController@report')->middleware(['web','auth','verified','CoreMiddleware','SettingMiddleware']);
