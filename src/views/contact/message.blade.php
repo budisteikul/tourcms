@@ -25,6 +25,11 @@
     if(isset($image->caption)) $message_text = $image_text.'<br />'. $image->caption;
   }
 
+  if($message->type=="reaction")
+  {
+    $message_text = json_decode($reaction->text)->emoji;
+  }
+
   if($message->type=="template")
   {
     $message_text = json_decode($message->template)->name;
