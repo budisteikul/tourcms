@@ -105,6 +105,8 @@ function sendTemplate(template_id)
       $("#template"+template_id).html(enable_text);
 
     });
+
+    
     return false;
 }
 
@@ -131,37 +133,15 @@ function sendMessage()
     type: 'PUT',
     url: '{{ route('route_tourcms_contact.update',$contact->id) }}'
     }).done(function( data ) {
-      
-      if(data.id=="1")
-      {
-          setTimeout(function (){
-             
-              $("#message_text").val("");
-              $("#submit").attr("disabled", false);
-              $('#submit').html('<i class="fas fa-paper-plane"></i> {{ __('Save') }}');
-              
-              $(".ajax-file-upload-container").remove();
-              
-              fileUpload();
-
-          }, 1000);
-      }
-      else
-      {
-        $.each( data, function( index, value ) {
-          $('#'+ index).addClass('is-invalid');
-            if(value!="")
-            {
-              $('#'+ index).after('<span id="span-'+ index  +'" class="invalid-feedback" role="alert"><strong>'+ value +'</strong></span>');
-            }
-          });
-        $("#submit").attr("disabled", false);
-        $('#submit').html('<i class="fa fa-save"></i> {{ __('Save') }}');
-      }
+          $("#message_text").val("");
+          $("#submit").attr("disabled", false);
+          $('#submit').html('<i class="fas fa-paper-plane"></i> {{ __('Save') }}');
+          $(".ajax-file-upload-container").remove();
+          fileUpload();
     });
   
-  
-  return false;
+   
+   return false;
 }
 
 
