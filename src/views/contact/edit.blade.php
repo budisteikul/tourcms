@@ -4,11 +4,11 @@
 <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header text-white">{{$contact->name}} +{{$contact->wa_id}}</div>
+                <div class="card-header text-white"><a href="https://wa.me/{{ $contact->wa_id }}" class="btn btn-sm btn-primary mb-0" target="_blank"><i class="fab fa-whatsapp"></i> {{$contact->name}} +{{$contact->wa_id}}</a> </div>
                 <div class="card-body">
         		    
                 
-       	
+
 <hr>
 
 <div id="message_chat" style="overflow-y: scroll; max-height: 500px;flex-direction: column-reverse;display: flex;"></div> 

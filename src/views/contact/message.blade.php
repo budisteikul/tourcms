@@ -1,4 +1,4 @@
-
+@inject('GeneralHelper', 'budisteikul\toursdk\Helpers\GeneralHelper')
 
    
 @foreach($messages as $message)
@@ -34,7 +34,7 @@
 <div class="{{$style1}}" >
   <div class="card-body">
     <p class="card-text mb-0">{!! nl2br($message_text) !!}</p>
-    <small>{{$message->created_at}}</small>
+    <small>{{$GeneralHelper->dateFormat($message->created_at,2)}}</small>
   </div>
 </div>
 @endforeach
