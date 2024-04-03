@@ -51,10 +51,11 @@ getMessage();
 
 function sendTemplate(template_id)
 {
-    var old_text = '<b class="fa fa-plus-square"></b> '+ $("#template"+template_id).text();
+    var enable_text = '<i class="fa fa-plus-square"></i> '+ $("#template"+template_id).text();
+    var disable_text = '<i class="fa fa-spinner fa-spin"></i> '+ $("#template"+template_id).text();
     
     $("#template"+template_id).attr("disabled", true);
-    $("#template"+template_id).html('<i class="fa fa-spinner fa-spin"></i>');
+    $("#template"+template_id).html(disable_text);
     $.ajax({
     data: {
       "_token": $("meta[name=csrf-token]").attr("content"),
@@ -66,7 +67,7 @@ function sendTemplate(template_id)
     }).done(function( data ) {
       getMessage();
       $("#template"+template_id).attr("disabled", false);
-      $("#template"+template_id).html(old_text);
+      $("#template"+template_id).html(enable_text);
     });
     return false;
 }
