@@ -4,7 +4,7 @@
 <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{$contact->name}} +{{$contact->wa_id}}</div>
+                <div class="card-header text-white">{{$contact->name}} +{{$contact->wa_id}}</div>
                 <div class="card-body">
         		    
                 
