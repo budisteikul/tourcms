@@ -17,8 +17,8 @@
 <div class="mb-2">
 <button type="button" class="btn btn-primary mb-2" id="template1"  onclick="sendTemplate(1); return false;"><b class="fa fa-plus-square"></b> Notif Night Food Tour</button>
                     <button type="button" class="btn btn-primary mb-2" id="template2"  onclick="sendTemplate(2); return false;"><b class="fa fa-plus-square"></b> Notif Morning Food Tour</button>
-                    <button type="button" class="btn btn-primary mb-2" id="template3"  onclick="sendTemplate(3); return false;"><b class="fa fa-plus-square"></b> Ask dietary</button>
-                    <button type="button" class="btn btn-primary mb-2" id="template4"  onclick="sendTemplate(4); return false;"><b class="fa fa-plus-square"></b> Thanks for question</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template3"  onclick="sendTemplate(3); return false;"><b class="fa fa-plus-square"></b> Ask Dietary</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template4"  onclick="sendTemplate(4); return false;"><b class="fa fa-plus-square"></b> Thanks for Answering</button>
                     <button type="button" class="btn btn-primary mb-2" id="template5"  onclick="sendTemplate(5); return false;"><b class="fa fa-plus-square"></b> Kalika Guide</button>
                     <button type="button" class="btn btn-primary mb-2" id="template6"  onclick="sendTemplate(6); return false;"><b class="fa fa-plus-square"></b> Anisa Guide</button>
 </div>
@@ -103,7 +103,7 @@ function sendTemplate(template_id)
       
       $("#template"+template_id).attr("disabled", false);
       $("#template"+template_id).html(enable_text);
-      
+
     });
     return false;
 }
@@ -138,7 +138,7 @@ function sendMessage()
              
               $("#message_text").val("");
               $("#submit").attr("disabled", false);
-              $('#submit').html('<i class="fa fa-save"></i> {{ __('Save') }}');
+              $('#submit').html('<i class="fas fa-paper-plane"></i> {{ __('Save') }}');
               
               $(".ajax-file-upload-container").remove();
               
