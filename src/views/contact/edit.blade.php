@@ -11,16 +11,16 @@
        	
 <hr>
 
-<div id="message_chat"></div> 
+<div id="message_chat" style="overflow-y: scroll; max-height: 500px;flex-direction: column-reverse;display: flex;"></div> 
 	
 <hr>
 <div class="mb-2">
-<button type="button" class="btn btn-primary" id="template1"  onclick="sendTemplate(1); return false;"><b class="fa fa-plus-square"></b> Notif Night Food Tour</button>
-                    <button type="button" class="btn btn-primary" id="template2"  onclick="sendTemplate(2); return false;"><b class="fa fa-plus-square"></b> Notif Morning Food Tour</button>
-                    <button type="button" class="btn btn-primary" id="template3"  onclick="sendTemplate(3); return false;"><b class="fa fa-plus-square"></b> Ask dietary</button>
-                    <button type="button" class="btn btn-primary" id="template4"  onclick="sendTemplate(4); return false;"><b class="fa fa-plus-square"></b> Thanks for question</button>
-                    <button type="button" class="btn btn-primary" id="template5"  onclick="sendTemplate(5); return false;"><b class="fa fa-plus-square"></b> Kalika Guide</button>
-                    <button type="button" class="btn btn-primary" id="template6"  onclick="sendTemplate(6); return false;"><b class="fa fa-plus-square"></b> Anisa Guide</button>
+<button type="button" class="btn btn-primary mb-2" id="template1"  onclick="sendTemplate(1); return false;"><b class="fa fa-plus-square"></b> Notif Night Food Tour</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template2"  onclick="sendTemplate(2); return false;"><b class="fa fa-plus-square"></b> Notif Morning Food Tour</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template3"  onclick="sendTemplate(3); return false;"><b class="fa fa-plus-square"></b> Ask dietary</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template4"  onclick="sendTemplate(4); return false;"><b class="fa fa-plus-square"></b> Thanks for question</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template5"  onclick="sendTemplate(5); return false;"><b class="fa fa-plus-square"></b> Kalika Guide</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template6"  onclick="sendTemplate(6); return false;"><b class="fa fa-plus-square"></b> Anisa Guide</button>
 </div>
 <form onSubmit="sendMessage(); return false;">
 
@@ -32,7 +32,7 @@
 </div>
 
 <div class="form-group">
-    <textarea class="form-control" id="message_text" name="message_text" rows="1"></textarea>
+    <textarea class="form-control" id="message_text" name="message_text" rows="4"></textarea>
 </div>
 
 <button id="submit" type="submit" class="btn btn-primary btn-block"><i class="fas fa-paper-plane"></i> Send</button>

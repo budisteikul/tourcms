@@ -20,7 +20,7 @@ class ContactController extends Controller
     {
         $id = $request->input('id');
         $contact = Contact::where('id',$id)->firstOrFail();
-        $messages = Message::where('contact_id',$contact->id)->orderBy('created_at','asc')->get();
+        $messages = Message::where('contact_id',$contact->id)->orderBy('created_at','desc')->get();
         return view('tourcms::contact.message',['messages'=>$messages]);
     }
 
