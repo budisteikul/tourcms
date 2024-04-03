@@ -42,12 +42,47 @@
             </div>
         </div>
     </div>
+@push('scripts')
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+  import { getDatabase, ref, onValue } from 'https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js'
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "{{ env("FIREBASE_API_KEY") }}",
+    authDomain: "{{ env("FIREBASE_AUTH_DOMAIN") }}",
+    databaseURL: "{{ env("FIREBASE_DATABASE_URL") }}",
+    projectId: "{{ env("FIREBASE_PROJECT_ID") }}",
+    messagingSenderId: "{{ env("FIREBASE_MESSAGING_SENDER_ID") }}",
+    appId: "{{ env("FIREBASE_APP_ID") }}",
+    measurementId: "{{ env("FIREBASE_MEASUREMENT_ID") }}"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase();
+
+  const starCountRef = ref(db, 'messages/{{ $contact->id }}');
+  onValue(starCountRef, (snapshot) => {
+    const data = snapshot.val();
+    $("#message_chat").html(data);
+  });
+  
 
 
+
+</script>
+@endpush
 <script language="javascript">
 
+
+
 fileUpload();
-getMessage();
+
 
 function sendTemplate(template_id)
 {
@@ -65,27 +100,15 @@ function sendTemplate(template_id)
     type: 'POST',
     url: '{{ route('route_tourcms_contact.index') .'/template' }}'
     }).done(function( data ) {
-      getMessage();
+      
       $("#template"+template_id).attr("disabled", false);
       $("#template"+template_id).html(enable_text);
+      
     });
     return false;
 }
 
-function getMessage()
-{
-  $.ajax({
-    data: {
-      "_token": $("meta[name=csrf-token]").attr("content"),
-      "id": "{{ $contact->id }}"
-        },
-    type: 'POST',
-    url: '{{ route('route_tourcms_contact.index') .'/message' }}'
-    }).done(function( data ) {
-      $("#message_chat").html(data);
-    });
-  return false;
-}
+
 
 function sendMessage()
 {
@@ -112,7 +135,7 @@ function sendMessage()
       if(data.id=="1")
       {
           setTimeout(function (){
-              getMessage();
+             
               $("#message_text").val("");
               $("#submit").attr("disabled", false);
               $('#submit').html('<i class="fa fa-save"></i> {{ __('Save') }}');

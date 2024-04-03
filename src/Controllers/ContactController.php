@@ -14,61 +14,11 @@ use budisteikul\toursdk\Models\Contact;
 use budisteikul\toursdk\Models\Message;
 use budisteikul\toursdk\Helpers\WhatsappHelper;
 use budisteikul\toursdk\Helpers\GeneralHelper;
+use budisteikul\toursdk\Helpers\FirebaseHelper;
 
 class ContactController extends Controller
 {
-    public function message(Request $request)
-    {
-        $id = $request->input('id');
-        $contact = Contact::where('id',$id)->firstOrFail();
-        $messages = Message::where('contact_id',$contact->id)->orderBy('created_at','desc')->get();
-
-        $output = '';
-        foreach($messages as $message)
-        {
-            $style1 = 'card bg-light mb-2';
-            if($message->from==null)
-            {
-                $style1 = 'card text-white bg-success mb-2';
-            }
-
-            $message_text = '';
-            if($message->type=="text")
-            {
-                $message_text = json_decode($message->text)->body;
-            }
-
-            if($message->type=="image")
-            {
-                $image = json_decode($message->image);
-                $image_link = '';
-                if(isset($image->link)) $image_link = $image->link;
-                $image_text = '<img src="'.$image_link.'" class="img-thumbnail mb-2" style="max-height: 100px;">';
-                $message_text = $image_text;
-                if(isset($image->caption)) $message_text = $image_text.'<br />'. $image->caption;
-            }
-
-            if($message->type=="reaction")
-            {
-                $message_text = json_decode($reaction->text)->emoji;
-            }
-
-            if($message->type=="template")
-            {
-                $message_text = json_decode($message->template)->name;
-            }
-
-            $output .= '<div class="'.$style1.'" >
-                            <div class="card-body">
-                                <p class="card-text mb-0">'. nl2br($message_text) .'</p>
-                                <small>'.GeneralHelper::dateFormat($message->created_at,2).'</small>
-                            </div>
-                        </div>';
-        }
-
-        return view('tourcms::contact.message',['output'=>$output]);
-    }
-
+    
     public function template(Request $request)
     {
             $validator = Validator::make($request->all(), [
@@ -108,11 +58,8 @@ class ContactController extends Controller
                 $whatsapp->sendImage($contact->wa_id,"https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/anisa.jpeg","Her name is Anisa Rahma. She will be the tour guide on duty and will be waiting for you at meeting point 😊");
             break;
         }
-        //$whatsapp->sendText("6285743112112","Thank you for booking our tour 😊\nThe Yogyakarta Night Walking and Food Tours will start tonight at *6.45 PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)\n\nMap\nhttps://linktr.ee/foodtour");
 
-        //$whatsapp->sendText("6285743112112","By the way, do you have any food allergy or dietary requirements?");
-                
-        //$whatsapp->sendImage("6285743112112","https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/kalika.jpeg","Her name is Kalika Ratna. She will be the tour guide on duty and will be waiting for you at meeting point 😊");
+        return response('OK', 200)->header('Content-Type', 'text/plain');
     }
 
     /**
@@ -165,7 +112,8 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-
+        $whatsapp = new WhatsappHelper;
+        $whatsapp->messages($contact->id);
         return view('tourcms::contact.edit',['contact'=>$contact,'file_key'=>Uuid::uuid4()->toString()]);
     }
 
