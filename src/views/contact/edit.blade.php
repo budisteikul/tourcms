@@ -15,12 +15,15 @@
 	
 <hr>
 <div class="mb-2">
-<button type="button" class="btn btn-primary mb-2" id="template1"  onclick="sendTemplate(1); return false;"><b class="fa fa-plus-square"></b> Notif Night Food Tour</button>
-                    <button type="button" class="btn btn-primary mb-2" id="template2"  onclick="sendTemplate(2); return false;"><b class="fa fa-plus-square"></b> Notif Morning Food Tour</button>
-                    <button type="button" class="btn btn-primary mb-2" id="template3"  onclick="sendTemplate(3); return false;"><b class="fa fa-plus-square"></b> Ask Dietary</button>
-                    <button type="button" class="btn btn-primary mb-2" id="template4"  onclick="sendTemplate(4); return false;"><b class="fa fa-plus-square"></b> Thanks for Answering</button>
-                    <button type="button" class="btn btn-primary mb-2" id="template5"  onclick="sendTemplate(5); return false;"><b class="fa fa-plus-square"></b> Kalika Guide</button>
-                    <button type="button" class="btn btn-primary mb-2" id="template6"  onclick="sendTemplate(6); return false;"><b class="fa fa-plus-square"></b> Anisa Guide</button>
+
+                    <button type="button" class="btn btn-primary mb-2" id="template1"  onclick="sendTemplate(1); return false;"><b class="fa fa-plus-square"></b> Notif Jogja Night Food Tour</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template2"  onclick="sendTemplate(2); return false;"><b class="fa fa-plus-square"></b> Notif Jogja Morning Food Tour</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template3"  onclick="sendTemplate(3); return false;"><b class="fa fa-plus-square"></b> Notif Bali Night Food Tour</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template4"  onclick="sendTemplate(4); return false;"><b class="fa fa-plus-square"></b> Ask Dietary</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template5"  onclick="sendTemplate(5); return false;"><b class="fa fa-plus-square"></b> Thanks for Answering</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template6"  onclick="sendTemplate(6); return false;"><b class="fa fa-plus-square"></b> Kalika Guide</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template7"  onclick="sendTemplate(7); return false;"><b class="fa fa-plus-square"></b> Anisa Guide</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template8"  onclick="sendTemplate(8); return false;"><b class="fa fa-plus-square"></b> Dea Guide</button>
 </div>
 <form onSubmit="sendMessage(); return false;">
 

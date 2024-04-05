@@ -46,16 +46,22 @@ class ContactController extends Controller
                 $whatsapp->sendText($contact->wa_id,"Hello ".$contact->name." 👋\nThank you for booking our tour 😊\nThe Morning Food Tour in Yogyakarta will start tomorrow morning at *7.30 AM* and our meeting point is near *Lupis Mbah Satinem*\n\nMap\nhttps://linktr.ee/foodtour");
             break;
             case 3:
-                $whatsapp->sendText($contact->wa_id,"By the way, do you have any food allergy or dietary requirements?");
+                $whatsapp->sendText($contact->wa_id,"Hello ".$contact->name." 👋\nThank you for booking our tour 😊\nThe Bali Night Walking and Food Tours will start tonight at *17.00 PM* and our meeting point is arround *Lapangan Puputan Badung*\n\nMap\nhttps://maps.app.goo.gl/dAGTduZvA9BL8Uy89");
             break;
             case 4:
-                $whatsapp->sendText($contact->wa_id,"Got it 🫡 Thank you for your confirmation 🙏😊");
+                $whatsapp->sendText($contact->wa_id,"By the way, do you have any food allergy or dietary requirements?");
             break;
             case 5:
-                $whatsapp->sendImage($contact->wa_id,"https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/kalika.jpeg","Her name is Kalika Ratna. She will be the tour guide on duty and will be waiting for you at meeting point 😊");
+                $whatsapp->sendText($contact->wa_id,"Got it 🫡 Thank you for your confirmation 🙏😊");
             break;
             case 6:
+                $whatsapp->sendImage($contact->wa_id,"https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/kalika.jpeg","Her name is Kalika Ratna. She will be the tour guide on duty and will be waiting for you at meeting point 😊");
+            break;
+            case 7:
                 $whatsapp->sendImage($contact->wa_id,"https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/anisa.jpeg","Her name is Anisa Rahma. She will be the tour guide on duty and will be waiting for you at meeting point 😊");
+            break;
+            case 8:
+                $whatsapp->sendImage($contact->wa_id,"https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/dea.jpeg","Her name is Dea. She will be the tour guide on duty and will be waiting for you at meeting point 😊");
             break;
         }
 
