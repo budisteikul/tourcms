@@ -16,31 +16,31 @@
 <hr>
 <div class="mb-2">
 
-                    <button type="button" class="btn btn-primary mb-2" id="template1"  onclick="sendTemplate(1); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour Kalika Ask Dietary</button>
-                    <button type="button" class="btn btn-primary mb-2" id="template2"  onclick="sendTemplate(2); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour Kalika</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template1"  onclick="sendTemplate(1); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour - Kalika - Ask Dietary</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template2"  onclick="sendTemplate(2); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour - Kalika</button>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template3"  onclick="sendTemplate(3); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour Anisa Ask Dietary</button>
-                    <button type="button" class="btn btn-primary mb-2" id="template4"  onclick="sendTemplate(4); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour Anisa</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template3"  onclick="sendTemplate(3); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour - Anisa - Ask Dietary</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template4"  onclick="sendTemplate(4); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour - Anisa</button>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template5"  onclick="sendTemplate(5); return false;"><b class="fa fa-plus-square"></b> Jogja Morning Food Tour Kalika Ask Dietary</button>
-                    <button type="button" class="btn btn-primary mb-2" id="template6"  onclick="sendTemplate(6); return false;"><b class="fa fa-plus-square"></b> Jogja Morning Food Tour Kalika</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template5"  onclick="sendTemplate(5); return false;"><b class="fa fa-plus-square"></b> Jogja Morning Food Tour - Kalika - Ask Dietary</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template6"  onclick="sendTemplate(6); return false;"><b class="fa fa-plus-square"></b> Jogja Morning Food Tour - Kalika</button>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template7"  onclick="sendTemplate(7); return false;"><b class="fa fa-plus-square"></b> Jogja Morning Food Tour Anisa Ask Dietary</button>
-                    <button type="button" class="btn btn-primary mb-2" id="template8"  onclick="sendTemplate(8); return false;"><b class="fa fa-plus-square"></b> Jogja Morning Food Tour Anisa</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template7"  onclick="sendTemplate(7); return false;"><b class="fa fa-plus-square"></b> Jogja Morning Food Tour - Anisa - Ask Dietary</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template8"  onclick="sendTemplate(8); return false;"><b class="fa fa-plus-square"></b> Jogja Morning Food Tour - Anisa</button>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template9"  onclick="sendTemplate(9); return false;"><b class="fa fa-plus-square"></b> Bali Night Food Tour Dea</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template9"  onclick="sendTemplate(9); return false;"><b class="fa fa-plus-square"></b> Bali Night Food Tour - Dea</button>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template11"  onclick="sendTemplate(11); return false;"><b class="fa fa-plus-square"></b> Ask dietary</button>
+                    <!-- button type="button" class="btn btn-primary mb-2" id="template11"  onclick="sendTemplate(11); return false;"><b class="fa fa-plus-square"></b> Ask dietary</button -->
 
                     <button type="button" class="btn btn-primary mb-2" id="template12"  onclick="sendTemplate(12); return false;"><b class="fa fa-plus-square"></b> Thanks for answering</button>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template13"  onclick="sendTemplate(13); return false;"><b class="fa fa-plus-square"></b> Kalika Tour Guide</button>
+                    <!-- button type="button" class="btn btn-primary mb-2" id="template13"  onclick="sendTemplate(13); return false;"><b class="fa fa-plus-square"></b> Kalika Tour Guide</button>
                     <button type="button" class="btn btn-primary mb-2" id="template14"  onclick="sendTemplate(14); return false;"><b class="fa fa-plus-square"></b> Anisa Tour Guide</button>
                     <button type="button" class="btn btn-primary mb-2" id="template15"  onclick="sendTemplate(15); return false;"><b class="fa fa-plus-square"></b> Dea Tour Guide</button>
 
                     <button type="button" class="btn btn-primary mb-2" id="template21"  onclick="sendTemplate(21); return false;"><b class="fa fa-plus-square"></b> Reminder Jogja Night Food Tour</button>
                     <button type="button" class="btn btn-primary mb-2" id="template22"  onclick="sendTemplate(22); return false;"><b class="fa fa-plus-square"></b> Reminder Jogja Morning Food Tour</button>
-                    <button type="button" class="btn btn-primary mb-2" id="template23"  onclick="sendTemplate(23); return false;"><b class="fa fa-plus-square"></b> Reminder Bali Night Food Tour</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template23"  onclick="sendTemplate(23); return false;"><b class="fa fa-plus-square"></b> Reminder Bali Night Food Tour</button -->
                     
 </div>
 <form onSubmit="sendMessage(); return false;">
