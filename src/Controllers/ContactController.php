@@ -142,9 +142,7 @@ class ContactController extends Controller
 
         if($type=="template")
         {
-            if($template=="booking_notification")
-            {
-                $components = [
+            $components = [
                                     [
                                         "type"=> "header",
                                         "parameters" => [
@@ -170,28 +168,14 @@ class ContactController extends Controller
                                             [
                                                 "type"=>"text",
                                                 "text"=> $var3
-                                            ]
-                                        ]
-                                    ]
-                              ];
-
-            }
-
-            if($template=="booking_reminder")
-            {
-                $components = [
-                                    [
-                                        "type"=> "body",
-                                        "parameters" => [
+                                            ],
                                             [
                                                 "type"=>"text",
-                                                "text"=> $var1
+                                                "text"=> $var4
                                             ]
                                         ]
                                     ]
                               ];
-
-            }
             
             $whatsapp = new WhatsappHelper;
             $whatsapp->sendTemplate($contact->wa_id,$template, $components);
