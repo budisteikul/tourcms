@@ -32,7 +32,7 @@
 
                     <!-- button type="button" class="btn btn-primary mb-2" id="template11"  onclick="sendTemplate(11); return false;"><b class="fa fa-plus-square"></b> Ask dietary</button -->
 
-                    <button type="button" class="btn btn-primary mb-2" id="template12"  onclick="sendTemplate(12); return false;"><b class="fa fa-plus-square"></b> Thanks for answering</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template12"  onclick="sendTemplate(11); return false;"><b class="fa fa-plus-square"></b> Thanks for answering</button>
 
                     <!-- button type="button" class="btn btn-primary mb-2" id="template13"  onclick="sendTemplate(13); return false;"><b class="fa fa-plus-square"></b> Kalika Tour Guide</button>
                     <button type="button" class="btn btn-primary mb-2" id="template14"  onclick="sendTemplate(14); return false;"><b class="fa fa-plus-square"></b> Anisa Tour Guide</button>

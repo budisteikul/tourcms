@@ -48,7 +48,7 @@ class ContactController extends Controller
         {
             case 1:
                 $type = "template";
-                $template = "booking_reminder_01";
+                $template = config('site.wa_reminder');
                 $image = "https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/kalika.jpeg";
                 $var1 = $contact->name;
                 $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
@@ -57,7 +57,7 @@ class ContactController extends Controller
             break;
             case 2:
                 $type = "template";
-                $template = "booking_reminder_01";
+                $template = config('site.wa_reminder');
                 $image = "https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/kalika.jpeg";
                 $var1 = $contact->name;
                 $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
@@ -67,7 +67,7 @@ class ContactController extends Controller
 
             case 3:
                 $type = "template";
-                $template = "booking_reminder_01";
+                $template = config('site.wa_reminder');
                 $image = "https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/anisa.jpeg";
                 $var1 = $contact->name;
                 $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
@@ -76,7 +76,7 @@ class ContactController extends Controller
             break;
             case 4:
                 $type = "template";
-                $template = "booking_reminder_01";
+                $template = config('site.wa_reminder');
                 $image = "https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/anisa.jpeg";
                 $var1 = $contact->name;
                 $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.45PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
@@ -86,7 +86,7 @@ class ContactController extends Controller
 
             case 5:
                 $type = "template";
-                $template = "booking_reminder_01";
+                $template = config('site.wa_reminder');
                 $image = "https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/kalika.jpeg";
                 $var1 = $contact->name;
                 $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow at *7.30AM* and our meeting point is arround *Lupis Mbah Satinem*";
@@ -95,7 +95,7 @@ class ContactController extends Controller
             break;
             case 6:
                 $type = "template";
-                $template = "booking_reminder_01";
+                $template = config('site.wa_reminder');
                 $image = "https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/kalika.jpeg";
                 $var1 = $contact->name;
                 $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow at *7.30AM* and our meeting point is arround *Lupis Mbah Satinem*";
@@ -105,7 +105,7 @@ class ContactController extends Controller
 
             case 7:
                 $type = "template";
-                $template = "booking_reminder_01";
+                $template = config('site.wa_reminder');
                 $image = "https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/anisa.jpeg";
                 $var1 = $contact->name;
                 $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow at *7.30AM* and our meeting point is arround *Lupis Mbah Satinem*";
@@ -114,7 +114,7 @@ class ContactController extends Controller
             break;
             case 8:
                 $type = "template";
-                $template = "booking_reminder_01";
+                $template = config('site.wa_reminder');
                 $image = "https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/anisa.jpeg";
                 $var1 = $contact->name;
                 $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow at *7.30AM* and our meeting point is arround *Lupis Mbah Satinem*";
@@ -124,7 +124,7 @@ class ContactController extends Controller
 
             case 9:
                 $type = "template";
-                $template = "booking_reminder_01";
+                $template = config('site.wa_reminder');
                 $image = "https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/dea.jpeg";
                 $var1 = $contact->name;
                 $var2 = "The Bali Night Walking and Food Tour will start tonight at *05.00PM* and our meeting point is in front of *Lapangan Puputan Badung* (Look for sign 0KM)";
@@ -134,44 +134,10 @@ class ContactController extends Controller
 
             case 11:
                 $type = "text";
-                $var1 = "By the way, do you have any food allergy or dietary requirements?";
-            break;
-
-            case 12:
-                $type = "text";
                 $var1 = "Got it 🫡 Thank you for your confirmation 🙏😊";
             break;
 
-            case 13:
-                $type = "image";
-                $image = "https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/kalika.jpeg";
-                $var1 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-            break;
-
-            case 14:
-                $type = "image";
-                $image = "https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/anisa.jpeg";
-                $var1 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-            break;
-
-            case 15:
-                $type = "image";
-                $image = "https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/dea.jpeg";
-                $var1 = "Her name is *Dea*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-            break;
-
-            case 21:
-                $type = "text";
-                $var1 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
-            break;
-            case 22:
-                $type = "text";
-                $var1 = "The Morning Food Tour in Yogyakarta will start tomorrow at *7.30AM* and our meeting point is arround *Lupis Mbah Satinem*";
-            break;
-            case 23:
-                $type = "text";
-                $var1 = "The Bali Night Walking and Food Tour will start tonight at *05.00PM* and our meeting point is in front of *Lapangan Puputan Badung* (Look for sign 0KM)";
-            break;
+            
         }
 
         if($type=="template")
