@@ -49,7 +49,7 @@ class ContactController extends Controller
             case 1:
                 $type = "template";
                 $template = config('site.wa_reminder');
-                $image = "https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/kalika.jpeg";
+                $image = config("site.assets")."/img/whatsapp/kalika.jpeg";
                 $var1 = $contact->name;
                 $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
@@ -58,7 +58,7 @@ class ContactController extends Controller
             case 2:
                 $type = "template";
                 $template = config('site.wa_reminder');
-                $image = "https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/kalika.jpeg";
+                $image = config("site.assets")."/img/whatsapp/kalika.jpeg";
                 $var1 = $contact->name;
                 $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
@@ -68,7 +68,7 @@ class ContactController extends Controller
             case 3:
                 $type = "template";
                 $template = config('site.wa_reminder');
-                $image = "https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/anisa.jpeg";
+                $image = config("site.assets")."/img/whatsapp/anisa.jpeg";
                 $var1 = $contact->name;
                 $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
@@ -77,7 +77,7 @@ class ContactController extends Controller
             case 4:
                 $type = "template";
                 $template = config('site.wa_reminder');
-                $image = "https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/anisa.jpeg";
+                $image = config("site.assets")."/img/whatsapp/anisa.jpeg";
                 $var1 = $contact->name;
                 $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.45PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
@@ -87,7 +87,7 @@ class ContactController extends Controller
             case 5:
                 $type = "template";
                 $template = config('site.wa_reminder');
-                $image = "https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/kalika.jpeg";
+                $image = config("site.assets")."/img/whatsapp/kalika.jpeg";
                 $var1 = $contact->name;
                 $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow at *7.30AM* and our meeting point is arround *Lupis Mbah Satinem*";
                 $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
@@ -96,7 +96,7 @@ class ContactController extends Controller
             case 6:
                 $type = "template";
                 $template = config('site.wa_reminder');
-                $image = "https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/kalika.jpeg";
+                $image = config("site.assets")."/img/whatsapp/kalika.jpeg";
                 $var1 = $contact->name;
                 $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow at *7.30AM* and our meeting point is arround *Lupis Mbah Satinem*";
                 $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
@@ -106,7 +106,7 @@ class ContactController extends Controller
             case 7:
                 $type = "template";
                 $template = config('site.wa_reminder');
-                $image = "https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/anisa.jpeg";
+                $image = config("site.assets")."/img/whatsapp/anisa.jpeg";
                 $var1 = $contact->name;
                 $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow at *7.30AM* and our meeting point is arround *Lupis Mbah Satinem*";
                 $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
@@ -115,7 +115,7 @@ class ContactController extends Controller
             case 8:
                 $type = "template";
                 $template = config('site.wa_reminder');
-                $image = "https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/anisa.jpeg";
+                $image = config("site.assets")."/img/whatsapp/anisa.jpeg";
                 $var1 = $contact->name;
                 $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow at *7.30AM* and our meeting point is arround *Lupis Mbah Satinem*";
                 $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
@@ -125,7 +125,7 @@ class ContactController extends Controller
             case 9:
                 $type = "template";
                 $template = config('site.wa_reminder');
-                $image = "https://storage.googleapis.com/storage.vertikaltrip.com/assets/img/whatsapp/dea.jpeg";
+                $image = config("site.assets")."/img/whatsapp/dea.jpeg";
                 $var1 = $contact->name;
                 $var2 = "The Bali Night Walking and Food Tour will start tonight at *05.00PM* and our meeting point is in front of *Lapangan Puputan Badung* (Look for sign 0KM)";
                 $var3 = "Her name is *Dea*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
@@ -209,7 +209,6 @@ class ContactController extends Controller
             $whatsapp->sendImage($contact->wa_id,$image,$var1);
         }
         
-
         return response('OK', 200)->header('Content-Type', 'text/plain');
     }
 
