@@ -132,6 +132,16 @@ class ContactController extends Controller
                 $var4 = "See you 🙏😊";
             break;
 
+            case 10:
+                $type = "template";
+                $template = config('site.wa_reminder');
+                $image = config("site.assets")."/img/guide/dharma01.jpeg";
+                $var1 = $contact->name;
+                $var2 = "The Bali Night Walking and Food Tour will start tonight at *05.00PM* and our meeting point is in front of *Lapangan Puputan Badung* (Look for sign 0KM)";
+                $var3 = "Her name is *Dharma*. He will be the tour guide on duty and will be waiting for you at meeting point 😊";
+                $var4 = "See you 🙏😊";
+            break;
+
             case 11:
                 $type = "text";
                 $var1 = "Got it 🫡 Thank you for your confirmation 🙏😊";
