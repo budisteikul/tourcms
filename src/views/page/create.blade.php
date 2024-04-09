@@ -1,4 +1,5 @@
-
+@extends('coresdk::layouts.app')
+@section('content')
  
 <div class="h-100" style="width:99%">		
  
@@ -95,11 +96,12 @@ function STORE()
 			
 			if(data.id=="1")
 			{
-					tinymce.remove();
+					//tinymce.remove();
        				$('#dataTableBuilder').DataTable().ajax.reload( null, false );
 					$("#result").empty().append('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><b>Success!</b></div>').hide().fadeIn();
        				setTimeout(function (){
-  						$.fancybox.close();
+  						window.location.href = '{{ route('route_tourcms_page.index') }}';
+  						//$.fancybox.close();
 					}, 1000);
 			}
 			else
@@ -122,7 +124,9 @@ function STORE()
 
 function CLOSE()
 {
-	tinymce.remove();
-	$.fancybox.close();
+	window.location.href = '{{ route('route_tourcms_page.index') }}';
+	//tinymce.remove();
+	//$.fancybox.close();
 }
 </script>
+@endsection

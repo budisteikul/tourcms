@@ -39,17 +39,22 @@
 	
 	function CREATE()
 	{
+		window.location.href = '{{ route('route_tourcms_page.create') }}';
+		/*
 		$.fancybox.open({
         	type: 'ajax',
        	 	src: '{{ route('route_tourcms_page.create') }}',
 			modal: true,
           touch: false,
           autoFocus: false
-   		});	
+   		});
+   		*/
 	}
 	
 	function EDIT(id)
 	{
+		window.location.href = '{{ route('route_tourcms_page.index') }}/'+ id +'/edit';
+		/*
 		$.fancybox.open({
         	type: 'ajax',
        	 	src: '{{ route('route_tourcms_page.index') }}/'+ id +'/edit',
@@ -57,20 +62,9 @@
           touch: false,
           autoFocus: false
    		});
-		
+		*/
 	}
 
-  function SHOW()
-  {
-    $.fancybox.open({
-          type: 'ajax',
-          src: '{{ route('route_tourcms_page.index') }}/structure',
-      modal: true,
-          touch: false,
-          autoFocus: false
-      });
-    
-  }
 	</script>
 @endpush
 <div class="row justify-content-center">
