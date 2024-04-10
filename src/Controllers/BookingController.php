@@ -42,6 +42,55 @@ class BookingController extends Controller
 
     }
 
+    public function question_edit($id)
+    {
+        $shoppingcart = Shoppingcart::where('id',$id)->firstOrFail();
+        $mainContactDetails = ShoppingcartQuestion::where('shoppingcart_id',$shoppingcart->id)->where('type','mainContactDetails')->orderBy('order')->get();
+        $activityBookings = ShoppingcartQuestion::where('shoppingcart_id',$shoppingcart->id)->where('type','activityBookings')->orderBy('order')->get();
+        return view('tourcms::booking.question_edit',[
+            'id'=>$shoppingcart->id,
+            'mainContactDetails'=>$mainContactDetails,
+            'activityBookings'=>$activityBookings,
+        ]);
+    }
+
+    public function question_update($id,Request $request)
+    {
+
+        $array = $request->post();
+        foreach ($array as $key => $value)
+        {
+            
+            $question = ShoppingcartQuestion::where('shoppingcart_id',$id)->where('question_id',$key)->first();
+            if($question)
+            {
+                $question->answer = $value;
+                $question->save();
+
+                if($question->data_type=="OPTIONS")
+                {
+                    $options = ShoppingcartQuestionOption::where('shoppingcart_question_id',$question->id)->get();
+                    foreach($options as $option)
+                    {
+                        $answer = 0;
+                        if($option->id==$value) $answer = 1;
+                        $option->answer = $answer;
+                        $option->save();
+                    }
+                    
+                }
+            }
+            
+            
+        }
+        
+
+        return response()->json([
+                    "id" => "1",
+                    "message" => ''
+                ]);
+    }
+
     public function shoppingcart_session()
     {
         if(!Session::has('sessionId')){

@@ -62,7 +62,6 @@
                          <a href="/cms/contact/{{ $Whatsapp->contact($nomor, $contact->firstName) }}/edit" class="btn btn-sm btn-primary mb-2" ><i class="fab fa-whatsapp"></i> Whatsapp Business API</a>
                          <a href="https://wa.me/{{ $nomor }}" class="btn btn-sm btn-success mb-2" target="_blank"><i class="fab fa-whatsapp"></i> Whatsapp Business App</a>
                     </li>
-                    
                     @endif
                   </ul>
             </div>

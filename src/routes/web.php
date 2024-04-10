@@ -2,6 +2,9 @@
 
 
 //Booking
+
+Route::get('/cms/booking/question/{id}/edit','budisteikul\tourcms\Controllers\BookingController@question_edit')->middleware(['web','auth','verified','CoreMiddleware','SettingMiddleware']);
+Route::post('/cms/booking/question/{id}','budisteikul\tourcms\Controllers\BookingController@question_update')->middleware(['web','auth','verified','CoreMiddleware','SettingMiddleware']);
 Route::get('/cms/booking/checkout','budisteikul\tourcms\Controllers\BookingController@checkout')->middleware(['web','auth','verified','CoreMiddleware','SettingMiddleware']);
 Route::resource('/cms/booking','budisteikul\tourcms\Controllers\BookingController',[ 'names' => 'route_tourcms_booking' ])
 	->middleware(['web','auth','verified','CoreMiddleware','SettingMiddleware']);

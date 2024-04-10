@@ -57,6 +57,8 @@ class ScheduleDataTable extends DataTable
                 <div class="btn-toolbar justify-content-end">
                     <div class="btn-group mr-2" role="group">
                         
+                        <a href="'.route('route_tourcms_booking.index').'/question/'. $id->shoppingcart->id .'/edit" id="btn-edit" class="btn btn-sm btn-success  pt-0 pb-0 pl-1 pr-1"><i class="fa fa-edit"></i> Edit Booking</a>
+
                         <button id="btn-edit" type="button" onClick="EDIT(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success  pt-0 pb-0 pl-1 pr-1"><i class="fa fa-edit"></i> Edit Schedule</button>
                         
                     </div>
@@ -134,7 +136,7 @@ class ScheduleDataTable extends DataTable
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(220)
+                  ->width(400)
                   ->addClass('text-center'),
             ];
         }
