@@ -3,7 +3,7 @@
 
 <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card mb-2">
                 <div class="card-header text-white"><a href="https://wa.me/{{ $contact->wa_id }}" class="btn btn-sm btn-primary mb-0" target="_blank"><i class="fab fa-whatsapp"></i> {{$contact->name}} +{{$contact->wa_id}}</a> </div>
                 <div class="card-body">
         		    
@@ -14,30 +14,17 @@
 <div id="message_chat" style="overflow-y: scroll; max-height: 500px;flex-direction: column-reverse;display: flex;"></div> 
 	
 <hr>
-<div class="mb-2">
 
-                    <button type="button" class="btn btn-primary mb-2" id="template1"  onclick="sendTemplate(1); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour - Kalika - Ask Dietary</button>
-                    <button type="button" class="btn btn-primary mb-2" id="template2"  onclick="sendTemplate(2); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour - Kalika</button>
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Message</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Template</a>
+  </div>
+</nav>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template3"  onclick="sendTemplate(3); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour - Anisa - Ask Dietary</button>
-                    <button type="button" class="btn btn-primary mb-2" id="template4"  onclick="sendTemplate(4); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour - Anisa</button>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active pt-4" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
-                    <button type="button" class="btn btn-primary mb-2" id="template5"  onclick="sendTemplate(5); return false;"><b class="fa fa-plus-square"></b> Jogja Morning Food Tour - Kalika - Ask Dietary</button>
-                    <button type="button" class="btn btn-primary mb-2" id="template6"  onclick="sendTemplate(6); return false;"><b class="fa fa-plus-square"></b> Jogja Morning Food Tour - Kalika</button>
-
-                    <button type="button" class="btn btn-primary mb-2" id="template7"  onclick="sendTemplate(7); return false;"><b class="fa fa-plus-square"></b> Jogja Morning Food Tour - Anisa - Ask Dietary</button>
-                    <button type="button" class="btn btn-primary mb-2" id="template8"  onclick="sendTemplate(8); return false;"><b class="fa fa-plus-square"></b> Jogja Morning Food Tour - Anisa</button>
-
-                    <button type="button" class="btn btn-primary mb-2" id="template9"  onclick="sendTemplate(9); return false;"><b class="fa fa-plus-square"></b> Bali Night Food Tour - Dea</button>
-
-                   <button type="button" class="btn btn-primary mb-2" id="template10"  onclick="sendTemplate(10); return false;"><b class="fa fa-plus-square"></b> Bali Night Food Tour - Dharma</button>
-
-
-                    <button type="button" class="btn btn-primary mb-2" id="template11"  onclick="sendTemplate(11); return false;"><b class="fa fa-plus-square"></b> Thanks for answering</button>
-
-                   
-                    
-</div>
 <form onSubmit="sendMessage(); return false;">
 
 <div class="form-group">
@@ -54,8 +41,33 @@
 <button id="submit" type="submit" class="btn btn-primary btn-block"><i class="fas fa-paper-plane"></i> Send</button>
 </form>
 
+</div>
+<div class="tab-pane fade pt-4" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+ <button type="button" class="btn btn-primary mb-2" id="template1"  onclick="sendTemplate(1); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour - Kalika - Ask Dietary</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template2"  onclick="sendTemplate(2); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour - Kalika</button>
+
+                    <button type="button" class="btn btn-primary mb-2" id="template3"  onclick="sendTemplate(3); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour - Anisa - Ask Dietary</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template4"  onclick="sendTemplate(4); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour - Anisa</button>
+
+                    <button type="button" class="btn btn-primary mb-2" id="template5"  onclick="sendTemplate(5); return false;"><b class="fa fa-plus-square"></b> Jogja Morning Food Tour - Kalika - Ask Dietary</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template6"  onclick="sendTemplate(6); return false;"><b class="fa fa-plus-square"></b> Jogja Morning Food Tour - Kalika</button>
+
+                    <button type="button" class="btn btn-primary mb-2" id="template7"  onclick="sendTemplate(7); return false;"><b class="fa fa-plus-square"></b> Jogja Morning Food Tour - Anisa - Ask Dietary</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template8"  onclick="sendTemplate(8); return false;"><b class="fa fa-plus-square"></b> Jogja Morning Food Tour - Anisa</button>
+
+                    <button type="button" class="btn btn-primary mb-2" id="template9"  onclick="sendTemplate(9); return false;"><b class="fa fa-plus-square"></b> Bali Night Food Tour - Dea</button>
+
+                   <button type="button" class="btn btn-primary mb-2" id="template10"  onclick="sendTemplate(10); return false;"><b class="fa fa-plus-square"></b> Bali Night Food Tour - Dharma</button>
+
+
+                    <button type="button" class="btn btn-primary mb-2" id="template11"  onclick="sendTemplate(11); return false;"><b class="fa fa-plus-square"></b> Thanks for answering</button> 
+</div>
+
                 </div>
             </div>
+
+           
+
         </div>
     </div>
 @push('scripts')
@@ -102,28 +114,49 @@ fileUpload();
 
 function sendTemplate(template_id)
 {
-    var enable_text = '<i class="fa fa-plus-square"></i> '+ $("#template"+template_id).text();
-    var disable_text = '<i class="fa fa-spinner fa-spin"></i> '+ $("#template"+template_id).text();
-    
-    $("#template"+template_id).attr("disabled", true);
-    $("#template"+template_id).html(disable_text);
-    $.ajax({
-    data: {
-      "_token": $("meta[name=csrf-token]").attr("content"),
-      "id": "{{ $contact->id }}",
-      "template_id": template_id
-        },
-    type: 'POST',
-    url: '{{ route('route_tourcms_contact.index') .'/template' }}'
-    }).done(function( data ) {
-      
-      $("#template"+template_id).attr("disabled", false);
-      $("#template"+template_id).html(enable_text);
 
+    $.confirm({
+        title: 'Are you sure?',
+        content: $("#template"+template_id).text(),
+        type: 'blue',
+        icon: 'fas fa-paper-plane',
+        buttons: {   
+            ok: {
+                text: "OK",
+                btnClass: 'btn-primary',
+                keys: ['enter'],
+                action: function(){
+                    var enable_text = '<i class="fa fa-plus-square"></i> '+ $("#template"+template_id).text();
+                    var disable_text = '<i class="fa fa-spinner fa-spin"></i> '+ $("#template"+template_id).text();
+    
+                    $("#template"+template_id).attr("disabled", true);
+                    $("#template"+template_id).html(disable_text);
+                    $.ajax({
+                        data: {
+                          "_token": $("meta[name=csrf-token]").attr("content"),
+                          "id": "{{ $contact->id }}",
+                          "template_id": template_id
+                        },
+                        type: 'POST',
+                        url: '{{ route('route_tourcms_contact.index') .'/template' }}'
+                    }).done(function( data ) {
+      
+                        $("#template"+template_id).attr("disabled", false);
+                        $("#template"+template_id).html(enable_text);
+
+                    });
+                    
+                }
+            },
+            cancel: function(){
+                  console.log('the user clicked cancel');
+            }
+        }
     });
 
     
-    return false;
+
+
 }
 
 
