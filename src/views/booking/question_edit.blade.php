@@ -1,6 +1,6 @@
 @inject('ProductHelper', 'budisteikul\toursdk\Helpers\ProductHelper')
-@extends('coresdk::layouts.app')
-@section('content')
+
+
 <div class="h-100" style="width:99%">		
 
     <div class="row justify-content-center">
@@ -15,14 +15,14 @@
                     </div>
                     <div class="col-auto text-right mr-0 pr-0">
                         <div class="btn-toolbar justify-content-end">
-                            <a href="{{ route('route_tourcms_schedule.index') }}" class="btn btn-sm btn-danger mr-0" type="button"><i class="fa fa-window-close"></i> Close</a>
+                            <button class="btn btn-sm btn-danger mr-0" type="button" onClick="$.fancybox.close();"><i class="fa fa-window-close"></i> Close</button>
                         </div>
                     </div>
                 </div>
                 </div>
                 <div class="card-body">
 				
-<form onSubmit="UPDATE(); return false;">
+<form onSubmit="UPDATE_BOOKING(); return false;">
 <div id="result"></div>
 <h2>Main Contact</h2>
 @foreach($mainContactDetails as $mainContactDetail)
@@ -38,9 +38,15 @@ if($label=="") $label = $mainContactDetail->question_id;
 
 <hr />
 <h2>Product Question</h2>
-@foreach($activityBookings as $activityBooking)
-<h5>{{$ProductHelper->product_name_by_booking_id($activityBooking->booking_id)}}</h5>
 @php
+$booking_id = "";
+@endphp
+@foreach($activityBookings as $activityBooking)
+@if($booking_id!=$activityBooking->booking_id)
+<h5>{{$ProductHelper->product_name_by_booking_id($activityBooking->booking_id)}}</h5>
+@endif
+@php
+$booking_id = $activityBooking->booking_id;
 $label = $activityBooking->label;
 if($label=="") $label = $activityBooking->question_id;
 @endphp
@@ -82,7 +88,7 @@ if($label=="") $label = $activityBooking->question_id;
 
 
 <script language="javascript">
-function UPDATE()
+function UPDATE_BOOKING()
 {
 	var error = false;
 	$("#submit").attr("disabled", true);
@@ -114,7 +120,7 @@ function UPDATE()
        				$('#dataTableBuilder').DataTable().ajax.reload( null, false );
 					$("#result").empty().append('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><b>Success!</b></div>').hide().fadeIn();
        				setTimeout(function (){
-  						window.location='{{ route('route_tourcms_schedule.index') }}';
+  						$.fancybox.close();
 					}, 1000);
 			}
 			else
@@ -135,4 +141,3 @@ function UPDATE()
 	return false;
 }
 </script>
-@endsection

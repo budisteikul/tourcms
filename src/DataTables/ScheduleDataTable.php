@@ -57,7 +57,8 @@ class ScheduleDataTable extends DataTable
                 <div class="btn-toolbar justify-content-end">
                     <div class="btn-group mr-2" role="group">
                         
-                        <a href="'.route('route_tourcms_booking.index').'/question/'. $id->shoppingcart->id .'/edit" id="btn-edit" class="btn btn-sm btn-success  pt-0 pb-0 pl-1 pr-1"><i class="fa fa-edit"></i> Edit Booking</a>
+                        
+                        <button id="btn-edit" type="button" onClick="EDIT_BOOKING(\''.$id->shoppingcart->id.'\'); return false;" class="btn btn-sm btn-success  pt-0 pb-0 pl-1 pr-1"><i class="fa fa-edit"></i> Edit Booking</button>
 
                         <button id="btn-edit" type="button" onClick="EDIT(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success  pt-0 pb-0 pl-1 pr-1"><i class="fa fa-edit"></i> Edit Schedule</button>
                         

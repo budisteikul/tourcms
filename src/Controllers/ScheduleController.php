@@ -35,7 +35,6 @@ class ScheduleController extends Controller
         $date =  $request->input('date');
         $shoppingcart_product = ShoppingcartProduct::findOrFail($id);
 
-
         $shoppingcart_product->date = $date;
         $shoppingcart_product->save();
 

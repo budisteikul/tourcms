@@ -25,6 +25,18 @@ function EDIT(id)
     
   }
 
+function EDIT_BOOKING(id)
+  {
+    $.fancybox.open({
+          type: 'ajax',
+          src: '{{ route('route_tourcms_booking.index') }}/question/'+ id +'/edit',
+          modal: true,
+          touch: false,
+          autoFocus: false
+      });
+    
+  }
+
 function PAID(id,transaction_id)
   {
     $.confirm({

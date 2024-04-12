@@ -46,7 +46,7 @@ class BookingController extends Controller
     {
         $shoppingcart = Shoppingcart::where('id',$id)->firstOrFail();
         $mainContactDetails = ShoppingcartQuestion::where('shoppingcart_id',$shoppingcart->id)->where('type','mainContactDetails')->orderBy('order')->get();
-        $activityBookings = ShoppingcartQuestion::where('shoppingcart_id',$shoppingcart->id)->where('type','activityBookings')->orderBy('order')->get();
+        $activityBookings = ShoppingcartQuestion::where('shoppingcart_id',$shoppingcart->id)->where('type','activityBookings')->orderBy('booking_id')->orderBy('order')->get();
         return view('tourcms::booking.question_edit',[
             'id'=>$shoppingcart->id,
             'mainContactDetails'=>$mainContactDetails,
