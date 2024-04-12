@@ -1,3 +1,4 @@
+@inject('ProductHelper', 'budisteikul\toursdk\Helpers\ProductHelper')
 @extends('coresdk::layouts.app')
 @section('content')
 <div class="h-100" style="width:99%">		
@@ -23,7 +24,7 @@
 				
 <form onSubmit="UPDATE(); return false;">
 <div id="result"></div>
-
+<h2>Main Contact</h2>
 @foreach($mainContactDetails as $mainContactDetail)
 @php
 $label = $mainContactDetail->label;
@@ -36,8 +37,9 @@ if($label=="") $label = $mainContactDetail->question_id;
 @endforeach
 
 <hr />
-
+<h2>Product Question</h2>
 @foreach($activityBookings as $activityBooking)
+<h5>{{$ProductHelper->product_name_by_booking_id($activityBooking->booking_id)}}</h5>
 @php
 $label = $activityBooking->label;
 if($label=="") $label = $activityBooking->question_id;
