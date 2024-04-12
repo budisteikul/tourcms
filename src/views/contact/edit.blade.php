@@ -1,7 +1,7 @@
 @extends('coresdk::layouts.app')
 @section('content')
 
-<div class="row justify-content-center">
+<div class="row justify-content-center" style="min-height: 500px;">
         <div class="col-md-12">
             <div class="card mb-2">
                 <div class="card-header text-white"><a href="https://wa.me/{{ $contact->wa_id }}" class="btn btn-sm btn-primary mb-0" target="_blank"><i class="fab fa-whatsapp"></i> {{$contact->name}} +{{$contact->wa_id}}</a> </div>
@@ -61,6 +61,7 @@
 
 
                     <button type="button" class="btn btn-primary mb-2" id="template11"  onclick="sendTemplate(11); return false;"><b class="fa fa-plus-square"></b> Thanks for answering</button> 
+</div>
 </div>
 
                 </div>
