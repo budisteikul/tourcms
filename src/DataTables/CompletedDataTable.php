@@ -38,9 +38,7 @@ class CompletedDataTable extends DataTable
                 ->addColumn('date_text', function($id){
                     return GeneralHelper::dateFormat($id->date,10);
                 })
-                ->addColumn('booking_channel', function($id){
-                    return $id->shoppingcart->booking_channel;
-                })
+               
                 ->addColumn('people', function($id){
                     $people = 0;
                     foreach($id->shoppingcart_product_details as $shoppingcart_product_detail)
@@ -61,10 +59,16 @@ class CompletedDataTable extends DataTable
      */
     public function query(ShoppingcartProduct $model): QueryBuilder
     {
-        $model = $model->whereHas('shoppingcart', function ($query) {
-                return $query->where('booking_status','CONFIRMED');
-        })->where('date', '<', date('Y-m-d'))->whereNotNull('date')->newQuery();
-        return $model;
+        $model = $model->with(['shoppingcart' => function ($query) {
+                    return $query->with(['shoppingcart_questions' => function ($query) {
+                        return $query->where('question_id','firstName')->orWhere('question_id','lastName');
+                    }]);
+                }])
+                 ->whereHas('shoppingcart', function ($query) {
+                    return $query->where('booking_status','CONFIRMED');
+                 })->where('date', '<', date('Y-m-d'))->whereNotNull('date')->newQuery();
+        
+                 return $model;
     }
 
     /**
@@ -114,7 +118,7 @@ class CompletedDataTable extends DataTable
                   ->addClass('text-center align-middle'),
 
             Column::make('name')->title('Main Contact')->orderable(false)->addClass('align-middle'),
-            Column::make('booking_channel')->title('Channel')->orderable(false)->addClass('align-middle'),
+            Column::make('shoppingcart.booking_channel')->title('Channel')->orderable(false)->addClass('align-middle'),
             Column::make('date_text')->title('Date')->orderable(false)->addClass('align-middle'),
             Column::make('people')->title('People')->orderable(false)->addClass('align-middle'),
 
@@ -135,7 +139,7 @@ class CompletedDataTable extends DataTable
                   ->addClass('text-center align-middle'),
 
             Column::make('name')->title('Main Contact')->orderable(false)->addClass('align-middle'),
-            Column::make('booking_channel')->title('Channel')->orderable(false)->addClass('align-middle'),
+            Column::make('shoppingcart.booking_channel')->title('Channel')->orderable(false)->addClass('align-middle'),
             Column::make('date_text')->title('Date')->orderable(false)->addClass('align-middle'),
             Column::make('people')->title('People')->orderable(false)->addClass('align-middle')
             ];
