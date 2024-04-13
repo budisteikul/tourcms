@@ -36,7 +36,7 @@ if($label=="") $label = $mainContactDetail->question_id;
 </div>
 @endforeach
 
-<hr />
+
 <h2>Product Question</h2>
 @php
 $booking_id = "";

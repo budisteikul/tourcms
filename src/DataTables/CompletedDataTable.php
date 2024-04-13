@@ -27,7 +27,7 @@ class CompletedDataTable extends DataTable
     {
        
         return datatables($query)
-                
+
                 ->addColumn('name', function($id){
                     $shoppingcart_id = $id->shoppingcart->id;
                     $question = BookingHelper::get_answer_contact($id->shoppingcart);
