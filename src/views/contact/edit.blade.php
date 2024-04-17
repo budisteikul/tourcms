@@ -185,7 +185,7 @@ function sendMessage()
     }).done(function( data ) {
           $("#message_text").val("");
           $("#submit").attr("disabled", false);
-          $('#submit').html('<i class="fas fa-paper-plane"></i> {{ __('Save') }}');
+          $('#submit').html('<i class="fas fa-paper-plane"></i> {{ __('Send') }}');
           $(".ajax-file-upload-container").remove();
           fileUpload();
     });
