@@ -152,6 +152,7 @@ class ContactController extends Controller
 
         if($type=="template")
         {
+            if($var1=="") $var1="friend";
             $components = [
                                     [
                                         "type"=> "header",
