@@ -72,7 +72,7 @@ class ContactController extends Controller
                 $var1 = $contact->name;
                 $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-                $var4 = "See you 🙏😊";
+                $var4 = "If you have any food allergy or dietary restrictions, tell us by reply this message 🙏😊";
             break;
             case 4:
                 $type = "template";
