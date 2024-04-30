@@ -317,29 +317,7 @@ function DELETE()
  				 <div class="card-body" style="padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:15px;">
                  
 <form onSubmit="STORE(); return false;">
-<h3>Configuration</h3>
-<div class="form-group">
-<label for="bookingChannel"><strong>Channel</strong></label>
-<select style="font-size:16px;height:47px;"  class="form-control" id="bookingChannel" name="bookingChannel">
-        <option value="WEBSITE">WEBSITE</option>
-        @foreach($channels as $channel)
-        <option value="{{$channel->name}}">{{$channel->name}}</option>
-        @endforeach
-</select>
-</div>
-<!-- ########################################### -->
-<div class="form-group">
-<label for="payment"><strong>Payment</strong></label>
-<select style="font-size:16px;height:47px;"  class="form-control" id="payment" name="payment">
-        <option value="none">No Payment</option>
-        <option value="card">Card</option>
-        <option value="qris">QRIS</option>
-        <option value="virtual_account">Virtual Account</option>
-        <option value="ewallet">E-wallet</option>
-        <option value="paylater">Pay Later</option>
-</select>
-</div>
-<!-- ########################################### -->
+
 <h3>Main Contact</h3>
 @foreach($shoppingcart->questions as $question)
 	@if($question->type=="mainContactDetails")
@@ -475,6 +453,50 @@ function DELETE()
 
 
 
+
+<div class="card">
+  <div class="card-header">
+    Configuration
+  </div>
+<div class="card-body">
+<!-- ########################################### -->
+<div class="form-group">
+<label for="bookingChannel"><strong>Channel</strong></label>
+<select style="font-size:16px;height:47px;"  class="form-control" id="bookingChannel" name="bookingChannel">
+        <option value="WEBSITE">WEBSITE</option>
+        @foreach($channels as $channel)
+        <option value="{{$channel->name}}">{{$channel->name}}</option>
+        @endforeach
+</select>
+</div>
+<!-- ########################################### -->
+<div class="form-group">
+<label for="payment"><strong>Payment</strong></label>
+<select style="font-size:16px;height:47px;"  class="form-control" id="payment" name="payment">
+        <option value="none">No Payment</option>
+        <option value="card">Card</option>
+        <option value="qris">QRIS</option>
+        <option value="virtual_account">Virtual Account</option>
+        <option value="ewallet">E-wallet</option>
+        <option value="paylater">Pay Later</option>
+</select>
+</div>
+<div class="form-group">
+<label for="wa_notif"><strong>WA Notification</strong></label>
+<select style="font-size:16px;height:47px;"  class="form-control" id="wa_notif" name="wa_notif">
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+</select>
+</div>
+<div class="form-group">
+<label for="confirmation_code"><strong>Confirmation Code</strong></label>
+	<input name="confirmation_code" value="" type="text" class="form-control" id="confirmation_code" style="height:47px;">
+</div>
+<!-- ########################################### -->
+</div>  
+</div>
+<br />
+
 <button id="submit" type="submit" style="height:47px;" class="btn btn-lg btn-block btn-primary"><i class="fas fa-save"></i> Save</button>
 </form>
 
@@ -534,6 +556,8 @@ function STORE()
 		data: JSON.stringify({
             "bookingChannel": $("#bookingChannel").val(),
             "payment": $("#payment").val(),
+            "wa_notif": $("#wa_notif").val(),
+            "confirmation_code": $("#confirmation_code").val(),
             "sessionId": '{{$shoppingcart->session_id}}',
             "questions": questions,
         }),

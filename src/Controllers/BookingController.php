@@ -39,7 +39,6 @@ class BookingController extends Controller
         $this->bookingChannelUUID = env("BOKUN_BOOKING_CHANNEL");
         $this->currency = SettingHelper::getSetting('currency');
         $this->lang = env("BOKUN_LANG");
-
     }
 
     public function question_edit($id)
@@ -53,6 +52,8 @@ class BookingController extends Controller
             'activityBookings'=>$activityBookings,
         ]);
     }
+
+    
 
     public function question_update($id,Request $request)
     {
@@ -160,6 +161,7 @@ class BookingController extends Controller
             
             $data = json_decode($request->getContent(), true);
 
+
             $validator = Validator::make(json_decode($request->getContent(), true), [
                     'sessionId' => ['required', 'string', 'max:255'],
                 ]);
@@ -202,6 +204,16 @@ class BookingController extends Controller
             
             $shoppingcart = BookingHelper::confirm_booking($sessionId,false);
 
+            if($data['confirmation_code']!="")
+            {
+                $shoppingcart->confirmation_code = $data['confirmation_code'];
+                $shoppingcart->save();
+            }
+
+            if($data['wa_notif']=="yes")
+            {
+                BookingHelper::shoppingcart_notif($shoppingcart);
+            }
             
 
             //Fee ========================================================================
