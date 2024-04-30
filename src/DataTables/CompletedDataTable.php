@@ -35,6 +35,9 @@ class CompletedDataTable extends DataTable
                     $name = '<a href="#" onClick="SHOW(\''.$shoppingcart_id.'\'); return false;">'. $name .'</a>';
                     return $name;
                 })
+                ->addColumn('payment', function($id){
+                    return $id->shoppingcart->shoppingcart_payment->payment_provider;
+                })
                 ->addColumn('date_text', function($id){
                     return GeneralHelper::dateFormat($id->date,10);
                 })
@@ -118,7 +121,9 @@ class CompletedDataTable extends DataTable
                   ->addClass('text-center align-middle'),
 
             Column::make('name')->title('Main Contact')->orderable(false)->addClass('align-middle'),
+
             Column::make('shoppingcart.booking_channel')->title('Channel')->orderable(false)->addClass('align-middle'),
+            Column::make('payment')->title('Payment Provider')->orderable(false)->addClass('align-middle'),
             Column::make('date_text')->title('Date')->orderable(false)->addClass('align-middle'),
             Column::make('people')->title('People')->orderable(false)->addClass('align-middle'),
 
