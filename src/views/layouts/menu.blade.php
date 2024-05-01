@@ -100,7 +100,7 @@
             
             <a class="collapse-item {{ (request()->is('cms/booking*')) ? 'active' : '' }}" href="{{ route('route_tourcms_booking.index') }}"><i class="far fa-circle"></i> {{ __('Booking') }}</a>
 
-            <a class="collapse-item {{ (request()->is('cms/cancel*')) ? 'active' : '' }}" href="{{ route('route_tourcms_cancel.index') }}"><i class="far fa-circle"></i> {{ __('Refund') }}</a>
+            <!-- a class="collapse-item {{ (request()->is('cms/cancel*')) ? 'active' : '' }}" href="{{ route('route_tourcms_cancel.index') }}"><i class="far fa-circle"></i> {{ __('Refund') }}</a -->
 
           </div>
         </div>
