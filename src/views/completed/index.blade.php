@@ -14,7 +14,46 @@ function SHOW(id)
   }
 
 
+function PAID(id,transaction_id)
+  {
+    $.confirm({
+        title: 'Warning',
+        content: 'Are you sure want to set as paid on order with booking number '+ transaction_id +'?',
+        type: 'green',
+      icon: 'fa fa-ban',
+        buttons: {   
+            ok: {
+                text: "OK",
+                btnClass: 'btn-success',
+                keys: ['enter'],
+                action: function(){
+                     var table = $('#dataTableBuilder').DataTable();
+                     $("#btn-paid").attr("disabled", true);
+                     $('#btn-paid').html('<i class="fa fa-spinner fa-spin"></i>');
+                     $.ajax({
+                        data: {
+                          "_token": $("meta[name=csrf-token]").attr("content"),
+                          "action": 'paid',
+      
+                        },
+                        type: 'PUT',
+                        url: '{{ route('route_tourcms_booking.index') }}/'+ id
+                        }).done(function( data ) {
+                          table.ajax.reload( null, false );
+                          setTimeout(function (){
+                              $.fancybox.close();
+                            }, 1000);
+                        });
 
+                }
+            },
+            cancel: function(){
+                  console.log('the user clicked cancel');
+            }
+        }
+    });
+    
+  }
 
 function CANCEL(id,transaction_id)
   {
