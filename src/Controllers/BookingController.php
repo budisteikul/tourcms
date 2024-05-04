@@ -212,7 +212,7 @@ class BookingController extends Controller
 
             if($data['wa_notif']=="yes")
             {
-                BookingHelper::shoppingcart_notif($shoppingcart);
+                BookingHelper::shoppingcart_whatsapp($shoppingcart);
             }
             
 
