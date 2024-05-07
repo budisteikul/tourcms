@@ -61,7 +61,7 @@
 
                     <button type="button" class="btn btn-primary mb-2" id="template11"  onclick="sendTemplate(11); return false;"><b class="fa fa-plus-square"></b> Thanks for answering</button>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template51"  onclick="sendTemplate(51); return false;"><b class="fa fa-plus-square"></b> Request Review Bali Food Tour</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template51"  onclick="sendTemplate(51); return false;"><b class="fa fa-plus-square"></b> Request Review Bali Night Food Tour</button>
 
                     <button type="button" class="btn btn-primary mb-2" id="template52"  onclick="sendTemplate(52); return false;"><b class="fa fa-plus-square"></b> Request Review Bali Village Tour</button>
 
