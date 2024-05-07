@@ -148,6 +148,7 @@ class ContactController extends Controller
             break;
 
             case 51:
+                //Bali Food Tour
                 $type = "template_2";
                 $template = config('site.wa_review');
                 $var1 = $contact->name;
@@ -156,11 +157,30 @@ class ContactController extends Controller
             break;
 
             case 52:
+                //Bali Village Tour
                 $type = "template_2";
                 $template = config('site.wa_review');
                 $var1 = $contact->name;
                 $var2 = "Thank you for visiting Bali and joining our tour. Hope it give you a good memory about Bali.";
                 $var3 = "https://www.tripadvisor.com/UserReviewEdit-g1025508-d16807840.html";
+            break;
+
+            case 53:
+                //Jogja Morning Tour
+                $type = "template_2";
+                $template = config('site.wa_review');
+                $var1 = $contact->name;
+                $var2 = "Thank you for visiting Yogyakarta and joining our tour. Hope it give you a good memory about Yogyakarta.";
+                $var3 = "https://www.tripadvisor.com/UserReviewEdit-g14782503-d25070180.html";
+            break;
+
+            case 54:
+                //Jogja Night Food Tour
+                $type = "template_2";
+                $template = config('site.wa_review');
+                $var1 = $contact->name;
+                $var2 = "Thank you for visiting Yogyakarta and joining our tour. Hope it give you a good memory about Yogyakarta.";
+                $var3 = "https://www.tripadvisor.com/UserReviewEdit-g14782503-d15646790.html";
             break;
         }
 
