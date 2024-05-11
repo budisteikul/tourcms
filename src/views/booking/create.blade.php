@@ -31,7 +31,9 @@
                         @php
                             $cover = $ImageHelper->cover($product);
                         @endphp
+                        @if($cover!="")
                         <img src="{{ $cover }}" alt="{{ $product->name }}" class="card-img-top image-book">
+                        @endif
                     </div>
                     <div class="card-body mb-0 pb-0">
                         <h5 class="card-title">{{ $product->name }}</h5>
