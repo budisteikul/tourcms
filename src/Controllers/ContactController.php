@@ -165,6 +165,15 @@ class ContactController extends Controller
                 $var3 = "https://www.tripadvisor.com/UserReviewEdit-g1025508-d16807840.html";
             break;
 
+            case 55:
+                //Ubud Food Tour
+                $type = "template_2";
+                $template = config('site.wa_review');
+                $var1 = $contact->name;
+                $var2 = "Thank you for visiting Bali and joining our tour. Hope it give you a good memory about Bali.";
+                $var3 = "https://www.tripadvisor.com/UserReviewEdit-g294226-d27735579.html";
+            break;
+
             case 53:
                 //Jogja Morning Tour
                 $type = "template_2";
@@ -182,6 +191,7 @@ class ContactController extends Controller
                 $var2 = "Thank you for visiting Yogyakarta and joining our tour. Hope it give you a good memory about Yogyakarta.";
                 $var3 = "https://www.tripadvisor.com/UserReviewEdit-g14782503-d15646790.html";
             break;
+            
         }
 
         if($type=="template_2")
