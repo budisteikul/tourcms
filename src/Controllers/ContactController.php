@@ -79,7 +79,7 @@ class ContactController extends Controller
                 $template = config('site.wa_reminder');
                 $image = config("site.assets")."/img/guide/anisa01.jpeg";
                 $var1 = $contact->name;
-                $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.45PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
+                $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
                 $var4 = "See you 🙏😊";
             break;
