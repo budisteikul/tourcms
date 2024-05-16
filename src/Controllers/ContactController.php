@@ -55,6 +55,7 @@ class ContactController extends Controller
                 $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
                 $var4 = "If you have any food allergy or dietary restrictions, tell us by reply this message 🙏😊";
             break;
+
             case 2:
                 $type = "template";
                 $template = config('site.wa_reminder');
@@ -74,6 +75,7 @@ class ContactController extends Controller
                 $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
                 $var4 = "If you have any food allergy or dietary restrictions, tell us by reply this message 🙏😊";
             break;
+
             case 4:
                 $type = "template";
                 $template = config('site.wa_reminder');
@@ -112,6 +114,7 @@ class ContactController extends Controller
                 $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
                 $var4 = "If you have any food allergy or dietary restrictions, tell us by reply this message 🙏😊";
             break;
+            
             case 8:
                 $type = "template";
                 $template = config('site.wa_reminder');
