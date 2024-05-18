@@ -155,6 +155,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        Slug::where('type','category')->where('link_id',$category->id)->delete();
         Category::where('parent_id',$category->id)->update(['parent_id'=>0]);
         Product::where('category_id',$category->id)->update(['category_id'=>0]);
 		$category->delete();

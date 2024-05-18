@@ -285,6 +285,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        Slug::where('type','product')->where('link_id',$product->id)->delete();
         self::product_api('/product/remove',$product->bokun_id);
         foreach($product->images as $image)
         {

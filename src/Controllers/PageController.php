@@ -138,6 +138,7 @@ class PageController extends Controller
      */
     public function destroy(Page $page)
     {
+        Slug::where('type','page')->where('link_id',$page->id)->delete();
         $page->delete();
     }
 }
