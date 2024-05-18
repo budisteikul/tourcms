@@ -12,6 +12,7 @@ use budisteikul\tourcms\DataTables\ProductDataTable;
 use budisteikul\toursdk\Models\Product;
 use budisteikul\toursdk\Models\Image;
 use budisteikul\toursdk\Models\Category;
+use budisteikul\toursdk\Models\Slug;
 use budisteikul\coresdk\Models\FileTemp;
 use budisteikul\toursdk\Helpers\CategoryHelper;
 use budisteikul\toursdk\Helpers\ImageHelper;
@@ -110,6 +111,12 @@ class ProductController extends Controller
         $product->min_participant = $min_participant;
         $product->category_id = $category_id;
         $product->save();
+
+        $slug = new Slug();
+        $slug->type = "product";
+        $slug->link_id = $product->id;
+        $slug->slug = Str::slug($name,'-');
+        $slug->save();
 		
         $key = $request->input('key');
         $filetemps = FileTemp::where('key',$key)->get();
@@ -214,7 +221,7 @@ class ProductController extends Controller
 
 
         $product->name = $name;
-        //$product->slug = Str::slug($name,'-');
+        $product->slug = Str::slug($name,'-');
 		$product->bokun_id = $bokun_id;
         $product->deposit_percentage = $deposit_percentage;
         $product->deposit_amount = $deposit_amount;
@@ -222,6 +229,12 @@ class ProductController extends Controller
         $product->min_participant = $min_participant;
         $product->save();
 
+        $slug = new Slug();
+        $slug->type = "product";
+        $slug->link_id = $product->id;
+        $slug->slug = Str::slug($name,'-');
+        $slug->save();
+        
         foreach($product->images->sortBy('sort') as $image)
         {
 

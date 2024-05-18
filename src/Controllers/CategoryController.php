@@ -4,6 +4,7 @@ namespace budisteikul\tourcms\Controllers;
 use App\Http\Controllers\Controller;
 
 use budisteikul\toursdk\Models\Category;
+use budisteikul\toursdk\Models\Slug;
 use budisteikul\toursdk\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -70,6 +71,12 @@ class CategoryController extends Controller
         $category->slug = Str::slug($name,"-");
         $category->save();
 
+        $slug = new Slug();
+        $slug->type = "category";
+        $slug->link_id = $category->id;
+        $slug->slug = Str::slug($name,'-');
+        $slug->save();
+
         return response()->json([
                     "id" => "1",
                     "message" => 'Success'
@@ -125,8 +132,14 @@ class CategoryController extends Controller
         $category->name = $name;
         $category->description = $description;
         $category->parent_id = $parent_id;
-        //$category->slug = Str::slug($name,"-");
+        $category->slug = Str::slug($name,"-");
         $category->save();
+
+        $slug = new Slug();
+        $slug->type = "category";
+        $slug->link_id = $category->id;
+        $slug->slug = Str::slug($name,'-');
+        $slug->save();
 
         return response()->json([
                     "id" => "1",
