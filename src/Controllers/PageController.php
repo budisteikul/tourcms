@@ -4,6 +4,7 @@ namespace budisteikul\tourcms\Controllers;
 use App\Http\Controllers\Controller;
 
 use budisteikul\toursdk\Models\Page;
+use budisteikul\toursdk\Models\Slug;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use budisteikul\tourcms\DataTables\PageDataTable;
@@ -56,6 +57,12 @@ class PageController extends Controller
         $page->slug = Str::slug($title,"-");
         $page->content = $content;
         $page->save();
+
+        $slug = new Slug();
+        $slug->type = "page";
+        $slug->link_id = $page->id;
+        $slug->slug = Str::slug($title,"-");
+        $slug->save();
 
         return response()->json([
                     "id" => "1",
@@ -110,6 +117,12 @@ class PageController extends Controller
         $page->slug = Str::slug($title,"-");
         $page->content = $content;
         $page->save();
+
+        $slug = new Slug();
+        $slug->type = "page";
+        $slug->link_id = $page->id;
+        $slug->slug = Str::slug($title,"-");
+        $slug->save();
 
         return response()->json([
                     "id" => "1",
