@@ -149,7 +149,7 @@ class ContactController extends Controller
                 $type = "template_3";
                 $template = "booking_reminder_240528";
                 $var1 = $contact->name;
-                $var2 = "The tour will start tomorrow evening and We will pick you up at your hotel at 4.00pm.";
+                $var2 = "The Ubud Food Tour will start tomorrow evening and We will pick you up at your hotel at 4.00pm.";
             break;
 
             case 21:
