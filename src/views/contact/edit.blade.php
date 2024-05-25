@@ -59,7 +59,9 @@
 
                    <button type="button" class="btn btn-primary mb-2" id="template10"  onclick="sendTemplate(10); return false;"><b class="fa fa-plus-square"></b> Bali Night Food Tour - Dharma</button>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template11"  onclick="sendTemplate(11); return false;"><b class="fa fa-plus-square"></b> Thanks for answering</button>
+                   <button type="button" class="btn btn-primary mb-2" id="template11"  onclick="sendTemplate(11); return false;"><b class="fa fa-plus-square"></b> Ubud Food Tour - TripByLocals</button>
+
+                    <button type="button" class="btn btn-primary mb-2" id="template21"  onclick="sendTemplate(21); return false;"><b class="fa fa-plus-square"></b> Thanks for answering</button>
 
                     <button type="button" class="btn btn-primary mb-2" id="template51"  onclick="sendTemplate(51); return false;"><b class="fa fa-plus-square"></b> Request Review Bali Night Food Tour</button>
 

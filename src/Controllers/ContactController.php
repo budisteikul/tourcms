@@ -146,6 +146,13 @@ class ContactController extends Controller
             break;
 
             case 11:
+                $type = "template_3";
+                $template = "booking_reminder_240528";
+                $var1 = $contact->name;
+                $var2 = "The tour will start tomorrow evening and We will pick you up at your hotel at 4.00pm.";
+            break;
+
+            case 21:
                 $type = "text";
                 $var1 = "Got it 🫡 Thank you for your confirmation 🙏😊";
             break;
@@ -195,6 +202,29 @@ class ContactController extends Controller
                 $var3 = "https://www.tripadvisor.com/UserReviewEdit-g14782503-d15646790.html";
             break;
             
+        }
+
+        if($type=="template_3")
+        {
+            if($var1=="") $var1="friend";
+            $components = [
+                                    [
+                                        "type"=> "body",
+                                        "parameters" => [
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var1
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var2
+                                            ]
+                                        ]
+                                    ]
+                              ];
+            
+            $whatsapp = new WhatsappHelper;
+            $whatsapp->sendTemplate($contact->wa_id,$template, $components);
         }
 
         if($type=="template_2")
