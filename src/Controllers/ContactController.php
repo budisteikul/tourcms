@@ -63,7 +63,7 @@ class ContactController extends Controller
                 $var1 = $contact->name;
                 $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-                $var4 = "See you 🙏😊";
+                $var4 = "Regards";
             break;
 
             case 3:
@@ -83,7 +83,7 @@ class ContactController extends Controller
                 $var1 = $contact->name;
                 $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-                $var4 = "See you 🙏😊";
+                $var4 = "Regards";
             break;
 
             case 5:
@@ -102,7 +102,7 @@ class ContactController extends Controller
                 $var1 = $contact->name;
                 $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow at *7.30AM* and our meeting point is arround *Lupis Mbah Satinem*";
                 $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-                $var4 = "See you 🙏😊";
+                $var4 = "Regards";
             break;
 
             case 7:
@@ -122,7 +122,7 @@ class ContactController extends Controller
                 $var1 = $contact->name;
                 $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow at *7.30AM* and our meeting point is arround *Lupis Mbah Satinem*";
                 $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-                $var4 = "See you 🙏😊";
+                $var4 = "Regards";
             break;
 
             case 9:
@@ -132,7 +132,7 @@ class ContactController extends Controller
                 $var1 = $contact->name;
                 $var2 = "The Bali Night Walking and Food Tour will start tonight at *05.00PM* and our meeting point is in front of *Lapangan Puputan Badung* (Look for sign 0KM)";
                 $var3 = "Her name is *Dea*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-                $var4 = "See you 🙏😊";
+                $var4 = "Regards";
             break;
 
             case 10:
@@ -142,7 +142,7 @@ class ContactController extends Controller
                 $var1 = $contact->name;
                 $var2 = "The Bali Night Walking and Food Tour will start tonight at *05.00PM* and our meeting point is in front of *Lapangan Puputan Badung* (Look for sign 0KM)";
                 $var3 = "His name is *Dharma*. He will be the tour guide on duty and will be waiting for you at meeting point 😊";
-                $var4 = "See you 🙏😊";
+                $var4 = "Regards";
             break;
 
             case 11:
@@ -155,6 +155,11 @@ class ContactController extends Controller
             case 21:
                 $type = "text";
                 $var1 = "Got it 🫡 Thank you for your confirmation 🙏😊";
+            break;
+
+            case 22:
+                $type = "text";
+                $var1 = "Oh I forgot to ask 🙏 Do you have any food allergy or dietary restrictions?";
             break;
 
             case 51:
