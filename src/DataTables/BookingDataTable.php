@@ -52,7 +52,11 @@ class BookingDataTable extends DataTable
                     if($id->booking_status=="CONFIRMED") $booking_status = '<span class="badge badge-success font-weight-bold">CONFIRMED</span>';
 
                     $payment_status = '';
-                    if($id->shoppingcart_payment->payment_status==4) $payment_status = '<span class="badge badge-info font-weight-bold">WAITING FOR PAYMENT</span>';
+                    if(isset($id->shoppingcart_payment->payment_status))
+                    {
+                        if($id->shoppingcart_payment->payment_status==4) $payment_status = '<span class="badge badge-info font-weight-bold">WAITING FOR PAYMENT</span>';
+                    }
+                    
                     return $booking_status .' '. $payment_status;
                 })
                 ->addColumn('action', function ($id) {

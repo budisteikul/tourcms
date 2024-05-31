@@ -36,7 +36,11 @@ class CompletedDataTable extends DataTable
                     return $name;
                 })
                 ->addColumn('payment', function($id){
-                    return $id->shoppingcart->shoppingcart_payment->payment_provider;
+                    if(isset($id->shoppingcart->shoppingcart_payment))
+                    {
+                        return $id->shoppingcart->shoppingcart_payment->payment_provider;
+                    }
+                    return '';
                 })
                 ->addColumn('date_text', function($id){
                     return GeneralHelper::dateFormat($id->date,10);
