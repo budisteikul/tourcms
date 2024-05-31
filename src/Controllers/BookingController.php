@@ -355,6 +355,26 @@ class BookingController extends Controller
                     ]);
         }
 
+        if($request->input('action')=="resend_whatsapp")
+        {
+            $shoppingcart = Shoppingcart::findOrFail($id);
+            BookingHelper::shoppingcart_whatsapp($shoppingcart);
+            return response()->json([
+                        "id"=>"1",
+                        "message"=>'success'
+                    ]);
+        }
+
+        if($request->input('action')=="resend_email")
+        {
+            $shoppingcart = Shoppingcart::findOrFail($id);
+            BookingHelper::shoppingcart_mail($shoppingcart);
+            return response()->json([
+                        "id"=>"1",
+                        "message"=>'success'
+                    ]);
+        }
+
     }
 
     /**

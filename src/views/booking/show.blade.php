@@ -105,6 +105,9 @@
                     @if($shoppingcart->shoppingcart_payment->payment_status==4 && $shoppingcart->shoppingcart_payment->payment_provider=="none")
                     <li class="list-group-item"><button id="btn-paid" type="button" onClick="PAID('{{ $shoppingcart->id }}','{{ $shoppingcart->confirmation_code }}'); return false;" class="btn btn-block btn-success mr-0"><b>Set payment as Paid</b></button></li>
                     @endif
+                    <li class="list-group-item"><button id="btn-whatsapp" type="button" onClick="RESEND_WHATSAPP('{{ $shoppingcart->id }}','{{ $shoppingcart->confirmation_code }}'); return false;" class="btn btn-block btn-success mr-0"><b>Resend Whatsapp</b></button></li>
+                    <li class="list-group-item"><button id="btn-email" type="button" onClick="RESEND_EMAIL('{{ $shoppingcart->id }}','{{ $shoppingcart->confirmation_code }}'); return false;" class="btn btn-block btn-primary mr-0"><b>Resend Email</b></button></li>
+
                   </ul>
                 
             </div>
@@ -159,6 +162,89 @@ function hideTooltip(element) {
     $(element).tooltip('dispose');
   }, 1000);
 }
+
+
+function RESEND_WHATSAPP(id,transaction_id)
+  {
+    $.confirm({
+        title: 'Warning',
+        content: 'Are you sure want to send whatsapp with booking number '+ transaction_id +'?',
+        type: 'green',
+      icon: 'fa fa-ban',
+        buttons: {   
+            ok: {
+                text: "OK",
+                btnClass: 'btn-success',
+                keys: ['enter'],
+                action: function(){
+                     var table = $('#dataTableBuilder').DataTable();
+                     $("#btn-whatsapp").attr("disabled", true);
+                     $('#btn-whatsapp').html('<i class="fa fa-spinner fa-spin"></i>');
+                     $.ajax({
+                        data: {
+                          "_token": $("meta[name=csrf-token]").attr("content"),
+                          "action": 'resend_whatsapp',
+      
+                        },
+                        type: 'PUT',
+                        url: '{{ route('route_tourcms_booking.index') }}/'+ id
+                        }).done(function( data ) {
+                          table.ajax.reload( null, false );
+                          setTimeout(function (){
+                              $.fancybox.close();
+                            }, 1000);
+                        });
+
+                }
+            },
+            cancel: function(){
+                  console.log('the user clicked cancel');
+            }
+        }
+    });
+    
+  }
+
+  function RESEND_EMAIL(id,transaction_id)
+  {
+    $.confirm({
+        title: 'Warning',
+        content: 'Are you sure want to send email with booking number '+ transaction_id +'?',
+        type: 'green',
+      icon: 'fa fa-ban',
+        buttons: {   
+            ok: {
+                text: "OK",
+                btnClass: 'btn-success',
+                keys: ['enter'],
+                action: function(){
+                     var table = $('#dataTableBuilder').DataTable();
+                     $("#btn-email").attr("disabled", true);
+                     $('#btn-email').html('<i class="fa fa-spinner fa-spin"></i>');
+                     $.ajax({
+                        data: {
+                          "_token": $("meta[name=csrf-token]").attr("content"),
+                          "action": 'resend_email',
+      
+                        },
+                        type: 'PUT',
+                        url: '{{ route('route_tourcms_booking.index') }}/'+ id
+                        }).done(function( data ) {
+                          table.ajax.reload( null, false );
+                          setTimeout(function (){
+                              $.fancybox.close();
+                            }, 1000);
+                        });
+
+                }
+            },
+            cancel: function(){
+                  console.log('the user clicked cancel');
+            }
+        }
+    });
+    
+  }
 </script>
 <style type="text/css">
     h1{
