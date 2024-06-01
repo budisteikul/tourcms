@@ -206,10 +206,13 @@ class BookingController extends Controller
             $shoppingcart = BookingHelper::confirm_booking($sessionId,false);
             
             //remove cancellation policy
-            foreach($shoppingcart->shoppingcart_products as $shoppingcart_product)
+            if($shoppingcart->booking_channel!="WEBSITE")
             {
-                $shoppingcart_product->cancellation = "";
-                $shoppingcart_product->save();
+                foreach($shoppingcart->shoppingcart_products as $shoppingcart_product)
+                {
+                    $shoppingcart_product->cancellation = "";
+                    $shoppingcart_product->save();
+                }
             }
 
             if($data['confirmation_code']!="")
