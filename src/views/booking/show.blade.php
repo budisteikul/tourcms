@@ -13,7 +13,7 @@
                 <div class="row align-items-center w-100">
                     <div class="col text-left">
                         <div class="d-flex align-self-center">
-                        Booking Detail&nbsp;{{ $shoppingcart->confirmation_code }}
+                        <a href="{{env("APP_URL")}}/booking/receipt/{{$shoppingcart->session_id}}/{{$shoppingcart->confirmation_code}}" target="_blank" class="text-white">Booking Detail&nbsp;{{ $shoppingcart->confirmation_code }}</a>
                         </div>
                     </div>
                     <div class="col-auto text-right mr-0 pr-0">
