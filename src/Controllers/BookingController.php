@@ -77,6 +77,13 @@ class BookingController extends Controller
                         if($option->id==$value) $answer = 1;
                         $option->answer = $answer;
                         $option->save();
+
+                        if($answer == 1)
+                        {
+                            $question->answer = $option->value;
+                            $question->save();
+                        }
+                        
                     }
                     
                 }
