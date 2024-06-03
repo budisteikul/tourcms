@@ -210,7 +210,7 @@ class BookingController extends Controller
             {
                 foreach($shoppingcart->shoppingcart_products as $shoppingcart_product)
                 {
-                    $shoppingcart_product->cancellation = "";
+                    $shoppingcart_product->cancellation = "Referring to ". $shoppingcart->booking_channel ." policy";
                     $shoppingcart_product->save();
                 }
             }
