@@ -1,5 +1,5 @@
 @inject('Category', 'budisteikul\toursdk\Helpers\CategoryHelper')
-<div style="width:60%">   
+<div class="h-100" style="width:99%">     
 
     <div class="row justify-content-center">
         <div class="col-md-12 pr-0 pl-0 pt-0 pb-0">
