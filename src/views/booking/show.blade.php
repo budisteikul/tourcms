@@ -123,9 +123,12 @@
             @if($shoppingcart->booking_status!="CANCELED")
             <div class="card mb-2">
                 <div class="card-body bg-light">
-                    <li class="list-group-item"><button id="btn-whatsapp" type="button" onClick="RESEND_WHATSAPP('{{ $shoppingcart->id }}','{{ $shoppingcart->confirmation_code }}'); return false;" class="btn btn-block btn-success mr-0"><i class="fab fa-whatsapp"></i> <b>Resend Whatsapp</b></button></li>
-                    <li class="list-group-item"><button id="btn-email" type="button" onClick="RESEND_EMAIL('{{ $shoppingcart->id }}','{{ $shoppingcart->confirmation_code }}'); return false;" class="btn btn-block btn-primary mr-0"><i class="far fa-envelope"></i> <b>Resend Email</b></button></li>
-
+                    @if($contact->phoneNumber!="")
+                    <li class="list-group-item"><button id="btn-whatsapp" type="button" onClick="RESEND_WHATSAPP('{{ $shoppingcart->id }}','{{ $shoppingcart->confirmation_code }}'); return false;" class="btn btn-block btn-success mr-0"><i class="fab fa-whatsapp"></i> <b>Resend Receipt by Whatsapp</b></button></li>
+                    @endif
+                    @if($contact->email!="")
+                    <li class="list-group-item"><button id="btn-email" type="button" onClick="RESEND_EMAIL('{{ $shoppingcart->id }}','{{ $shoppingcart->confirmation_code }}'); return false;" class="btn btn-block btn-primary mr-0"><i class="far fa-envelope"></i> <b>Resend Receipt by Email</b></button></li>
+                    @endif
                     <li class="list-group-item"><button id="btn-del" type="button" onClick="CANCEL('{{ $shoppingcart->id }}','{{ $shoppingcart->confirmation_code }}'); return false;" class="btn btn-block btn-danger mr-0"><i class="fa fa-ban"></i> <b>Cancel this booking</b></button></li>
                 </div>
             </div>
@@ -176,7 +179,7 @@ function RESEND_WHATSAPP(id,transaction_id)
   {
     $.confirm({
         title: 'Warning',
-        content: 'Are you sure want to resend whatsapp with booking number '+ transaction_id +'?',
+        content: 'Are you sure want to resend receipt by whatsapp with booking number '+ transaction_id +'?',
         type: 'green',
       icon: 'fa fa-ban',
         buttons: {   
@@ -217,7 +220,7 @@ function RESEND_WHATSAPP(id,transaction_id)
   {
     $.confirm({
         title: 'Warning',
-        content: 'Are you sure want to resend email with booking number '+ transaction_id +'?',
+        content: 'Are you sure want to resend receipt by email with booking number '+ transaction_id +'?',
         type: 'blue',
       icon: 'fa fa-ban',
         buttons: {   
