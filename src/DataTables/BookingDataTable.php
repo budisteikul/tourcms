@@ -61,6 +61,7 @@ class BookingDataTable extends DataTable
                 })
                 ->addColumn('action', function ($id) {
 
+                /*
                 if(isset($id->shoppingcart_payment->payment_status))
                     {
                         if($id->shoppingcart_payment->payment_provider=="paypal")
@@ -111,6 +112,18 @@ class BookingDataTable extends DataTable
 
                     </div>
                 </div>';
+                */
+
+                return '
+                <div class="btn-toolbar justify-content-end">
+                    <div class="btn-group mr-2" role="group">
+                        
+                        <button id="btn-edit" type="button" onClick="EDIT_BOOKING(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success  pt-0 pb-0 pl-1 pr-1"><i class="fa fa-edit"></i> Edit Booking</button>
+
+                       
+                        
+                    </div>
+                </div>';
                 })
                 ->rawColumns(['action','confirmation_code','booking_status','payment']);
     }
@@ -159,7 +172,8 @@ class BookingDataTable extends DataTable
      */
     protected function getColumns(): array
     {
-        
+        if(Auth::user()->id==1)
+        {
             return [
             Column::make('created_at')
                   ->visible(false)
@@ -176,10 +190,39 @@ class BookingDataTable extends DataTable
             Column::make('created_at')->title('Created')->orderable(false)->addClass('align-middle'),
             
             Column::make('booking_status')->title('Status')->orderable(false)->addClass('align-middle'),
+
+            Column::computed('action')
+                  ->exportable(false)
+                  ->printable(false)
+                  ->width(400)
+                  ->addClass('text-center'),
             
             ];
         
-        
+        }
+        else
+        {
+            return [
+            Column::make('created_at')
+                  ->visible(false)
+                  ->searchable(false),
+            Column::computed('DT_RowIndex')
+                  ->width(30)
+                  ->title('No')
+                  ->orderable(false)
+                  ->searchable(false)
+                  ->addClass('text-center align-middle'),
+
+            Column::make('confirmation_code')->title('Transaction ID')->orderable(false)->addClass('align-middle'),
+            Column::make('booking_channel')->title('Channel')->orderable(false)->addClass('align-middle'),
+            Column::make('created_at')->title('Created')->orderable(false)->addClass('align-middle'),
+            
+            Column::make('booking_status')->title('Status')->orderable(false)->addClass('align-middle'),
+
+            
+            
+            ];
+        }
     }
 
     /**
