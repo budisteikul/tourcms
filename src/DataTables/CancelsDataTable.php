@@ -29,18 +29,21 @@ class CancelsDataTable extends DataTable
                     return '<a href="#" onClick="SHOW(\''.$id->shoppingcart_id.'\'); return false;"><b>'. $id->shoppingcart->confirmation_code .'</b></a>';
                 })
             ->addColumn('amount_text', function($id){
-                    return GeneralHelper::numberFormat($id->amount,$id->currency);
+                    return $id->currency .' '. GeneralHelper::numberFormat($id->amount,$id->currency);
                 })
             ->addColumn('refund_text', function($id){
-                    return GeneralHelper::numberFormat($id->refund);
+                    return $id->currency .' '. GeneralHelper::numberFormat($id->refund,$id->currency);
                 })
             ->addColumn('action', function ($id) {
+                $button = '<button id="btn-del-'.$id->id.'" type="button" onClick="REFUND(\''. $id->id .'\')" class="btn btn-sm btn-danger pt-0 pb-0 pl-1 pr-1"><i class="fas fa-sync-alt"></i> Make Refund</button>';
+
+                if($id->refund>0) $button = '';
+                
                 return '
                 <div class="btn-toolbar justify-content-end">
                     <div class="btn-group mr-2" role="group">
                         
-                        <button id="btn-edit" type="button" onClick="EDIT(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success pt-0 pb-0 pl-1 pr-1"><i class="fa fa-edit"></i> Edit</button>
-                        <button id="btn-del" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger pt-0 pb-0 pl-1 pr-1"><i class="fa fa-trash-alt"></i> Delete</button>
+                        '.$button.'
                         
                     </div>
                 </div>';
@@ -87,17 +90,17 @@ class CancelsDataTable extends DataTable
                   ->addClass('text-center align-middle'),
 
             Column::make('shoppingcart.confirmation_code')->title('Transaction ID')->orderable(false)->addClass('align-middle'),
-            Column::make('currency')->title('Currency')->orderable(false)->addClass('align-middle'),
+            
             Column::make('amount_text')->title('Amount')->orderable(false)->addClass('align-middle'),
             Column::make('refund_text')->title('Refund')->orderable(false)->addClass('align-middle'),
             
-            /*
+            
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
                   ->width(300)
                   ->addClass('text-center'),
-            */
+            
         ];
 
     }

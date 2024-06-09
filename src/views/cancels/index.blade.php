@@ -12,6 +12,46 @@
           autoFocus: false
       }); 
   }
+
+  function REFUND(id)
+  {
+    $.confirm({
+        title: 'Warning',
+        content: 'Are you sure want to refund this transaction?',
+        type: 'red',
+      icon: 'fa fa-ban',
+        buttons: {   
+            ok: {
+                text: "OK",
+                btnClass: 'btn-danger',
+                keys: ['enter'],
+                action: function(){
+                     var table = $('#dataTableBuilder').DataTable();
+                     $('#btn-del-'+id).attr("disabled", true);
+                     $('#btn-del-'+id).html('<i class="fa fa-spinner fa-spin"></i>');
+                     $.ajax({
+                        data: {
+                          "_token": $("meta[name=csrf-token]").attr("content"),
+                          "action": 'refund',
+                        },
+                        type: 'PUT',
+                        url: '{{ route('route_tourcms_cancel.index') }}/'+ id
+                        }).done(function( data ) {
+                            if(data.id=="1")
+                            {
+                                table.ajax.reload( null, false );
+                            }
+                        });
+
+                }
+            },
+            cancel: function(){
+                  console.log('the user clicked cancel');
+            }
+        }
+    });
+    
+  }
 </script>
 @endpush
 <div class="row justify-content-center">
