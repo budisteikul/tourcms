@@ -53,7 +53,7 @@ class ContactController extends Controller
                 $var1 = $contact->name;
                 $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-                $var4 = "If you have any food allergy or dietary restrictions, tell us by reply this message 🙏😊";
+                $var4 = "By the way, do you have any food allergy or dietary restrictions?";
             break;
 
             case 2:
@@ -73,7 +73,7 @@ class ContactController extends Controller
                 $var1 = $contact->name;
                 $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-                $var4 = "If you have any food allergy or dietary restrictions, tell us by reply this message 🙏😊";
+                $var4 = "By the way, do you have any food allergy or dietary restrictions?";
             break;
 
             case 4:
@@ -93,7 +93,7 @@ class ContactController extends Controller
                 $var1 = $contact->name;
                 $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow at *7.30AM* and our meeting point is arround *Lupis Mbah Satinem*";
                 $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-                $var4 = "If you have any food allergy or dietary restrictions, tell us by reply this message 🙏😊";
+                $var4 = "By the way, do you have any food allergy or dietary restrictions?";
             break;
             case 6:
                 $type = "template";
@@ -112,7 +112,7 @@ class ContactController extends Controller
                 $var1 = $contact->name;
                 $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow at *7.30AM* and our meeting point is arround *Lupis Mbah Satinem*";
                 $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-                $var4 = "If you have any food allergy or dietary restrictions, tell us by reply this message 🙏😊";
+                $var4 = "By the way, do you have any food allergy or dietary restrictions?";
             break;
             
             case 8:
