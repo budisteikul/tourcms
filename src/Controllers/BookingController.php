@@ -330,29 +330,16 @@ class BookingController extends Controller
         {
             $shoppingcart = Shoppingcart::findOrFail($id);
             
-            $cancel = New ShoppingcartCancellation();
-            $cancel->shoppingcart_id = $shoppingcart->id;
-            $cancel->currency = $shoppingcart->shoppingcart_payment->currency;
-            $cancel->amount = $shoppingcart->shoppingcart_payment->amount;
-            if($shoppingcart->booking_channel!="WEBSITE")
+            if($shoppingcart->booking_channel=="WEBSITE")
             {
-                $cancel->refund = $shoppingcart->shoppingcart_payment->amount;
-            }
-            else
-            {
-                if($shoppingcart->shoppingcart_payment->payment_status==2)
-                {
-                    $cancel->refund = 0;
-                }
-                else
-                {
-                    $cancel->refund = $shoppingcart->shoppingcart_payment->amount;
-                }
-                
+                $cancel = New ShoppingcartCancellation();
+                $cancel->shoppingcart_id = $shoppingcart->id;
+                $cancel->currency = $shoppingcart->shoppingcart_payment->currency;
+                $cancel->amount = $shoppingcart->shoppingcart_payment->amount;
+                $cancel->refund = 0;
+                $cancel->save();
             }
             
-            $cancel->save();
-
             PaymentHelper::confirm_payment($shoppingcart,"CANCELED");
 
             return response()->json([
