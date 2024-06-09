@@ -337,9 +337,10 @@ class BookingController extends Controller
                 $cancel->currency = $shoppingcart->shoppingcart_payment->currency;
                 $cancel->amount = $shoppingcart->shoppingcart_payment->amount;
                 $cancel->refund = 0;
+                $cancel->status = 1;
                 $cancel->save();
             }
-            
+
             PaymentHelper::confirm_payment($shoppingcart,"CANCELED");
 
             return response()->json([

@@ -29,7 +29,7 @@ class CancelsDataTable extends DataTable
                     return '<a href="#" onClick="SHOW(\''.$id->shoppingcart_id.'\'); return false;"><b>'. $id->shoppingcart->confirmation_code .'</b></a>';
                 })
             ->addColumn('amount_text', function($id){
-                    return GeneralHelper::numberFormat($id->amount);
+                    return GeneralHelper::numberFormat($id->amount,$id->currency);
                 })
             ->addColumn('refund_text', function($id){
                     return GeneralHelper::numberFormat($id->refund);
