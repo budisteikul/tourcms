@@ -39,6 +39,7 @@ class CancelController extends Controller
     {
         PaymentHelper::create_refund($cancel->shoppingcart);
         $cancel->refund = $cancel->amount;
+        $cancel->status = 2;
         $cancel->save();
         
         return response()->json([
