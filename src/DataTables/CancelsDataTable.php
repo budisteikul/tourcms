@@ -37,7 +37,7 @@ class CancelsDataTable extends DataTable
             ->addColumn('action', function ($id) {
                 $button = '<button id="btn-del-'.$id->id.'" type="button" onClick="REFUND(\''. $id->id .'\')" class="btn btn-sm btn-danger pt-0 pb-0 pl-1 pr-1"><i class="fas fa-sync-alt"></i> Make Refund</button>';
 
-                if($id->refund>0) $button = '<span class="badge badge-light font-weight-bold">REFUNDED</span>';
+                if($id->status==2) $button = '<span class="badge badge-light font-weight-bold">REFUNDED</span>';
                 
                 return '
                 <div class="btn-toolbar justify-content-end">
