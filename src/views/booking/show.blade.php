@@ -103,7 +103,7 @@
                     </li>
                     <li class="list-group-item"><b>Payment Provider :</b> {{ strtoupper($shoppingcart->shoppingcart_payment->payment_provider) }}</li>
                     @endif
-                    <li class="list-group-item"><b>Total :</b> {{ strtoupper($shoppingcart->shoppingcart_payment->currency) }} {{ $General->numberFormat($shoppingcart->shoppingcart_payment->amount) }}</li>
+                    <li class="list-group-item"><b>Total :</b> {{ strtoupper($shoppingcart->shoppingcart_payment->currency) }} {{ $shoppingcart->shoppingcart_payment->amount }}</li>
                     @if($shoppingcart->shoppingcart_payment->payment_type=="bank_redirect")
                     <li class="list-group-item">
                         <b>Link :</b> {{ $shoppingcart->shoppingcart_payment->redirect }}
