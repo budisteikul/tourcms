@@ -342,6 +342,11 @@ class BookingController extends Controller
                     $cancel->status = 1;
                     $cancel->save();
                 }
+                else
+                {
+                    $shoppingcart->shoppingcart_payment->payment_status = 3;
+                    $shoppingcart->shoppingcart_payment->save();
+                }
             }
 
             BookingHelper::save_bookingStatus($shoppingcart,"CANCELED");
