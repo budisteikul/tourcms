@@ -24,6 +24,16 @@
 				
 <form onSubmit="UPDATE_BOOKING(); return false;">
 <div id="result"></div>
+<h2>Booking</h2>
+<div class="form-group">
+<label for="bookingChannel"><strong>Channel</strong></label>
+<select style="font-size:16px;height:47px;"  class="form-control" id="bookingChannel" name="bookingChannel">
+        <option value="WEBSITE">WEBSITE</option>
+        @foreach($channels as $channel)
+        <option value="{{$channel->name}}" {{  ($shoppingcart->booking_channel == $channel->name) ? "selected" : "" }}>{{$channel->name}}</option>
+        @endforeach
+</select>
+</div>
 <h2>Main Contact</h2>
 @foreach($mainContactDetails as $mainContactDetail)
 @php
@@ -109,10 +119,11 @@ function UPDATE_BOOKING()
         	@foreach($mainContactDetails as $mainContactDetail)
         	"{{$mainContactDetail->question_id}}": $('#{{$mainContactDetail->question_id}}').val(),
         	@endforeach
+        	"booking_channel": $("#bookingChannel").val(),
         	"_token": $("meta[name=csrf-token]").attr("content"),
         },
 		type: 'POST',
-		url: '{{ route('route_tourcms_booking.index') }}/question/{{$id}}'
+		url: '{{ route('route_tourcms_booking.index') }}/question/{{$shoppingcart->id}}'
 		}).done(function( data ) {
 			
 			if(data.id=="1")

@@ -44,10 +44,12 @@ class BookingController extends Controller
     public function question_edit($id)
     {
         $shoppingcart = Shoppingcart::where('id',$id)->firstOrFail();
+        $channels = Channel::get();
         $mainContactDetails = ShoppingcartQuestion::where('shoppingcart_id',$shoppingcart->id)->where('type','mainContactDetails')->orderBy('order')->get();
         $activityBookings = ShoppingcartQuestion::where('shoppingcart_id',$shoppingcart->id)->where('type','activityBookings')->orderBy('booking_id')->orderBy('order')->get();
         return view('tourcms::booking.question_edit',[
-            'id'=>$shoppingcart->id,
+            'shoppingcart'=>$shoppingcart,
+            'channels'=>$channels,
             'mainContactDetails'=>$mainContactDetails,
             'activityBookings'=>$activityBookings,
         ]);
@@ -57,6 +59,11 @@ class BookingController extends Controller
 
     public function question_update($id,Request $request)
     {
+
+        $booking_channel =  $request->input('booking_channel');
+        $shoppingcart = Shoppingcart::findOrFail($id);
+        $shoppingcart->booking_channel = $booking_channel;
+        $shoppingcart->save();
 
         $array = $request->post();
         foreach ($array as $key => $value)
@@ -88,8 +95,6 @@ class BookingController extends Controller
                     
                 }
             }
-            
-            
         }
         
 
