@@ -189,9 +189,8 @@ class BookingController extends Controller
 
             $shoppingcart->booking_channel = $data['bookingChannel'];
             
-            Cache::forget('_'.$sessionId);
-            Cache::add('_'.$sessionId, $shoppingcart, 172800);
-
+            BookingHelper::save_shoppingcart($sessionId, $shoppingcart);
+            
             $shoppingcart = BookingHelper::save_question_json($sessionId,$data);
 
             BookingHelper::set_confirmationCode($sessionId);
