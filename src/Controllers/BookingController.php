@@ -206,7 +206,8 @@ class BookingController extends Controller
             }
             else
             {
-                BookingHelper::set_bookingStatus($sessionId,'CONFIRMED');
+                $shoppingcart->booking_status = 'CONFIRMED';
+                BookingHelper::save_shoppingcart($sessionId, $shoppingcart);
                 $shoppingcart= PaymentHelper::create_payment($sessionId,"none");
                 // set to paid
                 $shoppingcart = PaymentHelper::set_paymentStatus($sessionId,2);
