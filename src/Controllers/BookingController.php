@@ -185,12 +185,10 @@ class BookingController extends Controller
 
             $sessionId = $data['sessionId'];
 
-            $shoppingcart = Cache::get('_'.$sessionId);
-
+            $shoppingcart = BookingHelper::read_shoppingcart($sessionId);
             $shoppingcart->booking_channel = $data['bookingChannel'];
-            
             BookingHelper::save_shoppingcart($sessionId, $shoppingcart);
-            
+
             $shoppingcart = BookingHelper::save_question_json($sessionId,$data);
 
             BookingHelper::set_confirmationCode($sessionId);
@@ -202,7 +200,8 @@ class BookingController extends Controller
                 if($data['payment']=="virtual_account") $payment = ['BNI','BSI','BRI','MANDIRI','PERMATA','SAHABAT_SAMPOERNA'];
                 if($data['payment']=="ewallet") $payment = ['OVO','DANA'];
                 if($data['payment']=="paylater") $payment = ['AKULAKU','UANGME'];
-                BookingHelper::set_bookingStatus($sessionId,'PENDING');
+                $shoppingcart->booking_status = 'PENDING';
+                BookingHelper::save_shoppingcart($sessionId, $shoppingcart);
                 $shoppingcart= PaymentHelper::create_payment($sessionId,"xendit","invoice",$payment);
             }
             else
