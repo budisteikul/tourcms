@@ -118,7 +118,7 @@ class CompletedDataTable extends DataTable
                   ->addClass('text-center align-middle'),
 
             Column::make('name')->title('Main Contact')->orderable(false)->addClass('align-middle'),
-
+            Column::make('title')->title('Tour')->orderable(false)->addClass('align-middle'),
             Column::make('shoppingcart.booking_channel')->title('Channel')->orderable(false)->addClass('align-middle'),
             Column::make('date_text')->title('Date')->orderable(false)->addClass('align-middle'),
             Column::make('people')->title('People')->orderable(false)->addClass('align-middle'),
@@ -140,6 +140,7 @@ class CompletedDataTable extends DataTable
                   ->addClass('text-center align-middle'),
 
             Column::make('name')->title('Main Contact')->orderable(false)->addClass('align-middle'),
+            Column::make('title')->title('Tour')->orderable(false)->addClass('align-middle'),
             Column::make('shoppingcart.booking_channel')->title('Channel')->orderable(false)->addClass('align-middle'),
             Column::make('date_text')->title('Date')->orderable(false)->addClass('align-middle'),
             Column::make('people')->title('People')->orderable(false)->addClass('align-middle')
