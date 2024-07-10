@@ -30,7 +30,7 @@
 <select style="font-size:16px;height:47px;"  class="form-control" id="bookingChannel" name="bookingChannel">
         <option value="WEBSITE">WEBSITE</option>
         @foreach($channels as $channel)
-        <option value="{{$channel->name}}" {{  ($shoppingcart->booking_channel == $channel->name) ? "selected" : "" }}>{{$channel->name}}</option>
+        <option value="{{$channel->name}}" {{  (strtoupper($shoppingcart->booking_channel) == strtoupper($channel->name)) ? "selected" : "" }}>{{$channel->name}}</option>
         @endforeach
 </select>
 </div>
