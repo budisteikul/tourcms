@@ -49,7 +49,7 @@ class ContactController extends Controller
             case 1:
                 $type = "template";
                 $template = config('site.wa_reminder');
-                $image = config("site.assets")."/img/guide/kalika01.jpeg";
+                $image = config("site.assets")."/img/guide/kalika02.jpg";
                 $var1 = $contact->name;
                 $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
@@ -59,7 +59,7 @@ class ContactController extends Controller
             case 2:
                 $type = "template";
                 $template = config('site.wa_reminder');
-                $image = config("site.assets")."/img/guide/kalika01.jpeg";
+                $image = config("site.assets")."/img/guide/kalika02.jpg";
                 $var1 = $contact->name;
                 $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
@@ -89,7 +89,7 @@ class ContactController extends Controller
             case 5:
                 $type = "template";
                 $template = config('site.wa_reminder');
-                $image = config("site.assets")."/img/guide/kalika01.jpeg";
+                $image = config("site.assets")."/img/guide/kalika02.jpg";
                 $var1 = $contact->name;
                 $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow at *7.30AM* and our meeting point is arround *Lupis Mbah Satinem*";
                 $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
@@ -98,7 +98,7 @@ class ContactController extends Controller
             case 6:
                 $type = "template";
                 $template = config('site.wa_reminder');
-                $image = config("site.assets")."/img/guide/kalika01.jpeg";
+                $image = config("site.assets")."/img/guide/kalika02.jpg";
                 $var1 = $contact->name;
                 $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow at *7.30AM* and our meeting point is arround *Lupis Mbah Satinem*";
                 $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
