@@ -43,7 +43,17 @@
 
 </div>
 <div class="tab-pane fade pt-4" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
- <button type="button" class="btn btn-primary mb-2" id="template1"  onclick="sendTemplate(1); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour - Kalika - Ask Dietary</button>
+
+                    <button type="button" class="btn btn-primary mb-2" id="template101"  onclick="sendTemplate(101); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour - Ask Dietary</button>
+
+                    <button type="button" class="btn btn-primary mb-2" id="template102"  onclick="sendTemplate(102); return false;"><b class="fa fa-plus-square"></b> Kalika Picture</button>
+
+                    <button type="button" class="btn btn-primary mb-2" id="template103"  onclick="sendTemplate(103); return false;"><b class="fa fa-plus-square"></b> Anisa Picture</button>
+
+                    <button type="button" class="btn btn-primary mb-2" id="template21"  onclick="sendTemplate(21); return false;"><b class="fa fa-plus-square"></b> Thanks for answering</button>
+
+                    <!-- button type="button" class="btn btn-primary mb-2" id="template1"  onclick="sendTemplate(1); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour - Kalika - Ask Dietary</button>
+
                     <button type="button" class="btn btn-primary mb-2" id="template2"  onclick="sendTemplate(2); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour - Kalika</button>
 
                     <button type="button" class="btn btn-primary mb-2" id="template3"  onclick="sendTemplate(3); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour - Anisa - Ask Dietary</button>
@@ -61,7 +71,7 @@
 
                    <button type="button" class="btn btn-primary mb-2" id="template11"  onclick="sendTemplate(11); return false;"><b class="fa fa-plus-square"></b> Ubud Food Tour - TripByLocals</button>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template21"  onclick="sendTemplate(21); return false;"><b class="fa fa-plus-square"></b> Thanks for answering</button>
+                    
 
                     <button type="button" class="btn btn-primary mb-2" id="template51"  onclick="sendTemplate(51); return false;"><b class="fa fa-plus-square"></b> Request Review Bali Night Food Tour</button>
 
@@ -71,7 +81,7 @@
 
                     <button type="button" class="btn btn-primary mb-2" id="template53"  onclick="sendTemplate(53); return false;"><b class="fa fa-plus-square"></b> Request Review Jogja Morning Tour</button>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template54"  onclick="sendTemplate(54); return false;"><b class="fa fa-plus-square"></b> Request Review Jogja Night Tour</button> 
+                    <button type="button" class="btn btn-primary mb-2" id="template54"  onclick="sendTemplate(54); return false;"><b class="fa fa-plus-square"></b> Request Review Jogja Night Tour</button --> 
 
 
 </div>

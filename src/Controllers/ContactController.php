@@ -154,7 +154,7 @@ class ContactController extends Controller
 
             case 21:
                 $type = "text";
-                $var1 = "Got it 🫡 Thank you for your confirmation 🙏😊";
+                $var1 = "Got it 🫡 Thank you for confirming 🙏😊";
             break;
 
             case 22:
@@ -206,7 +206,96 @@ class ContactController extends Controller
                 $var2 = "Thank you for visiting Yogyakarta and joining our tour. Hope it give you a good memory about Yogyakarta.";
                 $var3 = "https://www.tripadvisor.com/UserReviewEdit-g14782503-d15646790.html";
             break;
+
+            case 101:
+                $type = "reminder_step1";
+                $template = "reminder_step1";
+                $var1 = $contact->name;
+                $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
+                $var3 = "https://linktr.ee/foodtour";
+                $var4 = "By the way, do you have any food allergy or dietary restrictions?";
+            break;
+
+            case 102:
+                $type = "reminder_step2";
+                $template = "reminder_step2";
+                $image = config("site.assets")."/img/guide/kalika02.jpg";
+                $var1 = "Her name is *Kalika*";
+                $var2 = "She";
+            break;
+
+            case 103:
+                $type = "reminder_step2";
+                $template = "reminder_step2";
+                $image = config("site.assets")."/img/guide/anisa01.jpeg";
+                $var1 = "Her name is *Anisa*";
+                $var2 = "She";
+            break;
             
+        }
+
+        if($type=="reminder_step1")
+        {
+            if($var1=="") $var1="friend";
+            $components = [
+                                    [
+                                        "type"=> "body",
+                                        "parameters" => [
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var1
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var2
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var3
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var4
+                                            ]
+                                        ]
+                                    ]
+                              ];
+            
+            $whatsapp = new WhatsappHelper;
+            $whatsapp->sendTemplate($contact->wa_id,$template, $components);
+        }
+
+        if($type=="reminder_step2")
+        {
+            $components = [
+                                    [
+                                        "type"=> "header",
+                                        "parameters" => [
+                                            [
+                                                "type"=> "image",
+                                                "image" => [
+                                                    "link" => $image
+                                                ]
+                                            ]
+                                        ]
+                                    ],
+                                    [
+                                        "type"=> "body",
+                                        "parameters" => [
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var1
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var2
+                                            ]
+                                        ]
+                                    ]
+                              ];
+            
+            $whatsapp = new WhatsappHelper;
+            $whatsapp->sendTemplate($contact->wa_id,$template, $components);
         }
 
         if($type=="template_3")
