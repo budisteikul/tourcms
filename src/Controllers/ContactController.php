@@ -49,7 +49,7 @@ class ContactController extends Controller
 
             case 101:
                 $type = "reminder_step1";
-                $template = "reminder_step1";
+                $template = "reminder_step1_230722";
                 $var1 = $contact->name;
                 $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "By the way, do you have any food allergy or dietary restrictions?";
