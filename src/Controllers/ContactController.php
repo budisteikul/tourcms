@@ -56,6 +56,24 @@ class ContactController extends Controller
             break;
 
             case 102:
+                $type = "reminder_step1_alt";
+                $template = "reminder_step1_alt";
+                $image = config("site.assets")."/img/guide/kalika02.jpg";
+                $var1 = $contact->name;
+                $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
+                $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
+            break;
+
+            case 103:
+                $type = "reminder_step1_alt";
+                $template = "reminder_step1_alt";
+                $image = config("site.assets")."/img/guide/anisa01.jpeg";
+                $var1 = $contact->name;
+                $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
+                $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
+            break;
+
+            case 111:
                 $type = "reminder_step2";
                 $template = "reminder_step2";
                 $image = config("site.assets")."/img/guide/kalika02.jpg";
@@ -63,12 +81,17 @@ class ContactController extends Controller
                 $var2 = "She";
             break;
 
-            case 103:
+            case 112:
                 $type = "reminder_step2";
                 $template = "reminder_step2";
                 $image = config("site.assets")."/img/guide/anisa01.jpeg";
                 $var1 = "Her name is *Anisa*";
                 $var2 = "She";
+            break;
+
+            case 121:
+                $type = "text";
+                $var1 = "Got it 🫡 Thank you for confirming 🙏😊";
             break;
             
         }
@@ -95,6 +118,43 @@ class ContactController extends Controller
                                         ]
                                     ]
                             ];
+            
+            $whatsapp = new WhatsappHelper;
+            $whatsapp->sendTemplate($contact->wa_id,$template, $components);
+        }
+
+        if($type=="reminder_step1_alt")
+        {
+            $components = [
+                                    [
+                                        "type"=> "header",
+                                        "parameters" => [
+                                            [
+                                                "type"=> "image",
+                                                "image" => [
+                                                    "link" => $image
+                                                ]
+                                            ]
+                                        ]
+                                    ],
+                                    [
+                                        "type"=> "body",
+                                        "parameters" => [
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var1
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var2
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var3
+                                            ]
+                                        ]
+                                    ]
+                              ];
             
             $whatsapp = new WhatsappHelper;
             $whatsapp->sendTemplate($contact->wa_id,$template, $components);
