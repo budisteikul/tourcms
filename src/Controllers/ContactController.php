@@ -212,8 +212,7 @@ class ContactController extends Controller
                 $template = "reminder_step1";
                 $var1 = $contact->name;
                 $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
-                $var3 = "https://linktr.ee/foodtour";
-                $var4 = "By the way, do you have any food allergy or dietary restrictions?";
+                $var3 = "By the way, do you have any food allergy or dietary restrictions?";
             break;
 
             case 102:
@@ -252,14 +251,10 @@ class ContactController extends Controller
                                             [
                                                 "type"=>"text",
                                                 "text"=> $var3
-                                            ],
-                                            [
-                                                "type"=>"text",
-                                                "text"=> $var4
                                             ]
                                         ]
                                     ]
-                              ];
+                            ];
             
             $whatsapp = new WhatsappHelper;
             $whatsapp->sendTemplate($contact->wa_id,$template, $components);
