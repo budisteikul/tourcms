@@ -70,7 +70,7 @@ class ContactController extends Controller
                 $image = config("site.assets")."/img/guide/anisa01.jpeg";
                 $var1 = $contact->name;
                 $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
-                $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
+                $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
             break;
 
             case 111:
@@ -92,6 +92,45 @@ class ContactController extends Controller
             case 121:
                 $type = "text";
                 $var1 = "Got it 🫡 Thank you for confirming 🙏😊";
+            break;
+
+            case 122:
+                $type = "image";
+                $image = config("site.assets")."/img/guide/kalika02.jpg";
+                $var1 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
+            break;
+
+            case 123:
+                $type = "image";
+                $image = config("site.assets")."/img/guide/anisa01.jpeg";
+                $var1 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
+            break;
+
+
+            case 201:
+                $type = "reminder_step1";
+                $template = "reminder_step1_230722";
+                $var1 = $contact->name;
+                $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow morning at *7.30AM* and our meeting point is *Lupis Mbah Satinem*";
+                $var3 = "By the way, do you have any food allergy or dietary restrictions?";
+            break;
+
+            case 202:
+                $type = "reminder_step1_alt";
+                $template = "reminder_step1_alt";
+                $image = config("site.assets")."/img/guide/kalika02.jpg";
+                $var1 = $contact->name;
+                $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow morning at *7.30AM* and our meeting point is *Lupis Mbah Satinem*";
+                $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
+            break;
+
+            case 203:
+                $type = "reminder_step1_alt";
+                $template = "reminder_step1_alt";
+                $image = config("site.assets")."/img/guide/anisa01.jpeg";
+                $var1 = $contact->name;
+                $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow morning at *7.30AM* and our meeting point is *Lupis Mbah Satinem*";
+                $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
             break;
             
         }

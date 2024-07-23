@@ -19,6 +19,8 @@
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Message</a>
     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Jogja Night Food Tour</a>
+    <a class="nav-item nav-link" id="nav-menu3-tab" data-toggle="tab" href="#nav-menu3" role="tab" aria-controls="nav-menu3" aria-selected="false">Jogja Morning Food Tour</a>
+    <a class="nav-item nav-link" id="nav-menu4-tab" data-toggle="tab" href="#nav-menu4" role="tab" aria-controls="nav-menu4" aria-selected="false">General</a>
   </div>
 </nav>
 
@@ -44,19 +46,34 @@
 </div>
 <div class="tab-pane fade pt-4" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 
-                    <button type="button" class="btn btn-primary mb-2" id="template101"  onclick="sendTemplate(101); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour - Ask Dietary</button>
+                    <button type="button" class="btn btn-danger mb-2" id="template101"  onclick="sendTemplate(101); return false;"><i class="fas fa-paper-plane"></i> Jogja Night Food Tour - Ask Dietary</button>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template102"  onclick="sendTemplate(102); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour - Kalika Picture</button>
+                    <button type="button" class="btn btn-danger mb-2" id="template102"  onclick="sendTemplate(102); return false;"><i class="fas fa-paper-plane"></i> Jogja Night Food Tour - Kalika Picture</button>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template103"  onclick="sendTemplate(103); return false;"><b class="fa fa-plus-square"></b> Jogja Night Food Tour - Anisa Picture</button>
+                    <button type="button" class="btn btn-danger mb-2" id="template103"  onclick="sendTemplate(103); return false;"><i class="fas fa-paper-plane"></i> Jogja Night Food Tour - Anisa Picture</button>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template102"  onclick="sendTemplate(111); return false;"><b class="fa fa-plus-square"></b> Kalika Picture</button>
+                    <button type="button" class="btn btn-danger mb-2" id="template102"  onclick="sendTemplate(111); return false;"><i class="fas fa-paper-plane"></i> Kalika Picture</button>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template103"  onclick="sendTemplate(112); return false;"><b class="fa fa-plus-square"></b> Anisa Picture</button>
+                    <button type="button" class="btn btn-danger mb-2" id="template103"  onclick="sendTemplate(112); return false;"><i class="fas fa-paper-plane"></i> Anisa Picture</button>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template121"  onclick="sendTemplate(121); return false;"><b class="fa fa-plus-square"></b> Thanks for answering</button>
+                    
 
 </div>
+<div class="tab-pane fade pt-4" id="nav-menu3" role="tabpanel" aria-labelledby="nav-menu3-tab">
+                    <button type="button" class="btn btn-danger mb-2" id="template101"  onclick="sendTemplate(201); return false;"><i class="fas fa-paper-plane"></i> Jogja Morning Food Tour - Ask Dietary</button>
+
+                    <button type="button" class="btn btn-danger mb-2" id="template102"  onclick="sendTemplate(202); return false;"><i class="fas fa-paper-plane"></i> Jogja Morning Food Tour - Kalika Picture</button>
+
+                    <button type="button" class="btn btn-danger mb-2" id="template103"  onclick="sendTemplate(203); return false;"><i class="fas fa-paper-plane"></i> Jogja Morning Food Tour - Anisa Picture</button>
+</div>
+<div class="tab-pane fade pt-4" id="nav-menu4" role="tabpanel" aria-labelledby="nav-menu4-tab">
+                    <button type="button" class="btn btn-primary mb-2" id="template121"  onclick="sendTemplate(121); return false;"><i class="fas fa-paper-plane"></i> Thanks for answering</button>
+
+                    <button type="button" class="btn btn-primary mb-2" id="template122"  onclick="sendTemplate(121); return false;"><i class="fas fa-paper-plane"></i> Kalika Picture</button>
+
+                    <button type="button" class="btn btn-primary mb-2" id="template123"  onclick="sendTemplate(121); return false;"><i class="fas fa-paper-plane"></i> Anisa Picture</button>
+</div>
+
 </div>
 
                 </div>
