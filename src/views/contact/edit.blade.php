@@ -52,9 +52,7 @@
 
                     <button type="button" class="btn btn-danger mb-2" id="template103"  onclick="sendTemplate(103); return false;"><i class="fas fa-paper-plane"></i> Jogja Night Food Tour - Anisa Picture</button>
 
-                    <button type="button" class="btn btn-danger mb-2" id="template102"  onclick="sendTemplate(111); return false;"><i class="fas fa-paper-plane"></i> Kalika Picture</button>
-
-                    <button type="button" class="btn btn-danger mb-2" id="template103"  onclick="sendTemplate(112); return false;"><i class="fas fa-paper-plane"></i> Anisa Picture</button>
+                    
 
                     
 
@@ -72,6 +70,10 @@
                     <button type="button" class="btn btn-primary mb-2" id="template122"  onclick="sendTemplate(121); return false;"><i class="fas fa-paper-plane"></i> Kalika Picture</button>
 
                     <button type="button" class="btn btn-primary mb-2" id="template123"  onclick="sendTemplate(121); return false;"><i class="fas fa-paper-plane"></i> Anisa Picture</button>
+
+                    <button type="button" class="btn btn-danger mb-2" id="template102"  onclick="sendTemplate(111); return false;"><i class="fas fa-paper-plane"></i> Kalika Picture</button>
+
+                    <button type="button" class="btn btn-danger mb-2" id="template103"  onclick="sendTemplate(112); return false;"><i class="fas fa-paper-plane"></i> Anisa Picture</button>
 </div>
 
 </div>
