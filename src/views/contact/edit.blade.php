@@ -67,9 +67,9 @@
 <div class="tab-pane fade pt-4" id="nav-menu4" role="tabpanel" aria-labelledby="nav-menu4-tab">
                     <button type="button" class="btn btn-primary mb-2" id="template121"  onclick="sendTemplate(121); return false;"><i class="fas fa-paper-plane"></i> Thanks for answering</button>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template122"  onclick="sendTemplate(121); return false;"><i class="fas fa-paper-plane"></i> Kalika Picture</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template122"  onclick="sendTemplate(122); return false;"><i class="fas fa-paper-plane"></i> Kalika Picture</button>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template123"  onclick="sendTemplate(121); return false;"><i class="fas fa-paper-plane"></i> Anisa Picture</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template123"  onclick="sendTemplate(123); return false;"><i class="fas fa-paper-plane"></i> Anisa Picture</button>
 
                     <button type="button" class="btn btn-danger mb-2" id="template102"  onclick="sendTemplate(111); return false;"><i class="fas fa-paper-plane"></i> Kalika Picture</button>
 
