@@ -141,7 +141,7 @@ function sendTemplate(template_id)
                 btnClass: 'btn-primary',
                 keys: ['enter'],
                 action: function(){
-                    var enable_text = '<i class="fa fa-plus-square"></i> '+ $("#template"+template_id).text();
+                    var enable_text = '<i class="fas fa-paper-plane"></i> '+ $("#template"+template_id).text();
                     var disable_text = '<i class="fa fa-spinner fa-spin"></i> '+ $("#template"+template_id).text();
     
                     $("#template"+template_id).attr("disabled", true);
