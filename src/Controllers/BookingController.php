@@ -37,7 +37,7 @@ class BookingController extends Controller
     public function __construct()
     {
         $this->bookingChannelUUID = env("BOKUN_BOOKING_CHANNEL");
-        $this->currency = SettingHelper::getSetting('currency');
+        $this->currency = config('site.currency');
         $this->lang = env("BOKUN_LANG");
     }
 
