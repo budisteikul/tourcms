@@ -37,7 +37,7 @@ class BookingController extends Controller
     public function __construct()
     {
         $this->bookingChannelUUID = env("BOKUN_BOOKING_CHANNEL");
-        $this->currency = config('site.currency');
+        $this->currency = "IDR";
         $this->lang = env("BOKUN_LANG");
     }
 
