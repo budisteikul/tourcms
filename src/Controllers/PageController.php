@@ -58,11 +58,10 @@ class PageController extends Controller
         $page->content = $content;
         $page->save();
 
-        $slug = new Slug();
-        $slug->type = "page";
-        $slug->link_id = $page->id;
-        $slug->slug = Str::slug($title,"-");
-        $slug->save();
+        Slug::updateOrCreate(
+            ['type' => 'page', 'slug' => Str::slug($title,"-")],
+            ['link_id' => $page->id]
+        );
 
         return response()->json([
                     "id" => "1",
@@ -118,11 +117,10 @@ class PageController extends Controller
         $page->content = $content;
         $page->save();
 
-        $slug = new Slug();
-        $slug->type = "page";
-        $slug->link_id = $page->id;
-        $slug->slug = Str::slug($title,"-");
-        $slug->save();
+        Slug::updateOrCreate(
+            ['type' => 'page', 'slug' => Str::slug($title,"-")],
+            ['link_id' => $page->id]
+        );
 
         return response()->json([
                     "id" => "1",

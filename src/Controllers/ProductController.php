@@ -112,11 +112,12 @@ class ProductController extends Controller
         $product->category_id = $category_id;
         $product->save();
 
-        $slug = new Slug();
-        $slug->type = "product";
-        $slug->link_id = $product->id;
-        $slug->slug = Str::slug($name,'-');
-        $slug->save();
+        Slug::updateOrCreate(
+            ['type' => 'product', 'slug' => Str::slug($name,'-')],
+            ['link_id' => $product->id]
+        );
+
+        
 		
         $key = $request->input('key');
         $filetemps = FileTemp::where('key',$key)->get();
@@ -229,11 +230,10 @@ class ProductController extends Controller
         $product->min_participant = $min_participant;
         $product->save();
 
-        $slug = new Slug();
-        $slug->type = "product";
-        $slug->link_id = $product->id;
-        $slug->slug = Str::slug($name,'-');
-        $slug->save();
+        Slug::updateOrCreate(
+            ['type' => 'product', 'slug' => Str::slug($name,'-')],
+            ['link_id' => $product->id]
+        );
         
         foreach($product->images->sortBy('sort') as $image)
         {

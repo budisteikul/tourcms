@@ -71,11 +71,12 @@ class CategoryController extends Controller
         $category->slug = Str::slug($name,"-");
         $category->save();
 
-        $slug = new Slug();
-        $slug->type = "category";
-        $slug->link_id = $category->id;
-        $slug->slug = Str::slug($name,'-');
-        $slug->save();
+        Slug::updateOrCreate(
+            ['type' => 'category', 'slug' => Str::slug($name,'-')],
+            ['link_id' => $category->id]
+        );
+
+        
 
         return response()->json([
                     "id" => "1",
@@ -135,11 +136,10 @@ class CategoryController extends Controller
         $category->slug = Str::slug($name,"-");
         $category->save();
 
-        $slug = new Slug();
-        $slug->type = "category";
-        $slug->link_id = $category->id;
-        $slug->slug = Str::slug($name,'-');
-        $slug->save();
+        Slug::updateOrCreate(
+            ['type' => 'category', 'slug' => Str::slug($name,'-')],
+            ['link_id' => $category->id]
+        );
 
         return response()->json([
                     "id" => "1",
