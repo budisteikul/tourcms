@@ -49,10 +49,11 @@ class ContactController extends Controller
 
             case 101:
                 $type = "reminder_step1";
-                $template = "reminder_step1_230722";
+                $template = "reminder_step1";
                 $var1 = $contact->name;
                 $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "By the way, do you have any food allergy or dietary restrictions?";
+                $var4 = "https://map.jogjafoodtour.com";
             break;
 
             case 102:
@@ -62,6 +63,7 @@ class ContactController extends Controller
                 $var1 = $contact->name;
                 $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
+                $var4 = "https://map.jogjafoodtour.com";
             break;
 
             case 103:
@@ -71,22 +73,7 @@ class ContactController extends Controller
                 $var1 = $contact->name;
                 $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-            break;
-
-            case 111:
-                $type = "reminder_step2";
-                $template = "reminder_step2";
-                $image = config("site.assets")."/img/guide/kalika02.jpg";
-                $var1 = "Her name is *Kalika*";
-                $var2 = "She";
-            break;
-
-            case 112:
-                $type = "reminder_step2";
-                $template = "reminder_step2";
-                $image = config("site.assets")."/img/guide/anisa01.jpeg";
-                $var1 = "Her name is *Anisa*";
-                $var2 = "She";
+                $var4 = "https://map.jogjafoodtour.com";
             break;
 
             case 121:
@@ -109,10 +96,11 @@ class ContactController extends Controller
 
             case 201:
                 $type = "reminder_step1";
-                $template = "reminder_step1_230722";
+                $template = "reminder_step1";
                 $var1 = $contact->name;
                 $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow morning at *7.30AM* and our meeting point is *Lupis Mbah Satinem*";
                 $var3 = "By the way, do you have any food allergy or dietary restrictions?";
+                $var4 = "https://map.jogjafoodtour.com";
             break;
 
             case 202:
@@ -122,6 +110,7 @@ class ContactController extends Controller
                 $var1 = $contact->name;
                 $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow morning at *7.30AM* and our meeting point is *Lupis Mbah Satinem*";
                 $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
+                $var4 = "https://map.jogjafoodtour.com";
             break;
 
             case 203:
@@ -131,6 +120,7 @@ class ContactController extends Controller
                 $var1 = $contact->name;
                 $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow morning at *7.30AM* and our meeting point is *Lupis Mbah Satinem*";
                 $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
+                $var4 = "https://map.jogjafoodtour.com";
             break;
             
         }
@@ -153,6 +143,10 @@ class ContactController extends Controller
                                             [
                                                 "type"=>"text",
                                                 "text"=> $var3
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var4
                                             ]
                                         ]
                                     ]
@@ -190,39 +184,10 @@ class ContactController extends Controller
                                             [
                                                 "type"=>"text",
                                                 "text"=> $var3
-                                            ]
-                                        ]
-                                    ]
-                              ];
-            
-            $whatsapp = new WhatsappHelper;
-            $whatsapp->sendTemplate($contact->wa_id,$template, $components);
-        }
-
-        if($type=="reminder_step2")
-        {
-            $components = [
-                                    [
-                                        "type"=> "header",
-                                        "parameters" => [
-                                            [
-                                                "type"=> "image",
-                                                "image" => [
-                                                    "link" => $image
-                                                ]
-                                            ]
-                                        ]
-                                    ],
-                                    [
-                                        "type"=> "body",
-                                        "parameters" => [
-                                            [
-                                                "type"=>"text",
-                                                "text"=> $var1
                                             ],
                                             [
                                                 "type"=>"text",
-                                                "text"=> $var2
+                                                "text"=> $var4
                                             ]
                                         ]
                                     ]
@@ -231,8 +196,6 @@ class ContactController extends Controller
             $whatsapp = new WhatsappHelper;
             $whatsapp->sendTemplate($contact->wa_id,$template, $components);
         }
-
-        
 
         if($type=="text")
         {
