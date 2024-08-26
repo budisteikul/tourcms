@@ -37,21 +37,11 @@
                     
                     @if($contact->phoneNumber!="")
                     @php
-                        $number = $contact->phoneNumber;
-                        $number_array = explode(" ",$number);
-                        if(isset($number_array[1]))
-                        {
-                            $number_array[1] = ltrim($number_array[1], '0');
-                        }
                         
-                        $nomor = '';
-                        foreach($number_array as $no)
-                        {
-                            $nomor .= preg_replace("/[^0-9]/","",$no);
-                        }
+                        $nomor = $General->phoneNumber($contact->phoneNumber);
                         
                     @endphp
-                    <li class="list-group-item"><b>Phone :</b> {{ $contact->phoneNumber }} <input type="hidden" id="Whatsapp" value="{{ $nomor }}"> <button onclick="copyToClipboard('#Whatsapp')" title="Copied" data-toggle="tooltip" data-placement="right" data-trigger="click" class="btn btn-light btn-sm invoice-hilang"><i class="far fa-copy"></i></button></li>
+                    <li class="list-group-item"><b>Phone :</b> <a href="/cms/vcard/download/{{$shoppingcart->id}}">{{ $contact->phoneNumber }}</a> <input type="hidden" id="Whatsapp" value="{{ $nomor }}"> <button onclick="copyToClipboard('#Whatsapp')" title="Copied" data-toggle="tooltip" data-placement="right" data-trigger="click" class="btn btn-light btn-sm invoice-hilang"><i class="far fa-copy"></i></button></li>
                     @endif
                     @if($contact->email!="")
                     <li class="list-group-item"><b>Email :</b> {{ $contact->email }}</li>

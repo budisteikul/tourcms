@@ -9,7 +9,8 @@
     ],
 	"require": {
         "budisteikul/coresdk": "dev-master",
-        "budisteikul/toursdk": "dev-master"
+        "budisteikul/toursdk": "dev-master",
+        "jeroendesloovere/vcard": "^1.7"
     },
     "autoload": {
    		"psr-4": {
