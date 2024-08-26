@@ -51,7 +51,7 @@ class ContactController extends Controller
                 $type = "reminder_step1";
                 $template = "reminder_step1";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
+                $var2 = "The *Yogyakarta Night Walking and Food Tour* will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "By the way, do you have any food allergy or dietary restrictions?";
                 $var4 = "https://map.jogjafoodtour.com";
             break;
@@ -61,7 +61,7 @@ class ContactController extends Controller
                 $template = "reminder_step1_alt";
                 $image = config("site.assets")."/img/guide/kalika02.jpg";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
+                $var2 = "The *Yogyakarta Night Walking and Food Tour* will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
                 $var4 = "https://map.jogjafoodtour.com";
             break;
@@ -71,7 +71,7 @@ class ContactController extends Controller
                 $template = "reminder_step1_alt";
                 $image = config("site.assets")."/img/guide/anisa01.jpeg";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The Yogyakarta Night Walking and Food Tour will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
+                $var2 = "The *Yogyakarta Night Walking and Food Tour* will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
                 $var4 = "https://map.jogjafoodtour.com";
             break;
@@ -98,7 +98,7 @@ class ContactController extends Controller
                 $type = "reminder_step1";
                 $template = "reminder_step1";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow morning at *7.30AM* and our meeting point is *Lupis Mbah Satinem*";
+                $var2 = "The *Morning Food Tour in Yogyakarta* will start tomorrow morning at *7.30AM* and our meeting point is *Lupis Mbah Satinem*";
                 $var3 = "By the way, do you have any food allergy or dietary restrictions?";
                 $var4 = "https://map.jogjafoodtour.com";
             break;
@@ -108,7 +108,7 @@ class ContactController extends Controller
                 $template = "reminder_step1_alt";
                 $image = config("site.assets")."/img/guide/kalika02.jpg";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow morning at *7.30AM* and our meeting point is *Lupis Mbah Satinem*";
+                $var2 = "The *Morning Food Tour in Yogyakarta* will start tomorrow morning at *7.30AM* and our meeting point is *Lupis Mbah Satinem*";
                 $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
                 $var4 = "https://map.jogjafoodtour.com";
             break;
@@ -118,7 +118,7 @@ class ContactController extends Controller
                 $template = "reminder_step1_alt";
                 $image = config("site.assets")."/img/guide/anisa01.jpeg";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The Morning Food Tour in Yogyakarta will start tomorrow morning at *7.30AM* and our meeting point is *Lupis Mbah Satinem*";
+                $var2 = "The *Morning Food Tour in Yogyakarta* will start tomorrow morning at *7.30AM* and our meeting point is *Lupis Mbah Satinem*";
                 $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
                 $var4 = "https://map.jogjafoodtour.com";
             break;
