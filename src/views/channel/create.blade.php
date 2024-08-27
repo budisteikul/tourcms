@@ -37,6 +37,18 @@
     <textarea class="form-control tinymce" id="description" name="description" rows="3"></textarea>
 </div>
 
+
+<div class="form-group">
+    <label for="invoice">Invoice</label>
+    <select class="form-control" id="invoice">
+      
+      
+      <option value="1">Before the tour</option>
+      <option value="2">After the tour</option>
+      
+    </select>
+  </div>
+
 	<button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
 	</form>
 	</div>
@@ -94,7 +106,8 @@ function STORE()
 		data: {
         	"_token": $("meta[name=csrf-token]").attr("content"),
 			"name": $('#name').val(),
-			"description": $('#description').val()
+			"description": $('#description').val(),
+			"invoice": $('#invoice').val()
         },
 		type: 'POST',
 		url: '{{ route('route_tourcms_channel.store') }}'

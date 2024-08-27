@@ -34,6 +34,17 @@
     <textarea class="form-control tinymce" id="description" name="description" rows="3">{{ $channel->description }}</textarea>
 </div>
 
+<div class="form-group">
+    <label for="invoice">Invoice</label>
+    <select class="form-control" id="invoice">
+      
+      
+      <option value="1" {{  ($channel->invoice == 1) ? "selected" : "" }}>Before the tour</option>
+      <option value="2" {{  ($channel->invoice == 2) ? "selected" : "" }}>After the tour</option>
+      
+    </select>
+  </div>
+
 <button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
 </form>
 </div>
@@ -92,7 +103,8 @@ function UPDATE()
 		data: {
         	"_token": $("meta[name=csrf-token]").attr("content"),
 			"name": $('#name').val(),
-			"description": $('#description').val()
+			"description": $('#description').val(),
+			"invoice": $('#invoice').val()
         },
 		type: 'PUT',
 		url: '{{ route('route_tourcms_channel.update',$channel->id) }}'

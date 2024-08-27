@@ -51,10 +51,12 @@ class ChannelController extends Controller
 
         $name =  $request->input('name');
         $description =  $request->input('description');
+        $invoice =  $request->input('invoice');
 
         $channel = new Channel();
         $channel->name = $name;
         $channel->description = $description;
+        $channel->invoice = $invoice;
         $channel->save();
 
         return response()->json([
@@ -106,15 +108,17 @@ class ChannelController extends Controller
 
         $name =  $request->input('name');
         $description =  $request->input('description');
+        $invoice =  $request->input('invoice');
         
         
         $channel->name = $name;
         $channel->description = $description;
+        $channel->invoice = $invoice;
         $channel->save();
 
         return response()->json([
                     "id" => "1",
-                    "log" => $description,
+                    "log" => $invoice,
                     "message" => 'Success'
                 ]);
     }

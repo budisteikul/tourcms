@@ -25,6 +25,16 @@ class ChannelDataTable extends DataTable
     {
         return datatables($query)
                 ->addIndexColumn()
+                ->editColumn('invoice', function ($id) {
+                    if($id->invoice==1)
+                    {
+                        return 'Before the tour';
+                    }
+                    else
+                    {
+                        return 'After the tour';
+                    }
+                }) 
                 ->addColumn('action', function ($id) {
 
                 $button_delete = '<button id="btn-del" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger pt-0 pb-0 pl-1 pr-1"><i class="fa fa-trash-alt"></i> Delete</button>';
@@ -101,6 +111,7 @@ class ChannelDataTable extends DataTable
 
             Column::make('name')->title('Name')->orderable(false)->addClass('align-middle'),
             Column::make('description')->title('Description')->orderable(false)->addClass('align-middle'),
+            Column::make('invoice')->title('Invoice')->orderable(false)->addClass('align-middle'),
             
             
             Column::computed('action')
