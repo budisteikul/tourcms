@@ -41,6 +41,12 @@ class BookingController extends Controller
         $this->lang = env("BOKUN_LANG");
     }
 
+    public function test()
+    {
+        $value = BookingHelper::convert_currency(520000,"IDR","USD");
+        print_r($value);
+    }
+
     public function question_edit($id)
     {
         $shoppingcart = Shoppingcart::where('id',$id)->firstOrFail();
