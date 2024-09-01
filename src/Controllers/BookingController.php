@@ -370,6 +370,8 @@ class BookingController extends Controller
         if($request->input('action')=="paid")
         {
             $shoppingcart = Shoppingcart::findOrFail($id);
+            $shoppingcart->booking_status = 'CONFIRMED';
+            $shoppingcart->save();
             $shoppingcart->shoppingcart_payment->payment_status = 2;
             $shoppingcart->shoppingcart_payment->save();
             return response()->json([

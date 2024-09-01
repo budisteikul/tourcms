@@ -104,7 +104,7 @@
 
                     
 
-                    @if($shoppingcart->shoppingcart_payment->payment_status==4 && $shoppingcart->shoppingcart_payment->payment_provider=="none")
+                    @if($shoppingcart->shoppingcart_payment->payment_status==4)
                     <li class="list-group-item"><button id="btn-paid" type="button" onClick="PAID('{{ $shoppingcart->id }}','{{ $shoppingcart->confirmation_code }}'); return false;" class="btn btn-block btn-success mr-0"><b>Set payment as Paid</b></button></li>
                     @endif
                     
