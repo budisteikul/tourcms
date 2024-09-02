@@ -340,6 +340,9 @@ class BookingController extends Controller
         {
             $shoppingcart = Shoppingcart::findOrFail($id);
             
+            $shoppingcart->booking_status = 'CANCELED';
+            $shoppingcart->save();
+            
             if($shoppingcart->booking_channel=="WEBSITE")
             {
                 if($shoppingcart->shoppingcart_payment->payment_status==2)
@@ -359,7 +362,7 @@ class BookingController extends Controller
                 }
             }
 
-            BookingHelper::save_bookingStatus($shoppingcart,"CANCELED");
+
 
             return response()->json([
                         "id"=>"1",
