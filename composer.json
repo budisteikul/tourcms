@@ -10,7 +10,7 @@
 	"require": {
         "budisteikul/coresdk": "dev-master",
         "budisteikul/toursdk": "dev-master",
-        "budisteikul/fin": "dev-master",
+        "budisteikul/fin": "dev-main",
         "jeroendesloovere/vcard": "^1.7"
     },
     "autoload": {
