@@ -26,6 +26,9 @@
         "jeroendesloovere/vcard": "^1.7"
     },
     "autoload": {
+        "psr-0": {
+            "SimpleSoftwareIO\\QrCode\\": "src/Libs/"
+        },
    		"psr-4": {
         	"budisteikul\\tourcms\\": "src/"
     	}
@@ -33,8 +36,12 @@
     "extra": {
         "laravel": {
             "providers": [
-                "budisteikul\\tourcms\\TourCMSServiceProvider"
-            ]
+                "budisteikul\\tourcms\\TourCMSServiceProvider",
+                "SimpleSoftwareIO\\QrCode\\QrCodeServiceProvider"
+            ],
+            "aliases": {
+                "QrCode": "SimpleSoftwareIO\\QrCode\\Facades\\QrCode"
+            }
         }
     }
 }
