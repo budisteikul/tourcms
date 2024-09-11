@@ -9,14 +9,14 @@ use Illuminate\Support\Facades\Validator;
 use Ramsey\Uuid\Uuid;
 
 use budisteikul\tourcms\DataTables\ProductDataTable;
-use budisteikul\toursdk\Models\Product;
-use budisteikul\toursdk\Models\Image;
-use budisteikul\toursdk\Models\Category;
-use budisteikul\toursdk\Models\Slug;
+use budisteikul\tourcms\Models\Product;
+use budisteikul\tourcms\Models\Image;
+use budisteikul\tourcms\Models\Category;
+use budisteikul\tourcms\Models\Slug;
 use budisteikul\coresdk\Models\FileTemp;
-use budisteikul\toursdk\Helpers\CategoryHelper;
-use budisteikul\toursdk\Helpers\ImageHelper;
-use budisteikul\toursdk\Helpers\BokunHelper;
+use budisteikul\tourcms\Helpers\CategoryHelper;
+use budisteikul\tourcms\Helpers\ImageHelper;
+use budisteikul\tourcms\Helpers\BokunHelper;
 
 
 class ProductController extends Controller

@@ -4,9 +4,9 @@ namespace budisteikul\tourcms\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use budisteikul\toursdk\Models\ShoppingcartCancellation;
+use budisteikul\tourcms\Models\ShoppingcartCancellation;
 use budisteikul\tourcms\DataTables\CancelsDataTable;
-use budisteikul\toursdk\Helpers\PaymentHelper;
+use budisteikul\tourcms\Helpers\PaymentHelper;
 
 class CancelController extends Controller
 {

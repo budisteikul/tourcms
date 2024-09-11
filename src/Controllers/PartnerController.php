@@ -4,8 +4,8 @@ namespace budisteikul\tourcms\Controllers;
 use App\Http\Controllers\Controller;
 
 
-use budisteikul\toursdk\Models\Partner;
-use budisteikul\toursdk\Models\Shoppingcart;
+use budisteikul\tourcms\Models\Partner;
+use budisteikul\tourcms\Models\Shoppingcart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use budisteikul\tourcms\DataTables\PartnerDataTable;

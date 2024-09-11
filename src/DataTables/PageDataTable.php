@@ -2,7 +2,7 @@
 
 namespace budisteikul\tourcms\DataTables;
 
-use budisteikul\toursdk\Models\Page;
+use budisteikul\tourcms\Models\Page;
 
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;

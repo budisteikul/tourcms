@@ -1,5 +1,5 @@
-@inject('ProductHelper', 'budisteikul\toursdk\Helpers\ProductHelper')
-@inject('GeneralHelper', 'budisteikul\toursdk\Helpers\GeneralHelper')
+@inject('ProductHelper', 'budisteikul\tourcms\Helpers\ProductHelper')
+@inject('GeneralHelper', 'budisteikul\tourcms\Helpers\GeneralHelper')
 @extends('coresdk::layouts.app')
 @section('content')
 <script language="javascript">

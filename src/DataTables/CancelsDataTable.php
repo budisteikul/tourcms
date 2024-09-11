@@ -2,7 +2,7 @@
 
 namespace budisteikul\tourcms\DataTables;
 
-use budisteikul\toursdk\Models\ShoppingcartCancellation as Cancel;
+use budisteikul\tourcms\Models\ShoppingcartCancellation as Cancel;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -11,7 +11,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
-use budisteikul\toursdk\Helpers\GeneralHelper;
+use budisteikul\tourcms\Helpers\GeneralHelper;
 
 class CancelsDataTable extends DataTable
 {

@@ -3,13 +3,13 @@
 namespace budisteikul\tourcms\Controllers;
 use App\Http\Controllers\Controller;
 
-use budisteikul\toursdk\Models\Shoppingcart;
-use budisteikul\toursdk\Helpers\BokunHelper;
-use budisteikul\toursdk\Helpers\PaypalHelper;
-use budisteikul\toursdk\Helpers\BookingHelper;
-use budisteikul\toursdk\Helpers\PaymentHelper;
-use budisteikul\toursdk\Models\Channel;
-use budisteikul\toursdk\Models\Product;
+use budisteikul\tourcms\Models\Shoppingcart;
+use budisteikul\tourcms\Helpers\BokunHelper;
+use budisteikul\tourcms\Helpers\PaypalHelper;
+use budisteikul\tourcms\Helpers\BookingHelper;
+use budisteikul\tourcms\Helpers\PaymentHelper;
+use budisteikul\tourcms\Models\Channel;
+use budisteikul\tourcms\Models\Product;
 
 use budisteikul\tourcms\DataTables\BookingDataTable;
 use Illuminate\Http\Request;
@@ -17,16 +17,16 @@ use Illuminate\Support\Facades\Session;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
-use budisteikul\toursdk\Mail\BookingConfirmedMail;
+use budisteikul\tourcms\Mail\BookingConfirmedMail;
 
-use budisteikul\toursdk\Helpers\FirebaseHelper;
-use budisteikul\toursdk\Helpers\SettingHelper;
-use budisteikul\toursdk\Models\Review;
-use budisteikul\toursdk\Models\ShoppingcartProduct;
-use budisteikul\toursdk\Models\ShoppingcartQuestion;
-use budisteikul\toursdk\Models\ShoppingcartQuestionOption;
-use budisteikul\toursdk\Models\ShoppingcartPayment;
-use budisteikul\toursdk\Models\ShoppingcartCancellation;
+use budisteikul\tourcms\Helpers\FirebaseHelper;
+use budisteikul\tourcms\Helpers\SettingHelper;
+use budisteikul\tourcms\Models\Review;
+use budisteikul\tourcms\Models\ShoppingcartProduct;
+use budisteikul\tourcms\Models\ShoppingcartQuestion;
+use budisteikul\tourcms\Models\ShoppingcartQuestionOption;
+use budisteikul\tourcms\Models\ShoppingcartPayment;
+use budisteikul\tourcms\Models\ShoppingcartCancellation;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 

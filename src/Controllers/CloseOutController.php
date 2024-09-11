@@ -3,11 +3,11 @@
 namespace budisteikul\tourcms\Controllers;
 use App\Http\Controllers\Controller;
 
-use budisteikul\toursdk\Models\CloseOut;
+use budisteikul\tourcms\Models\CloseOut;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use budisteikul\tourcms\DataTables\CloseOutDataTable;
-use budisteikul\toursdk\Models\Product;
+use budisteikul\tourcms\Models\Product;
 
 class CloseOutController extends Controller
 {

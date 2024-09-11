@@ -3,16 +3,16 @@
 namespace budisteikul\tourcms\Controllers;
 use App\Http\Controllers\Controller;
 
-use budisteikul\toursdk\Models\Category;
-use budisteikul\toursdk\Models\Slug;
-use budisteikul\toursdk\Models\Product;
+use budisteikul\tourcms\Models\Category;
+use budisteikul\tourcms\Models\Slug;
+use budisteikul\tourcms\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use budisteikul\toursdk\Helpers\CategoryHelper;
+use budisteikul\tourcms\Helpers\CategoryHelper;
 use budisteikul\tourcms\DataTables\CategoryDataTable;
 use Illuminate\Support\Str;
 
-use budisteikul\toursdk\Models\ShoppingcartProduct;
+use budisteikul\tourcms\Models\ShoppingcartProduct;
 
 class CategoryController extends Controller
 {

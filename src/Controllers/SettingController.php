@@ -3,7 +3,7 @@
 namespace budisteikul\tourcms\Controllers;
 use App\Http\Controllers\Controller;
 
-use budisteikul\toursdk\Models\Setting;
+use budisteikul\tourcms\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use budisteikul\tourcms\DataTables\SettingDataTable;

@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Ramsey\Uuid\Uuid;
 use budisteikul\coresdk\Models\FileTemp;
-use budisteikul\toursdk\Models\Contact;
-use budisteikul\toursdk\Models\Message;
-use budisteikul\toursdk\Helpers\WhatsappHelper;
-use budisteikul\toursdk\Helpers\GeneralHelper;
-use budisteikul\toursdk\Helpers\FirebaseHelper;
+use budisteikul\tourcms\Models\Contact;
+use budisteikul\tourcms\Models\Message;
+use budisteikul\tourcms\Helpers\WhatsappHelper;
+use budisteikul\tourcms\Helpers\GeneralHelper;
+use budisteikul\tourcms\Helpers\FirebaseHelper;
 
 class ContactController extends Controller
 {

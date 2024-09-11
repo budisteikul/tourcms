@@ -1,7 +1,7 @@
 <?php
 namespace budisteikul\tourcms\DataTables;
 
-use budisteikul\toursdk\Models\Channel;
+use budisteikul\tourcms\Models\Channel;
 
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
@@ -11,7 +11,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
-use budisteikul\toursdk\Helpers\ReviewHelper;
+use budisteikul\tourcms\Helpers\ReviewHelper;
 
 class ChannelDataTable extends DataTable
 {

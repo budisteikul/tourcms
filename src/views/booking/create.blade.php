@@ -1,4 +1,4 @@
-@inject('ImageHelper', 'budisteikul\toursdk\Helpers\ImageHelper')
+@inject('ImageHelper', 'budisteikul\tourcms\Helpers\ImageHelper')
 <div class="h-100" style="width:99%">		
  
 

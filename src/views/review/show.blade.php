@@ -1,5 +1,5 @@
-@inject('GeneralHelper', 'budisteikul\toursdk\Helpers\GeneralHelper')
-@inject('ReviewHelper', 'budisteikul\toursdk\Helpers\ReviewHelper')
+@inject('GeneralHelper', 'budisteikul\tourcms\Helpers\GeneralHelper')
+@inject('ReviewHelper', 'budisteikul\tourcms\Helpers\ReviewHelper')
 <div class="h-100" style="width:99%">       
  
     <div class="row justify-content-center">

@@ -2,8 +2,8 @@
 
 namespace budisteikul\tourcms\DataTables;
 
-use budisteikul\toursdk\Models\Category;
-use budisteikul\toursdk\Helpers\CategoryHelper;
+use budisteikul\tourcms\Models\Category;
+use budisteikul\tourcms\Helpers\CategoryHelper;
 
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;

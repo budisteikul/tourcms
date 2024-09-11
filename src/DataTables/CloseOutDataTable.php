@@ -2,7 +2,7 @@
 
 namespace budisteikul\tourcms\DataTables;
 
-use budisteikul\toursdk\Models\CloseOut;
+use budisteikul\tourcms\Models\CloseOut;
 
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
@@ -12,8 +12,8 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
-use budisteikul\toursdk\Helpers\GeneralHelper;
-use budisteikul\toursdk\Models\Product;
+use budisteikul\tourcms\Helpers\GeneralHelper;
+use budisteikul\tourcms\Models\Product;
 
 class CloseOutDataTable extends DataTable
 {

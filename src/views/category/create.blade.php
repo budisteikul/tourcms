@@ -1,4 +1,4 @@
-@inject('CategoryHelper', 'budisteikul\toursdk\Helpers\CategoryHelper')
+@inject('CategoryHelper', 'budisteikul\tourcms\Helpers\CategoryHelper')
 
  
 <div class="h-100" style="width:99%">		

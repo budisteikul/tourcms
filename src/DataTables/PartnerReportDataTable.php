@@ -2,10 +2,10 @@
 
 namespace budisteikul\tourcms\DataTables;
 
-use budisteikul\toursdk\Models\Partner;
-use budisteikul\toursdk\Models\Shoppingcart;
+use budisteikul\tourcms\Models\Partner;
+use budisteikul\tourcms\Models\Shoppingcart;
 
-use budisteikul\toursdk\Helpers\GeneralHelper;
+use budisteikul\tourcms\Helpers\GeneralHelper;
 
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;

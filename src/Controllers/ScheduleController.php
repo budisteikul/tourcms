@@ -4,7 +4,7 @@ namespace budisteikul\tourcms\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use budisteikul\tourcms\DataTables\ScheduleDataTable;
-use budisteikul\toursdk\Models\ShoppingcartProduct;
+use budisteikul\tourcms\Models\ShoppingcartProduct;
 use Illuminate\Support\Facades\Validator;
 
 class ScheduleController extends Controller

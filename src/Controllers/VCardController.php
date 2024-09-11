@@ -4,9 +4,9 @@ namespace budisteikul\tourcms\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use JeroenDesloovere\VCard\VCard;
-use budisteikul\toursdk\Models\Shoppingcart;
-use budisteikul\toursdk\Helpers\BookingHelper;
-use budisteikul\toursdk\Helpers\GeneralHelper;
+use budisteikul\tourcms\Models\Shoppingcart;
+use budisteikul\tourcms\Helpers\BookingHelper;
+use budisteikul\tourcms\Helpers\GeneralHelper;
 
 class VCardController extends Controller
 {

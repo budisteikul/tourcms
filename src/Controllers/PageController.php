@@ -3,8 +3,8 @@
 namespace budisteikul\tourcms\Controllers;
 use App\Http\Controllers\Controller;
 
-use budisteikul\toursdk\Models\Page;
-use budisteikul\toursdk\Models\Slug;
+use budisteikul\tourcms\Models\Page;
+use budisteikul\tourcms\Models\Slug;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use budisteikul\tourcms\DataTables\PageDataTable;

@@ -1,9 +1,9 @@
 <?php
 namespace budisteikul\tourcms\DataTables;
 
-use budisteikul\toursdk\Models\ShoppingcartProduct;
-use budisteikul\toursdk\Helpers\BookingHelper;
-use budisteikul\toursdk\Helpers\GeneralHelper;
+use budisteikul\tourcms\Models\ShoppingcartProduct;
+use budisteikul\tourcms\Helpers\BookingHelper;
+use budisteikul\tourcms\Helpers\GeneralHelper;
 
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;

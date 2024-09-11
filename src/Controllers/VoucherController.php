@@ -3,8 +3,8 @@
 namespace budisteikul\tourcms\Controllers;
 
 use App\Http\Controllers\Controller;
-use budisteikul\toursdk\Models\Voucher;
-use budisteikul\toursdk\Models\Product;
+use budisteikul\tourcms\Models\Voucher;
+use budisteikul\tourcms\Models\Product;
 use budisteikul\tourcms\DataTables\VoucherDataTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;

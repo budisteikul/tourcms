@@ -1,8 +1,8 @@
-@inject('Content', 'budisteikul\toursdk\Helpers\ContentHelper')
-@inject('Booking', 'budisteikul\toursdk\Helpers\BookingHelper')
-@inject('Payment', 'budisteikul\toursdk\Helpers\PaymentHelper')
-@inject('General', 'budisteikul\toursdk\Helpers\GeneralHelper')
-@inject('Whatsapp', 'budisteikul\toursdk\Helpers\WhatsappHelper')
+@inject('Content', 'budisteikul\tourcms\Helpers\ContentHelper')
+@inject('Booking', 'budisteikul\tourcms\Helpers\BookingHelper')
+@inject('Payment', 'budisteikul\tourcms\Helpers\PaymentHelper')
+@inject('General', 'budisteikul\tourcms\Helpers\GeneralHelper')
+@inject('Whatsapp', 'budisteikul\tourcms\Helpers\WhatsappHelper')
 
 <div class="h-100" style="width:99%">       
  

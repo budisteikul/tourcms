@@ -10,6 +10,19 @@
 	"require": {
         "budisteikul/coresdk": "dev-master",
         "budisteikul/fin": "dev-main",
+        "paypal/paypal-checkout-sdk": "^1.0",
+        "yajra/laravel-datatables-oracle": "^10.2",
+        "spatie/laravel-google-cloud-storage": "^2.0",
+        "bacon/bacon-qr-code": "1.0.*",
+        "illuminate/support": ">=5.0.0",
+        "stripe/stripe-php": "^7.124",
+        "intervention/image": "^2.7",
+        "predis/predis": "^1.1",
+        "html2text/html2text": "^4.3",
+        "google/cloud-tasks": "^1.11",
+        "milon/barcode": "^9.0",
+        "propaganistas/laravel-phone": "^4.4",
+        "barryvdh/laravel-dompdf": "^1.0",
         "jeroendesloovere/vcard": "^1.7"
     },
     "autoload": {

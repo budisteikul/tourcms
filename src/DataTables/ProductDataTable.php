@@ -2,10 +2,10 @@
 
 namespace budisteikul\tourcms\DataTables;
 
-use budisteikul\toursdk\Models\Product;
-use budisteikul\toursdk\Models\Category;
-use budisteikul\toursdk\Helpers\CategoryHelper;
-use budisteikul\toursdk\Helpers\ReviewHelper;
+use budisteikul\tourcms\Models\Product;
+use budisteikul\tourcms\Models\Category;
+use budisteikul\tourcms\Helpers\CategoryHelper;
+use budisteikul\tourcms\Helpers\ReviewHelper;
 
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
@@ -14,8 +14,8 @@ use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
-use budisteikul\toursdk\Helpers\GeneralHelper;
-use budisteikul\toursdk\Helpers\ProductHelper;
+use budisteikul\tourcms\Helpers\GeneralHelper;
+use budisteikul\tourcms\Helpers\ProductHelper;
 use Yajra\DataTables\Services\DataTable;
 
 class ProductDataTable extends DataTable

@@ -2,9 +2,9 @@
 
 namespace budisteikul\tourcms\DataTables;
 
-use budisteikul\toursdk\Models\Review;
-use budisteikul\toursdk\Helpers\GeneralHelper;
-use budisteikul\toursdk\Helpers\ReviewHelper;
+use budisteikul\tourcms\Models\Review;
+use budisteikul\tourcms\Helpers\GeneralHelper;
+use budisteikul\tourcms\Helpers\ReviewHelper;
 
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;

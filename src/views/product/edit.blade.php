@@ -1,5 +1,5 @@
-@inject('ImageHelper', 'budisteikul\toursdk\Helpers\ImageHelper')
-@inject('CategoryHelper', 'budisteikul\toursdk\Helpers\CategoryHelper')
+@inject('ImageHelper', 'budisteikul\tourcms\Helpers\ImageHelper')
+@inject('CategoryHelper', 'budisteikul\tourcms\Helpers\CategoryHelper')
 
 <div class="h-100" style="width:99%">		
 

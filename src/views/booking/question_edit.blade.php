@@ -1,4 +1,4 @@
-@inject('ProductHelper', 'budisteikul\toursdk\Helpers\ProductHelper')
+@inject('ProductHelper', 'budisteikul\tourcms\Helpers\ProductHelper')
 
 
 <div class="h-100" style="width:99%">		
