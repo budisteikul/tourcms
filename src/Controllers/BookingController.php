@@ -43,8 +43,7 @@ class BookingController extends Controller
 
     public function test()
     {
-        $value = BookingHelper::convert_currency(12.34,"USD","USD");
-        print_r($value);
+        print_r("aaaa");
     }
 
     public function question_edit($id)
