@@ -29,7 +29,7 @@ use budisteikul\tourcms\Models\ShoppingcartPayment;
 use budisteikul\tourcms\Models\ShoppingcartCancellation;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
-
+use Auth;
 
 
 class BookingController extends Controller
@@ -43,7 +43,8 @@ class BookingController extends Controller
 
     public function test()
     {
-        print_r("aaaa");
+        Auth::user()->tokens()->delete();
+        print_r(Auth::user()->createToken('vertikaltrip-token')->plainTextToken);
     }
 
     public function question_edit($id)
