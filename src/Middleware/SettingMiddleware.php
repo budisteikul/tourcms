@@ -23,7 +23,7 @@ class SettingMiddleware
         {
             config(['site.'.$setting->name => $setting->value]);
         }
-        
+        print_r($request->input('asd'));
         return $next($request);
     }
 }
