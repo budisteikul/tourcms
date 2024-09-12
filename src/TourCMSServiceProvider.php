@@ -13,6 +13,9 @@ class TourCMSServiceProvider extends ServiceProvider
      */
     public function register()
     {
+         $this->app->register('Webklex\PDFMerger\Providers\PDFMergerServiceProvider');
+        $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+        $loader->alias('PDFMerger', 'Webklex\PDFMerger\Facades\PDFMergerFacade');
         $this->app['router']->aliasMiddleware('SettingMiddleware', \budisteikul\tourcms\Middleware\SettingMiddleware::class);
         $this->registerConfig();
     }
@@ -25,6 +28,8 @@ class TourCMSServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadViewsFrom(__DIR__.'/views', 'tourcms');
+        $this->loadMigrationsFrom(__DIR__.'/migrations/2019_09_30_125253_create_fin_categories_table.php');
+        $this->loadMigrationsFrom(__DIR__.'/migrations/2019_09_30_132534_create_fin_transactions_table.php');
         $this->loadMigrationsFrom(__DIR__.'/migrations/2020_11_17_133006_create_categories_table.php');
         $this->loadMigrationsFrom(__DIR__.'/migrations/2020_11_17_222702_create_products_table.php');
         $this->loadMigrationsFrom(__DIR__.'/migrations/2020_11_18_151603_create_images_table.php');

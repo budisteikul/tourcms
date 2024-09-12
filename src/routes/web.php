@@ -172,4 +172,35 @@ Route::get('/cms/vcard/download/{id}','budisteikul\tourcms\Controllers\VCardCont
 	Route::post('/api/tool/billing/{sessionId}', 'budisteikul\tourcms\Controllers\ToolController@billing')->middleware(['SettingMiddleware']);
 	Route::post('/api/tool/bin', 'budisteikul\tourcms\Controllers\ToolController@bin')->middleware(['SettingMiddleware']);
 
+
+
+Route::get('/cms/fin/transactions/categories/structure','budisteikul\tourcms\Controllers\CategoryController@structure')->middleware(['web','auth','verified','CoreMiddleware']);
+
+Route::resource('/cms/fin/transactions/categories','budisteikul\tourcms\Controllers\CategoryController',[ 'names' => 'route_fin_categories' ])
+    ->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
+
+Route::post('/cms/fin/transactions/payment','budisteikul\tourcms\Controllers\TransactionController@post_payment')->middleware(['web','auth','verified','CoreMiddleware']);
+Route::get('/cms/fin/transactions/payment','budisteikul\tourcms\Controllers\TransactionController@get_payment')->middleware(['web','auth','verified','CoreMiddleware']);
+    
+Route::resource('/cms/fin/transactions','budisteikul\tourcms\Controllers\TransactionController',[ 'names' => 'route_fin_transactions' ])
+    ->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
+
+Route::resource('/cms/fin/profitloss', 'budisteikul\tourcms\Controllers\SalesController',[ 'names' => 'route_fin_profitloss' ])->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
+
+Route::resource('/cms/fin/banking', 'budisteikul\tourcms\Controllers\BankingController',[ 'names' => 'route_fin_banking' ])->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
+
+Route::resource('/cms/fin/report/asset', 'budisteikul\tourcms\Controllers\AssetController',[ 'names' => 'route_fin_asset' ])->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
+
+Route::resource('/cms/fin/report/monthly', 'budisteikul\tourcms\Controllers\ReportMonthlyController',[ 'names' => 'route_fin_report_monthly' ])->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
+
+Route::resource('/cms/fin/tax', 'budisteikul\tourcms\Controllers\TaxController',[ 'names' => 'route_fin_tax' ])->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
+
+Route::resource('/cms/fin/neraca', 'budisteikul\tourcms\Controllers\NeracaController',[ 'names' => 'route_fin_neraca' ])->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
+
+Route::get('/cms/fin/report/pdf/{tahun}','budisteikul\tourcms\Controllers\LaporanController@pdf')->middleware(['web','auth','verified','CoreMiddleware']);
+
+Route::resource('/cms/fin/profitloss-old', 'budisteikul\tourcms\Controllers\SalesControllerOld',[ 'names' => 'route_fin_profitloss_old' ])->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
+
+Route::resource('/cms/fin/report/payment', 'budisteikul\tourcms\Controllers\ReportPaymentController',[ 'names' => 'route_fin_report_payment' ])->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
+
 Route::get('/cms/test','budisteikul\tourcms\Controllers\BookingController@test')->middleware(['web','auth','verified','CoreMiddleware','SettingMiddleware']);
