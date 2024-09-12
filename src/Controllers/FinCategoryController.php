@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-use budisteikul\tourcms\DataTables\CategoriesDataTable;
+use budisteikul\tourcms\DataTables\FinCategoriesDataTable;
 use Illuminate\Support\Facades\Validator;
 use budisteikul\tourcms\Models\fin_categories;
 use budisteikul\tourcms\Models\fin_transactions;

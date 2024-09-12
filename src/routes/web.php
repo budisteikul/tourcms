@@ -174,9 +174,9 @@ Route::get('/cms/vcard/download/{id}','budisteikul\tourcms\Controllers\VCardCont
 
 
 
-Route::get('/cms/fin/transactions/categories/structure','budisteikul\tourcms\Controllers\CategoryController@structure')->middleware(['web','auth','verified','CoreMiddleware']);
+Route::get('/cms/fin/transactions/categories/structure','budisteikul\tourcms\Controllers\FinCategoryController@structure')->middleware(['web','auth','verified','CoreMiddleware']);
 
-Route::resource('/cms/fin/transactions/categories','budisteikul\tourcms\Controllers\CategoryController',[ 'names' => 'route_fin_categories' ])
+Route::resource('/cms/fin/transactions/categories','budisteikul\tourcms\Controllers\FinCategoryController',[ 'names' => 'route_fin_categories' ])
     ->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
 
 Route::post('/cms/fin/transactions/payment','budisteikul\tourcms\Controllers\TransactionController@post_payment')->middleware(['web','auth','verified','CoreMiddleware']);
