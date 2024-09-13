@@ -43,8 +43,8 @@ class BookingController extends Controller
 
     public function test(Request $request)
     {
-        //Auth::user()->tokens()->delete();
-        //print_r(Auth::user()->createToken('vertikaltrip-token')->plainTextToken);
+        Auth::user()->tokens()->delete();
+        print_r(Auth::user()->createToken('vertikaltrip-token')->plainTextToken);
     }
 
     public function question_edit($id)
