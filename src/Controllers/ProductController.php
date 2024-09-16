@@ -17,7 +17,8 @@ use budisteikul\coresdk\Models\FileTemp;
 use budisteikul\tourcms\Helpers\CategoryHelper;
 use budisteikul\tourcms\Helpers\ImageHelper;
 use budisteikul\tourcms\Helpers\BokunHelper;
-
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -26,6 +27,7 @@ class ProductController extends Controller
             $endpoint = env("APP_API_URL");
             $headers = [
                 'content-type' => 'application/json',
+                'Authorization' => 'Bearer '. Cache::get(Auth::user()->email.'_token')
             ];
 
             $client = new \GuzzleHttp\Client(['headers' => $headers,'http_errors' => false]);
