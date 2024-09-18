@@ -30,6 +30,9 @@ class ProductDataTable extends DataTable
     {
         return datatables($query)
                 ->addIndexColumn()
+                ->editColumn('name',function($id){
+                    return '<a target="_blank" href="'. env('APP_URL') .'/tour/'. $id->slug .'">'. $id->name .'</a>';
+                })
                 ->addColumn('deposit', function($id){
                     if($id->deposit_percentage)
                     {
@@ -64,7 +67,7 @@ class ProductDataTable extends DataTable
                     </div>
                 </div>';
                 })
-                ->rawColumns(['action','category_id']);
+                ->rawColumns(['action','category_id','name']);
     }
 
     /**
