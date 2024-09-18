@@ -186,7 +186,11 @@ class ProductController extends Controller
     {
         if($request->input('action')=="refresh")
         {
-            $value = self::product_api('/product/add',$product->bokun_id);
+            $data = [
+                "activityId" => $product->bokun_id
+            ];
+
+            $value = self::product_api('/product/sync',$data);
             return response()->json([
                     "id" => "1",
                     "message" => $value
@@ -287,8 +291,13 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        
         Slug::where('type','product')->where('link_id',$product->id)->delete();
-        self::product_api('/product/remove',$product->bokun_id);
+        $data = [
+                "activityId" => $product->bokun_id
+            ];
+        self::product_api('/product/sync',$data);
+        
         foreach($product->images as $image)
         {
             ImageHelper::deleteImageGoogle($image->public_id);
