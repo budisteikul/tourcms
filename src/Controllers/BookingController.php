@@ -67,8 +67,10 @@ class BookingController extends Controller
     {
 
         $booking_channel =  $request->input('booking_channel');
+        $confirmation_code =  $request->input('confirmation_code');
         $shoppingcart = Shoppingcart::findOrFail($id);
         $shoppingcart->booking_channel = $booking_channel;
+        $shoppingcart->confirmation_code = $confirmation_code;
         $shoppingcart->save();
 
         $array = $request->post();

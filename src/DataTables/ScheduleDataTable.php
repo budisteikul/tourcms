@@ -143,7 +143,7 @@ class ScheduleDataTable extends DataTable
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(400)
+                  //->width(400)
                   ->addClass('text-center'),
             ];
         }
