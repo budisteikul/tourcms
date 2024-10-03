@@ -4,11 +4,12 @@ use Illuminate\Support\Facades\Storage;
 use Ramsey\Uuid\Uuid;
 use budisteikul\tourcms\Models\Contact;
 use budisteikul\tourcms\Models\Message;
+use budisteikul\tourcms\Helpers\GeneralHelper;
 use budisteikul\tourcms\Helpers\FirebaseHelper;
 
 class WhatsappHelper {
 
-    public function contact($wa_id,$name=null,$shoppingcart_id=null)
+    public function contact($wa_id,$name=null)
     {
         $wa_id = GeneralHelper::phoneNumber($wa_id);
         $contact = Contact::where('wa_id',$wa_id)->first();
@@ -17,11 +18,6 @@ class WhatsappHelper {
             if($name!=null)
             {
                 $contact->name = $name;
-                $contact->save();
-            }
-            if($shoppingcart_id!=null)
-            {
-                $contact->shoppingcart_id = $shoppingcart_id;
                 $contact->save();
             }
             return $contact->id;
@@ -33,10 +29,6 @@ class WhatsappHelper {
             if($name!=null)
             {
                 $contact->name = $name;
-            }
-            if($shoppingcart_id!=null)
-            {
-                $contact->shoppingcart_id = $shoppingcart_id;
             }
             $contact->save();
             return $contact->id;
