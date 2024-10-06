@@ -167,7 +167,7 @@
 
 
 
-<div class="card mb-4">
+<!-- div class="card mb-4">
 <div class="card-header bg-info">XENDIT</div>
 <div class="card-body p-0">
 <table id="table1" border="0" cellspacing="1" cellpadding="2" class="m-0 table table-sm table-bordered table-hover table-striped table-responsive w-100 d-block d-md-table" >
@@ -238,7 +238,7 @@
   </tbody>
 </table>
 </div>
-</div>
+</div -->
 
 
 
