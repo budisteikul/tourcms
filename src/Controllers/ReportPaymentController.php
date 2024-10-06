@@ -25,7 +25,7 @@ class ReportPaymentController extends Controller
                         return $query->whereHas('shoppingcart_products', function ($query) use ($bulan,$tahun) {
                             return $query->whereYear('date',$tahun)->whereMonth('date',$bulan);
                         });//->where('booking_status','CONFIRMED');
-                    })->where('payment_status',2)->get();
+                    })->where('net','>',0)->get();
 
         
 
