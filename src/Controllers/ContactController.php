@@ -78,7 +78,7 @@ class ContactController extends Controller
 
             case 121:
                 $type = "text";
-                $var1 = "Got it 🫡 Thank you for confirming 🙏😊";
+                $var1 = "Got it! Thank you for confirming 🙏😊";
             break;
 
             case 122:
