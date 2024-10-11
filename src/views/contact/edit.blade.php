@@ -4,7 +4,21 @@
 <div class="row justify-content-center" style="min-height: 500px;">
         <div class="col-md-12">
             <div class="card mb-2">
-                <div class="card-header text-white"><a href="https://wa.me/{{ $contact->wa_id }}" class="btn btn-sm btn-primary mb-0" target="_blank"><i class="fab fa-whatsapp"></i> {{$contact->name}} +{{$contact->wa_id}}</a> </div>
+                
+                <div class="card-header pr-0">
+                <div class="row align-items-center w-100">
+                    <div class="col text-left">
+                        <div class="d-flex align-self-center">
+                        <a href="https://wa.me/{{ $contact->wa_id }}" class="btn btn-sm btn-primary mb-0" target="_blank"><i class="fab fa-whatsapp"></i> {{$contact->name}} +{{$contact->wa_id}}</a> 
+                        </div>
+                    </div>
+                    <div class="col-auto text-right mr-0 pr-0">
+                        <div class="btn-toolbar justify-content-end">
+                            <button class="btn btn-sm btn-danger mr-0" type="button" onClick="clear_messages();return false;"><i class="fa fa-window-close"></i> Clear messages</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
                 <div class="card-body">
         		    
                 
@@ -124,6 +138,41 @@
 
 fileUpload();
 
+
+function clear_messages()
+{
+    $.confirm({
+        title: 'Warning',
+        content: 'Are you sure?',
+        type: 'red',
+        icon: 'fa fa-trash',
+        buttons: {   
+            ok: {
+                text: "OK",
+                btnClass: 'btn-danger',
+                keys: ['enter'],
+                action: function(){
+                     
+                     $.ajax({
+                        data: {
+                          "_token": $("meta[name=csrf-token]").attr("content"),
+                          "id": "{{ $contact->id }}"
+                        },
+                        type: 'POST',
+                        url: '{{ route('route_tourcms_contact.index') .'/clear_messages' }}'
+                    }).done(function( data ) {
+      
+
+                    });
+
+                }
+            },
+            cancel: function(){
+                  console.log('the user clicked cancel');
+            }
+        }
+    });
+}
 
 function sendTemplate(template_id)
 {

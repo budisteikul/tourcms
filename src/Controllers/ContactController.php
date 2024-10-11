@@ -19,6 +19,23 @@ use budisteikul\tourcms\Helpers\FirebaseHelper;
 class ContactController extends Controller
 {
     
+    public function clear_messages(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return response()->json($errors);
+        }
+
+        $id = $request->input('id');
+        Message::where('contact_id',$id)->delete();
+        $whatsapp = new WhatsappHelper;
+        $whatsapp->messages($id);
+    }
+
     public function template(Request $request)
     {
             $validator = Validator::make($request->all(), [
