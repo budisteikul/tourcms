@@ -32,8 +32,11 @@ class ContactController extends Controller
 
         $id = $request->input('id');
         Message::where('contact_id',$id)->delete();
+        
         $whatsapp = new WhatsappHelper;
         $whatsapp->messages($id);
+
+        return response('OK', 200)->header('Content-Type', 'text/plain');
     }
 
     public function template(Request $request)
