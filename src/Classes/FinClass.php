@@ -398,6 +398,7 @@ class FinClass {
 	
 	public static function total_per_month_by_type($type,$year,$month)
     {
+
                 $fin_date_start = self::first_date_transaction();
                 $fin_date_end = date('Y-m-d') .' 23:59:00';
 
@@ -405,7 +406,7 @@ class FinClass {
                 $fin_categories = fin_categories::where('type',$type)->get();
                 foreach($fin_categories as $fin_categorie)
                 {
-                    $total += fin_transactions::where('category_id',$fin_categorie->id)->whereYear('date',$year)->whereMonth('date',$month)->where('date', '>=', $fin_date_start )->where('date', '<=', $fin_date_end )->sum('amount');
+                    $total += fin_transactions::where('category_id',$fin_categorie->id)->whereYear('date',$year)->whereMonth('date',$month)->where('date', '>=', $fin_date_start )->where('date', '<=', $fin_date_end )->where('status',1)->sum('amount');
                 }
                 return $total;
 	}
