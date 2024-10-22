@@ -41,7 +41,7 @@ class FinClass {
         $fin_categories = fin_categories::where('type',$type)->get();
         foreach($fin_categories as $fin_categorie)
         {
-            $total += fin_transactions::where('category_id',$fin_categorie->id)->sum('amount');
+            $total += fin_transactions::where('category_id',$fin_categorie->id)->where('status',1)->sum('amount');
         }
         return $total;
     }
@@ -50,13 +50,13 @@ class FinClass {
 
     public static function count_per_year($category_id,$year){
           $total = 0;
-          $total = fin_transactions::where('category_id',$category_id)->whereYear('date',$year)->count();
+          $total = fin_transactions::where('category_id',$category_id)->where('status',1)->whereYear('date',$year)->count();
           return $total;
     }
 
     public static function count_per_month($category_id,$year,$month){
           $total = 0;
-          $total = fin_transactions::where('category_id',$category_id)->whereYear('date',$year)->whereMonth('date',$month)->count();
+          $total = fin_transactions::where('category_id',$category_id)->where('status',1)->whereYear('date',$year)->whereMonth('date',$month)->count();
           return $total;
         
     }
@@ -389,7 +389,7 @@ class FinClass {
           $categories = FinClass::getChild($category_id);
           foreach($categories as $category)
           {
-                $total += fin_transactions::where('category_id',$category)->whereYear('date',$year)->whereMonth('date',$month)->sum('amount');
+                $total += fin_transactions::where('category_id',$category)->whereYear('date',$year)->whereMonth('date',$month)->where('status',1)->sum('amount');
           }
 		  return $total;
 	}
@@ -416,7 +416,7 @@ class FinClass {
             $fin_categories = fin_categories::where('type',$type)->get();
             foreach($fin_categories as $fin_category)
             {
-                $total += fin_transactions::where('category_id',$fin_category->id)->whereYear('date',$year)->whereMonth('date',$month)->whereDay('date',$day)->sum('amount');
+                $total += fin_transactions::where('category_id',$fin_category->id)->whereYear('date',$year)->whereMonth('date',$month)->whereDay('date',$day)->where('status',1)->sum('amount');
             }
         return $total;
     }
