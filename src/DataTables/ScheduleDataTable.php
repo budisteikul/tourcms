@@ -27,21 +27,16 @@ class ScheduleDataTable extends DataTable
     {
        
         return datatables($query)
-                
-                 
-                 ->addColumn('name', function($id){
-                    $shoppingcart_id = $id->shoppingcart->id;
-                    $question = BookingHelper::get_answer_contact($id->shoppingcart);
-                    $name = $question->firstName .' '. $question->lastName;
-                    if(Auth::user()->id==1) {
-                        $name = '<a href="#" onClick="SHOW(\''.$shoppingcart_id.'\'); return false;">'. $name .'</a>';
-                    }
-                    
-                    return $name;
-                })
-               
                 ->addColumn('date_text', function($id){
                     return GeneralHelper::dateFormat($id->date,10);
+                })
+                ->addColumn('name', function($id){
+                    $name = '';
+                    foreach($id->shoppingcart->shoppingcart_questions as $question)
+                    {
+                        $name .= $question->answer .' ';
+                    }
+                    return '<a href="#" onClick="SHOW(\''.$id->shoppingcart->id.'\'); return false;">'. $name .'</a>';
                 })
                 ->addColumn('people', function($id){
                     $people = 0;
@@ -63,6 +58,15 @@ class ScheduleDataTable extends DataTable
                     </div>
                 </div>';
                 })
+                ->filterColumn('name', function($query, $keyword) {
+                    $query->whereHas('shoppingcart', function ($query) use ($keyword) {
+                        return $query->whereHas('shoppingcart_questions', function ($query) use ($keyword) {
+                            return $query->where('answer','ILIKE','%'.$keyword.'%');
+                        });
+                    });
+                    //print_r($keyword);
+                    //$query->whereRaw($sql, ["%{$keyword}%"]);
+                })
                 ->addIndexColumn()
                 ->rawColumns(['name','date_text','action']);
     }
@@ -76,15 +80,17 @@ class ScheduleDataTable extends DataTable
     public function query(ShoppingcartProduct $model): QueryBuilder
     {
         $model = $model->with(['shoppingcart' => function ($query) {
-                    return $query->with(['shoppingcart_questions' => function ($query) {
+                    $query = $query->with(['shoppingcart_questions' => function ($query) {
                         return $query->where('question_id','firstName')->orWhere('question_id','lastName');
                     }]);
-                }])
+                    return $query;
+                 }])
                  ->whereHas('shoppingcart', function ($query) {
                     return $query->where('booking_status','CONFIRMED');
                  })->where('date', '>=', date('Y-m-d'))->whereNotNull('date')->newQuery();
         
-                 return $model;
+        
+        return $model;
     }
 
     /**
@@ -119,9 +125,9 @@ class ScheduleDataTable extends DataTable
      */
     public function getColumns(): array
     {
-        if(Auth::user()->id==1)
-        {
+            
             return [
+
             Column::make('date')
                   ->visible(false)
                   ->searchable(false)
@@ -133,7 +139,9 @@ class ScheduleDataTable extends DataTable
                   ->searchable(false)
                   ->addClass('text-center align-middle'),
 
+            //Column::make('shoppingcart.shoppingcart_questions.answer')->title('People')->orderable(false)->addClass('align-middle'),
             
+            Column::make('shoppingcart.confirmation_code')->title('confirmation_code')->visible(false)->orderable(false)->addClass('align-middle'),
             Column::make('name')->title('Main Contact')->orderable(false)->addClass('align-middle'),
             Column::make('title')->title('Tour')->orderable(false)->addClass('align-middle'),
             Column::make('shoppingcart.booking_channel')->title('Channel')->orderable(false)->addClass('align-middle'),
@@ -146,27 +154,6 @@ class ScheduleDataTable extends DataTable
                   //->width(400)
                   ->addClass('text-center'),
             ];
-        }
-        else
-        {
-            return [
-            Column::make('date')
-                  ->visible(false)
-                  ->searchable(false)
-                  ->orderable(true),
-            Column::computed('DT_RowIndex')
-                  ->width(30)
-                  ->title('No')
-                  ->orderable(false)
-                  ->searchable(false)
-                  ->addClass('text-center align-middle'),
-
-            Column::make('name')->title('Main Contact')->orderable(false)->addClass('align-middle'),
-            Column::make('shoppingcart.booking_channel')->title('Channel')->orderable(false)->addClass('align-middle'),
-            Column::make('date_text')->title('Date')->orderable(false)->addClass('align-middle'),
-            Column::make('people')->title('People')->orderable(false)->addClass('align-middle')
-            ];
-        }
         
 
         
