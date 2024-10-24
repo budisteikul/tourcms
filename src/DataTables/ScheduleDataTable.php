@@ -146,7 +146,7 @@ class ScheduleDataTable extends DataTable
             Column::make('title')->title('Tour')->orderable(false)->addClass('align-middle'),
             Column::make('shoppingcart.booking_channel')->title('Channel')->orderable(false)->addClass('align-middle'),
             Column::make('date_text')->title('Date')->orderable(false)->addClass('align-middle'),
-            Column::make('people')->title('People')->orderable(false)->addClass('align-middle'),
+            Column::make('people')->title('Pax')->orderable(false)->addClass('align-middle text-center'),
 
             Column::computed('action')
                   ->exportable(false)

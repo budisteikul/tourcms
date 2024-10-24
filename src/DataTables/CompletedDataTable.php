@@ -47,6 +47,15 @@ class CompletedDataTable extends DataTable
                     }
                     return $people;
                 })
+                 ->filterColumn('name', function($query, $keyword) {
+                    $query->whereHas('shoppingcart', function ($query) use ($keyword) {
+                        return $query->whereHas('shoppingcart_questions', function ($query) use ($keyword) {
+                            return $query->where('answer','ILIKE','%'.$keyword.'%');
+                        });
+                    });
+                    //print_r($keyword);
+                    //$query->whereRaw($sql, ["%{$keyword}%"]);
+                })
                 ->addIndexColumn()
                 ->rawColumns(['name','date_text']);
     }
