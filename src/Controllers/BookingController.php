@@ -201,6 +201,7 @@ class BookingController extends Controller
 
             BookingHelper::set_confirmationCode($sessionId);
             
+            /*
             if($data['payment']!="none")
             {
                 $payment = ['CREDIT_CARD'];
@@ -213,14 +214,14 @@ class BookingController extends Controller
                 $shoppingcart= PaymentHelper::create_payment($sessionId,"xendit","invoice",$payment);
             }
             else
-            {
+            {*/
                 $shoppingcart->booking_status = 'CONFIRMED';
                 BookingHelper::save_shoppingcart($sessionId, $shoppingcart);
                 $shoppingcart= PaymentHelper::create_payment($sessionId,"none");
                 // set to paid
                 $shoppingcart = PaymentHelper::set_paymentStatus($sessionId,2);
-            }
-
+           /*}*/
+            
             
             $shoppingcart = BookingHelper::confirm_booking($sessionId,false);
             
@@ -240,11 +241,12 @@ class BookingController extends Controller
                 $shoppingcart->save();
             }
 
+            /*
             if($data['wa_notif']=="yes")
             {
                 BookingHelper::shoppingcart_whatsapp($shoppingcart);
             }
-            
+            */
 
             //Fee ========================================================================
             /*

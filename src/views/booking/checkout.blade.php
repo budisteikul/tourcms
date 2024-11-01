@@ -470,7 +470,7 @@ function DELETE()
 </select>
 </div>
 <!-- ########################################### -->
-<div class="form-group">
+<!-- div class="form-group">
 <label for="payment"><strong>Payment</strong></label>
 <select style="font-size:16px;height:47px;"  class="form-control" id="payment" name="payment">
         <option value="none">No Payment</option>
@@ -485,7 +485,7 @@ function DELETE()
         <option value="no">No</option>
         <option value="yes">Yes</option>
 </select>
-</div>
+</div -->
 <div class="form-group">
 <label for="confirmation_code"><strong>Confirmation Code</strong></label>
 	<input name="confirmation_code" value="" type="text" class="form-control" id="confirmation_code" style="height:47px;">

@@ -1193,7 +1193,11 @@ class BookingHelper {
 	public static function get_cancellation($date,$hour=null)
 	{
 		$value = "";
-		if($hour==null)
+		if($date==null)
+		{
+			$value = "Non-refundable";
+		}
+		else if($hour==null)
 		{
 			$value = "Fully refundable until ". ProductHelper::datetotext($date);
 		}
