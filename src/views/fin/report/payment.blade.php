@@ -67,7 +67,7 @@
        
     @endphp
     <tr>
-      <td>{{$payment->shoppingcart->confirmation_code}}</td>
+      <td>{{$payment->authorization_id}}</td>
       <td>{{ number_format($amount, 2, '.', '.') }}</td>
       <td>{{ number_format($fee, 2, '.', '.') }}</td>
       <td>{{ number_format($net, 2, '.', '.') }}</td>
@@ -137,7 +137,7 @@
        
     @endphp
     <tr>
-      <td>{{$payment->shoppingcart->confirmation_code}}</td>
+      <td>{{$payment->authorization_id}}</td>
       <td>{{ number_format($amount, 2, '.', '.') }}</td>
       <td>{{ number_format($fee, 2, '.', '.') }}</td>
       <td>{{ number_format($net, 2, '.', '.') }}</td>
