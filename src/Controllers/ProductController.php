@@ -75,8 +75,8 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255|unique:products,name',
-            'bokun_id' => 'required|numeric|unique:products,bokun_id',
+            //'name' => 'required|string|max:255|unique:products,name',
+            //'bokun_id' => 'required|numeric|unique:products,bokun_id',
         ]);
         
         if ($validator->fails()) {
@@ -198,8 +198,8 @@ class ProductController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255|unique:products,name,'.$product->id,
-            'bokun_id' => 'required|numeric|unique:products,bokun_id,'.$product->id,
+            //'name' => 'required|string|max:255|unique:products,name,'.$product->id,
+            //'bokun_id' => 'required|numeric|unique:products,bokun_id,'.$product->id,
         ]);
         
         if ($validator->fails()) {
