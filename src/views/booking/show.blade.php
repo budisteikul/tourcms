@@ -27,7 +27,7 @@
 
     <div class="card-body">
             
-            @if(Auth::user()->id==1)
+            
             <div class="card mb-2 ">
                 <div class="card-header bg-secondary">CUSTOMER</div>
                   <ul class="list-group list-group-flush ml-0 mr-0 pl-0 pr-0">
@@ -56,23 +56,13 @@
                   </ul>
             </div>
 
-            @else
-            <div class="card mb-2">
-                <div class="card-header bg-secondary">CUSTOMER</div>
-                  <ul class="list-group list-group-flush ml-0 mr-0 pl-0 pr-0">
-                    <li class="list-group-item"><b>Name :</b> {{ $contact->firstName }} {{ $contact->lastName }}<input type="hidden" id="full_name" value="{{ $contact->firstName }} {{ $contact->lastName }}"> <button onclick="copyToClipboard('#full_name')" title="Copied" data-toggle="tooltip" data-placement="right" data-trigger="click" class="btn btn-light btn-sm invoice-hilang"><i class="far fa-copy"></i></button></li>
-                    <li class="list-group-item"><b>Status :</b> {{ strtoupper($shoppingcart->booking_status) }}</li>
-                  </ul>
-            </div>    
-
-
-            @endif
+            
             
             
             <div class="card-header bg-secondary">PRODUCT</div>
             {!! $Content->view_product_detail($shoppingcart) !!}
             
-            @if(Auth::user()->id==1)
+            
             
             @if(isset($shoppingcart->shoppingcart_payment))
             @if($shoppingcart->shoppingcart_payment->payment_provider!=="none")
@@ -88,10 +78,12 @@
                         $order_id = $shoppingcart->shoppingcart_payment->order_id;
                       }
                     @endphp
+                    @if($order_id!="")
                     <li class="list-group-item">
                         <b>ID :</b> {{ $order_id }}
                         <input type="hidden" id="order_id" value="{{ $order_id }}"> <button onclick="copyToClipboard('#order_id')" title="Copied" data-toggle="tooltip" data-placement="right" data-trigger="click" class="btn btn-light btn-sm invoice-hilang"><i class="far fa-copy"></i></button>
                     </li>
+                    @endif
                     <li class="list-group-item"><b>Payment Provider :</b> {{ strtoupper($shoppingcart->shoppingcart_payment->payment_provider) }}</li>
                     @endif
                     <li class="list-group-item"><b>Total :</b> {{ strtoupper($shoppingcart->shoppingcart_payment->currency) }} {{ $General->numberFormat($shoppingcart->shoppingcart_payment->amount,$shoppingcart->shoppingcart_payment->currency) }}</li>
@@ -116,9 +108,9 @@
              @endif
              @endif
              
-            @endif
+           
 
-            @if(Auth::user()->id==1)
+           
             @if($shoppingcart->booking_status!="CANCELED")
             <div class="card mb-2">
                 <div class="card-body bg-light">
@@ -133,7 +125,7 @@
             </div>
             @endif
             
-            @endif
+            
             
     </div>
 
