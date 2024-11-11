@@ -80,8 +80,8 @@
                     <button type="button" class="btn btn-danger mb-2" id="template203"  onclick="sendTemplate(203); return false;"><i class="fas fa-paper-plane"></i> Jogja Morning Food Tour - Anisa Picture</button>
 </div>
 
-<div class="tab-pane fade pt-5" id="nav-menu5" role="tabpanel" aria-labelledby="nav-menu5-tab">
-                    <button type="button" class="btn btn-primary mb-2" id="template301"  onclick="sendTemplate(301); return false;"><i class="fas fa-paper-plane"></i> Taman Anyar</button>
+<div class="tab-pane fade pt-4" id="nav-menu5" role="tabpanel" aria-labelledby="nav-menu5-tab">
+                    <button type="button" class="btn btn-danger mb-2" id="template301"  onclick="sendTemplate(301); return false;"><i class="fas fa-paper-plane"></i> Taman Anyar</button>
 </div>
 
 <div class="tab-pane fade pt-4" id="nav-menu4" role="tabpanel" aria-labelledby="nav-menu4-tab">
