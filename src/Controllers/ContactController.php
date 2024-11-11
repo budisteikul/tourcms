@@ -142,6 +142,16 @@ class ContactController extends Controller
                 $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
                 $var4 = "https://map.jogjafoodtour.com";
             break;
+
+            case 301:
+                $type = "reminder_step1_alt";
+                $template = "reminder_step1_alt";
+                $image = config("site.assets")."/img/guide/dharma01.jpeg";
+                $var1 = ucwords(strtolower($contact->name));
+                $var2 = "The *Bali Village and Culinary Tour at Taman Anyar* will start tomorrow morning at *9.30AM* and our meeting point is *SDN 3 Penarungan*";
+                $var3 = "His name is *Dharma*. He is a staff at Taman Anyar. He will contact you tomorrow morning 😊";
+                $var4 = "https://maps.app.goo.gl/1Qd734sCUGkY9ckX9";
+            break;
             
         }
 
