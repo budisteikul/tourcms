@@ -54,9 +54,17 @@ class FinClass {
           return $total;
     }
 
-    public static function count_per_month($category_id,$year,$month){
+    public static function count_per_month($category_id,$year,$month,$status=true){
           $total = 0;
-          $total = fin_transactions::where('category_id',$category_id)->where('status',1)->whereYear('date',$year)->whereMonth('date',$month)->count();
+          if($status)
+          {
+            $total = fin_transactions::where('category_id',$category_id)->where('status',1)->whereYear('date',$year)->whereMonth('date',$month)->count();
+          }
+          else
+          {
+            $total = fin_transactions::where('category_id',$category_id)->whereYear('date',$year)->whereMonth('date',$month)->count();
+          }
+          
           return $total;
         
     }
@@ -383,13 +391,20 @@ class FinClass {
     }
 
     
-	public static function total_per_month($category_id,$year,$month)
+	public static function total_per_month($category_id,$year,$month,$status=true)
     {
           $total = 0;
           $categories = FinClass::getChild($category_id);
           foreach($categories as $category)
           {
-                $total += fin_transactions::where('category_id',$category)->whereYear('date',$year)->whereMonth('date',$month)->where('status',1)->sum('amount');
+                if($status)
+                {
+                    $total += fin_transactions::where('category_id',$category)->whereYear('date',$year)->whereMonth('date',$month)->where('status',1)->sum('amount');
+                }
+                else
+                {
+                    $total += fin_transactions::where('category_id',$category)->whereYear('date',$year)->whereMonth('date',$month)->sum('amount');
+                }
           }
 		  return $total;
 	}
