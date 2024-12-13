@@ -5,14 +5,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
-use budisteikul\tourcms\Classes\FinClass;
+use budisteikul\tourcms\Helpers\AccHelper;
 use budisteikul\tourcms\Helpers\GeneralHelper;
 
 class AssetController extends Controller
 {
     public function index(Request $request)
     {
-        $fin_date_start = FinClass::first_date_transaction();
+        $fin_date_start = AccHelper::first_date_transaction();
         $fin_date_end = date('Y-m-d') .' 23:59:00';
 
         $tahun = $request->input('year');
@@ -31,16 +31,16 @@ class AssetController extends Controller
             }
             else if(date('Y-m')==$tahun.'-'.GeneralHelper::digitFormat($i,2))
             {
-                $a = FinClass::calculate_saldo_akhir($tahun,$i-1);
-                $revenue_per = FinClass::total_per_month_by_type('Revenue',$tahun,GeneralHelper::digitFormat($i,2));
-                $cogs_per = FinClass::total_per_month_by_type('Cost of Goods Sold',$tahun,GeneralHelper::digitFormat($i,2));
+                $a = AccHelper::calculate_saldo_akhir($tahun,$i-1);
+                $revenue_per = AccHelper::total_per_month_by_type('Revenue',$tahun,GeneralHelper::digitFormat($i,2));
+                $cogs_per = AccHelper::total_per_month_by_type('Cost of Goods Sold',$tahun,GeneralHelper::digitFormat($i,2));
                 $gross_margin = $revenue_per - $cogs_per;
-                $total_expenses = FinClass::total_per_month_by_type('Expenses',$tahun,GeneralHelper::digitFormat($i,2));
+                $total_expenses = AccHelper::total_per_month_by_type('Expenses',$tahun,GeneralHelper::digitFormat($i,2));
                 $total = $a + $gross_margin - $total_expenses;
             }
             else
             {
-                $total = FinClass::calculate_saldo_akhir($tahun,$i);
+                $total = AccHelper::calculate_saldo_akhir($tahun,$i);
             }
 
             $saldo[] = $total;

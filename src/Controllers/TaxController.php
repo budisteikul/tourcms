@@ -5,7 +5,7 @@ namespace budisteikul\tourcms\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use budisteikul\tourcms\Classes\FinClass;
+use budisteikul\tourcms\Helpers\AccHelper;
 use budisteikul\tourcms\Helpers\GeneralHelper;
 use Barryvdh\DomPDF\Facade as PDF;
 class TaxController extends Controller
@@ -30,7 +30,7 @@ class TaxController extends Controller
         for($i=1;$i <= 12; $i++)
         {
 
-            $revenue = FinClass::total_per_month_by_type('Revenue',$tahun,$i);
+            $revenue = AccHelper::total_per_month_by_type('Revenue',$tahun,$i);
             $data->month[$i] = $tahun .'-'. GeneralHelper::digitFormat($i,2) .'-01';
             $data->month_text[$i] = date('F', mktime(0, 0, 0, $i, 10)) .' '. $tahun;
             $data->revenue[$i] = number_format($revenue, 0, ',', '.');

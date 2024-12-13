@@ -1,8 +1,8 @@
 <?php
-namespace budisteikul\tourcms\Classes;
+namespace budisteikul\tourcms\Helpers;
 use budisteikul\tourcms\Models\ShoppingcartProduct;
 
-class ReportClass {
+class ReportHelper {
 
     public static function traveller_product_per_year($title,$year)
     {

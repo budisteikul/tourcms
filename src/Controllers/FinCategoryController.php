@@ -9,7 +9,7 @@ use budisteikul\tourcms\DataTables\FinCategoriesDataTable;
 use Illuminate\Support\Facades\Validator;
 use budisteikul\tourcms\Models\fin_categories;
 use budisteikul\tourcms\Models\fin_transactions;
-use budisteikul\tourcms\Classes\FinClass;
+use budisteikul\tourcms\Helpers\AccHelper;
 
 class FinCategoryController extends Controller
 {
@@ -35,7 +35,7 @@ class FinCategoryController extends Controller
      */
     public function create()
     {
-        $categories = FinClass::getCategories();
+        $categories = AccHelper::getCategories();
         return view('tourcms::fin.categories.create',['categories'=>$categories]);
     }
 
@@ -98,7 +98,7 @@ class FinCategoryController extends Controller
      */
     public function edit(fin_categories $category)
     {
-        $categories = FinClass::getCategories(true,$category->id);
+        $categories = AccHelper::getCategories(true,$category->id);
         return view('tourcms::fin.categories.edit',['category'=>$category,'categories'=>$categories]);
     }
 
@@ -140,7 +140,7 @@ class FinCategoryController extends Controller
 
 		$fin_categories->save();
 
-        $categories = FinClass::getChild($fin_categories->id);
+        $categories = AccHelper::getChild($fin_categories->id);
         foreach($categories as $category)
         {
             fin_categories::where('id',$category)->update(['type' => $fin_categories->type]);

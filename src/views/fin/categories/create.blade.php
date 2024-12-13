@@ -1,5 +1,5 @@
 
-@inject('FinClass', 'budisteikul\tourcms\Classes\FinClass')
+@inject('AccHelper', 'budisteikul\tourcms\Helpers\AccHelper')
  
 <div class="h-100" style="width:99%">		
  

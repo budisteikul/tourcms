@@ -9,7 +9,7 @@ use budisteikul\tourcms\DataTables\TransactionsDataTable;
 use Illuminate\Support\Facades\Validator;
 use budisteikul\tourcms\Models\fin_transactions;
 use budisteikul\tourcms\Models\fin_categories;
-use budisteikul\tourcms\Classes\FinClass;
+use budisteikul\tourcms\Helpers\AccHelper;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use budisteikul\tourcms\Helpers\GeneralHelper;
@@ -61,7 +61,7 @@ class TransactionController extends Controller
   
     public function create()
     {
-        $fin_categories = FinClass::getCategories();
+        $fin_categories = AccHelper::getCategories();
 		
         return view('tourcms::fin.transactions.create',['fin_categories'=>$fin_categories]);
     }
@@ -88,7 +88,7 @@ class TransactionController extends Controller
 		$fin_transactions->category_id = $category_id;
 		$fin_transactions->date = $date;
 		$fin_transactions->amount = $amount;
-        if(FinClass::get_type($category_id)!="Cost of Goods Sold")
+        if(AccHelper::get_type($category_id)!="Cost of Goods Sold")
         {
             $fin_transactions->status = 1;
         }
@@ -110,7 +110,7 @@ class TransactionController extends Controller
     
     public function edit($id)
     {
-        $fin_categories = FinClass::getCategories();
+        $fin_categories = AccHelper::getCategories();
 		$fin_transactions = fin_transactions::with('categories')->findOrFail($id);
 		if($fin_transactions->amount<0) $fin_transactions->amount = $fin_transactions->amount * -1;
         return view('tourcms::fin.transactions.edit',['fin_transactions'=>$fin_transactions,'fin_categories'=>$fin_categories]);
@@ -152,7 +152,7 @@ class TransactionController extends Controller
 		$fin_transactions->category_id = $category_id;
 		$fin_transactions->date = $date;
 		$fin_transactions->amount = $amount;
-        if(FinClass::get_type($category_id)!="Cost of Goods Sold")
+        if(AccHelper::get_type($category_id)!="Cost of Goods Sold")
         {
             $fin_transactions->status = 1;
         }

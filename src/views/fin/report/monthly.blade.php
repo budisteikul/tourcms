@@ -1,5 +1,5 @@
-@inject('fin', 'budisteikul\tourcms\Classes\FinClass')
-@inject('report', 'budisteikul\tourcms\Classes\ReportClass')
+@inject('fin', 'budisteikul\tourcms\Helpers\AccHelper')
+@inject('report', 'budisteikul\tourcms\Helpers\ReportHelper')
 @inject('productHelper', 'budisteikul\tourcms\Helpers\ProductHelper')
 @extends('coresdk::layouts.app')
 @section('content')

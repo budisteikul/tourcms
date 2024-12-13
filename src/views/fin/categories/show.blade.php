@@ -1,4 +1,4 @@
-@inject('FinClass', 'budisteikul\tourcms\Classes\FinClass')
+@inject('AccHelper', 'budisteikul\tourcms\Helpers\AccHelper')
 <div class="h-100" style="width:99%">     
 
     <div class="row justify-content-center">
@@ -28,7 +28,7 @@
   <li class="parent_li">
     <span><b>{{ $root_category->name }}</b></span>
     @if(@count($root_category->child))
-      {{ $FinClass->structure($root_category->id) }}
+      {{ $AccHelper->structure($root_category->id) }}
     @endif
   </li>
 @endforeach

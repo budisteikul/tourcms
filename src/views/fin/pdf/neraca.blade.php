@@ -1,4 +1,4 @@
-@inject('fin', 'budisteikul\tourcms\Classes\FinClass')
+@inject('fin', 'budisteikul\tourcms\Helpers\AccHelper')
 <!DOCTYPE html>
 <html lang="en">
 <head>

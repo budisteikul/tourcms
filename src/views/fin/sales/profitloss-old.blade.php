@@ -1,4 +1,4 @@
-@inject('fin', 'budisteikul\tourcms\Classes\FinClass')
+@inject('fin', 'budisteikul\tourcms\Helpers\AccHelper')
 @extends('coresdk::layouts.app')
 @section('content')
 <div class="row justify-content-center">

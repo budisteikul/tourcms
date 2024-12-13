@@ -1,5 +1,5 @@
 <?php
-namespace budisteikul\tourcms\Classes;
+namespace budisteikul\tourcms\Helpers;
 
 use budisteikul\tourcms\Models\fin_transactions;
 use budisteikul\tourcms\Models\fin_categories;
@@ -11,7 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cache;
 
-class FinClass {
+class AccHelper {
     
     public static function capital()
     {
@@ -394,7 +394,7 @@ class FinClass {
 	public static function total_per_month($category_id,$year,$month,$status=true)
     {
           $total = 0;
-          $categories = FinClass::getChild($category_id);
+          $categories = AccHelper::getChild($category_id);
           foreach($categories as $category)
           {
                 if($status)

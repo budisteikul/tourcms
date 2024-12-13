@@ -14,7 +14,7 @@ use budisteikul\tourcms\Models\fin_transactions;
 use budisteikul\tourcms\Models\fin_categories;
 use budisteikul\tourcms\Helpers\GeneralHelper;
 use budisteikul\tourcms\Models\Transfer;
-use budisteikul\tourcms\Classes\FinClass;
+use budisteikul\tourcms\Helpers\AccHelper;
 
 class TransactionsDataTable extends DataTable
 {
@@ -33,7 +33,7 @@ class TransactionsDataTable extends DataTable
                     return GeneralHelper::dateFormat($id->date,4);
                 })
             ->editColumn('name', function($id){
-                    return FinClass::nameCategory($id->category_id,"-");
+                    return AccHelper::nameCategory($id->category_id,"-");
             })
             ->editColumn('amount', function($id){
                     return number_format($id->amount, 0, ',', '.');

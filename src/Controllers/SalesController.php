@@ -10,7 +10,7 @@ use budisteikul\tourcms\Models\Shoppingcart;
 use budisteikul\tourcms\Models\ShoppingcartProduct;
 use Illuminate\Database\Eloquent\Builder;
 use Barryvdh\DomPDF\Facade as PDF;
-use budisteikul\tourcms\Classes\FinClass;
+use budisteikul\tourcms\Helpers\AccHelper;
 
 class SalesController extends Controller
 {

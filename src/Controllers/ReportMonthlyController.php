@@ -7,7 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use budisteikul\tourcms\Models\Product;
 use budisteikul\tourcms\Models\ShoppingcartProduct;
-use budisteikul\tourcms\Classes\ReportClass;
+use budisteikul\tourcms\Helpers\ReportHelper;
 
 class ReportMonthlyController extends Controller
 {
@@ -32,7 +32,7 @@ class ReportMonthlyController extends Controller
         $products_count = array();
         foreach($products as $product)
         {
-            $count = ReportClass::traveller_product_per_month($product->title,$bulan,$tahun);
+            $count = ReportHelper::traveller_product_per_month($product->title,$bulan,$tahun);
             $products_count[] = (object)[
                 'title' => $product->title,
                 'count' => $count,
@@ -44,7 +44,7 @@ class ReportMonthlyController extends Controller
         for($i=1;$i <= date("t",strtotime($tahun."-".$bulan."-01"));$i++)
         {
             $tgl[] = $i;
-            $traveller[] = ReportClass::traveller_per_day($i,$bulan,$tahun);
+            $traveller[] = ReportHelper::traveller_per_day($i,$bulan,$tahun);
         }
          
 

@@ -10,7 +10,7 @@ use budisteikul\tourcms\Models\Shoppingcart;
 use budisteikul\tourcms\Models\ShoppingcartProduct;
 use Illuminate\Database\Eloquent\Builder;
 
-use budisteikul\tourcms\Classes\FinClass;
+use budisteikul\tourcms\Helpers\AccHelper;
 
 class SalesControllerOld extends Controller
 {
@@ -23,7 +23,7 @@ class SalesControllerOld extends Controller
      */
     public function index(Request $request)
     {
-        $fin_date_start = FinClass::first_date_transaction();
+        $fin_date_start = AccHelper::first_date_transaction();
         $fin_date_end = date('Y-m-d') .' 23:59:00';
 
         $tahun = $request->input('year');

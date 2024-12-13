@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use budisteikul\tourcms\Classes\FinClass;
+use budisteikul\tourcms\Helpers\AccHelper;
 use budisteikul\tourcms\Helpers\GeneralHelper;
 use Barryvdh\DomPDF\Facade as PDF;
 
@@ -43,26 +43,26 @@ class LaporanController extends Controller
 
 
         //NERACA ==========================================================================
-        $capital = FinClass::capital();
-        $debt = FinClass::debt();
-        $retained_earnings = FinClass::calculate_saldo_akhir($tahun-1,12);
+        $capital = AccHelper::capital();
+        $debt = AccHelper::debt();
+        $retained_earnings = AccHelper::calculate_saldo_akhir($tahun-1,12);
 
         $revenue = 0;
         for($i=1;$i<=12;$i++)
         {
-            $revenue += FinClass::total_per_month_by_type('Revenue',$tahun,$i);
+            $revenue += AccHelper::total_per_month_by_type('Revenue',$tahun,$i);
         }
         
         $cogs = 0;
         for($i=1;$i<=12;$i++)
         {
-            $cogs += FinClass::total_per_month_by_type('Cost of Goods Sold',$tahun,$i);
+            $cogs += AccHelper::total_per_month_by_type('Cost of Goods Sold',$tahun,$i);
         }
 
         $expenses = 0;
         for($i=1;$i<=12;$i++)
         {
-            $expenses += FinClass::total_per_month_by_type('Expenses',$tahun,$i);
+            $expenses += AccHelper::total_per_month_by_type('Expenses',$tahun,$i);
         }
         
         $cash = 0;
@@ -110,7 +110,7 @@ class LaporanController extends Controller
         for($i=1;$i <= 12; $i++)
         {
 
-            $revenue = FinClass::total_per_month_by_type('Revenue',$tahun,$i);
+            $revenue = AccHelper::total_per_month_by_type('Revenue',$tahun,$i);
             $data->month[$i] = $tahun .'-'. GeneralHelper::digitFormat($i,2) .'-01';
             $data->month_text[$i] = date('F', mktime(0, 0, 0, $i, 10)) .' '. $tahun;
             $data->revenue[$i] = number_format($revenue, 0, ',', '.');
