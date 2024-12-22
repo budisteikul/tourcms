@@ -173,7 +173,47 @@ class ContactController extends Controller
             break;
 
             
+            case 901:
+                // Denpasar Night Food Tour
+                $type = "request_review";
+                $template = "request_review_241222";
+                $var1 = ucwords(strtolower($contact->name));
+                $var2 = "Denpasar";
+                $var3 = "TripAdvisor";
+                $var4 = "https://www.tripadvisor.com/UserReviewEdit-g297694-d27418484";
+            break;
             
+        }
+
+        if($type=="request_review")
+        {
+            if($var1=="") $var1="friend";
+            $components = [
+                                    [
+                                        "type"=> "body",
+                                        "parameters" => [
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var1
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var2
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var3
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var4
+                                            ]
+                                        ]
+                                    ]
+                            ];
+            
+            $whatsapp = new WhatsappHelper;
+            $whatsapp->sendTemplate($contact->wa_id,$template, $components);
         }
 
         if($type=="reminder_step1")
