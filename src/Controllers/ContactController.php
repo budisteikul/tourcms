@@ -182,6 +182,26 @@ class ContactController extends Controller
                 $var3 = "TripAdvisor";
                 $var4 = "https://www.tripadvisor.com/UserReviewEdit-g297694-d27418484";
             break;
+
+            case 902:
+                // Taman Anyar
+                $type = "request_review";
+                $template = "request_review_241222";
+                $var1 = ucwords(strtolower($contact->name));
+                $var2 = "Taman Anyar";
+                $var3 = "TripAdvisor";
+                $var4 = "https://www.tripadvisor.com/UserReviewEdit-g1025508-d16807840";
+            break;
+
+            case 903:
+                // Ubud Food Tour
+                $type = "request_review";
+                $template = "request_review_241222";
+                $var1 = ucwords(strtolower($contact->name));
+                $var2 = "Ubud";
+                $var3 = "TripAdvisor";
+                $var4 = "https://www.tripadvisor.com/UserReviewEdit-g297701-d27735579";
+            break;
             
         }
 
