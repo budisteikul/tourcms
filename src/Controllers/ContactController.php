@@ -162,6 +162,16 @@ class ContactController extends Controller
                 $var4 = "https://maps.app.goo.gl/1Qd734sCUGkY9ckX9";
             break;
 
+            case 303:
+                $type = "reminder_step1_alt";
+                $template = "reminder_step1_alt";
+                $image = config("site.assets")."/img/guide/dharma01.jpeg";
+                $var1 = ucwords(strtolower($contact->name));
+                $var2 = "The *Bali Night Walking and Food Tour in Denpasar* will start tomorrow evening at *5.00PM* and our meeting point is *Lapangan Puputan Badung*. Please wait near the sign *Plakat Nol Kilometer Kota Denpasar* 🙏";
+                $var3 = "His name is *Dharma*. He will be the tour guide on duty and will be waiting for you at meeting point 😊";
+                $var4 = "https://maps.app.goo.gl/oJHftuQAFRQGjZDv6";
+            break;
+
             
             
         }
