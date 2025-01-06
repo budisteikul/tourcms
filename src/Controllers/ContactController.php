@@ -73,7 +73,7 @@ class ContactController extends Controller
                 $var1 = ucwords(strtolower($contact->name));
                 $var2 = "The *Yogyakarta Night Walking and Food Tour* will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "By the way, do you have any food allergy or dietary restrictions?";
-                $var4 = "https://map.jogjafoodtour.com";
+                $var4 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
             break;
 
             case 102:
@@ -83,7 +83,7 @@ class ContactController extends Controller
                 $var1 = ucwords(strtolower($contact->name));
                 $var2 = "The *Yogyakarta Night Walking and Food Tour* will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-                $var4 = "https://map.jogjafoodtour.com";
+                $var4 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
             break;
 
             case 103:
@@ -93,7 +93,7 @@ class ContactController extends Controller
                 $var1 = ucwords(strtolower($contact->name));
                 $var2 = "The *Yogyakarta Night Walking and Food Tour* will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
                 $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-                $var4 = "https://map.jogjafoodtour.com";
+                $var4 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
             break;
 
             case 121:
@@ -120,7 +120,7 @@ class ContactController extends Controller
                 $var1 = ucwords(strtolower($contact->name));
                 $var2 = "The *Morning Food Tour in Yogyakarta* will start tomorrow morning at *7.30AM* and our meeting point is *Lupis Mbah Satinem*";
                 $var3 = "By the way, do you have any food allergy or dietary restrictions?";
-                $var4 = "https://map.jogjafoodtour.com";
+                $var4 = "https://maps.app.goo.gl/tn2biVoLgPTRrtQs8";
             break;
 
             case 202:
@@ -130,7 +130,7 @@ class ContactController extends Controller
                 $var1 = ucwords(strtolower($contact->name));
                 $var2 = "The *Morning Food Tour in Yogyakarta* will start tomorrow morning at *7.30AM* and our meeting point is *Lupis Mbah Satinem*";
                 $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-                $var4 = "https://map.jogjafoodtour.com";
+                $var4 = "https://maps.app.goo.gl/tn2biVoLgPTRrtQs8";
             break;
 
             case 203:
@@ -140,14 +140,14 @@ class ContactController extends Controller
                 $var1 = ucwords(strtolower($contact->name));
                 $var2 = "The *Morning Food Tour in Yogyakarta* will start tomorrow morning at *7.30AM* and our meeting point is *Lupis Mbah Satinem*";
                 $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-                $var4 = "https://map.jogjafoodtour.com";
+                $var4 = "https://maps.app.goo.gl/tn2biVoLgPTRrtQs8";
             break;
 
             case 301:
                 $type = "reminder_step1";
                 $template = "reminder_step1";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The *Bali Village and Culinary Tour at Taman Anyar* will start tomorrow morning at *9.30AM* and our meeting point is *SDN 3 Penarungan*";
+                $var2 = "The *Bali Taman Anyar Village Tour* will start tomorrow morning at *9.30AM* and our meeting point is *SDN 3 Penarungan*";
                 $var3 = "Please be there 15 minutes before the tour start 🙏";
                 $var4 = "https://maps.app.goo.gl/1Qd734sCUGkY9ckX9";
             break;
@@ -157,8 +157,8 @@ class ContactController extends Controller
                 $template = "reminder_step1_alt";
                 $image = config("site.assets")."/img/guide/dharma01.jpeg";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The *Bali Village and Culinary Tour at Taman Anyar* will start tomorrow morning at *9.30AM* and our meeting point is *SDN 3 Penarungan*. Please be there 15 minutes before the tour start 🙏";
-                $var3 = "His name is *Dharma*. He is a staff at Taman Anyar. He will contact you tomorrow morning 😊";
+                $var2 = "The *Bali Taman Anyar Village Tour* will start tomorrow morning at *9.30AM* and our meeting point is *SDN 3 Penarungan*. Please be there 15 minutes before the tour start 🙏";
+                $var3 = "His name is *Dharma* a staff at Taman Anyar. He will be waiting at meeting point 😊";
                 $var4 = "https://maps.app.goo.gl/1Qd734sCUGkY9ckX9";
             break;
 
@@ -167,7 +167,7 @@ class ContactController extends Controller
                 $template = "reminder_step1_alt";
                 $image = config("site.assets")."/img/guide/dharma01.jpeg";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The *Bali Night Walking and Food Tour in Denpasar* will start tomorrow evening at *5.00PM* and our meeting point is *Lapangan Puputan Badung*. Please wait near the sign *Plakat Nol Kilometer Kota Denpasar* 🙏";
+                $var2 = "The *Bali Nighttime Walk and Food Tour in Denpasar* will start tomorrow evening at *5.00PM* and our meeting point is *Lapangan Puputan Badung*. Please wait near the sign *Plakat Nol Kilometer Kota Denpasar* 🙏";
                 $var3 = "His name is *Dharma*. He will be the tour guide on duty and will be waiting for you at meeting point 😊";
                 $var4 = "https://maps.app.goo.gl/oJHftuQAFRQGjZDv6";
             break;
