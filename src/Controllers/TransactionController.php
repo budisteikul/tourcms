@@ -33,6 +33,14 @@ class TransactionController extends Controller
             $fin_transactions->status = 1;
             $fin_transactions->save();
         }
+
+        $fin_transactions = new fin_transactions();
+        $fin_transactions->category_id = 47;
+        $fin_transactions->date = date('Y-m-d');
+        $fin_transactions->amount = 2500;
+        $fin_transactions->status = 1;
+        $fin_transactions->save();
+        
         return response()->json([
                     "id" => "1",
                     "message" => 'Success',
