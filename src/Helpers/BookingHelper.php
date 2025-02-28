@@ -2258,15 +2258,14 @@ class BookingHelper {
 
 	
 
-	
-
 	public static function remove_activity($sessionId,$bookingId)
 	{
-
-		$contents = BokunHelper::get_removeactivity($sessionId,$bookingId);
-		self::get_shoppingcart($sessionId,"update",$contents);
+		BokunHelper::get_removeactivity($sessionId,$bookingId);
+		$contents = BokunHelper::get_shoppingcart($sessionId);
+		BookingHelper::get_shoppingcart($sessionId,"update",$contents);
 		return $sessionId;
 	}
+
 
 	public static function remove_promocode($sessionId)
 	{
