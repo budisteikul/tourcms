@@ -208,7 +208,17 @@ class BokunHelper {
 		return $value;
 	}
 
-	
+	public static function get_shoppingcart($sessionId)
+	{
+		$currency = self::env_bokunCurrency();
+        $lang = self::env_bokunLang();
+        $bookingChannel = self::env_bokunBookingChannel();
+
+        $value = self::bokunWidget_connect('/widgets/'. $bookingChannel .'/shoppingCart?lang='. $lang .'&currency='.$currency.'&sessionId='. $sessionId,'POST');
+        $value = json_decode($value);
+		return $value->cart;
+
+	}
 
 	public static function get_questionshoppingcart($id)
 	{
