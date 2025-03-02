@@ -120,6 +120,8 @@ class BookingDataTable extends DataTable
                         
                         <button id="btn-edit" type="button" onClick="EDIT_BOOKING(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success  pt-0 pb-0 pl-1 pr-1"><i class="fa fa-edit"></i> Edit Booking</button>
 
+                        <button id="btn-delete" type="button" onClick="DELETE_BOOKING(\''.$id->id.'\'); return false;" class="btn btn-sm btn-danger  pt-0 pb-0 pl-1 pr-1"><i class="fa fa-trash-alt"></i> Delete Booking</button>
+
                        
                         
                     </div>

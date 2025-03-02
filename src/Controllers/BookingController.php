@@ -418,6 +418,6 @@ class BookingController extends Controller
     public function destroy($id)
     {
         $shoppingcart = Shoppingcart::findOrFail($id);
-        BookingHelper::delete_shoppingcart($shoppingcart);
+        $shoppingcart->delete();
     }
 }
