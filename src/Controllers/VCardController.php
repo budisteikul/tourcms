@@ -28,7 +28,7 @@ class VCardController extends Controller
         return response($vCard)
             ->header('Content-Type', 'text/x-vcard')
             ->header('Content-Disposition', 'attachment; filename="'.$filename.'"')
-            ->header('Content-Length', mb_strlen($vcard, 'utf-8'));   
+            ->header('Content-Length', mb_strlen($vCard, 'utf-8'));   
     }
 
     
