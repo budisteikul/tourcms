@@ -22,8 +22,12 @@ class VCardController extends Controller
         $vCard->addPhoneNumber($contact->phoneNumber);
         // Add more information as needed
  
-        return $vCard->download();
-        
+        //return $vCard->download();
+        $filename = $contact->firstName .'-'. $contact->lastName .'-'. date('ymd') .'.vcf';
+        return response($vCard)
+            ->header('Content-Type', 'text/x-vcard')
+            ->header('Content-Disposition', 'attachment; filename="'.$filename.'"')
+            ->header('Content-Length', mb_strlen($vcard, 'utf-8'));   
     }
 
     
