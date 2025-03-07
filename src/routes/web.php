@@ -81,7 +81,7 @@ Route::resource('/cms/partner','budisteikul\tourcms\Controllers\PartnerControlle
 
 
 //Download vCard
-Route::get('/cms/vcard/download/{id}','budisteikul\tourcms\Controllers\VCardController@index')->middleware(['web','auth','verified','CoreMiddleware','SettingMiddleware']);
+Route::get('/cms/vcard/download/{id}','budisteikul\tourcms\Controllers\VCardController@index')->middleware(['SettingMiddleware']);
 
 // ==================================
 // API
