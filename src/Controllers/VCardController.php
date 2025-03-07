@@ -21,8 +21,9 @@ class VCardController extends Controller
         $vCard->addName(date('ymd'), $contact->firstName .' '. $contact->lastName);
         $vCard->addPhoneNumber($contact->phoneNumber);
         // Add more information as needed
- 
+        
         //return $vCard->download();
+        $vCard = $vCard->getOutput();
         $filename = $contact->firstName .'-'. $contact->lastName .'-'. date('ymd') .'.vcf';
         return response($vCard)
             ->header('Content-Type', 'text/x-vcard')
