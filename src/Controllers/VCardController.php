@@ -25,8 +25,8 @@ class VCardController extends Controller
         
         //return $vCard->download();
         $vCard = $vCard->getOutput();
-        $filename = $contact->firstName .'-'. $contact->lastName .'-'. date('ymd') .'.vcf';
-        $filename = Str::slug($filename,'-');
+        $filename = $contact->firstName .'-'. $contact->lastName .'-'. date('ymd') ;
+        $filename = Str::slug($filename,'-').'.vcf';
         return response($vCard)
             ->header('Content-Type', 'text/x-vcard')
             ->header('Content-Disposition', 'attachment; filename="'.$filename.'"')
