@@ -1,4 +1,17 @@
 
+<hr class="sidebar-divider my-0">
+<li class="nav-item
+
+        {{ (request()->is('cms/fin/report/monthly*')) ? 'active' : '' }}
+
+">
+<div>
+<a class="nav-link text-white" href="/cms/fin/report/monthly" >
+          <i class="fas fa-tachometer-alt"></i>
+          <span>DASHBOARD</span>
+        </a>
+<div>
+</li>
 <!-- ##################################################################### -->
       <hr class="sidebar-divider my-0">
       <li class="nav-item 
