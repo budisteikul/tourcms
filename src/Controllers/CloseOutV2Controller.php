@@ -29,8 +29,7 @@ class CloseOutV2Controller extends Controller
      */
     public function create()
     {
-        $products = Product::orderBy('name')->get();
-        return view('tourcms::closeout.createV2',['products'=>$products]);
+        
     }
 
     /**
@@ -95,8 +94,7 @@ class CloseOutV2Controller extends Controller
      */
     public function edit(CloseOut $closeout)
     {
-        $products = Product::orderBy('name')->get();
-        return view('tourcms::closeout.editV2',['closeout'=>$closeout,'products'=>$products]);
+        
     }
 
     /**
@@ -108,29 +106,7 @@ class CloseOutV2Controller extends Controller
      */
     public function update(Request $request, CloseOut $closeout)
     {
-        $date =  $request->input('date');
-        $bokun_id =  $request->input('bokun_id');
-
-        $validator = Validator::make($request->all(), [
-            'bokun_id' => 'required|unique:close_outs,bokun_id,'.$closeout->id.',id,date,'.$date,
-            'date' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            $errors = $validator->errors();
-            return response()->json($errors);
-        }
-
         
-        
-        $closeout->date = $date;
-        $closeout->bokun_id = $bokun_id;
-        $closeout->save();
-
-        return response()->json([
-                    "id" => "1",
-                    "message" => 'Success'
-                ]);
     }
 
     /**
@@ -141,6 +117,6 @@ class CloseOutV2Controller extends Controller
      */
     public function destroy(CloseOut $closeout)
     {
-        $closeout->delete();
+        
     }
 }

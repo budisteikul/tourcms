@@ -14,6 +14,8 @@ use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 use budisteikul\tourcms\Helpers\GeneralHelper;
 use budisteikul\tourcms\Models\Product;
+use budisteikul\tourcms\Models\ShoppingcartProduct;
+use budisteikul\tourcms\Models\ShoppingcartProductDetail;
 use Illuminate\Http\Request;
 
 class CloseOutV2DataTable extends DataTable
@@ -30,6 +32,21 @@ class CloseOutV2DataTable extends DataTable
         if($date=="") $date = date('Y-m-d');
         return datatables($query)
                 ->addIndexColumn()
+                ->addColumn('bookings', function ($id) use ($date) {
+                    $total = 0;
+                    $products = ShoppingcartProduct::whereHas('shoppingcart', function ($query) {
+                    return $query->where('booking_status','CONFIRMED');
+                 })->where('product_id',$id->bokun_id)->whereDate('date',$date)->get();
+                    foreach($products as $product)
+                    {
+                        $product_details = ShoppingcartProductDetail::where('shoppingcart_product_id',$product->id)->get();
+                        foreach($product_details as $product_detail)
+                        {
+                            $total += $product_detail->people;
+                        }
+                    }
+                    return $total;
+                })
                 ->addColumn('action', function ($id) use ($date) {
                     $closeout = CloseOut::where('bokun_id',$id->bokun_id)->where('date',$date)->first();
                     $status = 'open';
@@ -99,6 +116,7 @@ class CloseOutV2DataTable extends DataTable
             
 
             Column::make('name')->title('Name')->orderable(false)->addClass('align-middle'),
+            Column::make('bookings')->title('Bookings')->orderable(false)->addClass('align-middle'),
             
             Column::computed('action')
                   ->title('Status')
