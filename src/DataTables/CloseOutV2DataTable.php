@@ -55,7 +55,7 @@ class CloseOutV2DataTable extends DataTable
                     if($status=="open")
                     {
                         
-                        $contents = BokunHelper::get_calendar($id->bokun_id,substr($date,0,4),substr($date,5,2));
+                        $contents = BokunHelper::get_calendar_admin($id->bokun_id,substr($date,0,4),substr($date,5,2));
                         foreach($contents->weeks as $week)
                         {
                             foreach($week->days as $day)
