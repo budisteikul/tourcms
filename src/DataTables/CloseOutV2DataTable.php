@@ -62,6 +62,12 @@ class CloseOutV2DataTable extends DataTable
                             {
                                 if($day->fullDate==$date)
                                 {
+
+                                    if($day->fullDate < date('Y-m-d'))
+                                    {
+                                        return '<button type="button" class="btn btn-sm btn-secondary pt-0 pb-0 pl-1 pr-1" disabled>Closed</button>';
+                                    }
+
                                     if($day->empty==1)
                                     {
                                         return '<button onClick="UPDATE(\''. $id->bokun_id .'\',\''. $date .'\',\'3\')" type="button" class="btn btn-sm btn-secondary pt-0 pb-0 pl-1 pr-1">Closed by Server</button>';
