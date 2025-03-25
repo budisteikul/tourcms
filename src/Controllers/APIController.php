@@ -41,7 +41,19 @@ class APIController extends Controller
         
     }
 
-    
+    public function test()
+    {
+        $value = BokunHelper::check_availability('7424','2025-03-26');
+        if(empty($value))
+        {
+            print("kosong");
+        }
+        else
+        {
+            print("isi");
+        }
+        //print_r($value);
+    }
 
     public function cancellation($sessionId,$confirmationCode)
     {

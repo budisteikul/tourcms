@@ -91,6 +91,17 @@ class BokunHelper {
         return '';
     }
 
+    public static function check_availability($bokun_id,$date)
+    {
+    	$currency = self::env_bokunCurrency();
+        $lang = self::env_bokunLang();
+        $value = Cache::remember('_bokunAvailability_'. $currency .'_'. $lang .'_'. $bokun_id .'_'. $date,7200, function() use ($currency,$date,$bokun_id,$lang)
+		{
+    		return self::bokunAPI_connect('/activity.json/'.$bokun_id.'/availabilities?start='.$date.'&end='.$date.'&lang='.$lang.'&currency='.$currency.'&includeSoldOut=true','GET');
+		});
+        return json_decode($value);
+    }
+
     public static function set_mainContactQuestion($sessionId)
 	{
 		$currency = self::env_bokunCurrency();

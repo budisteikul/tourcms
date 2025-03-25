@@ -13,6 +13,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 use budisteikul\tourcms\Helpers\GeneralHelper;
+use budisteikul\tourcms\Helpers\BokunHelper;
 use budisteikul\tourcms\Models\Product;
 use budisteikul\tourcms\Models\ShoppingcartProduct;
 use budisteikul\tourcms\Models\ShoppingcartProductDetail;
@@ -53,7 +54,13 @@ class CloseOutV2DataTable extends DataTable
                     if($closeout) $status = 'closed';
                     if($status=="open")
                     {
+                        $value = BokunHelper::check_availability($id->bokun_id,$date);
+                        if(empty($value))
+                        {
+                            return '<button type="button" class="btn btn-sm btn-secondary pt-0 pb-0 pl-1 pr-1" disabled>Closed</button>';
+                        }
                         return '<button id="btn-edit" onClick="UPDATE(\''. $id->bokun_id .'\',\''. $date .'\',\'0\')" type="button" class="btn btn-sm btn-success pt-0 pb-0 pl-1 pr-1">Open</button>';
+                        
                     }
                     else
                     {
@@ -61,7 +68,7 @@ class CloseOutV2DataTable extends DataTable
                     }
                     //return '<div id="closeout_'. $id->bokun_id .'">'. $date .' - '. $status .'</div>';
                 })
-                ->rawColumns(['action']);
+                ->rawColumns(['bookings','action']);
     }
 
     /**
