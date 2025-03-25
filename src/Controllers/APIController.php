@@ -43,16 +43,25 @@ class APIController extends Controller
 
     public function test()
     {
-        $value = BokunHelper::check_availability('7424','2025-03-26');
-        if(empty($value))
+
+        $contents = BokunHelper::get_calendar('7424','2025','03');
+        foreach($contents->weeks as $week)
         {
-            print("kosong");
+            foreach($week->days as $day)
+            {
+                if($day->fullDate=="2025-03-28")
+                {
+                    if($day->empty==1)
+                    {
+                        print_r("kosong");
+                    }
+                    else
+                    {
+                        print_r("isi");
+                    }
+                }
+            }
         }
-        else
-        {
-            print("isi");
-        }
-        //print_r($value);
     }
 
     public function cancellation($sessionId,$confirmationCode)

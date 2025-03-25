@@ -54,11 +54,22 @@ class CloseOutV2DataTable extends DataTable
                     if($closeout) $status = 'closed';
                     if($status=="open")
                     {
-                        $value = BokunHelper::check_availability($id->bokun_id,$date);
-                        if(empty($value))
+                        
+                        $contents = BokunHelper::get_calendar($id->bokun_id,substr($date,0,4),substr($date,5,2));
+                        foreach($contents->weeks as $week)
                         {
-                            return '<button type="button" class="btn btn-sm btn-secondary pt-0 pb-0 pl-1 pr-1" disabled>Closed</button>';
+                            foreach($week->days as $day)
+                            {
+                                if($day->fullDate==$date)
+                                {
+                                    if($day->empty==1)
+                                    {
+                                        return '<button type="button" class="btn btn-sm btn-secondary pt-0 pb-0 pl-1 pr-1" disabled>Closed</button>';
+                                    } 
+                                }
+                            }
                         }
+
                         return '<button id="btn-edit" onClick="UPDATE(\''. $id->bokun_id .'\',\''. $date .'\',\'0\')" type="button" class="btn btn-sm btn-success pt-0 pb-0 pl-1 pr-1">Open</button>';
                         
                     }
