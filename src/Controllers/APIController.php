@@ -44,7 +44,8 @@ class APIController extends Controller
     public function test()
     {
 
-        $contents = BokunHelper::get_calendar('7424','2025','03');
+        $contents = BokunHelper::get_calendar_admin('12463','2025','03');
+        print_r($contents);
         foreach($contents->weeks as $week)
         {
             foreach($week->days as $day)
@@ -53,11 +54,11 @@ class APIController extends Controller
                 {
                     if($day->empty==1)
                     {
-                        print_r("kosong");
+                        //print_r("kosong");
                     }
                     else
                     {
-                        print_r("isi");
+                        //print_r("isi");
                     }
                 }
             }
