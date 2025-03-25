@@ -305,7 +305,7 @@ class BokunHelper {
         if($year=="") $year = date('Y');
         if($month=="") $month = date('m');
       
-        $value = Cache::remember('_bokunCalendar_'. $currency .'_'. $lang .'_'. $year .'_'. $month .'_'. $activityId ,3600, function() use ($activityId,$currency,$lang,$year,$month) {
+        $value = Cache::rememberForever('_bokunCalendarForever_'. $currency .'_'. $lang .'_'. $year .'_'. $month .'_'. $activityId , function() use ($activityId,$currency,$lang,$year,$month) {
     		return self::bokunWidget_connect('/snippets/activity/'.$activityId.'/calendar/json/'.$year.'/'.$month .'?lang='.$lang.'&currency='.$currency);
 		});
 
