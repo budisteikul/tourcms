@@ -96,6 +96,7 @@ class CloseOutV2DataTable extends DataTable
      */
     public function query(Product $model): QueryBuilder
     {
+        CloseOut::where('date','<',date('Y-m-d'))->delete();
         $products = Product::query();
         return $products;
     }
