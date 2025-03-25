@@ -95,7 +95,7 @@ class BokunHelper {
     {
     	$currency = self::env_bokunCurrency();
         $lang = self::env_bokunLang();
-        $value = Cache::remember('_bokunAvailability_'. $currency .'_'. $lang .'_'. $bokun_id .'_'. $date,7200, function() use ($currency,$date,$bokun_id,$lang)
+        $value = Cache::rememberForever('_bokunAvailability_'. $currency .'_'. $lang .'_'. $bokun_id .'_'. $date, function() use ($currency,$date,$bokun_id,$lang)
 		{
     		return self::bokunAPI_connect('/activity.json/'.$bokun_id.'/availabilities?start='.$date.'&end='.$date.'&lang='.$lang.'&currency='.$currency.'&includeSoldOut=true','GET');
 		});
