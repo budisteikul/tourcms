@@ -64,18 +64,18 @@ class CloseOutV2DataTable extends DataTable
                                 {
                                     if($day->empty==1)
                                     {
-                                        return '<button type="button" class="btn btn-sm btn-secondary pt-0 pb-0 pl-1 pr-1" disabled>Closed</button>';
+                                        return '<button onClick="UPDATE(\''. $id->bokun_id .'\',\''. $date .'\',\'3\')" type="button" class="btn btn-sm btn-secondary pt-0 pb-0 pl-1 pr-1">Closed by Server</button>';
                                     } 
                                 }
                             }
                         }
 
-                        return '<button id="btn-edit" onClick="UPDATE(\''. $id->bokun_id .'\',\''. $date .'\',\'0\')" type="button" class="btn btn-sm btn-success pt-0 pb-0 pl-1 pr-1">Open</button>';
+                        return '<button onClick="UPDATE(\''. $id->bokun_id .'\',\''. $date .'\',\'0\')" type="button" class="btn btn-sm btn-success pt-0 pb-0 pl-1 pr-1">Open</button>';
                         
                     }
                     else
                     {
-                        return '<button id="btn-del" onClick="UPDATE(\''. $id->bokun_id .'\',\''. $date .'\',\'1\')" type="button" class="btn btn-sm btn-danger pt-0 pb-0 pl-1 pr-1">Closed</button>';
+                        return '<button onClick="UPDATE(\''. $id->bokun_id .'\',\''. $date .'\',\'1\')" type="button" class="btn btn-sm btn-danger pt-0 pb-0 pl-1 pr-1">Closed</button>';
                     }
                     //return '<div id="closeout_'. $id->bokun_id .'">'. $date .' - '. $status .'</div>';
                 })

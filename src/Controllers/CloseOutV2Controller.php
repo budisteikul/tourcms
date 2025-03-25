@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use budisteikul\tourcms\DataTables\CloseOutV2DataTable;
 use budisteikul\tourcms\Models\Product;
+use Illuminate\Support\Facades\Cache;
 
 class CloseOutV2Controller extends Controller
 {
@@ -49,6 +50,10 @@ class CloseOutV2Controller extends Controller
             
             $closeout = CloseOut::where('date',$date)->where('bokun_id',$bokun_id)->delete();
             
+        }
+        else if($status==3)
+        {
+            Cache::forget('_bokunCalendarForever_'. config('site.currency') .'_'. env("BOKUN_LANG") .'_'. substr($date,0,4) .'_'. substr($date,5,2) .'_'. $bokun_id);
         }
         else
         {
