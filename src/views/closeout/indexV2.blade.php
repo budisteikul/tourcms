@@ -5,7 +5,7 @@
 <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
 <style type="text/css">
 	div.ui-datepicker{
- font-size:16px;
+ font-size:4.5vw;
 }
 </style>
 <script type="text/javascript">
