@@ -121,8 +121,7 @@ class ProductController extends Controller
             ['link_id' => $product->id]
         );
 
-        ShoppingcartProduct::where('product_id',$bokun_id_old)->update(['product_id'=>$bokun_id]);
-        CloseOut::where('bokun_id',$bokun_id_old)->update(['bokun_id'=>$bokun_id]);
+
 		
         $key = $request->input('key');
         $filetemps = FileTemp::where('key',$key)->get();
@@ -239,6 +238,11 @@ class ProductController extends Controller
 		$product->category_id = $category_id;
         $product->min_participant = $min_participant;
         $product->save();
+
+
+        ShoppingcartProduct::where('product_id',$bokun_id_old)->update(['product_id'=>$bokun_id]);
+        CloseOut::where('bokun_id',$bokun_id_old)->update(['bokun_id'=>$bokun_id]);
+        
 
         Slug::updateOrCreate(
             ['type' => 'product', 'slug' => Str::slug($name,'-')],
