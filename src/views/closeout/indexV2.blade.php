@@ -1,8 +1,8 @@
 @extends('coresdk::layouts.app')
 @section('content')
 @push('scripts')
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+<script src="{{ asset('js/jquery-ui.js') }}"></script>
+  <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
 <style type="text/css">
 
 div.ui-datepicker{
