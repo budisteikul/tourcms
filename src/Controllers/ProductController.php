@@ -13,6 +13,8 @@ use budisteikul\tourcms\Models\Product;
 use budisteikul\tourcms\Models\Image;
 use budisteikul\tourcms\Models\Category;
 use budisteikul\tourcms\Models\Slug;
+use budisteikul\tourcms\Models\CloseOut;
+use budisteikul\tourcms\Models\ShoppingcartProduct;
 use budisteikul\coresdk\Models\FileTemp;
 use budisteikul\tourcms\Helpers\CategoryHelper;
 use budisteikul\tourcms\Helpers\ImageHelper;
@@ -119,7 +121,8 @@ class ProductController extends Controller
             ['link_id' => $product->id]
         );
 
-        
+        ShoppingcartProduct::where('product_id',$bokun_id_old)->update(['product_id'=>$bokun_id]);
+        CloseOut::where('bokun_id',$bokun_id_old)->update(['bokun_id'=>$bokun_id]);
 		
         $key = $request->input('key');
         $filetemps = FileTemp::where('key',$key)->get();
@@ -207,6 +210,7 @@ class ProductController extends Controller
             return response()->json($errors);
         }
 		
+        $bokun_id_old = $product->bokun_id;
 		$name =  $request->input('name');
 		$category_id =  $request->input('category_id');
         $bokun_id =  $request->input('bokun_id');
