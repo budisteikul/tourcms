@@ -9,9 +9,13 @@ div.ui-datepicker{
     font-size: 20px;
 }
 
-@media all and (max-width: 699px) and (min-width: 520px), (min-width: 1151px) {
-   font-size:4.5vw;
+@media screen and (max-width: 767px) {
+    div.ui-datepicker{
+    font-size:4.5vw;
 }
+  
+}
+
 </style>
 <script type="text/javascript">
 function UPDATE(bokun_id,date,status)
