@@ -50,11 +50,16 @@ class CloseOutV2DataTable extends DataTable
                 })
                 ->addColumn('action', function ($id) use ($date) {
                     $closeout = CloseOut::where('bokun_id',$id->bokun_id)->where('date',$date)->first();
+                    $content = BokunHelper::get_product($id->bokun_id);
+                    
                     $status = 'open';
                     if($closeout) $status = 'closed';
 
                     if($date < date('Y-m-d')) $status = 'closed';
 
+                    $aaa = date('Y-m-d', strtotime('-'.$content->bookingCutoff.' minutes', strtotime($date)));
+                    if($aaa < date('Y-m-d')) $status = 'closed';
+                    
                     if($status=="open")
                     {
                         

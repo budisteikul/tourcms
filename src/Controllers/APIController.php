@@ -761,6 +761,7 @@ class APIController extends Controller
 
         $dataObj1[] = $dataObj;
 
+        
         return response()->json([
             'message' => 'success',
             'product' => $dataObj1,
