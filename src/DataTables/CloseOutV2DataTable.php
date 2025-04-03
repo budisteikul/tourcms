@@ -57,8 +57,12 @@ class CloseOutV2DataTable extends DataTable
 
                     if($date < date('Y-m-d')) $status = 'closed';
 
-                    $aaa = date('Y-m-d', strtotime('-'.$content->bookingCutoff.' minutes', strtotime($date)));
-                    if($aaa < date('Y-m-d')) $status = 'closed';
+                    if($content->bookingCutoff>=1440)
+                    {
+                        $aaa = date('Y-m-d', strtotime('-'.$content->bookingCutoff.' minutes', strtotime($date)));
+                        if($aaa < date('Y-m-d ')) $status = 'closed';    
+                    }
+                    
                     
                     if($status=="open")
                     {
