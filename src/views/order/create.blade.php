@@ -11,7 +11,7 @@
                 <div class="row align-items-center w-100">
                     <div class="col text-left">
                         <div class="d-flex align-self-center">
-                        Create Channel
+                        Create Order
                         </div>
                     </div>
                     <div class="col-auto text-right mr-0 pr-0">
@@ -28,26 +28,14 @@
 <div id="result"></div>
 
 <div class="form-group">
-	<label for="name">Name :</label>
-	<input type="text" id="name" name="name" class="form-control" placeholder="Name" autocomplete="off">
-</div> 
-
-<div class="form-group">
-	<label for="description">Description :</label>
-    <textarea class="form-control tinymce" id="description" name="description" rows="3"></textarea>
+    <label for="tour">Tour</label>
+    <select class="form-control" id="tour">
+      @foreach($products as $product)
+      	<option value="{{ $product->id }}">{{ $product->name }}</option>
+      @endforeach
+    </select>
 </div>
 
-
-<div class="form-group">
-    <label for="invoice">Invoice</label>
-    <select class="form-control" id="invoice">
-      
-      
-      <option value="1">Before the tour</option>
-      <option value="2">After the tour</option>
-      
-    </select>
-  </div>
 
 	<button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
 	</form>
@@ -110,7 +98,7 @@ function STORE()
 			"invoice": $('#invoice').val()
         },
 		type: 'POST',
-		url: '{{ route('route_tourcms_channel.store') }}'
+		url: '{{ route('route_tourcms_orders.store') }}'
 		}).done(function( data ) {
 			
 			if(data.id=="1")

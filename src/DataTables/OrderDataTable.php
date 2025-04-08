@@ -1,7 +1,7 @@
 <?php
 namespace budisteikul\tourcms\DataTables;
 
-use budisteikul\tourcms\Models\Channel;
+use budisteikul\tourcms\Models\Order;
 
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
@@ -11,9 +11,8 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
-use budisteikul\tourcms\Helpers\ReviewHelper;
 
-class ChannelDataTable extends DataTable
+class OrderDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -25,34 +24,7 @@ class ChannelDataTable extends DataTable
     {
         return datatables($query)
                 ->addIndexColumn()
-                ->editColumn('invoice', function ($id) {
-                    if($id->invoice==1)
-                    {
-                        return 'Before the tour';
-                    }
-                    else
-                    {
-                        return 'After the tour';
-                    }
-                }) 
-                ->addColumn('action', function ($id) {
-
-                $button_delete = '<button id="btn-del" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger pt-0 pb-0 pl-1 pr-1"><i class="fa fa-trash-alt"></i> Delete</button>';
-                $button_edit = '<button id="btn-edit" type="button" onClick="EDIT(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success pt-0 pb-0 pl-1 pr-1"><i class="fa fa-edit"></i> Edit</button>';
-                if(ReviewHelper::channel_have_review($id)) $button_delete = '';
-                return '
-                <div class="btn-toolbar justify-content-end">
-                    <div class="btn-group mr-2" role="group">
-                        
-                        '. $button_edit .'
-
-                        '. $button_delete .'
-                        
-                        
-                    </div>
-                </div>';
-                })
-                ->rawColumns(['action','description']);
+                ->rawColumns(['action']);
     }
 
     /**
@@ -61,7 +33,7 @@ class ChannelDataTable extends DataTable
      * @param \App\App\ChannelDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Channel $model): QueryBuilder
+    public function query(Order $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -109,9 +81,9 @@ class ChannelDataTable extends DataTable
                   ->searchable(false)
                   ->addClass('text-center align-middle'),
 
-            Column::make('name')->title('Name')->orderable(false)->addClass('align-middle'),
-            Column::make('description')->title('Description')->orderable(false)->addClass('align-middle'),
-            Column::make('invoice')->title('Invoice')->orderable(false)->addClass('align-middle'),
+            Column::make('tour')->title('Tour')->orderable(false)->addClass('align-middle'),
+            Column::make('guide')->title('Guide')->orderable(false)->addClass('align-middle'),
+            Column::make('date')->title('Date')->orderable(false)->addClass('align-middle'),
             
             
             Column::computed('action')

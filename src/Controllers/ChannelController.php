@@ -21,6 +21,7 @@ class ChannelController extends Controller
         return $dataTable->render('tourcms::channel.index');
     }
 
+
     /**
      * Show the form for creating a new resource.
      *

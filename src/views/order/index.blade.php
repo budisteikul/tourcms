@@ -41,7 +41,7 @@
 	{
 		$.fancybox.open({
         	type: 'ajax',
-       	 	src: '{{ route('route_tourcms_channel.create') }}',
+       	 	src: '{{ route('route_tourcms_orders.create') }}',
 			modal: true,
           touch: false,
           autoFocus: false
@@ -52,7 +52,7 @@
 	{
 		$.fancybox.open({
         	type: 'ajax',
-       	 	src: '{{ route('route_tourcms_channel.index') }}/'+ id +'/edit',
+       	 	src: '{{ route('route_tourcms_orders.index') }}/'+ id +'/edit',
 			modal: true,
           touch: false,
           autoFocus: false
@@ -64,7 +64,7 @@
   {
     $.fancybox.open({
           type: 'ajax',
-          src: '{{ route('route_tourcms_channel.index') }}/structure',
+          src: '{{ route('route_tourcms_orders.index') }}/structure',
       		modal: true,
           touch: false,
           autoFocus: false
@@ -76,13 +76,13 @@
 <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Channel</div>
+                <div class="card-header">Orders</div>
                 <div class="card-body">
         		
                 <div class="container ml-0 pl-0">
                 <div class="row">
                 	<div class="col">
-                    <button type="button" class="btn btn-primary"  onclick="CREATE(); return false;"><b class="fa fa-plus-square"></b> Create Channel</button>
+                    <button type="button" class="btn btn-primary"  onclick="CREATE(); return false;"><b class="fa fa-plus-square"></b> Create Order</button>
                     </div>
                     
                 </div>

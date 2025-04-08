@@ -39,6 +39,10 @@ Route::resource('/cms/product','budisteikul\tourcms\Controllers\ProductControlle
 Route::resource('/cms/channel','budisteikul\tourcms\Controllers\ChannelController',[ 'names' => 'route_tourcms_channel' ])
 	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);
 
+//Order	
+Route::resource('/cms/orders','budisteikul\tourcms\Controllers\OrderController',[ 'names' => 'route_tourcms_orders' ])
+	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);
+
 //Review
 Route::resource('/cms/review','budisteikul\tourcms\Controllers\ReviewController',[ 'names' => 'route_tourcms_review' ])
 	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);

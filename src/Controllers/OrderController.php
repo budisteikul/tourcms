@@ -1,19 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace budisteikul\tourcms\Controllers;
+use App\Http\Controllers\Controller;
 
-use App\Http\Requests\StoreOrderRequest;
-use App\Http\Requests\UpdateOrderRequest;
-use App\Models\Order;
+use budisteikul\tourcms\Models\Order;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use budisteikul\tourcms\DataTables\OrderDataTable;
+use budisteikul\tourcms\Models\Product;
 
 class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(OrderDataTable $dataTable)
     {
-        //
+        return $dataTable->render('tourcms::order.index');
     }
 
     /**
@@ -21,7 +24,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::orderBy('name')->get();
+        return view('tourcms::order.create',['products'=>$products]);
     }
 
     /**
