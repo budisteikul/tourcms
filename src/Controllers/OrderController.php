@@ -95,6 +95,7 @@ class OrderController extends Controller
             ];
 
             $order = new Order;
+            $order->type = 'order';
             $order->note = $tourname;
             $order->transactions = json_encode($json);
             $order->save();
