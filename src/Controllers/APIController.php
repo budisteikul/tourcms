@@ -24,6 +24,8 @@ use budisteikul\tourcms\Models\Shoppingcart;
 use budisteikul\tourcms\Models\ShoppingcartProduct;
 use budisteikul\tourcms\Models\ShoppingcartCancellation;
 
+use budisteikul\tourcms\Models\Order;
+
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use Carbon\Carbon;
@@ -42,6 +44,17 @@ class APIController extends Controller
     }
 
     public function test()
+    {
+        $aaa = Order::where('id',1)->first();
+        
+        //print_r(json_decode($aaa->transactions));
+        foreach(json_decode($aaa->transactions) as $transaction)
+        {
+            print_r($transaction->transaction_id);
+        }
+    }
+
+    public function test2()
     {
         
         $calendar = array();

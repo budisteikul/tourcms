@@ -11,6 +11,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use budisteikul\tourcms\Helpers\GeneralHelper;
 
 class OrderDataTable extends DataTable
 {
@@ -24,6 +25,27 @@ class OrderDataTable extends DataTable
     {
         return datatables($query)
                 ->addIndexColumn()
+                ->editColumn('date', function($id){
+                    return GeneralHelper::dateFormat($id->date,4);
+                })
+                ->editColumn('total', function($id){
+                    return number_format($id->total, 0, ',', '.');
+                })
+                ->addColumn('action', function ($id) {
+
+                
+                return '
+                <div class="btn-toolbar justify-content-end">
+                    <div class="btn-group mr-2" role="group">
+                        
+                       
+
+                        <button id="btn-del" type="button" onClick="DELETE(\''. $id->id .'\')" class="btn btn-sm btn-danger pt-0 pb-0 pl-1 pr-1"><i class="fa fa-trash-alt"></i> Delete</button>
+                        
+                        
+                    </div>
+                </div>';
+                })
                 ->rawColumns(['action']);
     }
 
@@ -81,10 +103,13 @@ class OrderDataTable extends DataTable
                   ->searchable(false)
                   ->addClass('text-center align-middle'),
 
+            
+            
+            Column::make('date')->title('Date')->orderable(false)->addClass('align-middle'),
             Column::make('tour')->title('Tour')->orderable(false)->addClass('align-middle'),
             Column::make('guide')->title('Guide')->orderable(false)->addClass('align-middle'),
-            Column::make('date')->title('Date')->orderable(false)->addClass('align-middle'),
-            
+            Column::make('pax')->title('Pax')->orderable(false)->addClass('align-middle'),
+            Column::make('total')->title('Total')->orderable(false)->addClass('align-middle'),
             
             Column::computed('action')
                   ->exportable(false)

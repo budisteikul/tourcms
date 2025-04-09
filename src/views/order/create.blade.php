@@ -1,4 +1,5 @@
-
+@extends('coresdk::layouts.app')
+@section('content')
 
  
 <div class="h-100" style="width:99%">		
@@ -48,84 +49,4 @@
     </div>
 
 </div>
-
-<script>
-$( document ).ready(function() {
-    	tinymce.init({
-  		selector: 'textarea.tinymce',
- 		height: 200,
-  		menubar: false,
-  		plugins: [
-    	'advlist autolink lists link image charmap print preview anchor',
-    	'searchreplace visualblocks code fullscreen',
-    	'insertdatetime media table paste code help wordcount'
-  		],
-  		toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
-  		content_css: [
-    	'//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-    	'//www.tiny.cloud/css/codepen.min.css'
-  		]
-		});	
-});
-
-function CLOSE()
-{
-	tinymce.remove();
-	$.fancybox.close();
-}
-</script>
-
-<script language="javascript">
-function STORE()
-{
-	tinymce.triggerSave();
-	
-	var error = false;
-	$("#submit").attr("disabled", true);
-	$('#submit').html('<i class="fa fa-spinner fa-spin"></i>');
-	var input = ["name","description"];
-	
-	$.each(input, function( index, value ) {
-  		$('#'+ value).removeClass('is-invalid');
-  		$('#span-'+ value).remove();
-	});
-	
-	$.ajax({
-		data: {
-        	"_token": $("meta[name=csrf-token]").attr("content"),
-			"name": $('#name').val(),
-			"description": $('#description').val(),
-			"invoice": $('#invoice').val()
-        },
-		type: 'POST',
-		url: '{{ route('route_tourcms_orders.store') }}'
-		}).done(function( data ) {
-			
-			if(data.id=="1")
-			{
-				
-       				$('#dataTableBuilder').DataTable().ajax.reload( null, false );
-					$("#result").empty().append('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><b>Success!</b></div>').hide().fadeIn();
-       				setTimeout(function (){
-       					tinymce.remove();
-  						$.fancybox.close();
-					}, 1000);
-			}
-			else
-			{
-				$.each( data, function( index, value ) {
-					$('#'+ index).addClass('is-invalid');
-						if(value!="")
-						{
-							$('#'+ index).after('<span id="span-'+ index  +'" class="invalid-feedback" role="alert"><strong>'+ value +'</strong></span>');
-						}
-					});
-				$("#submit").attr("disabled", false);
-				$('#submit').html('<i class="fa fa-save"></i> {{ __('Save') }}');
-			}
-		});
-	
-	
-	return false;
-}
-</script>
+@endsection

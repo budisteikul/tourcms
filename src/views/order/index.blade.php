@@ -23,7 +23,7 @@
     							     request.setRequestHeader("X-CSRF-TOKEN", $("meta[name=csrf-token]").attr("content"));
   						      },
      						   type: 'DELETE',
-     						   url: '{{ route('route_tourcms_channel.index') }}/'+ id
+     						   url: '{{ route('route_tourcms_orders.index') }}/'+ id
 						        }).done(function( msg ) {
 							         table.ajax.reload( null, false );
 						        });	
@@ -37,28 +37,20 @@
 		
 	}
 	
-	function CREATE()
+	function CREATE(app)
 	{
-		$.fancybox.open({
-        	type: 'ajax',
-       	 	src: '{{ route('route_tourcms_orders.create') }}',
-			modal: true,
-          touch: false,
-          autoFocus: false
-   		});	
-	}
-	
-	function EDIT(id)
-	{
-		$.fancybox.open({
-        	type: 'ajax',
-       	 	src: '{{ route('route_tourcms_orders.index') }}/'+ id +'/edit',
-			modal: true,
-          touch: false,
-          autoFocus: false
-   		});
+		if(app==1)
+		{
+			window.location.href = '{{ route('route_tourcms_orders.create') }}/jnft';
+		}
+		else
+		{
+			window.location.href = '{{ route('route_tourcms_orders.create') }}/jmft';
+		}
 		
 	}
+	
+	
 
   function SHOW()
   {
@@ -82,7 +74,9 @@
                 <div class="container ml-0 pl-0">
                 <div class="row">
                 	<div class="col">
-                    <button type="button" class="btn btn-primary"  onclick="CREATE(); return false;"><b class="fa fa-plus-square"></b> Create Order</button>
+                    <button type="button" class="btn btn-primary"  onclick="CREATE(1); return false;"><b class="fa fa-plus-square"></b> Create Order Jogja Night FT</button>
+                    
+                    <button type="button" class="btn btn-primary"  onclick="CREATE(2); return false;"><b class="fa fa-plus-square"></b> Create Order Jogja Morning FT</button>
                     </div>
                     
                 </div>
