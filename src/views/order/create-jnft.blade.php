@@ -1,5 +1,4 @@
-@extends('coresdk::layouts.app')
-@section('content')
+
 
  
 <div class="h-100" style="width:99%">		
@@ -24,7 +23,7 @@
 
 
 				
-<form onSubmit="STORE(1); return false;">
+<form onSubmit="STORE(); return false;">
 
 <div id="result"></div>
 
@@ -84,7 +83,7 @@
 </div>
 
 <script language="javascript">
-function STORE(app)
+function STORE()
 {
 	//if(app==1)
 	//{
@@ -106,7 +105,7 @@ function STORE(app)
 			"guide": $('#guide').val(),
 			"pax": $('#pax').val(),
 			"date": $('#date').val(),
-			"app": app
+			"app": 1
 			
         },
 		type: 'POST',
@@ -119,7 +118,7 @@ function STORE(app)
        				$('#dataTableBuilder').DataTable().ajax.reload( null, false );
 					$("#result").empty().append('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><b>Success!</b></div>').hide().fadeIn();
        				setTimeout(function (){
-  						window.location.href = '{{ route('route_tourcms_orders.index') }}';
+  						$.fancybox.close();
 					}, 1000);
 			}
 			else
@@ -142,4 +141,3 @@ function STORE(app)
 	
 }
 </script>
-@endsection

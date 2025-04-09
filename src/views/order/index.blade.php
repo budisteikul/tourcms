@@ -41,11 +41,23 @@
 	{
 		if(app==1)
 		{
-			window.location.href = '{{ route('route_tourcms_orders.create') }}/jnft';
+			$.fancybox.open({
+        		type: 'ajax',
+       	 		src: '{{ route('route_tourcms_orders.create') }}/jnft',
+				modal: true,
+          		touch: false,
+          		autoFocus: false
+   			});	
 		}
 		else
 		{
-			window.location.href = '{{ route('route_tourcms_orders.create') }}/jmft';
+			$.fancybox.open({
+        		type: 'ajax',
+       	 		src: '{{ route('route_tourcms_orders.create') }}/jmft',
+				modal: true,
+          		touch: false,
+          		autoFocus: false
+   			});	
 		}
 		
 	}
@@ -74,9 +86,9 @@
                 <div class="container ml-0 pl-0">
                 <div class="row">
                 	<div class="col">
-                    <button type="button" class="btn btn-primary"  onclick="CREATE(1); return false;"><b class="fa fa-plus-square"></b> Create Order Jogja Night FT</button>
+                    <button type="button" class="btn btn-primary"  onclick="CREATE(1); return false;"><b class="fa fa-plus-square"></b> Create Order JNFT</button>
                     
-                    <button type="button" class="btn btn-primary"  onclick="CREATE(2); return false;"><b class="fa fa-plus-square"></b> Create Order Jogja Morning FT</button>
+                    <button type="button" class="btn btn-primary"  onclick="CREATE(2); return false;"><b class="fa fa-plus-square"></b> Create Order JMFT</button>
                     </div>
                     
                 </div>

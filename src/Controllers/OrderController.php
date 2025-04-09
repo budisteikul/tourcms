@@ -45,7 +45,7 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $app =  $request->input('app');
-        if($app==1)
+        if($app==1 || $app==2)
         {
             $date =  $request->input('date');
             $guide =  $request->input('guide');
@@ -53,14 +53,24 @@ class OrderController extends Controller
 
             $guide = fin_categories::where('id',$guide)->first();
 
-            $total_guide = 150000 * $pax;
-            $total_cost = 250000 * $pax;
+            if($app==1)
+            {
+                $total_guide = 150000 * $pax;
+                $total_cost = 250000 * $pax;
+                $total = $total_cost + $total_guide;
+                $tourname = "Jogja Night Food Tour".' - '. $guide->name .' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
+            }
 
-            $total = $total_cost + $total_guide;
-
+            if($app==2)
+            {
+                $total_guide = 150000 * $pax;
+                $total_cost = 150000 * $pax;
+                $total = $total_cost + $total_guide;
+                $tourname = "Jogja Morning Food Tour".' - '. $guide->name.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
+            }
             
 
-           
+            
 
             $transaction = new fin_transactions;
             $transaction->category_id = $guide->id;
@@ -85,65 +95,13 @@ class OrderController extends Controller
             ];
 
             $order = new Order;
-            $order->pax = $pax;
-            $order->date = $date;
-            $order->tour = 'Jogja Night Food Tour';
-            $order->guide = $guide->name;
-            $order->total = $total;
+            $order->note = $tourname;
             $order->transactions = json_encode($json);
             $order->save();
 
         }
 
-        if($app==2)
-        {
-            $date =  $request->input('date');
-            $guide =  $request->input('guide');
-            $pax =  $request->input('pax');
-
-            $guide = fin_categories::where('id',$guide)->first();
-
-            $total_guide = 150000 * $pax;
-            $total_cost = 150000 * $pax;
-
-            $total = $total_cost + $total_guide;
-
-            
-
-           
-
-            $transaction = new fin_transactions;
-            $transaction->category_id = $guide->id;
-            $transaction->date = $date;
-            $transaction->amount = $total_guide;
-            $transaction->status = 0;
-            $transaction->save();
-
-            $json[] = [
-                'id' => $transaction->id
-            ];
-
-            $transaction = new fin_transactions;
-            $transaction->category_id = 15;
-            $transaction->date = $date;
-            $transaction->amount = $total_cost;
-            $transaction->status = 0;
-            $transaction->save();
-
-            $json[] = [
-                'id' => $transaction->id
-            ];
-
-            $order = new Order;
-            $order->pax = $pax;
-            $order->date = $date;
-            $order->tour = 'Jogja Morning Food Tour';
-            $order->guide = $guide->name;
-            $order->total = $total;
-            $order->transactions = json_encode($json);
-            $order->save();
-
-        }
+        
 
         return response()->json([
                     "id" => "1",
