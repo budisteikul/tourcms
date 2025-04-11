@@ -15,7 +15,9 @@
                         </div>
                     </div>
                     <div class="col-auto text-right mr-0 pr-0">
-                       
+                        <div class="btn-toolbar justify-content-end">
+                            <button class="btn btn-sm btn-danger mr-0" type="button" onClick="$.fancybox.close();"><i class="fa fa-window-close"></i> Close</button>
+                        </div>
                     </div>
                 </div>
                 </div>
