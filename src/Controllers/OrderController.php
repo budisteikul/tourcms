@@ -100,6 +100,7 @@ class OrderController extends Controller
 
             $order = new Order;
             $order->type = 'order';
+            $order->date = $date;
             $order->tour = $tour;
             $order->pax = $pax;
             $order->total = $total;
