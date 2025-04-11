@@ -54,7 +54,7 @@ class OrderDataTable extends DataTable
      */
     public function query(Order $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->where('type','order')->newQuery();
     }
 
     /**

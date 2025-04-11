@@ -58,7 +58,9 @@ class OrderController extends Controller
                 $total_guide = 150000 * $pax;
                 $total_cost = 250000 * $pax;
                 $total = $total_cost + $total_guide;
-                $tourname = "Jogja Night Food Tour".' - '. $guide->name .' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
+                $tour = "Jogja Night Food Tour";
+                $pax = $pax;
+                $note = "Jogja Night Food Tour".' - '. $guide->name .' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
             }
 
             if($app==2)
@@ -66,7 +68,9 @@ class OrderController extends Controller
                 $total_guide = 150000 * $pax;
                 $total_cost = 150000 * $pax;
                 $total = $total_cost + $total_guide;
-                $tourname = "Jogja Morning Food Tour".' - '. $guide->name.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
+                $tour = "Jogja Night Food Tour";
+                $pax = $pax;
+                $note = "Jogja Morning Food Tour".' - '. $guide->name.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
             }
             
 
@@ -96,7 +100,10 @@ class OrderController extends Controller
 
             $order = new Order;
             $order->type = 'order';
-            $order->note = $tourname;
+            $order->tour = $tour;
+            $order->pax = $pax;
+            $order->total = $total;
+            $order->note = $note;
             $order->transactions = json_encode($json);
             $order->save();
 

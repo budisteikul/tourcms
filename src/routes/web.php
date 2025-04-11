@@ -40,9 +40,9 @@ Route::resource('/cms/channel','budisteikul\tourcms\Controllers\ChannelControlle
 	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);
 
 //Order
-Route::get('/cms/orders/create/jnft','budisteikul\tourcms\Controllers\OrderController@create_jnft')->middleware(['web','auth','verified','CoreMiddleware','SettingMiddleware']);
-Route::get('/cms/orders/create/jmft','budisteikul\tourcms\Controllers\OrderController@create_jmft')->middleware(['web','auth','verified','CoreMiddleware','SettingMiddleware']);
-Route::resource('/cms/orders','budisteikul\tourcms\Controllers\OrderController',[ 'names' => 'route_tourcms_orders' ])
+Route::get('/cms/fin/orders/create/jnft','budisteikul\tourcms\Controllers\OrderController@create_jnft')->middleware(['web','auth','verified','CoreMiddleware','SettingMiddleware']);
+Route::get('/cms/fin/orders/create/jmft','budisteikul\tourcms\Controllers\OrderController@create_jmft')->middleware(['web','auth','verified','CoreMiddleware','SettingMiddleware']);
+Route::resource('/cms/fin/orders','budisteikul\tourcms\Controllers\OrderController',[ 'names' => 'route_tourcms_orders' ])
 	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);
 
 //Review
