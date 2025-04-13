@@ -90,7 +90,7 @@ class OrderDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('created_at')
+            Column::make('date')
                   ->visible(false)
                   ->searchable(false),
             Column::computed('DT_RowIndex')

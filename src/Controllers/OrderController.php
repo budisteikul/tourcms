@@ -39,6 +39,16 @@ class OrderController extends Controller
         return view('tourcms::order.create-jmft');
     }
 
+    public function create_tat()
+    {
+        return view('tourcms::order.create-tat');
+    }
+
+    public function create_dft()
+    {
+        return view('tourcms::order.create-dft');
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -110,19 +120,38 @@ class OrderController extends Controller
 
         }
 
-        if($app == 3)
+        if($app==3)
         {
             $date =  $request->input('date');
             $pax =  $request->input('pax');
+            $additional =  $request->input('additional');
 
-            $total = 375000 * $pax;
+            $cost = 375000 * $pax;
+            $total = $cost;
             $tour = "Taman Ayar Tour";
-            $note = $tour.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
 
+            if($additional>0)
+            {
+                $total = $cost + $additional;
+                
+                $transaction = new fin_transactions;
+                $transaction->category_id = 52;
+                $transaction->date = $date;
+                $transaction->amount = $additional;
+                $transaction->status = 0;
+                $transaction->save();
+
+                $json[] = [
+                    'id' => $transaction->id
+                ];
+            }
+
+            $note = $tour.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
+            
             $transaction = new fin_transactions;
             $transaction->category_id = 42;
             $transaction->date = $date;
-            $transaction->amount = $total;
+            $transaction->amount = $cost;
             $transaction->status = 0;
             $transaction->save();
 
@@ -140,7 +169,82 @@ class OrderController extends Controller
             $order->transactions = json_encode($json);
             $order->save();
         }
-        
+
+        if($app==4)
+        {
+            $date =  $request->input('date');
+            $pax =  $request->input('pax');
+            $additional =  $request->input('additional');
+            
+            
+            $cost = 200000 * $pax;
+            $guide = 150000 * $pax;
+            $commision = 50000 * $pax;
+            $total = $cost + $guide + $commision;
+
+            $tour = "Denpasar Food Tour";
+            
+            if($additional>0)
+            {
+                $total = $total + $additional;
+                
+                $transaction = new fin_transactions;
+                $transaction->category_id = 52;
+                $transaction->date = $date;
+                $transaction->amount = $additional;
+                $transaction->status = 0;
+                $transaction->save();
+
+                $json[] = [
+                    'id' => $transaction->id
+                ];
+            }
+
+            $note = $tour.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
+
+            $transaction = new fin_transactions;
+            $transaction->category_id = 44;
+            $transaction->date = $date;
+            $transaction->amount = $guide;
+            $transaction->status = 0;
+            $transaction->save();
+
+            $json[] = [
+                'id' => $transaction->id
+            ];
+
+            $transaction = new fin_transactions;
+            $transaction->category_id = 43;
+            $transaction->date = $date;
+            $transaction->amount = $commision;
+            $transaction->status = 0;
+            $transaction->save();
+
+            $json[] = [
+                'id' => $transaction->id
+            ];
+
+            $transaction = new fin_transactions;
+            $transaction->category_id = 45;
+            $transaction->date = $date;
+            $transaction->amount = $cost;
+            $transaction->status = 0;
+            $transaction->save();
+
+            $json[] = [
+                'id' => $transaction->id
+            ];
+
+            $order = new Order;
+            $order->type = 'order';
+            $order->date = $date;
+            $order->tour = $tour;
+            $order->pax = $pax;
+            $order->total = $total;
+            $order->note = $note;
+            $order->transactions = json_encode($json);
+            $order->save();
+        }
 
         return response()->json([
                     "id" => "1",

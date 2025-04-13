@@ -49,11 +49,31 @@
           		autoFocus: false
    			});	
 		}
-		else
+		else if(app==2)
 		{
 			$.fancybox.open({
         		type: 'ajax',
        	 		src: '{{ route('route_tourcms_orders.create') }}/jmft',
+				modal: true,
+          		touch: false,
+          		autoFocus: false
+   			});	
+		}
+		else if(app==3)
+		{
+			$.fancybox.open({
+        		type: 'ajax',
+       	 		src: '{{ route('route_tourcms_orders.create') }}/tat',
+				modal: true,
+          		touch: false,
+          		autoFocus: false
+   			});	
+		}
+		else if(app==4)
+		{
+			$.fancybox.open({
+        		type: 'ajax',
+       	 		src: '{{ route('route_tourcms_orders.create') }}/dft',
 				modal: true,
           		touch: false,
           		autoFocus: false
@@ -86,9 +106,15 @@
                 <div class="container ml-0 pl-0">
                 <div class="row">
                 	<div class="col">
+
                     <button type="button" class="btn btn-primary"  onclick="CREATE(1); return false;"><b class="fa fa-plus-square"></b> Create Order JNFT</button>
                     
                     <button type="button" class="btn btn-primary"  onclick="CREATE(2); return false;"><b class="fa fa-plus-square"></b> Create Order JMFT</button>
+
+                    <button type="button" class="btn btn-primary"  onclick="CREATE(3); return false;"><b class="fa fa-plus-square"></b> Create Order Taman Anyar Tour</button>
+
+                    <button type="button" class="btn btn-primary"  onclick="CREATE(4); return false;"><b class="fa fa-plus-square"></b> Create Order Denpasar Tour</button>
+
                     </div>
                     
                 </div>
