@@ -101,8 +101,11 @@ class OrderDataTable extends DataTable
                   ->addClass('text-center align-middle'),
 
             
-            
             Column::make('date')->title('Date')->orderable(false)->addClass('align-middle'),
+            //Column::make('tour')->title('Tour')->orderable(false)->addClass('align-middle'),
+            //Column::make('pax')->title('Pax')->orderable(false)->addClass('align-middle'),
+            //Column::make('total')->title('Total')->orderable(false)->addClass('align-middle'),
+           
             Column::make('note')->title('Note')->orderable(false)->addClass('align-middle'),
             
             Column::computed('action')

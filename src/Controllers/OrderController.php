@@ -60,7 +60,7 @@ class OrderController extends Controller
                 $total = $total_cost + $total_guide;
                 $tour = "Jogja Night Food Tour";
                 $pax = $pax;
-                $note = "Jogja Night Food Tour".' - '. $guide->name .' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
+                $note = $tour.' - '. $guide->name .' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
             }
 
             if($app==2)
@@ -68,9 +68,9 @@ class OrderController extends Controller
                 $total_guide = 150000 * $pax;
                 $total_cost = 150000 * $pax;
                 $total = $total_cost + $total_guide;
-                $tour = "Jogja Night Food Tour";
+                $tour = "Jogja Morning Food Tour";
                 $pax = $pax;
-                $note = "Jogja Morning Food Tour".' - '. $guide->name.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
+                $note = $tour.' - '. $guide->name.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
             }
             
 
@@ -110,6 +110,36 @@ class OrderController extends Controller
 
         }
 
+        if($app == 3)
+        {
+            $date =  $request->input('date');
+            $pax =  $request->input('pax');
+
+            $total = 375000 * $pax;
+            $tour = "Taman Ayar Tour";
+            $note = $tour.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
+
+            $transaction = new fin_transactions;
+            $transaction->category_id = 42;
+            $transaction->date = $date;
+            $transaction->amount = $total;
+            $transaction->status = 0;
+            $transaction->save();
+
+            $json[] = [
+                'id' => $transaction->id
+            ];
+
+            $order = new Order;
+            $order->type = 'order';
+            $order->date = $date;
+            $order->tour = $tour;
+            $order->pax = $pax;
+            $order->total = $total;
+            $order->note = $note;
+            $order->transactions = json_encode($json);
+            $order->save();
+        }
         
 
         return response()->json([
