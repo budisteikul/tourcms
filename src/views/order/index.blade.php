@@ -117,15 +117,22 @@
                 <div class="row">
                 	<div class="col">
 
-                    <button type="button" class="btn btn-primary"  onclick="CREATE(1); return false;"><b class="fa fa-plus-square"></b> Create Order JNFT</button>
-                    
-                    <button type="button" class="btn btn-primary"  onclick="CREATE(2); return false;"><b class="fa fa-plus-square"></b> Create Order JMFT</button>
+<div class="col-md-6">
+<div class="form-group">
+	<label for="app">Create Order :</label>
+    <select class="form-control" id="app" data-live-search="true">
+       	<option value="1">Jogja Night Food Tour</option>
+       	<option value="2">Jogja Morning Food Tour</option>
+       	<option value="3">Taman Anyar Tour</option>
+       	<option value="4">Denpasar Food Tour</option>
+       	<option value="5">Ubud Food Tour</option>
+	</select>
+</div>
 
-                    <button type="button" class="btn btn-primary"  onclick="CREATE(3); return false;"><b class="fa fa-plus-square"></b> Create Order Taman Anyar Tour</button>
+<button   onclick="CREATE($('#app').val()); return false;" id="create" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Create</button>
+</div>
 
-                    <button type="button" class="btn btn-primary"  onclick="CREATE(4); return false;"><b class="fa fa-plus-square"></b> Create Order Denpasar Food Tour</button>
-
-                    <button type="button" class="btn btn-primary"  onclick="CREATE(5); return false;"><b class="fa fa-plus-square"></b> Create Order Ubud Food Tour</button>
+                   
 
                     </div>
                     
