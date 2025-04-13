@@ -11,7 +11,7 @@
                 <div class="row align-items-center w-100">
                     <div class="col text-left">
                         <div class="d-flex align-self-center">
-                        Create Order for Jogja Night Food Tour
+                        Create Order for Ubud Food Tour
                         </div>
                     </div>
                     <div class="col-auto text-right mr-0 pr-0">
@@ -57,22 +57,20 @@
 </div>
 
 <div class="form-group">
-	<label for="guide">Guide :</label>
-    <select class="form-control" id="guide" data-live-search="true">
-       	<option value="12">Ratna</option>
-       	<option value="13">Anisa</option>
+	<label for="rate">Rate :</label>
+    <select class="form-control" id="rate" data-live-search="true">
+       	<option value="1">Shared</option>
+       	<option value="2">Private</option>
 	</select>
 </div>
-
 <div class="form-group">
 	<label for="pax">Pax :</label>
 	<input type="number" id="pax" name="pax" class="form-control" placeholder="Pax" autocomplete="off" value="1">
 </div> 
-
 <div class="form-group">
 	<label for="additional">Additional :</label>
 	<input type="number" id="additional" name="additional" class="form-control" placeholder="Additional" autocomplete="off" value="0">
-</div>
+</div> 
 
 	<button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
 </form>
@@ -97,7 +95,7 @@ function STORE()
 		var error = false;
 		$("#submit").attr("disabled", true);
 		$('#submit').html('<i class="fa fa-spinner fa-spin"></i>');
-		var input = ["guide","pax","date","additional"];
+		var input = ["pax","date","additional","rate"];
 	
 		$.each(input, function( index, value ) {
   			$('#'+ value).removeClass('is-invalid');
@@ -109,11 +107,11 @@ function STORE()
 		$.ajax({
 		data: {
         	"_token": $("meta[name=csrf-token]").attr("content"),
-			"guide": $('#guide').val(),
 			"pax": $('#pax').val(),
 			"date": $('#date').val(),
 			"additional": $('#additional').val(),
-			"app": 1
+			"rate": $('#rate').val(),
+			"app": 5
 			
         },
 		type: 'POST',

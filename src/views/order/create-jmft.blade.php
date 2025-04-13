@@ -69,6 +69,11 @@
 	<input type="number" id="pax" name="pax" class="form-control" placeholder="Pax" autocomplete="off" value="1">
 </div> 
 
+<div class="form-group">
+	<label for="additional">Additional :</label>
+	<input type="number" id="additional" name="additional" class="form-control" placeholder="Additional" autocomplete="off" value="0">
+</div>
+
 	<button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
 </form>
 
@@ -92,7 +97,7 @@ function STORE(app)
 		var error = false;
 		$("#submit").attr("disabled", true);
 		$('#submit').html('<i class="fa fa-spinner fa-spin"></i>');
-		var input = ["guide","pax","date"];
+		var input = ["guide","pax","date","additional"];
 	
 		$.each(input, function( index, value ) {
   			$('#'+ value).removeClass('is-invalid');
@@ -107,6 +112,7 @@ function STORE(app)
 			"guide": $('#guide').val(),
 			"pax": $('#pax').val(),
 			"date": $('#date').val(),
+			"additional": $('#additional').val(),
 			"app": 2
 			
         },

@@ -79,6 +79,16 @@
           		autoFocus: false
    			});	
 		}
+		else if(app==5)
+		{
+			$.fancybox.open({
+        		type: 'ajax',
+       	 		src: '{{ route('route_tourcms_orders.create') }}/uft',
+				modal: true,
+          		touch: false,
+          		autoFocus: false
+   			});	
+		}
 		
 	}
 	
@@ -113,7 +123,9 @@
 
                     <button type="button" class="btn btn-primary"  onclick="CREATE(3); return false;"><b class="fa fa-plus-square"></b> Create Order Taman Anyar Tour</button>
 
-                    <button type="button" class="btn btn-primary"  onclick="CREATE(4); return false;"><b class="fa fa-plus-square"></b> Create Order Denpasar Tour</button>
+                    <button type="button" class="btn btn-primary"  onclick="CREATE(4); return false;"><b class="fa fa-plus-square"></b> Create Order Denpasar Food Tour</button>
+
+                    <button type="button" class="btn btn-primary"  onclick="CREATE(5); return false;"><b class="fa fa-plus-square"></b> Create Order Ubud Food Tour</button>
 
                     </div>
                     

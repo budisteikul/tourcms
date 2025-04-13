@@ -49,6 +49,11 @@ class OrderController extends Controller
         return view('tourcms::order.create-dft');
     }
 
+    public function create_uft()
+    {
+        return view('tourcms::order.create-uft');
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -60,6 +65,7 @@ class OrderController extends Controller
             $date =  $request->input('date');
             $guide =  $request->input('guide');
             $pax =  $request->input('pax');
+            $additional =  $request->input('additional');
 
             $guide = fin_categories::where('id',$guide)->first();
 
@@ -70,6 +76,21 @@ class OrderController extends Controller
                 $total = $total_cost + $total_guide;
                 $tour = "Jogja Night Food Tour";
                 $pax = $pax;
+                if($additional>0)
+                {
+                    $total = $total + $additional;
+                
+                    $transaction = new fin_transactions;
+                    $transaction->category_id = 53;
+                    $transaction->date = $date;
+                    $transaction->amount = $additional;
+                    $transaction->status = 0;
+                    $transaction->save();
+
+                    $json[] = [
+                        'id' => $transaction->id
+                    ];
+                }
                 $note = $tour.' - '. $guide->name .' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
             }
 
@@ -80,6 +101,21 @@ class OrderController extends Controller
                 $total = $total_cost + $total_guide;
                 $tour = "Jogja Morning Food Tour";
                 $pax = $pax;
+                if($additional>0)
+                {
+                    $total = $total + $additional;
+                
+                    $transaction = new fin_transactions;
+                    $transaction->category_id = 53;
+                    $transaction->date = $date;
+                    $transaction->amount = $additional;
+                    $transaction->status = 0;
+                    $transaction->save();
+
+                    $json[] = [
+                        'id' => $transaction->id
+                    ];
+                }
                 $note = $tour.' - '. $guide->name.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
             }
             
@@ -226,6 +262,66 @@ class OrderController extends Controller
 
             $transaction = new fin_transactions;
             $transaction->category_id = 45;
+            $transaction->date = $date;
+            $transaction->amount = $cost;
+            $transaction->status = 0;
+            $transaction->save();
+
+            $json[] = [
+                'id' => $transaction->id
+            ];
+
+            $order = new Order;
+            $order->type = 'order';
+            $order->date = $date;
+            $order->tour = $tour;
+            $order->pax = $pax;
+            $order->total = $total;
+            $order->note = $note;
+            $order->transactions = json_encode($json);
+            $order->save();
+        }
+
+        if($app==5)
+        {
+            $date =  $request->input('date');
+            $pax =  $request->input('pax');
+            $additional =  $request->input('additional');
+            $rate =  $request->input('rate');
+            
+            if($rate==1)
+            {
+                $cost = 350000 * $pax;
+            }
+            else
+            {
+                $cost = 500000 * $pax;
+            }
+
+            $total = $cost;
+
+            $tour = "Ubud Food Tour";
+            
+            if($additional>0)
+            {
+                $total = $total + $additional;
+                
+                $transaction = new fin_transactions;
+                $transaction->category_id = 52;
+                $transaction->date = $date;
+                $transaction->amount = $additional;
+                $transaction->status = 0;
+                $transaction->save();
+
+                $json[] = [
+                    'id' => $transaction->id
+                ];
+            }
+
+            $note = $tour.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
+
+            $transaction = new fin_transactions;
+            $transaction->category_id = 39;
             $transaction->date = $date;
             $transaction->amount = $cost;
             $transaction->status = 0;
