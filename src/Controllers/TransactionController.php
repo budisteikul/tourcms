@@ -9,6 +9,7 @@ use budisteikul\tourcms\DataTables\TransactionsDataTable;
 use Illuminate\Support\Facades\Validator;
 use budisteikul\tourcms\Models\fin_transactions;
 use budisteikul\tourcms\Models\fin_categories;
+use budisteikul\tourcms\Models\Order;
 use budisteikul\tourcms\Helpers\AccHelper;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
@@ -25,10 +26,11 @@ class TransactionController extends Controller
 
     public function post_payment(Request $request)
     {
+        
         $trans_id = $request->input('trans_id');
+
         foreach($trans_id as $id)
         {
-            //print_r($cat_id);
             $fin_transactions = fin_transactions::find($id);
             $fin_transactions->status = 1;
             $fin_transactions->save();
@@ -41,6 +43,8 @@ class TransactionController extends Controller
         $fin_transactions->status = 1;
         $fin_transactions->save();
         
+        
+
         return response()->json([
                     "id" => "1",
                     "message" => 'Success',
