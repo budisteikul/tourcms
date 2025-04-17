@@ -9,7 +9,6 @@ use budisteikul\tourcms\Models\fin_categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use budisteikul\tourcms\DataTables\OrderDataTable;
-use budisteikul\tourcms\Models\Product;
 
 class OrderController extends Controller
 {
