@@ -25,6 +25,9 @@ class OrderDataTable extends DataTable
     {
         return datatables($query)
                 ->addIndexColumn()
+                ->editColumn('total', function($id){
+                    return number_format($id->total, 0, ',', '.');
+                })
                 ->editColumn('date', function($id){
                     return GeneralHelper::dateFormat($id->date,4);
                 })
@@ -104,7 +107,7 @@ class OrderDataTable extends DataTable
             Column::make('date')->title('Date')->orderable(false)->addClass('align-middle'),
             //Column::make('tour')->title('Tour')->orderable(false)->addClass('align-middle'),
             //Column::make('pax')->title('Pax')->orderable(false)->addClass('align-middle'),
-            //Column::make('total')->title('Total')->orderable(false)->addClass('align-middle'),
+            Column::make('total')->title('Total')->orderable(false)->addClass('align-middle'),
            
             Column::make('note')->title('Note')->orderable(false)->addClass('align-middle'),
             

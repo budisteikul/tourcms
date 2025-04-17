@@ -16,11 +16,7 @@ class PettyCashController extends Controller
      */
     public function index(PettyCashDataTable $dataTable)
     {
-        $pettycash = 10000000;
-        $fin_transactions = fin_transactions::where('status',0)->get();
-        $total = $fin_transactions->sum('amount');
-        $pettycash_saldo = $pettycash - $total;
-        return $dataTable->render('tourcms::pettycash.index',['pettycash_saldo'=>$pettycash_saldo,'pettycash'=>$pettycash,'fin_transactions'=>$fin_transactions]);
+        return $dataTable->render('tourcms::pettycash.index');
     }
 
     /**
@@ -53,6 +49,8 @@ class PettyCashController extends Controller
      */
     public function store(Request $request)
     {
+        $bank_fee = 2500;
+
         $fin_transactions = fin_transactions::where('status',0)->get();
         $total = $fin_transactions->sum('amount');
 
@@ -77,8 +75,8 @@ class PettyCashController extends Controller
         $order->date = date('Y-m-d');
         $order->tour = 'Petty Cash';
         $order->pax = $fin_transactions->id;
-        $order->total = $total;
-        $order->note = 'Petty Cash - Top up : '. number_format($total, 0, ',', '.'); 
+        $order->total = $total + $bank_fee;
+        $order->note = 'Petty Cash - Top up : '. number_format($total, 0, ',', '.') .' - Bank Fee '. number_format($bank_fee, 0, ',', '.'); 
         $order->transactions = json_encode($json);
         $order->save();
 
