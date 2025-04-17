@@ -76,7 +76,7 @@ class PettyCashController extends Controller
         $order->tour = 'Petty Cash';
         $order->pax = $fin_transactions->id;
         $order->total = $total + $bank_fee;
-        $order->note = 'Petty Cash - Top up : '. number_format($total, 0, ',', '.') .' - Bank Fee '. number_format($bank_fee, 0, ',', '.'); 
+        $order->note = 'Petty Cash - Top up : '. number_format($total, 0, ',', '.') .' - Bank Fee : '. number_format($bank_fee, 0, ',', '.'); 
         $order->transactions = json_encode($json);
         $order->save();
 
