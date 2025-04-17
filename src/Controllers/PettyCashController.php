@@ -66,7 +66,7 @@ class PettyCashController extends Controller
         $fin_transactions = new fin_transactions();
         $fin_transactions->category_id = 47;
         $fin_transactions->date = date('Y-m-d');
-        $fin_transactions->amount = 2500;
+        $fin_transactions->amount = $bank_fee;
         $fin_transactions->status = 1;
         $fin_transactions->save();
         

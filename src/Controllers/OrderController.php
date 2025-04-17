@@ -60,6 +60,8 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $app =  $request->input('app');
+        
+
         if($app==1 || $app==2)
         {
             $date =  $request->input('date');
@@ -87,8 +89,8 @@ class OrderController extends Controller
                     $transaction->status = 0;
                     $transaction->save();
 
-                    $json[] = [
-                        'id' => $transaction->id
+                    $json_trans_id[] = [
+                        'trans_id' => $transaction->id
                     ];
                 }
                 $note = $tour.' - '. $guide->name .' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
@@ -112,8 +114,8 @@ class OrderController extends Controller
                     $transaction->status = 0;
                     $transaction->save();
 
-                    $json[] = [
-                        'id' => $transaction->id
+                    $json_trans_id[] = [
+                        'trans_id' => $transaction->id
                     ];
                 }
                 $note = $tour.' - '. $guide->name.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
@@ -129,8 +131,8 @@ class OrderController extends Controller
             $transaction->status = 0;
             $transaction->save();
 
-            $json[] = [
-                'id' => $transaction->id
+            $json_trans_id[] = [
+                'trans_id' => $transaction->id
             ];
 
             $transaction = new fin_transactions;
@@ -140,8 +142,14 @@ class OrderController extends Controller
             $transaction->status = 0;
             $transaction->save();
 
+            $json_trans_id[] = [
+                'trans_id' => $transaction->id
+            ];
+
+            
+
             $json[] = [
-                'id' => $transaction->id
+                'trans_id' => $json_trans_id
             ];
 
             $order = new Order;
@@ -177,8 +185,8 @@ class OrderController extends Controller
                 $transaction->status = 0;
                 $transaction->save();
 
-                $json[] = [
-                    'id' => $transaction->id
+                $json_trans_id[] = [
+                    'trans_id' => $transaction->id
                 ];
             }
 
@@ -191,8 +199,14 @@ class OrderController extends Controller
             $transaction->status = 0;
             $transaction->save();
 
+            $json_trans_id[] = [
+                'trans_id' => $transaction->id
+            ];
+
+            
+
             $json[] = [
-                'id' => $transaction->id
+                'trans_id' => $json_trans_id
             ];
 
             $order = new Order;
@@ -231,8 +245,8 @@ class OrderController extends Controller
                 $transaction->status = 0;
                 $transaction->save();
 
-                $json[] = [
-                    'id' => $transaction->id
+                $json_trans_id[] = [
+                    'trans_id' => $transaction->id
                 ];
             }
 
@@ -245,8 +259,8 @@ class OrderController extends Controller
             $transaction->status = 0;
             $transaction->save();
 
-            $json[] = [
-                'id' => $transaction->id
+            $json_trans_id[] = [
+                'trans_id' => $transaction->id
             ];
 
             $transaction = new fin_transactions;
@@ -256,8 +270,8 @@ class OrderController extends Controller
             $transaction->status = 0;
             $transaction->save();
 
-            $json[] = [
-                'id' => $transaction->id
+            $json_trans_id[] = [
+                'trans_id' => $transaction->id
             ];
 
             $transaction = new fin_transactions;
@@ -267,8 +281,14 @@ class OrderController extends Controller
             $transaction->status = 0;
             $transaction->save();
 
+            $json_trans_id[] = [
+                'trans_id' => $transaction->id
+            ];
+
+           
+
             $json[] = [
-                'id' => $transaction->id
+                'trans_id' => $json_trans_id
             ];
 
             $order = new Order;
@@ -313,8 +333,8 @@ class OrderController extends Controller
                 $transaction->status = 0;
                 $transaction->save();
 
-                $json[] = [
-                    'id' => $transaction->id
+                $json_trans_id[] = [
+                    'trans_id' => $transaction->id
                 ];
             }
 
@@ -327,8 +347,14 @@ class OrderController extends Controller
             $transaction->status = 0;
             $transaction->save();
 
+            $json_trans_id[] = [
+                'trans_id' => $transaction->id
+            ];
+
+            
+
             $json[] = [
-                'id' => $transaction->id
+                'trans_id' => $json_trans_id
             ];
 
             $order = new Order;
@@ -377,9 +403,17 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
+
          foreach(json_decode($order->transactions) as $transaction)
          {
-            fin_transactions::where('id',$transaction->id)->delete();
+            foreach($transaction->trans_id as $aaa)
+            {
+                fin_transactions::where('id',$aaa->trans_id)->delete();
+            }
+            //foreach($transaction->bank_id as $aaa)
+            //{
+                //fin_transactions::where('id',$aaa->bank_id)->delete();
+            //}
          }
          $order->delete();
     }
