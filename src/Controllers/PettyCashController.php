@@ -58,8 +58,8 @@ class PettyCashController extends Controller
         {
             $fin_transaction->status = 1;
             $fin_transaction->save();
-            $json[] = [
-                'id' => $fin_transaction->id
+            $json_trans_id[] = [
+                'trans_id' => $fin_transaction->id
             ];
         }
         
@@ -70,11 +70,20 @@ class PettyCashController extends Controller
         $fin_transactions->status = 1;
         $fin_transactions->save();
         
+        $json_bank_id[] = [
+            'bank_id' => $fin_transactions->id
+        ];
+
+
+        $json[] = [
+            'trans_id' => $json_trans_id,
+            'bank_id' => $json_bank_id
+        ];
+
         $order = new Order;
         $order->type = 'pettycash';
         $order->date = date('Y-m-d');
-        $order->tour = 'Petty Cash';
-        $order->pax = $fin_transactions->id;
+        //$order->tour = 'Petty Cash';
         $order->total = $total + $bank_fee;
         $order->note = 'Petty Cash - Top up : '. number_format($total, 0, ',', '.') .' - Bank Fee : '. number_format($bank_fee, 0, ',', '.'); 
         $order->transactions = json_encode($json);
@@ -116,18 +125,34 @@ class PettyCashController extends Controller
     public function destroy($id)
     {
         $order = Order::findOrFail($id);
-
-        fin_transactions::where('id',$order->pax)->delete();
+        //print_r($order);
+        
+        //fin_transactions::where('id',$order->pax)->delete();
 
         foreach(json_decode($order->transactions) as $transaction)
         {
-            $fin_transactions = fin_transactions::where('id',$transaction->id)->first();
-            if($fin_transactions)
+            foreach($transaction->trans_id as $aaa)
             {
-                $fin_transactions->status = 0;
-                $fin_transactions->save();
+                $fin_transactions = fin_transactions::where('id',$aaa->trans_id)->first();
+                if($fin_transactions)
+                {
+                    $fin_transactions->status = 0;
+                    $fin_transactions->save();
+                }
             }
+
+            foreach($transaction->bank_id as $aaa)
+            {
+                fin_transactions::where('id',$aaa->bank_id)->delete();
+            }
+            //$fin_transactions = fin_transactions::where('id',$transaction->id)->first();
+            //if($fin_transactions)
+            //{
+                //$fin_transactions->status = 0;
+                //$fin_transactions->save();
+            //}
         }
         $order->delete();
+        
     }
 }
