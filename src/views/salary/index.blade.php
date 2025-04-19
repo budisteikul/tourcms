@@ -43,7 +43,7 @@ table{
 
 <div>
 <div style="margin-top: 30px; margin-bottom: 40px; font-weight: bold; text-align: left; font-size:14px">
-  Tanggal : {{ $date_name }}<br />
+  {{ $date_name }}<br />
   Nama : {{ $guide_name }}<br />
   Total : {{$total}}<br />
   Jalan : {{$jalan}} kali
