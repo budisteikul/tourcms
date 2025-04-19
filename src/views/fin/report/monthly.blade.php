@@ -71,16 +71,23 @@ foreach($products as $product)
     <h5 class="card-title">Total : IDR {{ number_format($fin->total_per_month(12,$tahun,$bulan,false), 0, ',', '.') }}</h5>
     <h5 class="card-title">Jalan : {{ number_format($fin->count_per_month(12,$tahun,$bulan,false), 0, ',', '.') }} kali</h5>
   </div>
+  <div class="card-footer">
+    <h5><a href="{{ route('route_tourcms_salary.index') }}?id=12&date={{$tahun}}-{{ $bulan }}"><i class="far fa-file-pdf"></i> Download</a></h5>
+  </div>
 </div>
 
     </div>
     <div class="col-sm-auto">
-     
+
+   
 <div class="card text-white bg-success mb-3">
   <div class="card-header bg-success">{{ $fin->nameCategory(13,'-') }}</div>
   <div class="card-body">
     <h5 class="card-title">Total : IDR {{ number_format($fin->total_per_month(13,$tahun,$bulan,false), 0, ',', '.') }}</h5>
     <h5 class="card-title">Jalan : {{ number_format($fin->count_per_month(13,$tahun,$bulan,false), 0, ',', '.') }} kali</h5>
+  </div>
+  <div class="card-footer">
+    <h5><a href="{{ route('route_tourcms_salary.index') }}?id=13&date={{$tahun}}-{{ $bulan }}"><i class="far fa-file-pdf"></i> Download</a></h5>
   </div>
 </div>
 

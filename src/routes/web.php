@@ -48,6 +48,10 @@ Route::get('/cms/fin/orders/create/jmft','budisteikul\tourcms\Controllers\OrderC
 Route::resource('/cms/fin/orders','budisteikul\tourcms\Controllers\OrderController',[ 'names' => 'route_tourcms_orders' ])
 	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);
 
+//Salary
+Route::resource('/cms/salary','budisteikul\tourcms\Controllers\SalaryController',[ 'names' => 'route_tourcms_salary' ])
+	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);
+
 //Petty Cash
 Route::get('/cms/fin/pettycash/saldo','budisteikul\tourcms\Controllers\PettyCashController@saldo')->middleware(['web','auth','verified','CoreMiddleware','SettingMiddleware']);
 Route::resource('/cms/fin/pettycash','budisteikul\tourcms\Controllers\PettyCashController',[ 'names' => 'route_tourcms_pettycash' ])
