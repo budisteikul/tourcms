@@ -26,6 +26,7 @@
      						   url: '{{ route('route_tourcms_orders.index') }}/'+ id
 						        }).done(function( msg ) {
 							         table.ajax.reload( null, false );
+							         get_saldo();
 						        });	
             		}
         		},
@@ -105,6 +106,60 @@
       });
     
   }
+
+$(function() {
+    get_saldo();
+});
+
+function get_saldo()
+{
+	$.get("{{ route('route_tourcms_pettycash.index') }}/saldo", function(data, status){
+    	$('#saldo').html(data.pettycash_saldo);
+    	$('#button').html(data.button);
+  	});
+}
+
+function SET_DONE()
+{
+	var error = false;
+	$("#submit").attr("disabled", true);
+	$('#submit').html('<i class="fa fa-spinner fa-spin"></i>');
+	
+	
+
+	$.ajax({
+		data: {
+        	"_token": $("meta[name=csrf-token]").attr("content")
+        },
+		type: 'POST',
+		url: '{{ route('route_tourcms_pettycash.store') }}'
+		}).done(function( data ) {
+			
+			if(data.id=="1")
+			{
+						get_saldo();
+       					$('#dataTableBuilder').DataTable().ajax.reload( null, false );
+  						$("#submit").attr("disabled", true);
+						$('#submit').html('{{ __('Top up') }}');
+						
+			}
+			else
+			{
+				$.each( data, function( index, value ) {
+					$('#'+ index).addClass('is-invalid');
+						if(value!="")
+						{
+							$('#'+ index).after('<span id="span-'+ index  +'" class="invalid-feedback" role="alert"><strong>'+ value +'</strong></span>');
+						}
+					});
+				$("#submit").attr("disabled", false);
+				$('#submit').html('<i class="fa fa-save"></i> {{ __('Save') }}');
+			}
+		});
+	
+	
+	return false;
+}
 	</script>
 @endpush
 <div class="row justify-content-center">
@@ -112,14 +167,12 @@
             <div class="card">
                 <div class="card-header">Orders</div>
                 <div class="card-body">
-        		
-                <div class="container ml-0 pl-0">
-                <div class="row">
-                	<div class="col">
 
+<div class="row w-100">
+                	<div class="col text-left">
 <div class="col-md-6">
-<div class="form-group">
-	<label for="app">Create Order :</label>
+                   		<div class="form-group">
+
     <select class="form-control" id="app" data-live-search="true">
        	<option value="1">Jogja Night Food Tour</option>
        	<option value="2">Jogja Morning Food Tour</option>
@@ -127,17 +180,21 @@
        	<option value="4">Denpasar Food Tour</option>
        	<option value="5">Ubud Food Tour</option>
 	</select>
+	
 </div>
-
 <button   onclick="CREATE($('#app').val()); return false;" id="create" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Create</button>
 </div>
 
-                   
-
                     </div>
-                    
-                </div>
-                </div>  
+                    <div class="col-auto text-right mr-0 pr-0"  style="font-size: 20px">
+                    	Saldo : <span id="saldo"></span>
+                    	<br />
+                    	<span id="button"></span>
+                    </div>
+
+</div>
+
+                
        
       	
         <hr>

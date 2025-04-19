@@ -402,7 +402,8 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-
+         if($order->type=="order")
+         {
          foreach(json_decode($order->transactions) as $transaction)
          {
             foreach($transaction->trans_id as $aaa)
@@ -414,6 +415,28 @@ class OrderController extends Controller
                 //fin_transactions::where('id',$aaa->bank_id)->delete();
             //}
          }
+         }
+         else
+         {
+         foreach(json_decode($order->transactions) as $transaction)
+         {
+            foreach($transaction->trans_id as $aaa)
+            {
+                $fin_transactions = fin_transactions::where('id',$aaa->trans_id)->first();
+                if($fin_transactions)
+                {
+                    $fin_transactions->status = 0;
+                    $fin_transactions->save();
+                }
+            }
+
+            foreach($transaction->bank_id as $aaa)
+            {
+                fin_transactions::where('id',$aaa->bank_id)->delete();
+            }
+         }
+         }
+         
          $order->delete();
     }
 }

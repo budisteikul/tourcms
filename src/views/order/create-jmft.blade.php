@@ -127,6 +127,7 @@ function STORE(app)
 					$("#result").empty().append('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><b>Success!</b></div>').hide().fadeIn();
        				setTimeout(function (){
   						$.fancybox.close();
+  						get_saldo();
 					}, 1000);
 			}
 			else
