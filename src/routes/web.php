@@ -57,6 +57,10 @@ Route::resource('/cms/fin/pettycash','budisteikul\tourcms\Controllers\PettyCashC
 Route::resource('/cms/fin/expenses','budisteikul\tourcms\Controllers\ExpensesController',[ 'names' => 'route_tourcms_expenses' ])
 	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);
 
+//Revenue
+Route::resource('/cms/fin/revenue','budisteikul\tourcms\Controllers\RevenueController',[ 'names' => 'route_tourcms_revenue' ])
+	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);
+
 //Review
 Route::resource('/cms/review','budisteikul\tourcms\Controllers\ReviewController',[ 'names' => 'route_tourcms_review' ])
 	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);

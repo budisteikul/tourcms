@@ -45,13 +45,7 @@ class APIController extends Controller
 
     public function test()
     {
-        $aaa = Order::where('id',1)->first();
         
-        //print_r(json_decode($aaa->transactions));
-        foreach(json_decode($aaa->transactions) as $transaction)
-        {
-            print_r($transaction->transaction_id);
-        }
     }
 
     public function test2()
