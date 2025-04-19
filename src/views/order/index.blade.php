@@ -186,7 +186,7 @@ function SET_DONE()
 </div>
 
                     </div>
-                    <div class="col-auto text-right mr-0 pr-0"  style="font-size: 20px">
+                    <div class="col-auto text-right mr-0 pr-0"  style="font-size: 25px">
                     	Saldo : <span id="saldo"></span>
                     	<br />
                     	<span id="button"></span>
