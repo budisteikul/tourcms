@@ -241,9 +241,9 @@
             
             
 
-             <a class="collapse-item {{ (request()->is('cms/fin/transactions*')) ? 'active' : '' }}" href="{{ route('route_fin_transactions.index') }}"><i class="far fa-circle"></i> {{ __('Transaction') }}</a>
+             <!-- a class="collapse-item {{ (request()->is('cms/fin/transactions*')) ? 'active' : '' }}" href="{{ route('route_fin_transactions.index') }}"><i class="far fa-circle"></i> {{ __('Transaction') }}</a -->
             
-             <a class="collapse-item {{ (request()->is('cms/fin/tax*')) ? 'active' : '' }}" href="{{ route('route_fin_tax.index') }}"><i class="far fa-circle"></i> {{ __('Tax') }}</a>
+             <!-- a class="collapse-item {{ (request()->is('cms/fin/tax*')) ? 'active' : '' }}" href="{{ route('route_fin_tax.index') }}"><i class="far fa-circle"></i> {{ __('Tax') }}</a -->
 
              <a class="collapse-item {{ (request()->is('cms/fin/profitloss*')) ? 'active' : '' }}" href="{{ route('route_fin_profitloss.index') }}"><i class="far fa-circle"></i> {{ __('Profit Loss') }}</a>
 
@@ -251,7 +251,7 @@
 
              <a class="collapse-item {{ (request()->is('cms/fin/orders*')) ? 'active' : '' }}" href="{{ route('route_tourcms_orders.index') }}"><i class="far fa-circle"></i> {{ __('Orders') }}</a>
 
-             <a class="collapse-item {{ (request()->is('cms/fin/pettycash*')) ? 'active' : '' }}" href="{{ route('route_tourcms_pettycash.index') }}"><i class="far fa-circle"></i> {{ __('Petty Cash') }}</a>
+             <!-- a class="collapse-item {{ (request()->is('cms/fin/pettycash*')) ? 'active' : '' }}" href="{{ route('route_tourcms_pettycash.index') }}"><i class="far fa-circle"></i> {{ __('Petty Cash') }}</a -->
 
              <a class="collapse-item {{ (request()->is('cms/fin/expenses*')) ? 'active' : '' }}" href="{{ route('route_tourcms_expenses.index') }}"><i class="far fa-circle"></i> {{ __('Expenses') }}</a>
 
