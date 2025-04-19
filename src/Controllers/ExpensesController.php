@@ -54,7 +54,7 @@ class ExpensesController extends Controller
         {
             $trans_id = 46;
             $note = 'Expenses - Refund : '. number_format($amount, 0, ',', '.');
-            $status = 1;
+            $status = 0;
         }
         else
         {
