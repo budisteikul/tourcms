@@ -225,9 +225,17 @@ class OrderController extends Controller
             $pax =  $request->input('pax');
             $additional =  $request->input('additional');
             
-            
+            $fee_guide = 200000;
+            if($pax<2)
+            {
+                $guide = $fee_guide;
+            }
+            else
+            {
+                $guide = $fee_guide + (($pax - 2 + 1) * 100000);
+            }
+
             $cost = 200000 * $pax;
-            $guide = 150000 * $pax;
             $commision = 50000 * $pax;
             $total = $cost + $guide + $commision;
 
