@@ -65,7 +65,7 @@
 	<input type="number" id="additional" name="additional" class="form-control" placeholder="Additional" autocomplete="off" value="0">
 </div> 
 
-	<button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+	<button id="submit2" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
 </form>
 
 
@@ -86,8 +86,8 @@ function STORE()
 	//if(app==1)
 	//{
 		var error = false;
-		$("#submit").attr("disabled", true);
-		$('#submit').html('<i class="fa fa-spinner fa-spin"></i>');
+		$("#submit2").attr("disabled", true);
+		$('#submit2').html('<i class="fa fa-spinner fa-spin"></i>');
 		var input = ["pax","date","additional"];
 	
 		$.each(input, function( index, value ) {
@@ -129,8 +129,8 @@ function STORE()
 							$('#'+ index).after('<span id="span-'+ index  +'" class="invalid-feedback" role="alert"><strong>'+ value +'</strong></span>');
 						}
 					});
-				$("#submit").attr("disabled", false);
-				$('#submit').html('<i class="fa fa-save"></i> {{ __('Save') }}');
+				$("#submit2").attr("disabled", false);
+				$('#submit2').html('<i class="fa fa-save"></i> {{ __('Save') }}');
 			}
 		});
 	
