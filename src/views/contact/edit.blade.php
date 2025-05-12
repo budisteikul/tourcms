@@ -34,7 +34,8 @@
     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Message</a>
     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Jogja Night Food Tour</a>
     <a class="nav-item nav-link" id="nav-menu3-tab" data-toggle="tab" href="#nav-menu3" role="tab" aria-controls="nav-menu3" aria-selected="false">Jogja Morning Food Tour</a>
-    <a class="nav-item nav-link" id="nav-menu5-tab" data-toggle="tab" href="#nav-menu5" role="tab" aria-controls="nav-menu5" aria-selected="false">Bali Tour</a>
+    <a class="nav-item nav-link" id="nav-menu5-tab" data-toggle="tab" href="#nav-menu5" role="tab" aria-controls="nav-menu5" aria-selected="false">Bali Tour SDN 3 Penarungan</a>
+    <a class="nav-item nav-link" id="nav-menu5-tab" data-toggle="tab" href="#nav-menu5" role="tab" aria-controls="nav-menu5" aria-selected="false">Bali Tour SDN 2 Penarungan</a>
     <a class="nav-item nav-link" id="nav-menu4-tab" data-toggle="tab" href="#nav-menu6" role="tab" aria-controls="nav-menu6" aria-selected="false">Request Review</a>
     <a class="nav-item nav-link" id="nav-menu4-tab" data-toggle="tab" href="#nav-menu4" role="tab" aria-controls="nav-menu4" aria-selected="false">General</a>
   </div>
@@ -82,7 +83,8 @@
 </div>
 
 <div class="tab-pane fade pt-4" id="nav-menu5" role="tabpanel" aria-labelledby="nav-menu5-tab">
-                    <button type="button" class="btn btn-danger mb-2" id="template301"  onclick="sendTemplate(301); return false;"><i class="fas fa-paper-plane"></i> Taman Anyar</button>
+                    <button type="button" class="btn btn-danger mb-2" id="template301"  onclick="sendTemplate(301); return false;"><i class="fas fa-paper-plane"></i> Taman Anyar SDN Penarungan 3</button>
+                    <button type="button" class="btn btn-danger mb-2" id="template304"  onclick="sendTemplate(304); return false;"><i class="fas fa-paper-plane"></i> Taman Anyar SDN Penarungan 2</button>
                     <button type="button" class="btn btn-danger mb-2" id="template302"  onclick="sendTemplate(302); return false;"><i class="fas fa-paper-plane"></i> Taman Anyar - Dharma Picture</button>
                     <button type="button" class="btn btn-danger mb-2" id="template303"  onclick="sendTemplate(303); return false;"><i class="fas fa-paper-plane"></i> Bali Night Food Tour - Dharma Picture</button>
 </div>

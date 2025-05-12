@@ -151,6 +151,15 @@ class ContactController extends Controller
                 $var3 = "Please be there 15 minutes before the tour start 🙏";
                 $var4 = "https://maps.app.goo.gl/1Qd734sCUGkY9ckX9";
             break;
+
+            case 304:
+                $type = "reminder_step1";
+                $template = "reminder_step1";
+                $var1 = ucwords(strtolower($contact->name));
+                $var2 = "The *Bali Taman Anyar Village Tour* will start tomorrow morning at *9.30AM* and our meeting point is *SDN 2 Penarungan*";
+                $var3 = "Please be there 15 minutes before the tour start 🙏";
+                $var4 = "https://maps.app.goo.gl/6m9Bm1mrdLVZRefh6";
+            break;
             
             case 302:
                 $type = "reminder_step1_alt";
