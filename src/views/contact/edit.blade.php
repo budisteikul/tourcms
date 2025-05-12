@@ -82,8 +82,8 @@
 </div>
 
 <div class="tab-pane fade pt-4" id="nav-menu5" role="tabpanel" aria-labelledby="nav-menu5-tab">
-                    <button type="button" class="btn btn-danger mb-2" id="template301"  onclick="sendTemplate(301); return false;"><i class="fas fa-paper-plane"></i> Taman Anyar SDN Penarungan 3</button>
-                    <button type="button" class="btn btn-danger mb-2" id="template304"  onclick="sendTemplate(304); return false;"><i class="fas fa-paper-plane"></i> Taman Anyar SDN Penarungan 2</button>
+                    <button type="button" class="btn btn-danger mb-2" id="template301"  onclick="sendTemplate(301); return false;"><i class="fas fa-paper-plane"></i> Taman Anyar SDN 3 Penarungan</button>
+                    <button type="button" class="btn btn-danger mb-2" id="template304"  onclick="sendTemplate(304); return false;"><i class="fas fa-paper-plane"></i> Taman Anyar SDN 2 Penarungan</button>
                     
                     <button type="button" class="btn btn-danger mb-2" id="template303"  onclick="sendTemplate(303); return false;"><i class="fas fa-paper-plane"></i> Bali Night Food Tour - Dharma Picture</button>
 </div>
