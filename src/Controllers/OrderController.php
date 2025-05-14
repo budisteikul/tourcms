@@ -169,7 +169,7 @@ class OrderController extends Controller
             $pax =  $request->input('pax');
             $additional =  $request->input('additional');
 
-            $cost = 375000 * $pax;
+            $cost = 425000 * $pax;
             $total = $cost;
             $tour = "Taman Ayar Tour";
 
