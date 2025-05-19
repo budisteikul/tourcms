@@ -426,7 +426,7 @@ class ContactController extends Controller
                 $filetemp->delete();
             }
 
-            $whatsapp->sendImage($contact->wa_id,config('site.whatsapp_storage').'/whatsapp/'.$contact->wa_id.'/'. $image_id,$caption);
+            $whatsapp->sendImage($contact->wa_id,config('site.whatsapp_storage').'/'.$contact->wa_id.'/'. $image_id,$caption);
         }
 
         
