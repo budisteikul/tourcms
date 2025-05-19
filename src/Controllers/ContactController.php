@@ -31,7 +31,10 @@ class ContactController extends Controller
         }
 
         $id = $request->input('id');
-        Message::where('contact_id',$id)->delete();
+        $contact = Message::where('contact_id',$id)->firstOrFail();
+        Storage::disk('gcs')->deleteDirectory('whatsapp/'.$contact->wa_id);
+
+        $contact->delete();
         
         $whatsapp = new WhatsappHelper;
         $whatsapp->messages($id);
