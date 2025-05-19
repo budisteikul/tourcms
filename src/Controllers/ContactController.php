@@ -422,10 +422,11 @@ class ContactController extends Controller
             foreach($filetemps as $filetemp)
             { 
                 $contents = file_get_contents(storage_path('app').'/'. $filetemp->file);
-                Storage::disk('gcs')->put('images/whatsapp/'. $image_id, $contents);
+                Storage::disk('gcs')->put('whatsapp/'.$contact->wa_id.'/'. $image_id, $contents);
                 $filetemp->delete();
             }
-            $whatsapp->sendImage($contact->wa_id,config('site.image').'/whatsapp/'. $image_id,$caption);
+
+            $whatsapp->sendImage($contact->wa_id,config('site.whatsapp_storage').'/whatsapp/'.$contact->wa_id.'/'. $image_id,$caption);
         }
 
         
