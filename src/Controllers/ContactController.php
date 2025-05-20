@@ -98,6 +98,16 @@ class ContactController extends Controller
                 $var4 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
             break;
 
+            case 104:
+                $type = "reminder_step1_alt";
+                $template = "reminder_step1_alt";
+                $image = config("site.assets")."/img/guide/jasmine03.jpeg";
+                $var1 = ucwords(strtolower($contact->name));
+                $var2 = "The *Yogyakarta Night Walking and Food Tour* will start tonight at *6.30PM* and our meeting point is arround *Tugu Jogja* (Yogyakarta Monument)";
+                $var3 = "Her name is *Jasmine*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
+                $var4 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
+            break;
+
             case 121:
                 $type = "text";
                 $var1 = "Got it! Thank you for confirming 🙏😊";
@@ -113,6 +123,12 @@ class ContactController extends Controller
                 $type = "image";
                 $image = config("site.assets")."/img/guide/anisa01.jpeg";
                 $var1 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
+            break;
+
+            case 124:
+                $type = "image";
+                $image = config("site.assets")."/img/guide/jasmine03.jpeg";
+                $var1 = "Her name is *Jasmine*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
             break;
 
 
@@ -142,6 +158,16 @@ class ContactController extends Controller
                 $var1 = ucwords(strtolower($contact->name));
                 $var2 = "The *Morning Food Tour in Yogyakarta* will start tomorrow morning at *8.00AM* and our meeting point is *Lupis Mbah Satinem*";
                 $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
+                $var4 = "https://maps.app.goo.gl/tn2biVoLgPTRrtQs8";
+            break;
+
+            case 204:
+                $type = "reminder_step1_alt";
+                $template = "reminder_step1_alt";
+                $image = config("site.assets")."/img/guide/jasmine03.jpeg";
+                $var1 = ucwords(strtolower($contact->name));
+                $var2 = "The *Morning Food Tour in Yogyakarta* will start tomorrow morning at *8.00AM* and our meeting point is *Lupis Mbah Satinem*";
+                $var3 = "Her name is *Jasmine*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
                 $var4 = "https://maps.app.goo.gl/tn2biVoLgPTRrtQs8";
             break;
 

@@ -68,6 +68,8 @@
 
                     <button type="button" class="btn btn-danger mb-2" id="template103"  onclick="sendTemplate(103); return false;"><i class="fas fa-paper-plane"></i> Jogja Night Food Tour - Anisa Picture</button>
 
+                    <button type="button" class="btn btn-danger mb-2" id="template104"  onclick="sendTemplate(104); return false;"><i class="fas fa-paper-plane"></i> Jogja Night Food Tour - Jasmine Picture</button>
+
                     
 
                     
@@ -79,6 +81,8 @@
                     <button type="button" class="btn btn-danger mb-2" id="template202"  onclick="sendTemplate(202); return false;"><i class="fas fa-paper-plane"></i> Jogja Morning Food Tour - Kalika Picture</button>
 
                     <button type="button" class="btn btn-danger mb-2" id="template203"  onclick="sendTemplate(203); return false;"><i class="fas fa-paper-plane"></i> Jogja Morning Food Tour - Anisa Picture</button>
+
+                    <button type="button" class="btn btn-danger mb-2" id="template204"  onclick="sendTemplate(204); return false;"><i class="fas fa-paper-plane"></i> Jogja Morning Food Tour - Jasmine Picture</button>
 </div>
 
 <div class="tab-pane fade pt-4" id="nav-menu5" role="tabpanel" aria-labelledby="nav-menu5-tab">
@@ -94,6 +98,8 @@
                     <button type="button" class="btn btn-primary mb-2" id="template122"  onclick="sendTemplate(122); return false;"><i class="fas fa-paper-plane"></i> Kalika Picture</button>
 
                     <button type="button" class="btn btn-primary mb-2" id="template123"  onclick="sendTemplate(123); return false;"><i class="fas fa-paper-plane"></i> Anisa Picture</button>
+
+                    <button type="button" class="btn btn-primary mb-2" id="template124"  onclick="sendTemplate(124); return false;"><i class="fas fa-paper-plane"></i> Jasmine Picture</button>
 
                     
 </div>
