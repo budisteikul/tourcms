@@ -61,6 +61,8 @@
     <select class="form-control" id="guide" data-live-search="true">
        	<option value="12">Ratna</option>
        	<option value="13">Anisa</option>
+       	<option value="55">Jasmine</option>
+       	<option value="56">Dhea</option>
 	</select>
 </div>
 

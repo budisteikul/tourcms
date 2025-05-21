@@ -72,7 +72,16 @@ class OrderController extends Controller
 
             if($app==1)
             {
-                $total_guide = 150000 * $pax;
+                if($guide==55 || $guide==56)
+                {
+                    $total_guide = 100000 * $pax;
+                }
+                else
+                {
+                    $total_guide = 150000 * $pax;
+                }
+                
+
                 $total_cost = 250000 * $pax;
                 $total = $total_cost + $total_guide;
                 $tour = "Jogja Night Food Tour";
@@ -97,7 +106,15 @@ class OrderController extends Controller
 
             if($app==2)
             {
-                $total_guide = 150000 * $pax;
+                if($guide==55 || $guide==56)
+                {
+                    $total_guide = 100000 * $pax;
+                }
+                else
+                {
+                    $total_guide = 150000 * $pax;
+                }
+                
                 $total_cost = 150000 * $pax;
                 $total = $total_cost + $total_guide;
                 $tour = "Jogja Morning Food Tour";
