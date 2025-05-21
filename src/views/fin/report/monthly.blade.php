@@ -80,8 +80,8 @@ foreach($products as $product)
     <div class="col-sm-auto">
 
    
-<div class="card text-white bg-success mb-3">
-  <div class="card-header bg-success">{{ $fin->nameCategory(13,'-') }}</div>
+<div class="card text-white bg-primary mb-3">
+  <div class="card-header bg-primary">{{ $fin->nameCategory(13,'-') }}</div>
   <div class="card-body">
     <h5 class="card-title">Total : IDR {{ number_format($fin->total_per_month(13,$tahun,$bulan,false), 0, ',', '.') }}</h5>
     <h5 class="card-title">Jalan : {{ number_format($fin->count_per_month(13,$tahun,$bulan,false), 0, ',', '.') }} kali</h5>
