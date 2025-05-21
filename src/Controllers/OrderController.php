@@ -72,7 +72,7 @@ class OrderController extends Controller
 
             if($app==1)
             {
-                if($guide=="55" || $guide=="56")
+                if($guide->id==55 || $guide->id==56)
                 {
                     $total_guide = 100000 * $pax;
                 }
@@ -106,7 +106,7 @@ class OrderController extends Controller
 
             if($app==2)
             {
-                if($guide=="55" || $guide=="56")
+                if($guide->id==55 || $guide->id==56)
                 {
                     $total_guide = 100000 * $pax;
                 }
