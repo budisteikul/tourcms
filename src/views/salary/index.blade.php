@@ -43,10 +43,10 @@ table{
 
 <div>
 <div style="margin-top: 30px; margin-bottom: 40px; font-weight: bold; text-align: left; font-size:14px">
-  Bulan : {{ $date_name }}<br />
-  Nama : {{ $guide_name }}<br />
+  Date : {{ $date_name }}<br />
+  Name : {{ $guide_name }}<br />
   Total : {{$total}}<br />
-  Jalan : {{$jalan}} kali
+  Total Order : {{$jalan}}
 </div>
 
 <center>
@@ -57,7 +57,7 @@ table{
   <thead>
     <tr>
       <td width="10"><strong>No</strong></td>
-      <td ><strong>Tanggal</strong></td>
+      <td ><strong>Date</strong></td>
       <td align="right"><strong>Sub Total</strong></td>
     </tr>
   </thead>
