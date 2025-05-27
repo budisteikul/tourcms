@@ -46,7 +46,7 @@ table{
   Date : {{ $date_name }}<br />
   Name : {{ $guide_name }}<br />
   Total : {{$total}}<br />
-  Total Order : {{$jalan}}
+  Order : {{$jalan}}
 </div>
 
 <center>
