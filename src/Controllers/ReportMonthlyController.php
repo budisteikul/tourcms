@@ -47,7 +47,7 @@ class ReportMonthlyController extends Controller
             $traveller[] = ReportHelper::traveller_per_day($i,$bulan,$tahun);
         }
          
-
+        $guides = json_decode(config('site.guides'));
         
         return view('tourcms::fin.report.monthly',
             [
@@ -55,7 +55,8 @@ class ReportMonthlyController extends Controller
                 'tahun'=>$tahun,
                 'products'=>$products,
                 'tgl'=>$tgl,
-                'traveller' => $traveller
+                'traveller' => $traveller,
+                'guides' => $guides
             ]);
     }
 }

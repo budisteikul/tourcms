@@ -222,7 +222,7 @@ Route::resource('/cms/fin/banking', 'budisteikul\tourcms\Controllers\BankingCont
 
 Route::resource('/cms/fin/report/asset', 'budisteikul\tourcms\Controllers\AssetController',[ 'names' => 'route_fin_asset' ])->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
 
-Route::resource('/cms/fin/report/monthly', 'budisteikul\tourcms\Controllers\ReportMonthlyController',[ 'names' => 'route_fin_report_monthly' ])->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
+Route::resource('/cms/fin/report/monthly', 'budisteikul\tourcms\Controllers\ReportMonthlyController',[ 'names' => 'route_fin_report_monthly' ])->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);
 
 Route::resource('/cms/fin/tax', 'budisteikul\tourcms\Controllers\TaxController',[ 'names' => 'route_fin_tax' ])->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
 

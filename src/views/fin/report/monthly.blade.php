@@ -63,68 +63,26 @@ foreach($products as $product)
 
 
   <div class="row mt-4">
+    
+@foreach($guides as $guide)
     <div class="col-sm-auto">
       
 <div class="card text-white bg-primary mb-3">
-  <div class="card-header">{{ $fin->nameCategory(12,'-') }}</div>
+  <div class="card-header">{{ $fin->nameCategory($guide->id,'-') }}</div>
   <div class="card-body">
-    <h5 class="card-title">Total : IDR {{ number_format($fin->total_per_month(12,$tahun,$bulan,false), 0, ',', '.') }}</h5>
-    <h5 class="card-title">Order : {{ number_format($fin->count_per_month(12,$tahun,$bulan,false), 0, ',', '.') }} </h5>
+    <h5 class="card-title">Total : IDR {{ number_format($fin->total_per_month($guide->id,$tahun,$bulan,false), 0, ',', '.') }}</h5>
+    <h5 class="card-title">Order : {{ number_format($fin->count_per_month($guide->id,$tahun,$bulan,false), 0, ',', '.') }} </h5>
   </div>
   <div class="card-footer">
-    <h5><a href="{{ route('route_tourcms_salary.index') }}?id=12&date={{$tahun}}-{{ $bulan }}"><i class="far fa-file-pdf"></i> Download</a></h5>
+    <h5><a href="{{ route('route_tourcms_salary.index') }}?id={{$guide->id}}&date={{$tahun}}-{{ $bulan }}"><i class="far fa-file-pdf"></i> Download</a></h5>
   </div>
 </div>
 
     </div>
-    <div class="col-sm-auto">
-
-   
-<div class="card text-white bg-primary mb-3">
-  <div class="card-header bg-primary">{{ $fin->nameCategory(13,'-') }}</div>
-  <div class="card-body">
-    <h5 class="card-title">Total : IDR {{ number_format($fin->total_per_month(13,$tahun,$bulan,false), 0, ',', '.') }}</h5>
-    <h5 class="card-title">Order : {{ number_format($fin->count_per_month(13,$tahun,$bulan,false), 0, ',', '.') }} </h5>
-  </div>
-  <div class="card-footer">
-    <h5><a href="{{ route('route_tourcms_salary.index') }}?id=13&date={{$tahun}}-{{ $bulan }}"><i class="far fa-file-pdf"></i> Download</a></h5>
-  </div>
-</div>
+@endforeach
 
 
-
-    </div>
-
-<div class="col-sm-auto">
-      
-<div class="card text-white bg-primary mb-3">
-  <div class="card-header">{{ $fin->nameCategory(55,'-') }}</div>
-  <div class="card-body">
-    <h5 class="card-title">Total : IDR {{ number_format($fin->total_per_month(55,$tahun,$bulan,false), 0, ',', '.') }}</h5>
-    <h5 class="card-title">Order : {{ number_format($fin->count_per_month(55,$tahun,$bulan,false), 0, ',', '.') }} </h5>
-  </div>
-  <div class="card-footer">
-    <h5><a href="{{ route('route_tourcms_salary.index') }}?id=55&date={{$tahun}}-{{ $bulan }}"><i class="far fa-file-pdf"></i> Download</a></h5>
-  </div>
-</div>
-
-    </div>
-
-    <div class="col-sm-auto">
-      
-<div class="card text-white bg-primary mb-3">
-  <div class="card-header">{{ $fin->nameCategory(56,'-') }}</div>
-  <div class="card-body">
-    <h5 class="card-title">Total : IDR {{ number_format($fin->total_per_month(56,$tahun,$bulan,false), 0, ',', '.') }}</h5>
-    <h5 class="card-title">Order : {{ number_format($fin->count_per_month(56,$tahun,$bulan,false), 0, ',', '.') }} </h5>
-  </div>
-  <div class="card-footer">
-    <h5><a href="{{ route('route_tourcms_salary.index') }}?id=56&date={{$tahun}}-{{ $bulan }}"><i class="far fa-file-pdf"></i> Download</a></h5>
-  </div>
-</div>
-
-    </div>
-
+    
 
   </div>
 

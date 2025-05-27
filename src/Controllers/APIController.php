@@ -45,6 +45,15 @@ class APIController extends Controller
 
     public function test()
     {
+        $str = config('site.guides');
+        //print_r($aaa);
+        
+        $str = '[{"id":12,"name":"Ratna"},{"id":14,"name":"Anisa"}]';
+        $jObj = json_decode($str);
+        foreach($jObj as $x)
+        {
+            print_r($x->id);
+        }
         
     }
 
