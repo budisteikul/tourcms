@@ -38,9 +38,9 @@ class SalaryController extends Controller
 
         $pdf = PDF::setOptions(['tempDir' =>  storage_path(),'fontDir' => storage_path(),'fontCache' => storage_path(),'isRemoteEnabled' => true])->loadView('tourcms::salary.index',['guide_name'=>$guide_name,'date_name'=>$date_name,'total'=>$total,'jalan'=>$jalan,'transactions'=>$transactions])->setPaper('a4', 'portrait');
 
-        return $pdf->download('Salary-'. $id .'-'. $month .'-'.$year.'.pdf');
+        return $pdf->download('Profit-Sharing-'. $id .'-'. $month .'-'.$year.'.pdf');
 
-        return view('tourcms::salary.index',['guide_name'=>$guide_name,'date_name'=>$date_name,'total'=>$total,'jalan'=>$jalan,'transactions'=>$transactions]);
+        //return view('tourcms::salary.index',['guide_name'=>$guide_name,'date_name'=>$date_name,'total'=>$total,'jalan'=>$jalan,'transactions'=>$transactions]);
     }
 
     /**
