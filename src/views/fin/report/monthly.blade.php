@@ -33,11 +33,10 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 
 <div class="row mt-4">
     
-    <div class="col-md-6">
-     
+<div class="col-md-6">
 <div class="card text-white bg-light mb-3 w-100">
-  <div class="card-header bg-light text-dark">TRAVELLER</div>
-  <div class="card-body bg-light text-dark">
+<div class="card-header bg-light text-dark">TRAVELLER BY PRODUCT</div>
+<div class="card-body bg-light text-dark">
 @php
 $total_tamu = 0;    
 foreach($products as $product)
@@ -47,12 +46,43 @@ foreach($products as $product)
     print(''.$product->title.' : '. $tamu .' persons <br />');
 }
 @endphp
-  </div>
-  <div class="card-footer bg-light text-dark">Total Traveller : {{$total_tamu}}</div>
+</div>
+<div class="card-footer bg-light text-dark">Total Traveller : {{$total_tamu}}</div>
 </div>
 
+
+
+
     </div>
+
+
+<div class="col-md-6">
+<div class="card text-white bg-light mb-3 w-100">
+<div class="card-header bg-light text-dark">TRAVELLER BY BOOKING</div>
+<div class="card-body bg-light text-dark">
+@php
+$total_tamu = 0;    
+foreach($bookings as $booking)
+{
+    
+    print(''.$booking["booking_channel"].' : '. $booking["total"] .' persons <br />');
+    $total_tamu += $booking["total"];
+}
+@endphp
 </div>
+<div class="card-footer bg-light text-dark">Total Traveller : {{$total_tamu}}</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+
+
+
 
 
 

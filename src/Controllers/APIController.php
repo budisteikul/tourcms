@@ -12,6 +12,7 @@ use budisteikul\tourcms\Helpers\GeneralHelper;
 use budisteikul\tourcms\Helpers\LogHelper;
 use budisteikul\tourcms\Helpers\ReviewHelper;
 use budisteikul\tourcms\Helpers\ImageHelper;
+use budisteikul\tourcms\Helpers\ReportHelper;
 
 use budisteikul\tourcms\Models\Category;
 use budisteikul\tourcms\Models\Review;
@@ -45,16 +46,8 @@ class APIController extends Controller
 
     public function test()
     {
-        $str = config('site.guides');
-        //print_r($aaa);
-        
-        $str = '[{"id":12,"name":"Ratna"},{"id":14,"name":"Anisa"}]';
-        $jObj = json_decode($str);
-        foreach($jObj as $x)
-        {
-            print_r($x->id);
-        }
-        
+        $aaa = ReportHelper::booking_per_month(3,2025);
+        print_r($aaa);
     }
 
     public function test2()

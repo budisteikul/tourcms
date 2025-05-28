@@ -39,6 +39,7 @@ class ReportMonthlyController extends Controller
             ];
         }
         
+
         $products = (object)$products_count;
 
         for($i=1;$i <= date("t",strtotime($tahun."-".$bulan."-01"));$i++)
@@ -46,7 +47,10 @@ class ReportMonthlyController extends Controller
             $tgl[] = $i;
             $traveller[] = ReportHelper::traveller_per_day($i,$bulan,$tahun);
         }
-         
+        
+        $bookings = ReportHelper::traveler_booking_per_month($bulan,$tahun);
+
+
         $guides = json_decode(config('site.guides'));
         
         return view('tourcms::fin.report.monthly',
@@ -56,7 +60,8 @@ class ReportMonthlyController extends Controller
                 'products'=>$products,
                 'tgl'=>$tgl,
                 'traveller' => $traveller,
-                'guides' => $guides
+                'guides' => $guides,
+                'bookings' => $bookings
             ]);
     }
 }
