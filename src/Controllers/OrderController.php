@@ -30,12 +30,14 @@ class OrderController extends Controller
 
     public function create_jnft()
     {
-        return view('tourcms::order.create-jnft');
+        $guides = json_decode(config('site.guides'));
+        return view('tourcms::order.create-jnft',['guides'=>$guides]);
     }
 
     public function create_jmft()
     {
-        return view('tourcms::order.create-jmft');
+        $guides = json_decode(config('site.guides'));
+        return view('tourcms::order.create-jmft',['guides'=>$guides]);
     }
 
     public function create_tat()
@@ -72,14 +74,17 @@ class OrderController extends Controller
 
             if($app==1)
             {
-                if($guide->id==55 || $guide->id==56)
+
+                $guide_settings = json_decode(config('site.guides'));
+                foreach($guide_settings as $guide_setting)
                 {
-                    $total_guide = 100000 * $pax;
+                    if($guide->id==$guide_setting->id)
+                    {
+                        $total_guide = $guide_setting->fee * $pax;
+                    }
                 }
-                else
-                {
-                    $total_guide = 150000 * $pax;
-                }
+
+                
                 
 
                 $total_cost = 250000 * $pax;
