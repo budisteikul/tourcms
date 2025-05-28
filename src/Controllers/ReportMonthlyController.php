@@ -48,7 +48,8 @@ class ReportMonthlyController extends Controller
             $traveller[] = ReportHelper::traveller_per_day($i,$bulan,$tahun);
         }
         
-        $bookings = ReportHelper::traveler_booking_per_month($bulan,$tahun);
+        $traveler_booking_per_months = ReportHelper::traveler_booking_per_month($bulan,$tahun);
+        $bookings = ReportHelper::booking_per_month($bulan,$tahun);
 
 
         $guides = json_decode(config('site.guides'));
@@ -61,7 +62,8 @@ class ReportMonthlyController extends Controller
                 'tgl'=>$tgl,
                 'traveller' => $traveller,
                 'guides' => $guides,
-                'bookings' => $bookings
+                'bookings' => $bookings,
+                'traveler_booking_per_months' => $traveler_booking_per_months
             ]);
     }
 }

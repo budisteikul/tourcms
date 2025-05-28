@@ -2,8 +2,18 @@
 namespace budisteikul\tourcms\Helpers;
 use budisteikul\tourcms\Models\ShoppingcartProduct;
 use budisteikul\tourcms\Models\Shoppingcart;
+use Illuminate\Support\Facades\DB;
 
 class ReportHelper {
+
+    public static function booking_per_month($month,$year)
+    {
+        $bookings = Shoppingcart::with('shoppingcart_products')->WhereHas('shoppingcart_products', function($query) use ($month,$year) {
+                 $query->whereYear('date',$year)->whereMonth('date',$month);
+            })->where('booking_status','CONFIRMED')->select('booking_channel', DB::raw('count(*) as total'))->groupBy('booking_channel')->select('booking_channel', DB::raw('count(*) as total'))->get();
+
+        return $bookings;
+    }
 
     public static function traveler_booking_per_month($month,$year)
     {
@@ -30,7 +40,7 @@ class ReportHelper {
                 }
             }
 
-            $value[] = [
+            $value[] = (object)[
                 "booking_channel" => $booking_channel,
                 "total" => $total
             ];

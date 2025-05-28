@@ -23,19 +23,43 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 
 <div class="row mt-4">
     <div class="col-md-6">
-      
+
+<div class="card h-100 border-0">      
 <canvas id="barChart" ></canvas>
+</div>
 
     </div>
+
+
+      
+<div class="col-md-6">
+<div class="card text-white bg-light mb-3 w-100 h-100">
+<div class="card-header bg-light text-dark"><b>BOOKING</b></div>
+<div class="card-body bg-light text-dark">
+@php
+$total_booking = 0;  
+foreach($bookings as $booking)
+{
+    
+    print(''.$booking->booking_channel.' : '. $booking->total .' <br />');
+    $total_booking += $booking->total;
+}
+@endphp
+</div>
+<div class="card-footer bg-light text-dark">Total Booking : {{$total_booking}}</div>
+</div>
+</div>
+
+    
     
 </div>
 
 
-<div class="row mt-4">
+<div class="row mt-4 ">
     
 <div class="col-md-6">
-<div class="card text-white bg-light mb-3 w-100">
-<div class="card-header bg-light text-dark">TRAVELLER BY PRODUCT</div>
+<div class="card text-white bg-light mb-3 w-100 h-100">
+<div class="card-header bg-light text-dark"><b>TRAVELLER BY PRODUCT</b></div>
 <div class="card-body bg-light text-dark">
 @php
 $total_tamu = 0;    
@@ -57,22 +81,25 @@ foreach($products as $product)
 
 
 <div class="col-md-6">
-<div class="card text-white bg-light mb-3 w-100">
-<div class="card-header bg-light text-dark">TRAVELLER BY BOOKING</div>
+<div class="card text-white bg-light mb-3 w-100 h-100">
+<div class="card-header bg-light text-dark"><b>TRAVELLER BY BOOKING</b></div>
 <div class="card-body bg-light text-dark">
 @php
 $total_tamu = 0;    
-foreach($bookings as $booking)
+foreach($traveler_booking_per_months as $traveler_booking_per_month)
 {
     
-    print(''.$booking["booking_channel"].' : '. $booking["total"] .' persons <br />');
-    $total_tamu += $booking["total"];
+    print(''.$traveler_booking_per_month->booking_channel.' : '. $traveler_booking_per_month->total .' persons <br />');
+    $total_tamu += $traveler_booking_per_month->total;
 }
 @endphp
 </div>
 <div class="card-footer bg-light text-dark">Total Traveller : {{$total_tamu}}</div>
 </div>
 </div>
+
+
+
 
 
 

@@ -47,7 +47,10 @@ class APIController extends Controller
     public function test()
     {
         $aaa = ReportHelper::booking_per_month(3,2025);
-        print_r($aaa);
+        foreach($aaa as $x)
+        {
+            print_r($x->total);
+        }
     }
 
     public function test2()
