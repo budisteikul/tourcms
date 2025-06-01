@@ -54,7 +54,7 @@ class NeracaController extends Controller
         
 
         $total_asset = $cash + $accounts_receivable;
-        $total_liabilities_and_equity =  $capital+$earning+$retained_earnings;
+        $total_liabilities_and_equity =  $capital+$earning+$retained_earnings+$debt;
 
         if($action=="pdf")
         {
