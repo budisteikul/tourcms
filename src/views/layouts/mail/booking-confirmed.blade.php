@@ -148,7 +148,7 @@ table.body .article {
                                        
                                         <hr style="height:1px;border:none;color:#EEE;background-color:#EEE;" />
                                         Follow link below to know way to the meeting point.<br>
-                                        <a href="https://map.vertikaltrip.com" target="_blank" style="text-decoration: none;">https://map.vertikaltrip.com
+                                        <a href="https://map.jogjafoodtour.com" target="_blank" style="text-decoration: none;">https://map.jogjafoodtour.com
                                         </a>
                                         <hr style="height:1px;border:none;color:#EEE;background-color:#EEE;" />
                               </td>
@@ -179,10 +179,8 @@ table.body .article {
                       Whatsapp : +62 895 3000 0030<br>
                       Email : guide@vertikaltrip.com<br>
                       <br>
-                      <b>VERTIKAL TRIP YOGYAKARTA</b><br>
-                      www.jogjafoodtour.com<br>
-                      <b>VERTIKAL TRIP BALI</b><br>
-                      www.ubudfoodtour.com
+                      <b>VERTIKAL TRIP</b><br>
+                      www.jogjafoodtour.com
                     </span>
                     
                   </td>

@@ -32,6 +32,7 @@
                 <div class="card-header bg-secondary">CUSTOMER</div>
                   <ul class="list-group list-group-flush ml-0 mr-0 pl-0 pr-0">
                     <li class="list-group-item"><a href="{{env("APP_API_URL")}}/pdf/invoice/{{ $shoppingcart->session_id }}/Invoice-{{ $shoppingcart->confirmation_code }}.pdf"><i class="far fa-file-pdf"></i> Invoice-{{ $shoppingcart->confirmation_code }}.pdf</a></li>
+                    <li class="list-group-item"><b>ID :</b> {{ $shoppingcart->confirmation_code }} <input type="hidden" id="id" value="{{ $shoppingcart->confirmation_code }}"> <button onclick="copyToClipboard('#id')" title="Copied" data-toggle="tooltip" data-placement="right" data-trigger="click" class="btn btn-light btn-sm invoice-hilang"><i class="far fa-copy"></i></button></li>
                     <li class="list-group-item"><b>Name :</b> {{ $contact->firstName }} {{ $contact->lastName }}<input type="hidden" id="full_name" value="{{ $contact->firstName }} {{ $contact->lastName }}"> <button onclick="copyToClipboard('#full_name')" title="Copied" data-toggle="tooltip" data-placement="right" data-trigger="click" class="btn btn-light btn-sm invoice-hilang"><i class="far fa-copy"></i></button></li>
                     
                     
@@ -44,12 +45,12 @@
                     <li class="list-group-item"><b>Phone :</b> <a href="/cms/vcard/download/{{$shoppingcart->id}}">{{ $contact->phoneNumber }}</a> <input type="hidden" id="Whatsapp" value="{{ $nomor }}"> <button onclick="copyToClipboard('#Whatsapp')" title="Copied" data-toggle="tooltip" data-placement="right" data-trigger="click" class="btn btn-light btn-sm invoice-hilang"><i class="far fa-copy"></i></button></li>
                     @endif
                     @if($contact->email!="")
-                    <li class="list-group-item"><b>Email :</b> {{ $contact->email }}</li>
+                    <li class="list-group-item"><b>Email :</b> {{ $contact->email }} <input type="hidden" id="email" value="{{ $contact->email }}"><button onclick="copyToClipboard('#email')" title="Copied" data-toggle="tooltip" data-placement="right" data-trigger="click" class="btn btn-light btn-sm invoice-hilang"><i class="far fa-copy"></i></button></li>
                     @endif
                     <li class="list-group-item"><b>Status :</b> {{ strtoupper($shoppingcart->booking_status) }}</li>
                     @if($contact->phoneNumber!="")
                     <li class="list-group-item">
-                         <a href="/cms/contact/{{ $Whatsapp->contact($nomor, $contact->firstName) }}/edit" class="btn btn-sm btn-primary mb-2" ><i class="fab fa-whatsapp"></i> Whatsapp Business API</a>
+                         <a href="/cms/contact/{{ $Whatsapp->contact($nomor, $contact->firstName) }}/edit" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fab fa-whatsapp"></i> Whatsapp Business API</a>
                          <a href="https://wa.me/{{ $nomor }}" class="btn btn-sm btn-success mb-2" target="_blank"><i class="fab fa-whatsapp"></i> Whatsapp Business App</a>
                     </li>
                     @endif
@@ -115,10 +116,10 @@
             <div class="card mb-2">
                 <div class="card-body bg-light">
                     @if($contact->phoneNumber!="")
-                    <li class="list-group-item"><button id="btn-whatsapp" type="button" onClick="RESEND_WHATSAPP('{{ $shoppingcart->id }}','{{ $shoppingcart->confirmation_code }}'); return false;" class="btn btn-block btn-success mr-0"><i class="fab fa-whatsapp"></i> <b>Resend Receipt by Whatsapp</b></button></li>
+                    <!-- li class="list-group-item"><button id="btn-whatsapp" type="button" onClick="RESEND_WHATSAPP('{{ $shoppingcart->id }}','{{ $shoppingcart->confirmation_code }}'); return false;" class="btn btn-block btn-success mr-0"><i class="fab fa-whatsapp"></i> <b>Resend Receipt by Whatsapp</b></button></li -->
                     @endif
                     @if($contact->email!="")
-                    <li class="list-group-item"><button id="btn-email" type="button" onClick="RESEND_EMAIL('{{ $shoppingcart->id }}','{{ $shoppingcart->confirmation_code }}'); return false;" class="btn btn-block btn-primary mr-0"><i class="far fa-envelope"></i> <b>Resend Receipt by Email</b></button></li>
+                    <!-- li class="list-group-item"><button id="btn-email" type="button" onClick="RESEND_EMAIL('{{ $shoppingcart->id }}','{{ $shoppingcart->confirmation_code }}'); return false;" class="btn btn-block btn-primary mr-0"><i class="far fa-envelope"></i> <b>Resend Receipt by Email</b></button></li -->
                     @endif
                     <li class="list-group-item"><button id="btn-del" type="button" onClick="CANCEL('{{ $shoppingcart->id }}','{{ $shoppingcart->confirmation_code }}'); return false;" class="btn btn-block btn-danger mr-0"><i class="fa fa-ban"></i> <b>Cancel this booking</b></button></li>
                 </div>
