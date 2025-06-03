@@ -91,6 +91,7 @@ class OrderController extends Controller
                 $total = $total_cost + $total_guide;
                 $tour = "Jogja Night Food Tour";
                 $pax = $pax;
+
                 if($additional>0)
                 {
                     $total = $total + $additional;
@@ -176,6 +177,7 @@ class OrderController extends Controller
             $order = new Order;
             $order->type = 'order';
             $order->date = $date;
+            $order->guide = $guide->id;
             $order->tour = $tour;
             $order->pax = $pax;
             $order->total = $total;
@@ -193,7 +195,7 @@ class OrderController extends Controller
 
             $cost = 425000 * $pax;
             $total = $cost;
-            $tour = "Taman Ayar Tour";
+            $tour = "Taman Anyar Tour";
 
             if($additional>0)
             {
