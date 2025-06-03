@@ -22,7 +22,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
                     </div>
 
 <div class="row mt-4">
-    <div class="col-md-6">
+    <div class="col-md-6 mb-4">
 
 <div class="card h-100 border-0">      
 <canvas id="barChart" ></canvas>
@@ -32,7 +32,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 
 
       
-<div class="col-md-6">
+<div class="col-md-6 mb-4">
 <div class="card text-white bg-light mb-3 w-100 h-100">
 <div class="card-header bg-light text-dark"><b>BOOKING</b></div>
 <div class="card-body bg-light text-dark">
@@ -57,7 +57,7 @@ foreach($bookings as $booking)
 
 <div class="row mt-4 ">
     
-<div class="col-md-6">
+<div class="col-md-6 mb-4">
 <div class="card text-white bg-light mb-3 w-100 h-100">
 <div class="card-header bg-light text-dark"><b>TRAVELLER BY PRODUCT</b></div>
 <div class="card-body bg-light text-dark">
@@ -80,7 +80,7 @@ foreach($products as $product)
     </div>
 
 
-<div class="col-md-6">
+<div class="col-md-6 mb-4">
 <div class="card text-white bg-light mb-3 w-100 h-100">
 <div class="card-header bg-light text-dark"><b>TRAVELLER BY BOOKING</b></div>
 <div class="card-body bg-light text-dark">
