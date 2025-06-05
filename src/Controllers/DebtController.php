@@ -37,7 +37,7 @@ class DebtController extends Controller
     {
         $app =  $request->input('app');
         $amount =  $request->input('amount');
-        $date = date('Y-m-d');
+        $date = $request->input('date');
 
         $validator = Validator::make($request->all(), [
             'amount' => 'required|integer',
