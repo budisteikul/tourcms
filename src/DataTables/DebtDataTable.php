@@ -57,7 +57,7 @@ class DebtDataTable extends DataTable
      */
     public function query(Order $model): QueryBuilder
     {
-        return $model->where('type','debt')->newQuery();
+        return $model->where('type','cash_advance')->newQuery();
     }
 
     /**

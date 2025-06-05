@@ -221,12 +221,13 @@
         {{ (request()->is('cms/fin/pettycash*')) ? 'active' : '' }}
         {{ (request()->is('cms/fin/expenses*')) ? 'active' : '' }}
         {{ (request()->is('cms/fin/revenue*')) ? 'active' : '' }}
+        {{ (request()->is('cms/fin/ca*')) ? 'active' : '' }}
       
       ">
       @php
         $collapsed = 'collapsed';
         $show = '';        
-        if(request()->is('cms/fin/profitloss*') || request()->is('cms/fin/tax*') || request()->is('cms/fin/transactions*') || request()->is('cms/fin/neraca*') || request()->is('cms/fin/orders*') || request()->is('cms/fin/pettycash*') || request()->is('cms/fin/expenses*') || request()->is('cms/fin/revenue*'))
+        if(request()->is('cms/fin/profitloss*') || request()->is('cms/fin/tax*') || request()->is('cms/fin/transactions*') || request()->is('cms/fin/neraca*') || request()->is('cms/fin/orders*') || request()->is('cms/fin/pettycash*') || request()->is('cms/fin/expenses*') || request()->is('cms/fin/revenue*') || request()->is('cms/fin/ca*'))
         {
           $collapsed = '';
           $show = 'show';
@@ -256,6 +257,8 @@
              <a class="collapse-item {{ (request()->is('cms/fin/expenses*')) ? 'active' : '' }}" href="{{ route('route_tourcms_expenses.index') }}"><i class="far fa-circle"></i> {{ __('Expenses') }}</a>
 
              <a class="collapse-item {{ (request()->is('cms/fin/revenue*')) ? 'active' : '' }}" href="{{ route('route_tourcms_revenue.index') }}"><i class="far fa-circle"></i> {{ __('Revenue') }}</a>
+
+             <a class="collapse-item {{ (request()->is('cms/fin/ca*')) ? 'active' : '' }}" href="{{ route('route_tourcms_debt.index') }}"><i class="far fa-circle"></i> {{ __('Cash Advance') }}</a>
 
             
           </div>

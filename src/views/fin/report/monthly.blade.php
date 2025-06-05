@@ -126,7 +126,7 @@ foreach($traveler_booking_per_months as $traveler_booking_per_month)
     $total = $fin->total_per_month($guide->id,$tahun,$bulan,false);
     $order = $fin->count_per_month($guide->id,$tahun,$bulan,false);
     $ca = $fin->ca($guide->id,$bulan,$tahun);
-    $total = $total - $ca;
+    $total = $total - $ca->total;
 @endphp
     <div class="col-sm-auto">
 <div class="card text-white bg-primary mb-3">

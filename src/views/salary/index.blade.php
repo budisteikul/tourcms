@@ -52,7 +52,6 @@ table{
 <center>
 
 
-
  <table id="table1" border="1" cellspacing="2" cellpadding="3" style="border-collapse: collapse; " >
   <thead>
     <tr>
@@ -86,7 +85,45 @@ table{
     </tr>
 
   </tbody>
-</table>  
+</table>
+<br />
+<br />
+@if($ca->total>0)
+<table id="table1" border="1" cellspacing="2" cellpadding="3" style="border-collapse: collapse; " >
+  <thead>
+    <tr>
+      <td width="10"><strong>No</strong></td>
+      <td ><strong>Date</strong></td>
+      <td align="right"><strong>Sub Total</strong></td>
+    </tr>
+  </thead>
+  <tbody>
+    @php
+    $total = 0;
+    $no = 0;
+    @endphp
+    @foreach($ca->ca as $cax)
+    @php
+    $total += $cax->total;
+    $no += 1;
+    @endphp
+    <tr>
+      <td align="center">{{$no}}</td>
+      <td>{{$GeneralHelper->dateFormat($cax->date,4)}}</td>
+      <td align="right">{{number_format($cax->total, 0, ',', '.')}}</td>
+    </tr>
+    @endforeach
+    
+    
+    <tr>
+      <td align="center" colspan="2"><strong>Total</strong></td>
+      
+      <td align="right">{{number_format($total, 0, ',', '.')}}</td>
+    </tr>
+
+  </tbody>
+</table>
+@endif
  </center>    
 
 </div>

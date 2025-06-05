@@ -39,11 +39,20 @@ class DebtController extends Controller
         $amount =  $request->input('amount');
         $date = date('Y-m-d');
 
+        $validator = Validator::make($request->all(), [
+            'amount' => 'required|integer',
+        ]);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return response()->json($errors);
+        }
+
         $guide = fin_categories::where('id',$app)->first();
         $note = 'Cash advance - '. $guide->name .' : '. number_format($amount, 0, ',', '.');
 
         $order = new Order;
-        $order->type = 'debt';
+        $order->type = 'cash_advance';
         $order->date =  $date;
         $order->guide =  $guide->id;
         $order->total = $amount;

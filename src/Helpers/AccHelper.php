@@ -38,13 +38,16 @@ class AccHelper {
 
     public static function ca($guide_id,$month,$year)
     {
+        $data = new \stdClass();
         $total = 0;
-        $cas = Order::where('type','debt')->where('guide',$guide_id)->whereMonth('date',$month)->whereYear('date',$year)->get();
+        $cas = Order::where('type','cash_advance')->where('guide',$guide_id)->whereMonth('date',$month)->whereYear('date',$year)->get();
         foreach($cas as $ca)
         {
             $total += $ca->total;
         }
-        return $total;
+        $data->ca = $cas;
+        $data->total = $total;
+        return $data;
     }
 
     public static function total_by_type($type)
