@@ -11,7 +11,7 @@
                 <div class="row align-items-center w-100">
                     <div class="col text-left">
                         <div class="d-flex align-self-center">
-                        Create Debt
+                        Create Cash Advance
                         </div>
                     </div>
                     <div class="col-auto text-right mr-0 pr-0">
