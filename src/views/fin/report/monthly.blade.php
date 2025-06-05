@@ -122,13 +122,18 @@ foreach($traveler_booking_per_months as $traveler_booking_per_month)
   <div class="row mt-4">
     
 @foreach($guides as $guide)
+@php
+    $total = $fin->total_per_month($guide->id,$tahun,$bulan,false);
+    $order = $fin->count_per_month($guide->id,$tahun,$bulan,false);
+    $ca = $fin->ca($guide->id,$bulan,$tahun);
+    $total = $total - $ca;
+@endphp
     <div class="col-sm-auto">
-      
 <div class="card text-white bg-primary mb-3">
   <div class="card-header">{{ $fin->nameCategory($guide->id,'-') }}</div>
   <div class="card-body">
-    <h5 class="card-title">Total : IDR {{ number_format($fin->total_per_month($guide->id,$tahun,$bulan,false), 0, ',', '.') }}</h5>
-    <h5 class="card-title">Order : {{ number_format($fin->count_per_month($guide->id,$tahun,$bulan,false), 0, ',', '.') }} </h5>
+    <h5 class="card-title">Total : IDR {{ number_format($total, 0, ',', '.') }}</h5>
+    <h5 class="card-title">Order : {{ number_format($order, 0, ',', '.') }} </h5>
   </div>
   <div class="card-footer">
     <h5><a href="{{ route('route_tourcms_salary.index') }}?id={{$guide->id}}&date={{$tahun}}-{{ $bulan }}"><i class="far fa-file-pdf"></i> Download</a></h5>

@@ -32,11 +32,9 @@
 <div class="form-group">
     <label for="app">Debt</label>
     <select class="form-control" id="app">
-      <option value="1">AIRBNB</option>
-      <option value="2">PARTNER</option>
-      <option value="3">VIATOR</option>
-      <option value="4">GETYOURGUIDE</option>
-      <option value="5">WEBSITE</option>
+      @foreach($guides as $guide)
+       	<option value="{{$guide->id}}">{{$guide->name}}</option>
+       	@endforeach
     </select>
 </div>
 

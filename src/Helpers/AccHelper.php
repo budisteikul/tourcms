@@ -3,6 +3,7 @@ namespace budisteikul\tourcms\Helpers;
 
 use budisteikul\tourcms\Models\fin_transactions;
 use budisteikul\tourcms\Models\fin_categories;
+use budisteikul\tourcms\Models\Order;
 use budisteikul\tourcms\Helpers\GeneralHelper;
 use budisteikul\tourcms\Models\Shoppingcart;
 use budisteikul\tourcms\Models\Product;
@@ -33,6 +34,17 @@ class AccHelper {
     {
         $fin_categories = fin_categories::where('id',$id)->first();
         return $fin_categories->type;
+    }
+
+    public static function ca($guide_id,$month,$year)
+    {
+        $total = 0;
+        $cas = Order::where('type','debt')->where('guide',$guide_id)->whereMonth('date',$month)->whereYear('date',$year)->get();
+        foreach($cas as $ca)
+        {
+            $total += $ca->total;
+        }
+        return $total;
     }
 
     public static function total_by_type($type)

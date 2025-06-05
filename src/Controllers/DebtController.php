@@ -25,11 +25,11 @@ class DebtController extends Controller
      */
     public function create()
     {
-        return view('tourcms::debt.create');
+        $guides = json_decode(config('site.guides'));
+        return view('tourcms::debt.create',['guides'=>$guides]);
     }
 
     
-
     /**
      * Store a newly created resource in storage.
      */
@@ -39,64 +39,15 @@ class DebtController extends Controller
         $amount =  $request->input('amount');
         $date = date('Y-m-d');
 
-        if($app==1)
-        {
-            $trans_id = 23;
-            $note = 'Revenue - AIRBNB : '. number_format($amount, 0, ',', '.');
-            $status = 1;
-        }
-        else if($app==2)
-        {
-            $trans_id = 49;
-            $note = 'Revenue - PARTNER : '. number_format($amount, 0, ',', '.');
-            $status = 1;
-        }
-        else if($app==3)
-        {
-            $trans_id = 24;
-            $note = 'Revenue - VIATOR : '. number_format($amount, 0, ',', '.');
-            $status = 1;
-            $date = date("Y-m-d",strtotime("-1 month"));
-            $date = substr($date,0,7).'-'.date("t", strtotime($date));
-        }
-        else if($app==4)
-        {
-            $trans_id = 24;
-            $note = 'Revenue - GETYOURGUIDE : '. number_format($amount, 0, ',', '.');
-            $status = 1;
-            $date = date("Y-m-d",strtotime("-1 month"));
-            $date = substr($date,0,7).'-'.date("t", strtotime($date));
-        }
-        else
-        {
-            $trans_id = 27;
-            $note = 'Revenue - WEBSITE : '. number_format($amount, 0, ',', '.');
-            $status = 1;
-            $date = date("Y-m-d",strtotime("-1 month"));
-            $date = substr($date,0,7).'-'.date("t", strtotime($date));
-        }
-
-        $transaction = new fin_transactions;
-        $transaction->category_id = $trans_id;
-        $transaction->date = $date;
-        $transaction->amount = $amount;
-        $transaction->status = $status;
-        $transaction->save();
-
-        $json_trans_id[] = [
-            'trans_id' => $transaction->id
-        ];   
-
-        $json[] = [
-            'trans_id' => $json_trans_id
-        ];
+        $guide = fin_categories::where('id',$app)->first();
+        $note = 'Cash advance - '. $guide->name .' : '. number_format($amount, 0, ',', '.');
 
         $order = new Order;
         $order->type = 'debt';
         $order->date =  $date;
+        $order->guide =  $guide->id;
         $order->total = $amount;
         $order->note = $note;
-        $order->transactions = json_encode($json);
         $order->save();
 
         return response()->json([
@@ -137,15 +88,7 @@ class DebtController extends Controller
 
          $order = Order::findOrFail($id);
 
-        foreach(json_decode($order->transactions) as $transaction)
-        {
-            foreach($transaction->trans_id as $aaa)
-            {
-                $fin_transactions = fin_transactions::where('id',$aaa->trans_id)->delete();
-            }
-
-            
-        }
+        
         $order->delete();
     }
 }
