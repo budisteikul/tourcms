@@ -61,7 +61,7 @@ class RevenueController extends Controller
         }
         else if($app==4)
         {
-            $trans_id = 24;
+            $trans_id = 25;
             $note = 'Revenue - GETYOURGUIDE : '. number_format($amount, 0, ',', '.');
             $status = 1;
             $date = date("Y-m-d",strtotime("-1 month"));
