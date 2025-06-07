@@ -59,7 +59,7 @@
 <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Debt</div>
+                <div class="card-header">Cash Advance</div>
                 <div class="card-body">
         		
 

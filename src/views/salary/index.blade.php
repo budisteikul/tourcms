@@ -94,6 +94,7 @@ table{
     <tr>
       <td width="10"><strong>No</strong></td>
       <td ><strong>Date</strong></td>
+      <td ><strong>Note</strong></td>
       <td align="right"><strong>Sub Total</strong></td>
     </tr>
   </thead>
@@ -110,13 +111,14 @@ table{
     <tr>
       <td align="center">{{$no}}</td>
       <td>{{$GeneralHelper->dateFormat($cax->date,4)}}</td>
+      <td>{{$cax->note}}</td>
       <td align="right">{{number_format($cax->total, 0, ',', '.')}}</td>
     </tr>
     @endforeach
     
     
     <tr>
-      <td align="center" colspan="2"><strong>Total</strong></td>
+      <td align="center" colspan="3"><strong>Total</strong></td>
       
       <td align="right">{{number_format($total, 0, ',', '.')}}</td>
     </tr>

@@ -69,7 +69,10 @@
 </div>
 
 
-
+<div class="form-group">
+	<label for="note">Note :</label>
+	<input type="text" id="note" name="note" class="form-control" placeholder="Note" autocomplete="off">
+</div>
 
 
 	
@@ -92,7 +95,7 @@ function STORE()
 	var error = false;
 	$("#submit").attr("disabled", true);
 	$('#submit').html('<i class="fa fa-spinner fa-spin"></i>');
-	var input = ["app","amount","date"];
+	var input = ["app","amount","date","note"];
 	
 	$.each(input, function( index, value ) {
   		$('#'+ value).removeClass('is-invalid');
@@ -104,7 +107,8 @@ function STORE()
         	"_token": $("meta[name=csrf-token]").attr("content"),
 			"app": $('#app').val(),
 			"amount": $('#amount').val(),
-			"date": $('#date').val()
+			"date": $('#date').val(),
+			"note": $('#note').val()
         },
 		type: 'POST',
 		url: '{{ route('route_tourcms_debt.store') }}'
