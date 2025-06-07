@@ -56,9 +56,10 @@
     <textarea class="form-control" id="message_text" name="message_text" rows="4"></textarea>
 </div>
 
+<button id="submit_openai" type="submit" class="btn btn-primary btn-block" onclick="openai();"><i class="fas fa-language"></i> Translate</button>
+
 <button id="submit" type="submit" class="btn btn-primary btn-block"><i class="fas fa-paper-plane"></i> Send</button>
-<br />
-<button id="submit_openai" type="submit" class="btn btn-primary btn-block" onclick="openai();">Make it english and polished</button>
+
 </form>
 
 </div>
@@ -196,7 +197,7 @@ function openai()
         //table.ajax.reload( null, false );
       }).fail(function(data) {
             $("#submit_openai").attr("disabled", false);
-            $("#submit_openai").html('Make it english and polished');
+            $("#submit_openai").html('<i class="fas fa-language"></i> Translate');
         });
 
     return false;
