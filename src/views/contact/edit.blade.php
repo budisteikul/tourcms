@@ -187,7 +187,7 @@ function openai()
           //"text": "thank you for booking our tour",
       }),
       type: 'POST',
-      url: 'http://localhost/api/openai'
+      url: '{{env("APP_API_URL")}}/openai'
       }).done(function( data ) {
         $('#message_text').val(data.text)
         $("#submit_openai").attr("disabled", false);
