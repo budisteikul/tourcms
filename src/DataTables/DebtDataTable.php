@@ -2,6 +2,7 @@
 namespace budisteikul\tourcms\DataTables;
 
 use budisteikul\tourcms\Models\Order;
+use budisteikul\tourcms\Models\fin_categories;
 
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
@@ -30,6 +31,10 @@ class DebtDataTable extends DataTable
                 })
                 ->editColumn('date', function($id){
                     return GeneralHelper::dateFormat($id->date,4);
+                })
+                ->addColumn('guide', function($id){
+                    $guide = fin_categories::where('id',$id->guide)->first();
+                    return $guide->name;
                 })
                 ->addColumn('action', function ($id) {
 
@@ -106,7 +111,7 @@ class DebtDataTable extends DataTable
             
             Column::make('date')->title('Date')->orderable(false)->addClass('align-middle'),
             //Column::make('tour')->title('Tour')->orderable(false)->addClass('align-middle'),
-            //Column::make('pax')->title('Pax')->orderable(false)->addClass('align-middle'),
+            Column::make('guide')->title('Guide')->orderable(false)->addClass('align-middle'),
             Column::make('total')->title('Total')->orderable(false)->addClass('align-middle'),
            
             Column::make('note')->title('Note')->orderable(false)->addClass('align-middle'),
