@@ -53,8 +53,12 @@
 </div>
 
 <div class="form-group">
+
     <textarea class="form-control" id="message_text" name="message_text" rows="4"></textarea>
+    
 </div>
+
+
 
 <button id="submit_openai" type="submit" class="btn btn-primary btn-block" onclick="openai();"><i class="fas fa-language"></i> Translate</button>
 
@@ -177,6 +181,13 @@ function openai()
       $("#submit_openai").attr("disabled", true);
       $("#submit_openai").html('<i class="fa fa-spinner fa-spin"></i>');
 
+      var input = ["message_text"];
+
+      $.each(input, function( index, value ) {
+        $('#'+ value).removeClass('is-invalid');
+        $('#span-'+ value).remove();
+      });
+
       $.ajax({
       beforeSend: function(xhr) {
           xhr.setRequestHeader("Authorization", "Bearer {{$token_api}}");
@@ -184,21 +195,33 @@ function openai()
           xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
       },
       data: JSON.stringify({
-          "text": $('#message_text').val(),
+          "message_text": $('#message_text').val(),
           //"text": "thank you for booking our tour",
       }),
       type: 'POST',
       url: '{{env("APP_API_URL")}}/openai'
       }).done(function( data ) {
-        $('#message_text').val(data.text)
+        if(data.id=="1")
+        {
+            $('#message_text').val(data.message_text);
+        }
+        else
+        {
+            $.each( data, function( index, value ) {
+                $('#'+ index).addClass('is-invalid');
+                if(value!="")
+                {
+                    $('#'+ index).after('<span id="span-'+ index  +'" class="invalid-feedback" role="alert"><strong>'+ value +'</strong></span>');
+                }
+            });
+        }
+
+        
         $("#submit_openai").attr("disabled", false);
-        $("#submit_openai").html('Make it english and polished');
+        $("#submit_openai").html('<i class="fas fa-language"></i> Translate');
         //var table = $('#dataTableBuilder').DataTable();
         //table.ajax.reload( null, false );
-      }).fail(function(data) {
-            $("#submit_openai").attr("disabled", false);
-            $("#submit_openai").html('<i class="fas fa-language"></i> Translate');
-        });
+      });
 
     return false;
 }
