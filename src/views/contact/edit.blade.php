@@ -57,6 +57,8 @@
 </div>
 
 <button id="submit" type="submit" class="btn btn-primary btn-block"><i class="fas fa-paper-plane"></i> Send</button>
+<br />
+<button id="submit_openai" type="submit" class="btn btn-primary btn-block" onclick="openai();">Make it english and polished</button>
 </form>
 
 </div>
@@ -168,6 +170,37 @@
 
 fileUpload();
 
+function openai()
+{
+    
+      $("#submit_openai").attr("disabled", true);
+      $("#submit_openai").html('<i class="fa fa-spinner fa-spin"></i>');
+
+      $.ajax({
+      beforeSend: function(xhr) {
+          xhr.setRequestHeader("Authorization", "Bearer {{$token_api}}");
+          xhr.setRequestHeader('Content-Type', 'application/json');
+          xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+      },
+      data: JSON.stringify({
+          "text": $('#message_text').val(),
+          //"text": "thank you for booking our tour",
+      }),
+      type: 'POST',
+      url: 'http://localhost/api/openai'
+      }).done(function( data ) {
+        $('#message_text').val(data.text)
+        $("#submit_openai").attr("disabled", false);
+        $("#submit_openai").html('Make it english and polished');
+        //var table = $('#dataTableBuilder').DataTable();
+        //table.ajax.reload( null, false );
+      }).fail(function(data) {
+            $("#submit_openai").attr("disabled", false);
+            $("#submit_openai").html('Make it english and polished');
+        });
+
+    return false;
+}
 
 function clear_messages()
 {

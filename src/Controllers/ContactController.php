@@ -15,10 +15,31 @@ use budisteikul\tourcms\Models\Message;
 use budisteikul\tourcms\Helpers\WhatsappHelper;
 use budisteikul\tourcms\Helpers\GeneralHelper;
 use budisteikul\tourcms\Helpers\FirebaseHelper;
+use Cache;
+use Auth;
 
 class ContactController extends Controller
 {
-    
+    public static function openai_api($path,$data)
+    {
+            $endpoint = env("APP_API_URL");
+            $headers = [
+                'content-type' => 'application/json',
+                'Authorization' => 'Bearer '. Cache::get(Auth::user()->email.'_token')
+            ];
+
+            $client = new \GuzzleHttp\Client(['headers' => $headers,'http_errors' => false]);
+
+            
+                $response = $client->request('POST',$endpoint.$path,
+                [   
+                    'json' => $data
+                ]);
+
+            $contents = $response->getBody()->getContents();
+            return $contents;
+    }
+
     public function clear_messages(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -430,7 +451,8 @@ class ContactController extends Controller
     {
         $whatsapp = new WhatsappHelper;
         $whatsapp->messages($contact->id);
-        return view('tourcms::contact.edit',['contact'=>$contact,'file_key'=>Uuid::uuid4()->toString()]);
+        $token_api = Cache::get(Auth::user()->email.'_token');
+        return view('tourcms::contact.edit',['token_api'=>$token_api,'contact'=>$contact,'file_key'=>Uuid::uuid4()->toString()]);
     }
 
     /**
