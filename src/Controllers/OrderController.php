@@ -85,9 +85,9 @@ class OrderController extends Controller
                 }
 
                 
-                
-
                 $total_cost = 250000 * $pax;
+                if($pax>=5) $total_cost = 200000 * $pax;
+
                 $total = $total_cost + $total_guide;
                 $tour = "Jogja Night Food Tour";
                 $pax = $pax;
@@ -122,6 +122,8 @@ class OrderController extends Controller
                 }
 
                 $total_cost = 150000 * $pax;
+                if($pax>=3) $total_cost = 100000 * $pax;
+
                 $total = $total_cost + $total_guide;
                 $tour = "Jogja Morning Food Tour";
                 $pax = $pax;
@@ -193,7 +195,7 @@ class OrderController extends Controller
             $pax =  $request->input('pax');
             $additional =  $request->input('additional');
 
-            $cost = 425000 * $pax;
+            $cost = 375000 * $pax;
             $total = $cost;
             $tour = "Taman Anyar Tour";
 
