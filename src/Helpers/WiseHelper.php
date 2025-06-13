@@ -205,6 +205,11 @@ class WiseHelper {
         return json_decode($this->POST("/v1/simulation/balance/topup",$data));
     }
 
+    public function getAccountRequirements($currency)
+    {
+        return $this->GET('/v1/account-requirements?source=USD&target='.$currency.'&sourceAmount=500');
+    }
+
     private function POST($url,$data){
         return $this->curl('POST',$url,$data);
     }
