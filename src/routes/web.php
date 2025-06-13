@@ -81,6 +81,10 @@ Route::resource('/cms/page','budisteikul\tourcms\Controllers\PageController',[ '
 Route::resource('/cms/cancel','budisteikul\tourcms\Controllers\CancelController',[ 'names' => 'route_tourcms_cancel' ])
 	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);
 
+//Refund
+Route::resource('/cms/refund','budisteikul\tourcms\Controllers\RefundController',[ 'names' => 'route_tourcms_refund' ])
+	->middleware(['web','SettingMiddleware']);
+
 //Voucher	
 Route::resource('/cms/voucher','budisteikul\tourcms\Controllers\VoucherController',[ 'names' => 'route_tourcms_voucher' ])
 	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);

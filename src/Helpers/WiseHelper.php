@@ -5,18 +5,19 @@ use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Cache;
 
+
 class WiseHelper {
 
     private $tw;
     private $OTT;
 
     public function __construct() {
-    	$this->tw = new \stdClass();
-    	$this->tw->profileId = env("WISE_PROFILE_ID");
-    	$this->tw->api_key = env("WISE_TOKEN");
+        $this->tw = new \stdClass();
+        $this->tw->profileId = env("WISE_PROFILE_ID");
+        $this->tw->api_key = env("WISE_TOKEN");
         $this->tw->bankId = env("WISE_BANK_ID");
         
-    	if(env("WISE_ENV")=="production")
+        if(env("WISE_ENV")=="production")
         {
             $this->tw->url = "https://api.transferwise.com";
             $this->tw->priv_pem = Storage::disk('gcs')->get('credentials/wise/private.pem');
@@ -37,14 +38,15 @@ class WiseHelper {
         $status_json = new \stdClass();
         $response_json = new \stdClass();
 
-        $response->data->currency = 'USD';
+        $response->data->currency = 'IDR';
         $response->data->amount = $data->transaction->amount;
-
 
         $response_json->status = $status_json;
         $response_json->data = $data_json;
         return $response_json;
     }
+
+    
 
     public function getBank()
     {
@@ -117,10 +119,10 @@ class WiseHelper {
         if($profileId!=null) $data->profileId = $profileId;
 
         $data->sourceAmount     = $sourceAmount;
-        $data->sourceCurrency	= $sourceCurrency;
+        $data->sourceCurrency   = $sourceCurrency;
         $data->targetAmount     = $targetAmount;
-        $data->targetCurrency	= $targetCurrency;
-        $data->payOut			= 'BALANCE';
+        $data->targetCurrency   = $targetCurrency;
+        $data->payOut           = 'BALANCE';
         return json_decode($this->POST('/v3/profiles/'.$data->profileId.'/quotes',$data));
     }
 
@@ -220,7 +222,7 @@ class WiseHelper {
     }
 
     private function headerLineCallback($curl, $headerLine){
-    	$len = strlen($headerLine);
+        $len = strlen($headerLine);
         $header = explode(':', $headerLine, 2);
         if (count($header) < 2) // ignore invalid headers
            return $len;
@@ -233,7 +235,7 @@ class WiseHelper {
 
     private function curl($mode, $curl_url,$data=NULL,$headers=NULL)
     {
-    	$ch = curl_init();
+        $ch = curl_init();
         curl_setopt($ch, CURLOPT_VERBOSE, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
         curl_setopt($ch, CURLOPT_HEADERFUNCTION, array($this,'headerLineCallback'));
