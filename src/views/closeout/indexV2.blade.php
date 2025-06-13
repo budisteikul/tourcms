@@ -66,6 +66,7 @@ function UPDATE(bokun_id,date,status)
 
                             }
                 });
+                //$('*[data-date="22"]').addClass('bg-success')
             });
         </script>    
 </div> 

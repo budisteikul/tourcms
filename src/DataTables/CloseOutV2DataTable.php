@@ -76,7 +76,7 @@ class CloseOutV2DataTable extends DataTable
                                 {
                                     if($day->empty==1)
                                     {
-                                        return '<button onClick="UPDATE(\''. $id->bokun_id .'\',\''. $date .'\',\'3\')" type="button" class="btn btn-sm btn-secondary pt-0 pb-0 pl-1 pr-1">Closed by Server</button>';
+                                        return '<button onClick="UPDATE(\''. $id->bokun_id .'\',\''. $date .'\',\'3\')" type="button" class="btn btn-sm btn-secondary pt-0 pb-0 pl-1 pr-1">Closed</button>';
                                     } 
                                 }
                             }
