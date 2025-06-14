@@ -60,7 +60,7 @@ function schedule(month,year)
             if(value.total>0)
             {
                 $('*[data-date="'+value.date.replace(/^0+/, "") +'"]').addClass('bg-success bg-opacity-25');
-                console.log(value.date +'  '+ value.total);
+                //console.log(value.date +'  '+ value.total);
             }
             
         });
