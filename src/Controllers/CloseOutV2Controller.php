@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use budisteikul\tourcms\DataTables\CloseOutV2DataTable;
 use budisteikul\tourcms\Models\Product;
 use Illuminate\Support\Facades\Cache;
+use Auth;
 
 class CloseOutV2Controller extends Controller
 {
@@ -19,8 +20,8 @@ class CloseOutV2Controller extends Controller
      */
     public function index(CloseOutV2DataTable $dataTable)
     {
-        
-        return $dataTable->render('tourcms::closeout.indexV2');
+        $token_api = Cache::get(Auth::user()->email.'_token');
+        return $dataTable->render('tourcms::closeout.indexV2',['token_api'=>$token_api]);
     }
 
     /**
