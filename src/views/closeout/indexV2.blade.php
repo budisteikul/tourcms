@@ -59,16 +59,17 @@ function schedule(month,year)
             //alert( index + ": " + value );
             if(value.total>0)
             {
-                $('*[data-date="'+value.date.replace(/^0+/, "") +'"]').addClass('bg-success bg-opacity-25');
-                //console.log(value.date +'  '+ value.total);
+                $('*[data-date="'+value.date.replace(/^0+/, "") +'"]').addClass('bg-success');
+               
             }
             
         });
 
-       //console.log(data.data);
+        $('.ui-datepicker-today').addClass('bg-danger');
         
       });
 
+    
     return false;
 }
 </script>
