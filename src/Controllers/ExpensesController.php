@@ -42,7 +42,7 @@ class ExpensesController extends Controller
         {
             $trans_id = 54;
             $note = 'Expenses - Bill : '. number_format($amount, 0, ',', '.');
-            $status = 1;
+            $status = 0;
         }
         else if($app==2)
         {
