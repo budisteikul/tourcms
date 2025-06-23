@@ -40,7 +40,8 @@ function UPDATE(bokun_id,date,status)
 
 function schedule(month,year)
 {
-      
+
+
       $.ajax({
       beforeSend: function(xhr) {
           xhr.setRequestHeader("Authorization", "Bearer {{$token_api}}");
@@ -55,6 +56,11 @@ function schedule(month,year)
       url: '{{env("APP_API_URL")}}/schedule'
       }).done(function( data ) {
         
+        for(var i = 1; i <= 31; i++)
+        {
+            $('*[data-date="'+i+'"]').removeClass('bg-success');
+        }
+
         $.each(data.data, function( index, value ) {
             //alert( index + ": " + value );
             if(value.total>0)
