@@ -39,7 +39,9 @@ class CompletedDataTable extends DataTable
                     return GeneralHelper::dateFormat($id->date,10);
                 })
                ->addColumn('payment', function($id){
-                    return $id->shoppingcart->shoppingcart_payment->payment_provider;
+                    $payment = 'none';
+                    if(isset($id->shoppingcart->shoppingcart_payment->payment_provider)) $payment = $id->shoppingcart->shoppingcart_payment->payment_provider;
+                    return $payment;
                 })
                 ->addColumn('people', function($id){
                     $people = 0;
@@ -77,7 +79,7 @@ class CompletedDataTable extends DataTable
                 }])
                  ->whereHas('shoppingcart', function ($query) {
                     return $query->where('booking_status','CONFIRMED');
-                 })->where('date', '<', date('Y-m-d'))->whereNotNull('date')->newQuery();
+                 })->where('date', '<', date('Y-m-d'))->whereNotNull('date')->orderBy('date','desc')->orderBy('id','desc')->newQuery();
         
                  return $model;
     }
@@ -116,10 +118,7 @@ class CompletedDataTable extends DataTable
     {
         
             return [
-            Column::make('date')
-                  ->visible(false)
-                  ->searchable(false)
-                  ->orderable(true),
+            
             Column::computed('DT_RowIndex')
                   ->width(30)
                   ->title('No')

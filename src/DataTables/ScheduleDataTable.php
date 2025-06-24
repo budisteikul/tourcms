@@ -79,7 +79,14 @@ class ScheduleDataTable extends DataTable
      */
     public function query(ShoppingcartProduct $model): QueryBuilder
     {
-        $model = $model->whereRelation('shoppingcart','booking_status','CONFIRMED')->where('date', '>=', date('Y-m-d'))->newQuery();
+        $model = $model->with(['shoppingcart' => function ($query) {
+                    $query = $query->with(['shoppingcart_questions' => function ($query) {
+                        return $query->where('question_id','firstName')->orWhere('question_id','lastName');
+                    }]);
+                 }])
+                 ->whereHas('shoppingcart', function ($query) {
+                    return $query->where('booking_status','CONFIRMED');
+                 })->whereDate('date', '>=', date('Y-m-d'))->whereNotNull('date')->orderBy('date')->orderBy('id')->newQuery();
         
         
         return $model;
@@ -120,10 +127,7 @@ class ScheduleDataTable extends DataTable
             
             return [
 
-            Column::make('date')
-                  ->visible(false)
-                  ->searchable(false)
-                  ->orderable(true),
+            
             Column::computed('DT_RowIndex')
                   ->width(30)
                   ->title('No')
@@ -133,9 +137,10 @@ class ScheduleDataTable extends DataTable
 
             //Column::make('shoppingcart.shoppingcart_questions.answer')->title('People')->orderable(false)->addClass('align-middle'),
             
-            
+            Column::make('shoppingcart.confirmation_code')->title('confirmation_code')->visible(false)->orderable(false)->addClass('align-middle'),
             Column::make('name')->title('Main Contact')->orderable(false)->addClass('align-middle'),
             Column::make('title')->title('Tour')->orderable(false)->addClass('align-middle'),
+            Column::make('shoppingcart.booking_channel')->title('Channel')->orderable(false)->addClass('align-middle'),
             Column::make('date_text')->title('Date')->orderable(false)->addClass('align-middle'),
             Column::make('people')->title('Pax')->orderable(false)->addClass('align-middle text-center'),
 
