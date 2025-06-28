@@ -107,7 +107,8 @@ class OrderController extends Controller
                         'trans_id' => $transaction->id
                     ];
                 }
-                $note = $tour.' - '. $guide->name .' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
+                //$note = $tour.' - '. $guide->name .' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
+                $note = $tour .' - '. $pax .' pax';
             }
 
             if($app==2)
