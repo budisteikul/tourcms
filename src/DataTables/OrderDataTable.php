@@ -2,6 +2,7 @@
 namespace budisteikul\tourcms\DataTables;
 
 use budisteikul\tourcms\Models\Order;
+use budisteikul\tourcms\Models\fin_categories;
 
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
@@ -25,6 +26,12 @@ class OrderDataTable extends DataTable
     {
         return datatables($query)
                 ->addIndexColumn()
+                ->addColumn('guide', function($id){
+                    $guide_name = '-';
+                    $guide = fin_categories::where('id',$id->guide)->first();
+                    if(isset($guide->name)) $guide_name = $guide->name;
+                    return $guide_name;
+                })
                 ->editColumn('total', function($id){
                     return number_format($id->total, 0, ',', '.');
                 })
@@ -108,7 +115,7 @@ class OrderDataTable extends DataTable
             //Column::make('tour')->title('Tour')->orderable(false)->addClass('align-middle'),
             //Column::make('pax')->title('Pax')->orderable(false)->addClass('align-middle'),
             Column::make('total')->title('Total')->orderable(false)->addClass('align-middle'),
-           
+           Column::make('guide')->title('Guide')->orderable(false)->addClass('align-middle'),
             Column::make('note')->title('Note')->orderable(false)->addClass('align-middle'),
             
             Column::computed('action')

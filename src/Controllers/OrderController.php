@@ -108,7 +108,7 @@ class OrderController extends Controller
                     ];
                 }
                 //$note = $tour.' - '. $guide->name .' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
-                $note = $tour .' - '. $pax .' pax';
+                $note = $tour.' - '. $pax .'pax';
             }
 
             if($app==2)
