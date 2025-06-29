@@ -4,6 +4,7 @@ namespace budisteikul\tourcms\DataTables;
 use budisteikul\tourcms\Models\ShoppingcartProduct;
 use budisteikul\tourcms\Helpers\GeneralHelper;
 use budisteikul\tourcms\Helpers\BookingHelper;
+use budisteikul\tourcms\Helpers\WhatsappHelper;
 
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
@@ -47,13 +48,26 @@ class ScheduleDataTable extends DataTable
                     return $people;
                 })
                 ->addColumn('action', function ($id) {
+                    $button_wa = '';
+                    $contact = BookingHelper::get_answer_contact($id->shoppingcart);
+                    if($contact->phoneNumber!="")
+                    {
+                        $nomor = GeneralHelper::phoneNumber($contact->phoneNumber);
+                        $wa = new WhatsappHelper;
+                        $wa = $wa->contact($nomor, $contact->firstName);
+                        $button_wa = '<a target="_blank" id="btn-wa" href="/cms/contact/'.$wa.'/edit" class="btn btn-sm btn-primary text-white pt-0 pb-0 pl-1 pr-1"><i class="fas fa-envelope"></i> Whatsapp</a>';
+                    }
                 return '
                 <div class="btn-toolbar justify-content-end">
                     <div class="btn-group mr-2" role="group">
+
+                        '.$button_wa.'
                         
                         <button id="btn-edit" type="button" onClick="EDIT_BOOKING(\''.$id->shoppingcart->id.'\'); return false;" class="btn btn-sm btn-success  pt-0 pb-0 pl-1 pr-1"><i class="fa fa-edit"></i> Edit Booking</button>
 
-                        <button id="btn-edit" type="button" onClick="EDIT(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success  pt-0 pb-0 pl-1 pr-1"><i class="fa fa-edit"></i> Edit Schedule</button>
+                        <button id="btn-edit" type="button" onClick="EDIT(\''.$id->id.'\'); return false;" class="btn btn-sm btn-success  pt-0 pb-0 pl-1 pr-1"><i class="fa fa-edit"></i> Reschedule</button>
+
+                        
                         
                     </div>
                 </div>';
