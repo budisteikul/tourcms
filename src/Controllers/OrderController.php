@@ -143,7 +143,8 @@ class OrderController extends Controller
                         'trans_id' => $transaction->id
                     ];
                 }
-                $note = $tour.' - '. $guide->name.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
+                //$note = $tour.' - '. $guide->name.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
+                $note = $tour.' - '. $pax .'pax';
             }
             
 
@@ -183,6 +184,8 @@ class OrderController extends Controller
             $order->guide = $guide->id;
             $order->tour = $tour;
             $order->pax = $pax;
+            $order->fee = $total_guide;
+            $order->cost = $total_cost;
             $order->total = $total;
             $order->note = $note;
             $order->transactions = json_encode($json);
