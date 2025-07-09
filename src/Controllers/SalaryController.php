@@ -26,6 +26,32 @@ class SalaryController extends Controller
         $month_name = date("F", strtotime($year.'-'.$month.'-01'));
         $date_name = $month_name .' '. $year;
 
+        $guide = fin_categories::where('id',$id)->first();
+        $guide_name = $guide->name;
+
+        $salary = AccHelper::order_guide($guide->id,$month,$year,"order");
+        $cash_advance = AccHelper::order_guide($guide->id,$month,$year,"cash_advance");
+
+        $pdf = PDF::setOptions(['tempDir' =>  storage_path(),'fontDir' => storage_path(),'fontCache' => storage_path(),'isRemoteEnabled' => true])->loadView('tourcms::salary.index',['guide_name'=>$guide_name,'date_name'=>$date_name,'cash_advance' => $cash_advance, 'salary' => $salary])->setPaper('a4', 'portrait');
+
+        return $pdf->download('Revenue-Sharing-'. $id .'-'. $month .'-'.$year.'.pdf');
+
+
+        //return view('tourcms::salary.index',['guide_name'=>$guide_name,'date_name'=>$date_name,'cash_advance' => $cash_advance, 'salary' => $salary]);
+    }
+
+    public function index2(Request $request)
+    {
+        $id = $request->input('id');
+        $date = $request->input('date');
+        if($date=="") $date = date('Y-m');
+
+        $year = substr($date,0,4);
+        $month = substr($date,5,2);
+
+        $month_name = date("F", strtotime($year.'-'.$month.'-01'));
+        $date_name = $month_name .' '. $year;
+
         $category = fin_categories::where('id',$id)->first();
         $guide_name = $category->name;
 
@@ -33,6 +59,8 @@ class SalaryController extends Controller
 
         $total = $transaction->sum('amount');
         $ca = AccHelper::ca($category->id,$month,$year);
+        $ca2 =  AccHelper::ca($category->id,$month,$year,"order");
+
         $total = $total - $ca->total;
         $total = number_format($total, 0, ',', '.');
 
@@ -40,11 +68,13 @@ class SalaryController extends Controller
 
         $transactions = $transaction->orderBy('date')->get();
 
-        $pdf = PDF::setOptions(['tempDir' =>  storage_path(),'fontDir' => storage_path(),'fontCache' => storage_path(),'isRemoteEnabled' => true])->loadView('tourcms::salary.index',['guide_name'=>$guide_name,'date_name'=>$date_name,'total'=>$total,'jalan'=>$jalan,'transactions'=>$transactions,'ca'=>$ca])->setPaper('a4', 'portrait');
+        
+        $pdf = PDF::setOptions(['tempDir' =>  storage_path(),'fontDir' => storage_path(),'fontCache' => storage_path(),'isRemoteEnabled' => true])->loadView('tourcms::salary.index',['guide_name'=>$guide_name,'date_name'=>$date_name,'total'=>$total,'jalan'=>$jalan,'transactions'=>$transactions,'ca'=>$ca,'ca2'=>$ca2])->setPaper('a4', 'portrait');
 
         return $pdf->download('Revenue-Sharing-'. $id .'-'. $month .'-'.$year.'.pdf');
+        
 
-        //return view('tourcms::salary.index',['guide_name'=>$guide_name,'date_name'=>$date_name,'total'=>$total,'jalan'=>$jalan,'transactions'=>$transactions,'ca'=>$ca]);
+        //return view('tourcms::salary.index',['guide_name'=>$guide_name,'date_name'=>$date_name,'total'=>$total,'jalan'=>$jalan,'transactions'=>$transactions,'ca'=>$ca,'ca2'=>$ca2]);
     }
 
     /**

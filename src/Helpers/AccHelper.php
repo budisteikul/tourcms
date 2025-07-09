@@ -36,17 +36,31 @@ class AccHelper {
         return $fin_categories->type;
     }
 
-    public static function ca($guide_id,$month,$year)
+    public static function ca($guide_id,$month,$year,$type="cash_advance")
     {
         $data = new \stdClass();
         $total = 0;
-        $cas = Order::where('type','cash_advance')->where('guide',$guide_id)->whereMonth('date',$month)->whereYear('date',$year)->get();
-        foreach($cas as $ca)
+        $cas = Order::where('type',$type)->where('guide',$guide_id)->whereMonth('date',$month)->whereYear('date',$year);
+        $cax = $cas->get();
+        foreach($cax as $ca)
         {
             $total += $ca->total;
         }
-        $data->ca = $cas;
+        $data->ca = $cax;
+        $data->count = $cas->count();
         $data->total = $total;
+        return $data;
+    }
+
+    public static function order_guide($guide_id,$month,$year,$type="order")
+    {
+        $data = new \stdClass();
+        $query = Order::where('type',$type)->where('guide',$guide_id)->whereMonth('date',$month)->whereYear('date',$year);
+        $data->query = $query->get();
+        $data->fee = $query->sum('fee');
+        $data->cost = $query->sum('cost');
+        $data->total = $query->sum('total');
+        $data->count = $query->count();
         return $data;
     }
 

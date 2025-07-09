@@ -45,11 +45,50 @@ table{
 <div style="margin-top: 30px; margin-bottom: 40px; font-weight: bold; text-align: left; font-size:14px">
   Date : {{ $date_name }}<br />
   Name : {{ $guide_name }}<br />
-  Total : {{number_format($salary->fee - $cash_advance->total, 0, ',', '.')}}<br />
-  Order : {{number_format($salary->count, 0, ',', '.')}}
+  Total : {{$total}}<br />
+  Order : {{$jalan}}
 </div>
 
 <center>
+
+
+ <table id="table1" border="1" cellspacing="2" cellpadding="3" style="border-collapse: collapse; " >
+  <thead>
+    <tr>
+      <td width="10"><strong>No</strong></td>
+      <td ><strong>Date</strong></td>
+      <td align="right"><strong>Sub Total</strong></td>
+    </tr>
+  </thead>
+  <tbody>
+    @php
+    $total = 0;
+    $no = 0;
+    @endphp
+    @foreach($transactions as $transaction)
+    @php
+    $total += $transaction->amount;
+    $no += 1;
+    @endphp
+    <tr>
+      <td align="center">{{$no}}</td>
+      <td>{{$GeneralHelper->dateFormat($transaction->date,4)}}</td>
+      <td align="right">{{number_format($transaction->amount, 0, ',', '.')}}</td>
+    </tr>
+    @endforeach
+    
+    
+    <tr>
+      <td align="center" colspan="2"><strong>Total</strong></td>
+      
+      <td align="right">{{number_format($total, 0, ',', '.')}}</td>
+    </tr>
+
+  </tbody>
+</table>
+<br />
+<br />
+@if($ca->total>0)
 <table id="table1" border="1" cellspacing="2" cellpadding="3" style="border-collapse: collapse; " >
   <thead>
     <tr>
@@ -64,16 +103,16 @@ table{
     $total = 0;
     $no = 0;
     @endphp
-    @foreach($salary->query as $x)
+    @foreach($ca->ca as $cax)
     @php
-    $total += $x->fee;
+    $total += $cax->total;
     $no += 1;
     @endphp
     <tr>
       <td align="center">{{$no}}</td>
-      <td>{{$GeneralHelper->dateFormat($x->date,4)}}</td>
-      <td>{{$x->note}}</td>
-      <td align="right">{{number_format($x->fee, 0, ',', '.')}}</td>
+      <td>{{$GeneralHelper->dateFormat($cax->date,4)}}</td>
+      <td>{{$cax->note}}</td>
+      <td align="right">{{number_format($cax->total, 0, ',', '.')}}</td>
     </tr>
     @endforeach
     
@@ -86,49 +125,8 @@ table{
 
   </tbody>
 </table>
-<br />
-<br />
-@if($cash_advance->total>0)
-<table id="table1" border="1" cellspacing="2" cellpadding="3" style="border-collapse: collapse; " >
-  <thead>
-    <tr>
-      <td width="10"><strong>No</strong></td>
-      <td ><strong>Date</strong></td>
-      <td ><strong>Note</strong></td>
-      <td align="right"><strong>Sub Total</strong></td>
-    </tr>
-  </thead>
-  <tbody>
-    @php
-    $total = 0;
-    $no = 0;
-    @endphp
-    @foreach($cash_advance->query as $x)
-    @php
-    $total += $x->total;
-    $no += 1;
-    @endphp
-    <tr>
-      <td align="center">{{$no}}</td>
-      <td>{{$GeneralHelper->dateFormat($x->date,4)}}</td>
-      <td>{{$x->note}}</td>
-      <td align="right">{{number_format($x->total, 0, ',', '.')}}</td>
-    </tr>
-    @endforeach
-    
-    
-    <tr>
-      <td align="center" colspan="3"><strong>Total</strong></td>
-      
-      <td align="right">{{number_format($total, 0, ',', '.')}}</td>
-    </tr>
-
-  </tbody>
-</table>
-<br />
-<br />
 @endif
-</center>    
+ </center>    
 
 </div>
 
