@@ -84,6 +84,12 @@ class ContactController extends Controller
         $var2 = null;
         $var3 = null;
         $var4 = null;
+        $var5 = null;
+        $var6 = null;
+        $var7 = null;
+        $var8 = null;
+        $var9 = null;
+        $var10 = null;
         $type = null;
         $template = null;
 
