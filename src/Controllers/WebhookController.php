@@ -64,8 +64,7 @@ class WebhookController extends Controller
                                                 "type"=>"text",
                                                 "text"=> $var6
                                             ]
-                                        ]
-                                    ],
+                                        ],
                                         [
                                                 "type"=> "BUTTONS",
                                                 "buttons"=> [
@@ -73,6 +72,7 @@ class WebhookController extends Controller
                                                     "flow_id"=> 714516038150239
                                                 ]
                                         ]
+                                    ]
                             ];
             
             $whatsapp = new WhatsappHelper;
