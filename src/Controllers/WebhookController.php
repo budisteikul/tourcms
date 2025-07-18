@@ -65,6 +65,11 @@ class WebhookController extends Controller
                                                 "text"=> $var6
                                             ]
                                         ]
+                                    ],
+                                    [
+                                        "type"=> "button",
+                                        "sub_type"=> "flow",
+                                        "index"=> 0
                                     ]
                             ];
             
@@ -72,7 +77,7 @@ class WebhookController extends Controller
             $aaa = $whatsapp->sendTemplate("6285743112112",$template, $components, "en_US");
 
             print_r($aaa);
-            
+
             exit();
         }
 
