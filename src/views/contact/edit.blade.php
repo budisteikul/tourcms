@@ -129,6 +129,7 @@
 
 <div class="tab-pane fade pt-4" id="nav-menu7" role="tabpanel" aria-labelledby="nav-menu7-tab">
                     <button type="button" class="btn btn-danger mb-2" id="template1001"  onclick="sendTemplate(1001); return false;"><i class="fas fa-paper-plane"></i> Jogja Night Food Tour</button>
+                    <button type="button" class="btn btn-danger mb-2" id="template1002"  onclick="sendTemplate(1002); return false;"><i class="fas fa-paper-plane"></i> Jogja Night Food Tour</button>
 </div>
 
 

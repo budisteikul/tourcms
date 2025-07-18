@@ -25,61 +25,7 @@ class WebhookController extends Controller
     
     public function webhook($webhook_app,Request $request)
     {
-        if($webhook_app=="testing")
-        {
-                $type = "reminder_jogja_food_tour";
-                $template = "reminder_jogja_food_tour";
-                $var1 = ucwords(strtolower("Budi"));
-                $var2 = "tonight";
-                $var3 = "6:30PM";
-                $var4 = "Tugu Jogja (Yogyakarta Monument)";
-                $var5 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
-                $var6 = "Please wait near the sign \"Tugu Golong Gilig\"";
-
-                $components = [
-                                    [
-                                        "type"=> "body",
-                                        "parameters" => [
-                                            [
-                                                "type"=>"text",
-                                                "text"=> $var1
-                                            ],
-                                            [
-                                                "type"=>"text",
-                                                "text"=> $var2
-                                            ],
-                                            [
-                                                "type"=>"text",
-                                                "text"=> $var3
-                                            ],
-                                            [
-                                                "type"=>"text",
-                                                "text"=> $var4
-                                            ],
-                                            [
-                                                "type"=>"text",
-                                                "text"=> $var5
-                                            ],
-                                            [
-                                                "type"=>"text",
-                                                "text"=> $var6
-                                            ]
-                                        ]
-                                    ],
-                                    [
-                                        "type"=> "button",
-                                        "sub_type"=> "flow",
-                                        "index"=> 0
-                                    ]
-                            ];
-            
-            $whatsapp = new WhatsappHelper;
-            $aaa = $whatsapp->sendTemplate("6285743112112",$template, $components, "en_US");
-
-            print_r($aaa);
-
-            exit();
-        }
+        
 
         if($webhook_app=="whatsapp")
         {

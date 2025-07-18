@@ -290,6 +290,18 @@ class ContactController extends Controller
                 $var5 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
                 $var6 = "Please wait near the sign \"Tugu Golong Gilig\"";
             break;
+
+            case 1002:
+                // Jogja Morning Tour
+                $type = "reminder_jogja_food_tour";
+                $template = "reminder_jogja_food_tour";
+                $var1 = ucwords(strtolower($contact->name));
+                $var2 = "tomorrow morning";
+                $var3 = "8:00AM";
+                $var4 = "Lupis Mbah Satinem";
+                $var5 = "https://maps.app.goo.gl/tn2biVoLgPTRrtQs8";
+                $var6 = ".";
+            break;
             
         }
 
@@ -324,6 +336,11 @@ class ContactController extends Controller
                                                 "type"=>"text",
                                                 "text"=> $var6
                                             ]
+                                        ],
+                                        [
+                                            "type"=> "button",
+                                            "sub_type"=> "flow",
+                                            "index"=> 0
                                         ]
                                     ]
                             ];
