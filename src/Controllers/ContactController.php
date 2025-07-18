@@ -352,7 +352,7 @@ class ContactController extends Controller
                             ];
             
             $whatsapp = new WhatsappHelper;
-            $whatsapp->sendTemplate($contact->wa_id,$template, $components);
+            $whatsapp->sendTemplate($contact->wa_id,$template, $components, "en_US");
         }
 
         if($type=="request_review")
