@@ -72,7 +72,7 @@ class WebhookController extends Controller
             $aaa = $whatsapp->sendTemplate("6285743112112",$template, $components, "en_US");
 
             print_r($aaa);
-            print_r(env('META_WHATSAPP_TOKEN'));
+            
             exit();
         }
 
