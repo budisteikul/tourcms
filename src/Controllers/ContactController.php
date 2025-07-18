@@ -278,7 +278,58 @@ class ContactController extends Controller
                 $var3 = "TripAdvisor";
                 $var4 = "https://www.tripadvisor.com/UserReviewEdit-g297701-d27735579";
             break;
+
+            case 1001:
+                // Jogja Food Tour
+                $type = "reminder_jogja_food_tour";
+                $template = "reminder_jogja_food_tour";
+                $var1 = ucwords(strtolower($contact->name));
+                $var2 = "tonight";
+                $var3 = "6:30PM";
+                $var4 = "Tugu Jogja (Yogyakarta Monument)";
+                $var5 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
+                $var6 = "Please wait near the sign \"Tugu Golong Gilig\"";
+            break;
             
+        }
+
+        if($type=="reminder_jogja_food_tour")
+        {
+            if($var1=="") $var1="participant";
+            $components = [
+                                    [
+                                        "type"=> "body",
+                                        "parameters" => [
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var1
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var2
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var3
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var4
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var5
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var6
+                                            ]
+                                        ]
+                                    ]
+                            ];
+            
+            $whatsapp = new WhatsappHelper;
+            $whatsapp->sendTemplate($contact->wa_id,$template, $components);
         }
 
         if($type=="request_review")
