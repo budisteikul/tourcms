@@ -65,8 +65,7 @@ class WebhookController extends Controller
                                                 "text"=> $var6
                                             ],
                                             [
-                                                "type"=> "button",
-                                                "index"=> "0"
+                                                "type"=> "button"
                                             ]
                                         ]
                                     ]
