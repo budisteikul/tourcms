@@ -69,7 +69,7 @@ class WebhookController extends Controller
                             ];
             
             $whatsapp = new WhatsappHelper;
-            $aaa = $whatsapp->sendTemplate("6285743112112",$template, $components);
+            $aaa = $whatsapp->sendTemplate("6285743112112",$template, $components, "en_US");
 
             print_r($aaa);
             exit();
