@@ -55,7 +55,7 @@ class ScheduleDataTable extends DataTable
                         $nomor = GeneralHelper::phoneNumber($contact->phoneNumber);
                         $wa = new WhatsappHelper;
                         $wa = $wa->contact($nomor, $contact->firstName);
-                        $button_wa = '<a target="_blank" id="btn-wa" href="/cms/contact/'.$wa.'/edit" class="btn btn-sm btn-primary text-white pt-0 pb-0 pl-1 pr-1"><i class="fas fa-envelope"></i> Whatsapp</a>';
+                        $button_wa = '<a target="_blank" id="btn-wa" href="/cms/contact/'.$wa.'/edit" class="btn btn-sm btn-primary text-white pt-0 pb-0 pl-1 pr-1"><i class="fab fa-whatsapp"></i> Whatsapp</a>'; 
                     }
                 return '
                 <div class="btn-toolbar justify-content-end">
