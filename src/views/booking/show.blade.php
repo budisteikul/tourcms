@@ -50,7 +50,7 @@
                     <li class="list-group-item"><b>Status :</b> {{ strtoupper($shoppingcart->booking_status) }}</li>
                     @if($contact->phoneNumber!="")
                     <li class="list-group-item">
-                         <a href="/cms/contact/{{ $Whatsapp->contact($nomor, $contact->firstName) }}/edit" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fab fa-whatsapp"></i> Whatsapp Business API</a>
+                         <a href="/cms/contact/{{ $Whatsapp->contact($nomor, $contact->firstName, $shoppingcart->id) }}/edit" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fab fa-whatsapp"></i> Whatsapp Business API</a>
                          <a href="https://wa.me/{{ $nomor }}" class="btn btn-sm btn-success mb-2" target="_blank"><i class="fab fa-whatsapp"></i> Whatsapp Business App</a>
                     </li>
                     @endif
