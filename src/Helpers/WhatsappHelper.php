@@ -88,6 +88,15 @@ class WhatsappHelper {
             if($message->type=="interactive")
             {
                 $message_text = json_decode($message->interactive)->nfm_reply->response_json;
+                if(isset(json_decode($message_text)->step))
+                {
+                    $message_text = json_decode($message_text)->step;
+                }
+                else
+                {
+                    $message_text;
+                }
+                
             }
 
             $output .= '<div class="'.$style1.'" >
