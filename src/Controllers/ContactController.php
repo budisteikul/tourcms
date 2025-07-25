@@ -12,6 +12,7 @@ use Ramsey\Uuid\Uuid;
 use budisteikul\coresdk\Models\FileTemp;
 use budisteikul\tourcms\Models\Contact;
 use budisteikul\tourcms\Models\Message;
+use budisteikul\tourcms\Models\Shoppingcart;
 use budisteikul\tourcms\Helpers\WhatsappHelper;
 use budisteikul\tourcms\Helpers\GeneralHelper;
 use budisteikul\tourcms\Helpers\FirebaseHelper;
