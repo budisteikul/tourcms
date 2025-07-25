@@ -15,6 +15,7 @@ use budisteikul\tourcms\Models\Message;
 use budisteikul\tourcms\Helpers\WhatsappHelper;
 use budisteikul\tourcms\Helpers\GeneralHelper;
 use budisteikul\tourcms\Helpers\FirebaseHelper;
+use budisteikul\tourcms\Helpers\TaskHelper;
 use Cache;
 use Auth;
 
@@ -355,7 +356,31 @@ class ContactController extends Controller
             $whatsapp->sendTemplate($contact->wa_id,$template, $components, "en_US");
 
             //=======================================================
-
+            if($contact->shoppingcart_id!="")
+            {
+                $shoppingcart = Shoppingcart::where('id',$contact->shoppingcart_id)->first();
+                if($shoppingcart)
+                {
+                    $email = $shoppingcart->shoppingcart_questions()->select('answer')->where('type','mainContactDetails')->where('question_id','email')->first()->answer;
+                    if($email!="")
+                    {
+                        $payload = new \stdClass();
+                        $payload->app = 'mail_question';
+                        $payload->email = $email;
+                        $payload->name = $var1;
+                        $payload->time_description = $var2;
+                        $payload->time = $var3;
+                        $payload->location = $var4;
+                        $payload->map = $var5;
+                        $payload->map_description = $var6;
+                        TaskHelper::create($payload);
+                    }
+                }
+            }
+            
+            /*
+            
+            */
             //=======================================================
         }
 
