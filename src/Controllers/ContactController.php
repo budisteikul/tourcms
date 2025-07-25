@@ -373,7 +373,7 @@ class ContactController extends Controller
                         $payload->time = $var3;
                         $payload->location = $var4;
                         $payload->map = $var5;
-                        $payload->map_description = $var6;
+                        $payload->map_description = str_ireplace("`","",$var6);
                         TaskHelper::create($payload);
                     }
                 }
