@@ -1278,6 +1278,19 @@ class BookingHelper {
 		}
 	}
 
+	public static function shoppingcart_question_mail($shoppingcart)
+	{
+		$payload = new \stdClass();
+		$payload->app = 'mail_question';
+		$payload->session_id = $shoppingcart->session_id;
+		$payload->confirmation_code = $shoppingcart->confirmation_code;
+
+		if($shoppingcart->booking_status=="CONFIRMED")
+		{
+			TaskHelper::create($payload);
+		}
+	}
+
 	public static function shoppingcart_whatsapp($shoppingcart)
 	{
 		$payload = new \stdClass();
