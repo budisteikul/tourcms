@@ -10,7 +10,7 @@
                     <div class="col text-left">
                         <div class="d-flex align-self-center">
                         <a href="https://wa.me/{{ $contact->wa_id }}" class="btn btn-sm btn-success mb-0" target="_blank"><i class="fab fa-whatsapp"></i> {{$contact->name}} +{{$contact->wa_id}}</a>
-                        <div class="d-flex align-self-center ml-2 text-white">Reference : </div>
+                        
                         </div>
                     </div>
                     <div class="col-auto text-right mr-0 pr-0">
