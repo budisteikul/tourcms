@@ -296,7 +296,7 @@ class ContactController extends Controller
                 $var3 = "6:30PM";
                 $var4 = "Tugu Jogja (Yogyakarta Monument)";
                 $var5 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
-                $var6 = "Please wait near the sign \n👉🏻Tugu_Golong_Gilig👈🏻";
+                $var6 = "Please wait near the sign Tugu_Golong_Gilig";
             break;
 
             case 1002:
