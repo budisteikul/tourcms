@@ -310,7 +310,35 @@ class ContactController extends Controller
                 $var5 = "https://maps.app.goo.gl/tn2biVoLgPTRrtQs8";
                 $var6 = ".";
             break;
+
+            case 2001:
+                $type = "jogja_night_food_tour";
+                $template = "jogja_night_food_tour";
+            break;
             
+        }
+
+        if($type=="jogja_night_food_tour")
+        {
+            $components = [
+                                            [
+                                                "type"=> "header",
+                                                "parameters"=>[[
+                                                    "type"=>"image",
+                                                    "image"=>[
+                                                        "link"=>"https://storage.googleapis.com/storage.vertikaltrip.com/images/w_600-h_400/f813633e-6566-4df8-a9ae-42f1003bbdea.jpg"
+                                                    ]
+                                                ]]
+                                            ],
+                                            [
+                                                "type"=> "button",
+                                                "sub_type"=> "flow",
+                                                "index"=> 0
+                                            ]
+                                      ];
+            
+            $whatsapp = new WhatsappHelper;
+            $whatsapp->sendTemplate($contact->wa_id,$template, $components, "en_US");
         }
 
         if($type=="reminder_jogja_food_tour")
