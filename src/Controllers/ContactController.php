@@ -315,6 +315,11 @@ class ContactController extends Controller
                 $type = "jogja_night_food_tour";
                 $template = "jogja_night_food_tour";
             break;
+
+            case 2002:
+                $type = "jogja_morning_food_tour";
+                $template = "jogja_morning_food_tour";
+            break;
             
         }
 
@@ -327,6 +332,29 @@ class ContactController extends Controller
                                                     "type"=>"image",
                                                     "image"=>[
                                                         "link"=>"https://storage.googleapis.com/storage.vertikaltrip.com/images/w_600-h_400/f813633e-6566-4df8-a9ae-42f1003bbdea.jpg"
+                                                    ]
+                                                ]]
+                                            ],
+                                            [
+                                                "type"=> "button",
+                                                "sub_type"=> "flow",
+                                                "index"=> 0
+                                            ]
+                                      ];
+            
+            $whatsapp = new WhatsappHelper;
+            $whatsapp->sendTemplate($contact->wa_id,$template, $components, "en_US");
+        }
+
+        if($type=="jogja_morning_food_tour")
+        {
+            $components = [
+                                            [
+                                                "type"=> "header",
+                                                "parameters"=>[[
+                                                    "type"=>"image",
+                                                    "image"=>[
+                                                        "link"=>"https://storage.googleapis.com/storage.vertikaltrip.com/images/w_600-h_400/f6ab02e3-46ea-4c19-ba9d-57c06cde0c56.jpg"
                                                     ]
                                                 ]]
                                             ],
