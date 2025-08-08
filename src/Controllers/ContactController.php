@@ -287,6 +287,18 @@ class ContactController extends Controller
                 $var4 = "https://www.tripadvisor.com/UserReviewEdit-g297701-d27735579";
             break;
 
+            case 1000:
+                // Jogja Food Tour
+                $type = "reminder_jogja_food_tour";
+                $template = "reminder_jogja_food_tour";
+                $var1 = ucwords(strtolower($contact->name));
+                $var2 = "tomorrow night";
+                $var3 = "6:30PM";
+                $var4 = "Tugu Jogja (Yogyakarta Monument)";
+                $var5 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
+                $var6 = "Please wait near the sign Tugu_Golong_Gilig";
+            break;
+
             case 1001:
                 // Jogja Food Tour
                 $type = "reminder_jogja_food_tour";
