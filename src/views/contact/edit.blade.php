@@ -72,7 +72,7 @@
 </div>
 <div class="tab-pane fade pt-4" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 
-                    <button type="button" class="btn btn-danger mb-2" id="template101"  onclick="sendTemplate(101); return false;"><i class="fas fa-paper-plane"></i> Jogja Night Food Tour - Ask Dietary</button>
+                    
 
                     <button type="button" class="btn btn-danger mb-2" id="template102"  onclick="sendTemplate(102); return false;"><i class="fas fa-paper-plane"></i> Jogja Night Food Tour - Kalika Picture</button>
 
