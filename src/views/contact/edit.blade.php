@@ -33,12 +33,13 @@
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Message</a>
-    <!-- a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Jogja Night Food Tour</a>
-    <a class="nav-item nav-link" id="nav-menu3-tab" data-toggle="tab" href="#nav-menu3" role="tab" aria-controls="nav-menu3" aria-selected="false">Jogja Morning Food Tour</a>
-    <a class="nav-item nav-link" id="nav-menu5-tab" data-toggle="tab" href="#nav-menu5" role="tab" aria-controls="nav-menu5" aria-selected="false">Bali Tour</a>
-    <a class="nav-item nav-link" id="nav-menu6-tab" data-toggle="tab" href="#nav-menu6" role="tab" aria-controls="nav-menu6" aria-selected="false">Request Review</a -->
     <a class="nav-item nav-link" id="nav-menu4-tab" data-toggle="tab" href="#nav-menu4" role="tab" aria-controls="nav-menu4" aria-selected="false">General</a>
     <a class="nav-item nav-link" id="nav-menu7-tab" data-toggle="tab" href="#nav-menu7" role="tab" aria-controls="nav-menu4" aria-selected="false">Template</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Jogja Night Food Tour</a>
+    <a class="nav-item nav-link" id="nav-menu3-tab" data-toggle="tab" href="#nav-menu3" role="tab" aria-controls="nav-menu3" aria-selected="false">Jogja Morning Food Tour</a>
+    <a class="nav-item nav-link" id="nav-menu5-tab" data-toggle="tab" href="#nav-menu5" role="tab" aria-controls="nav-menu5" aria-selected="false">Bali Tour</a>
+    <a class="nav-item nav-link" id="nav-menu6-tab" data-toggle="tab" href="#nav-menu6" role="tab" aria-controls="nav-menu6" aria-selected="false">Request Review</a>
+    
   </div>
 </nav>
 
