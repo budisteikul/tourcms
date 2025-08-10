@@ -332,7 +332,101 @@ class ContactController extends Controller
                 $type = "jogja_morning_food_tour_01";
                 $template = "jogja_morning_food_tour_01";
             break;
+
+            case 3001:
+                $type = "tour_guide";
+                $template = "tour_guide";
+
+                $var1 = ucwords(strtolower($contact->name));
+                $var2 = "tonight";
+                $var3 = "6.30PM";
+                $var4 = "Tugu Jogja (Yogyakarta Monument)";
+                $var5 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
+                $var6 = "Please wait near the sign Tugu Golong Gilig";
+            break;
+
+            case 3002:
+                $type = "tour_guide";
+                $template = "tour_guide";
+
+                $var1 = ucwords(strtolower($contact->name));
+                $var2 = "tomorrow morning";
+                $var3 = "8.00AM";
+                $var4 = "Lupis Mbah Satinem";
+                $var5 = "https://maps.app.goo.gl/NDVzUFu8ts5VC4eQ8";
+                $var6 = ".";
+            break;
             
+        }
+
+        if($type=="tour_guide")
+        {
+            $guide_id = $request->input('guide_id');
+            $guides = json_decode(config('site.guides'));
+            foreach($guides as $guide)
+            {
+                if($guide_id==$guide->id)
+                {
+                    $image = config('site.assets').'/img/guide/'.$guide->photo;
+                    $name = $guide->name;
+                    $wa = $guide->wa;
+                }
+                
+            }
+
+            $components = [
+                                    [
+                                        "type"=> "header",
+                                        "parameters" => [
+                                            [
+                                                "type"=> "image",
+                                                "image" => [
+                                                    "link" => $image
+                                                ]
+                                            ]
+                                        ]
+                                    ],
+                                    [
+                                        "type"=> "body",
+                                        "parameters" => [
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var1
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var2
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var3
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var4
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var5
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var6
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $name
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $wa
+                                            ]
+                                        ]
+                                    ]
+                              ];
+            
+            $whatsapp = new WhatsappHelper;
+            $whatsapp->sendTemplate($contact->wa_id,$template, $components);
         }
 
         if($type=="jogja_night_food_tour_01")

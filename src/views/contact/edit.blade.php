@@ -39,6 +39,7 @@
     <a class="nav-item nav-link" id="nav-menu3-tab" data-toggle="tab" href="#nav-menu3" role="tab" aria-controls="nav-menu3" aria-selected="false">Jogja Morning Food Tour</a>
     <a class="nav-item nav-link" id="nav-menu5-tab" data-toggle="tab" href="#nav-menu5" role="tab" aria-controls="nav-menu5" aria-selected="false">Bali Tour</a>
     <a class="nav-item nav-link" id="nav-menu6-tab" data-toggle="tab" href="#nav-menu6" role="tab" aria-controls="nav-menu6" aria-selected="false">Request Review</a>
+    <a class="nav-item nav-link" id="nav-menu100-tab" data-toggle="tab" href="#nav-menu100" role="tab" aria-controls="nav-menu100" aria-selected="false">Testing</a>
     
   </div>
 </nav>
@@ -139,6 +140,11 @@
         <button type="button" class="btn btn-danger mb-2" id="template2001"  onclick="sendTemplate(2001); return false;"><i class="fas fa-paper-plane"></i> Product Jogja Night Food Tour</button>
         
         <button type="button" class="btn btn-danger mb-2" id="template2002"  onclick="sendTemplate(2002); return false;"><i class="fas fa-paper-plane"></i> Product Jogja Morning Food Tour</button>
+</div>
+
+<div class="tab-pane fade pt-4" id="nav-menu100" role="tabpanel" aria-labelledby="nav-menu100-tab">
+                    <button type="button" class="btn btn-danger mb-2" id="template3001"  onclick="sendTemplate(3001,12); return false;"><i class="fas fa-paper-plane"></i> Kalika Jogja Night Food Tour</button>
+                    
 </div>
 
 
@@ -286,7 +292,7 @@ function clear_messages()
     });
 }
 
-function sendTemplate(template_id)
+function sendTemplate(template_id, guide_id=null)
 {
 
     $.confirm({
@@ -309,7 +315,8 @@ function sendTemplate(template_id)
                         data: {
                           "_token": $("meta[name=csrf-token]").attr("content"),
                           "id": "{{ $contact->id }}",
-                          "template_id": template_id
+                          "template_id": template_id,
+                          "guide_id": guide_id
                         },
                         type: 'POST',
                         url: '{{ route('route_tourcms_contact.index') .'/template' }}'
