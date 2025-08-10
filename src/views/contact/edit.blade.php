@@ -299,7 +299,7 @@ function sendTemplate(template_id, guide_id=null)
 
     $.confirm({
         title: 'Are you sure?',
-        content: $("#template"+template_id).text(),
+        content: '',
         type: 'blue',
         icon: 'fas fa-paper-plane',
         buttons: {   
@@ -308,11 +308,7 @@ function sendTemplate(template_id, guide_id=null)
                 btnClass: 'btn-primary',
                 keys: ['enter'],
                 action: function(){
-                    var enable_text = '<i class="fas fa-paper-plane"></i> '+ $("#template"+template_id).text();
-                    var disable_text = '<i class="fa fa-spinner fa-spin"></i> '+ $("#template"+template_id).text();
-    
-                    $("#template"+template_id).attr("disabled", true);
-                    $("#template"+template_id).html(disable_text);
+                    
                     $.ajax({
                         data: {
                           "_token": $("meta[name=csrf-token]").attr("content"),
@@ -324,8 +320,7 @@ function sendTemplate(template_id, guide_id=null)
                         url: '{{ route('route_tourcms_contact.index') .'/template' }}'
                     }).done(function( data ) {
       
-                        $("#template"+template_id).attr("disabled", false);
-                        $("#template"+template_id).html(enable_text);
+                        
 
                     });
                     
