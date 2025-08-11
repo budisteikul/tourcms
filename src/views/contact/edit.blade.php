@@ -147,13 +147,13 @@
 <div class="tab-pane fade pt-4" id="nav-menu4" role="tabpanel" aria-labelledby="nav-menu4-tab">
                     <button type="button" class="btn btn-primary mb-2" id="template121"  onclick="sendTemplate(121); return false;"><i class="fas fa-paper-plane"></i> Thanks for answering</button>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template122"  onclick="sendTemplate(122); return false;"><i class="fas fa-paper-plane"></i> Kalika Picture</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template122"  onclick="sendTemplate(200,12); return false;"><i class="fas fa-paper-plane"></i> Kalika Picture</button>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template123"  onclick="sendTemplate(123); return false;"><i class="fas fa-paper-plane"></i> Anisa Picture</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template123"  onclick="sendTemplate(200,13); return false;"><i class="fas fa-paper-plane"></i> Anisa Picture</button>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template124"  onclick="sendTemplate(124); return false;"><i class="fas fa-paper-plane"></i> Jasmine Picture</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template124"  onclick="sendTemplate(200,55); return false;"><i class="fas fa-paper-plane"></i> Jasmine Picture</button>
 
-                    <button type="button" class="btn btn-primary mb-2" id="template125"  onclick="sendTemplate(125); return false;"><i class="fas fa-paper-plane"></i> Dhea Picture</button>
+                    <button type="button" class="btn btn-primary mb-2" id="template125"  onclick="sendTemplate(200,56); return false;"><i class="fas fa-paper-plane"></i> Dhea Picture</button>
 
                     
 </div>

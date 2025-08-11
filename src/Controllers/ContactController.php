@@ -176,6 +176,24 @@ class ContactController extends Controller
                 $var1 = "Her name is *Dhea*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
             break;
 
+            case 200:
+                $guide_id = $request->input('guide_id');
+                $guides = json_decode(config('site.guides'));
+                foreach($guides as $guide)
+                {
+                    if($guide_id==$guide->id)
+                    {
+                        $image = config('site.assets').'/img/guide/'.$guide->photo;
+                        $name = $guide->name;
+                        $wa = $guide->wa;
+                    }
+                
+                }
+
+                $type = "image";
+                $var1 = "Her name is *".$name."*. She will be the tour guide on duty and will be waiting at meeting point 😊\n\nJust in case, you can reach her on WhatsApp here:\nhttps://wa.me/". $wa;
+            break;
+
             case 301:
                 $type = "reminder_step1";
                 $template = "reminder_step1";
