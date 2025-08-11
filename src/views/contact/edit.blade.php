@@ -75,14 +75,15 @@
 
                     
 
-                    <button type="button" class="btn btn-danger mb-2" id="template102"  onclick="sendTemplate(102); return false;"><i class="fas fa-paper-plane"></i> Jogja Night Food Tour - Kalika Picture</button>
+                    <button type="button" class="btn btn-danger mb-2" id="template3001"  onclick="sendTemplate(3001,12); return false;"><i class="fas fa-paper-plane"></i> Kalika Jogja Night Food Tour</button>
+                    <button type="button" class="btn btn-danger mb-2" id="template3001"  onclick="sendTemplate(3001,13); return false;"><i class="fas fa-paper-plane"></i> Anisa Jogja Night Food Tour</button>
+                    <button type="button" class="btn btn-danger mb-2" id="template3001"  onclick="sendTemplate(3001,55); return false;"><i class="fas fa-paper-plane"></i> Jasmine Jogja Night Food Tour</button>
+                    <button type="button" class="btn btn-danger mb-2" id="template3001"  onclick="sendTemplate(3001,56); return false;"><i class="fas fa-paper-plane"></i> Dhea Jogja Night Food Tour</button>
 
-                    <button type="button" class="btn btn-danger mb-2" id="template103"  onclick="sendTemplate(103); return false;"><i class="fas fa-paper-plane"></i> Jogja Night Food Tour - Anisa Picture</button>
-
-                    <button type="button" class="btn btn-danger mb-2" id="template104"  onclick="sendTemplate(104); return false;"><i class="fas fa-paper-plane"></i> Jogja Night Food Tour - Jasmine Picture</button>
-
-
-                    <button type="button" class="btn btn-danger mb-2" id="template105"  onclick="sendTemplate(105); return false;"><i class="fas fa-paper-plane"></i> Jogja Night Food Tour - Dhea Picture</button>
+                    <button type="button" class="btn btn-danger mb-2" id="template3002"  onclick="sendTemplate(3002,12); return false;"><i class="fas fa-paper-plane"></i> Kalika Jogja Morning Food Tour</button>
+                    <button type="button" class="btn btn-danger mb-2" id="template3002"  onclick="sendTemplate(3002,13); return false;"><i class="fas fa-paper-plane"></i> Anisa Jogja Morning Food Tour</button>
+                    <button type="button" class="btn btn-danger mb-2" id="template3002"  onclick="sendTemplate(3002,55); return false;"><i class="fas fa-paper-plane"></i> Jasmine Jogja Morning Food Tour</button>
+                    <button type="button" class="btn btn-danger mb-2" id="template3002"  onclick="sendTemplate(3002,56); return false;"><i class="fas fa-paper-plane"></i> Dhea Jogja Morning Food Tour</button>
 
                     
 
@@ -143,15 +144,7 @@
 </div>
 
 <div class="tab-pane fade pt-4" id="nav-menu100" role="tabpanel" aria-labelledby="nav-menu100-tab">
-                    <button type="button" class="btn btn-danger mb-2" id="template3001"  onclick="sendTemplate(3001,12); return false;"><i class="fas fa-paper-plane"></i> Kalika Jogja Night Food Tour</button>
-                    <button type="button" class="btn btn-danger mb-2" id="template3001"  onclick="sendTemplate(3001,13); return false;"><i class="fas fa-paper-plane"></i> Anisa Jogja Night Food Tour</button>
-                    <button type="button" class="btn btn-danger mb-2" id="template3001"  onclick="sendTemplate(3001,55); return false;"><i class="fas fa-paper-plane"></i> Jasmine Jogja Night Food Tour</button>
-                    <button type="button" class="btn btn-danger mb-2" id="template3001"  onclick="sendTemplate(3001,56); return false;"><i class="fas fa-paper-plane"></i> Dhea Jogja Night Food Tour</button>
-
-                    <button type="button" class="btn btn-danger mb-2" id="template3002"  onclick="sendTemplate(3002,12); return false;"><i class="fas fa-paper-plane"></i> Kalika Jogja Morning Food Tour</button>
-                    <button type="button" class="btn btn-danger mb-2" id="template3002"  onclick="sendTemplate(3002,13); return false;"><i class="fas fa-paper-plane"></i> Anisa Jogja Morning Food Tour</button>
-                    <button type="button" class="btn btn-danger mb-2" id="template3002"  onclick="sendTemplate(3002,55); return false;"><i class="fas fa-paper-plane"></i> Jasmine Jogja Morning Food Tour</button>
-                    <button type="button" class="btn btn-danger mb-2" id="template3002"  onclick="sendTemplate(3002,56); return false;"><i class="fas fa-paper-plane"></i> Dhea Jogja Morning Food Tour</button>
+                    <button type="button" class="btn btn-danger mb-2" id="template2003"  onclick="sendTemplate(2003); return false;"><i class="fas fa-paper-plane"></i> Kalika Jogja Night Food Tour</button>
                     
 </div>
 

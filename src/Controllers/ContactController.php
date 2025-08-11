@@ -333,6 +333,11 @@ class ContactController extends Controller
                 $template = "jogja_morning_food_tour_01";
             break;
 
+            case 2003:
+                $type = "jogja_night_food_tour_offline";
+                $template = "jogja_night_food_tour_offline";
+            break;
+
             case 3001:
                 $type = "tour_guide";
                 $template = "tour_guide";
@@ -441,6 +446,20 @@ class ContactController extends Controller
                                                     ]
                                                 ]]
                                             ],
+                                            [
+                                                "type"=> "button",
+                                                "sub_type"=> "flow",
+                                                "index"=> 0
+                                            ]
+                                      ];
+            
+            $whatsapp = new WhatsappHelper;
+            $whatsapp->sendTemplate($contact->wa_id,$template, $components);
+        }
+
+        if($type=="jogja_night_food_tour_offline")
+        {
+            $components = [
                                             [
                                                 "type"=> "button",
                                                 "sub_type"=> "flow",
