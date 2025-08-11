@@ -144,7 +144,7 @@
 </div>
 
 <div class="tab-pane fade pt-4" id="nav-menu100" role="tabpanel" aria-labelledby="nav-menu100-tab">
-                    <button type="button" class="btn btn-danger mb-2" id="template2003"  onclick="sendTemplate(2003); return false;"><i class="fas fa-paper-plane"></i> Kalika Jogja Night Food Tour</button>
+                    <button type="button" class="btn btn-danger mb-2" id="template2003"  onclick="sendTemplate(2003); return false;"><i class="fas fa-paper-plane"></i> OFFLINE Jogja Night Food Tour</button>
                     
 </div>
 
