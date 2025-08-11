@@ -66,7 +66,7 @@
             
             
             @if(isset($shoppingcart->shoppingcart_payment))
-            @if($shoppingcart->shoppingcart_payment->payment_provider!=="none")
+            
             <div class="card mb-2" style="border-radius: 0px;">
                 <div class="card-header bg-secondary" style="border-radius: 0px;">PAYMENT</div>
             
@@ -94,7 +94,6 @@
                         <input type="hidden" id="redirect" value="{{ $shoppingcart->shoppingcart_payment->redirect }}"> <button onclick="copyToClipboard('#redirect')" title="Copied" data-toggle="tooltip" data-placement="right" data-trigger="click" class="btn btn-light btn-sm invoice-hilang"><i class="far fa-copy"></i></button>
                     </li>
                     @endif
-
                     
 
                     @if($shoppingcart->shoppingcart_payment->payment_status==4)
@@ -106,7 +105,7 @@
                   </ul>
                 
             </div>
-             @endif
+             
              @endif
              
            
