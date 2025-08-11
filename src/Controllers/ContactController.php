@@ -176,56 +176,6 @@ class ContactController extends Controller
                 $var1 = "Her name is *Dhea*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
             break;
 
-
-            case 201:
-                $type = "reminder_step1";
-                $template = "reminder_step1";
-                $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The *Morning Food Tour in Yogyakarta* will start tomorrow morning at *8.00AM* and our meeting point is *Lupis Mbah Satinem*";
-                $var3 = "By the way, do you have any food allergy or dietary restrictions?";
-                $var4 = "https://maps.app.goo.gl/tn2biVoLgPTRrtQs8";
-            break;
-
-            case 202:
-                $type = "reminder_step1_alt";
-                $template = "reminder_step1_alt";
-                $image = config("site.assets")."/img/guide/kalika02.jpg";
-                $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The *Morning Food Tour in Yogyakarta* will start tomorrow morning at *8.00AM* and our meeting point is *Lupis Mbah Satinem*";
-                $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-                $var4 = "https://maps.app.goo.gl/tn2biVoLgPTRrtQs8";
-            break;
-
-            case 203:
-                $type = "reminder_step1_alt";
-                $template = "reminder_step1_alt";
-                $image = config("site.assets")."/img/guide/anisa01.jpeg";
-                $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The *Morning Food Tour in Yogyakarta* will start tomorrow morning at *8.00AM* and our meeting point is *Lupis Mbah Satinem*";
-                $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-                $var4 = "https://maps.app.goo.gl/tn2biVoLgPTRrtQs8";
-            break;
-
-            case 204:
-                $type = "reminder_step1_alt";
-                $template = "reminder_step1_alt";
-                $image = config("site.assets")."/img/guide/jasmine03.jpeg";
-                $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The *Morning Food Tour in Yogyakarta* will start tomorrow morning at *8.00AM* and our meeting point is *Lupis Mbah Satinem*";
-                $var3 = "Her name is *Jasmine*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-                $var4 = "https://maps.app.goo.gl/tn2biVoLgPTRrtQs8";
-            break;
-
-            case 205:
-                $type = "reminder_step1_alt";
-                $template = "reminder_step1_alt";
-                $image = config("site.assets")."/img/guide/dhea01.jpeg";
-                $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The *Morning Food Tour in Yogyakarta* will start tomorrow morning at *8.00AM* and our meeting point is *Lupis Mbah Satinem*";
-                $var3 = "Her name is *Dhea*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
-                $var4 = "https://maps.app.goo.gl/tn2biVoLgPTRrtQs8";
-            break;
-
             case 301:
                 $type = "reminder_step1";
                 $template = "reminder_step1";
@@ -243,19 +193,6 @@ class ContactController extends Controller
                 $var3 = "Please be there 15 minutes before the tour start 🙏";
                 $var4 = "https://maps.app.goo.gl/6m9Bm1mrdLVZRefh6";
             break;
-            
-            
-
-            case 303:
-                $type = "reminder_step1_alt";
-                $template = "reminder_step1_alt";
-                $image = config("site.assets")."/img/guide/dharma01.jpeg";
-                $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The *Bali Nighttime Walk and Food Tour in Denpasar* will start tomorrow evening at *5.00PM* and our meeting point is *Lapangan Puputan Badung*. Please wait near the sign *Plakat Nol Kilometer Kota Denpasar* 🙏";
-                $var3 = "His name is *Dharma*. He will be the tour guide on duty and will be waiting for you at meeting point 😊";
-                $var4 = "https://maps.app.goo.gl/oJHftuQAFRQGjZDv6";
-            break;
-
             
             case 901:
                 // Denpasar Night Food Tour
