@@ -59,7 +59,7 @@ foreach($bookings as $booking)
     
 <div class="col-md-6 mb-4">
 <div class="card text-white bg-light mb-3 w-100 h-100">
-<div class="card-header bg-light text-dark"><b>TRAVELLER BY PRODUCT</b></div>
+<div class="card-header bg-light text-dark"><b>TRAVELER BY PRODUCT</b></div>
 <div class="card-body bg-light text-dark">
 @php
 $total_tamu = 0;    
@@ -71,7 +71,7 @@ foreach($products as $product)
 }
 @endphp
 </div>
-<div class="card-footer bg-light text-dark">Total Traveller : {{$total_tamu}}</div>
+<div class="card-footer bg-light text-dark">Total Traveler : {{$total_tamu}}</div>
 </div>
 
 
@@ -82,7 +82,7 @@ foreach($products as $product)
 
 <div class="col-md-6 mb-4">
 <div class="card text-white bg-light mb-3 w-100 h-100">
-<div class="card-header bg-light text-dark"><b>TRAVELLER BY BOOKING</b></div>
+<div class="card-header bg-light text-dark"><b>TRAVELER BY BOOKING</b></div>
 <div class="card-body bg-light text-dark">
 @php
 $total_tamu = 0;    
@@ -94,7 +94,7 @@ foreach($traveler_booking_per_months as $traveler_booking_per_month)
 }
 @endphp
 </div>
-<div class="card-footer bg-light text-dark">Total Traveller : {{$total_tamu}}</div>
+<div class="card-footer bg-light text-dark">Total Traveler : {{$total_tamu}}</div>
 </div>
 </div>
 
@@ -133,7 +133,7 @@ foreach($traveler_booking_per_months as $traveler_booking_per_month)
   <div class="card-header">{{ $fin->nameCategory($guide->id,'-') }}</div>
   <div class="card-body">
     <h5 class="card-title">Total : IDR {{ number_format($total, 0, ',', '.') }}</h5>
-    <h5 class="card-title">Order : {{ number_format($order, 0, ',', '.') }} </h5>
+    <h5 class="card-title">On duty : {{ number_format($order, 0, ',', '.') }} </h5>
   </div>
   <div class="card-footer">
     <h5><a href="{{ route('route_tourcms_salary.index') }}?id={{$guide->id}}&date={{$tahun}}-{{ $bulan }}"><i class="far fa-file-pdf"></i> Download</a></h5>
