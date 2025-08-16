@@ -4,6 +4,7 @@ namespace budisteikul\tourcms\Controllers;
 use App\Http\Controllers\Controller;
 
 use budisteikul\tourcms\Models\Order;
+use budisteikul\tourcms\Helpers\AccHelper;
 use budisteikul\tourcms\Models\fin_transactions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -37,10 +38,25 @@ class PettyCashController extends Controller
             $text .= ' '. number_format($total, 0, ',', '.');
         }
         $button = '<button type="button" id="submit" class="btn btn-success" onclick="SET_DONE();" '.$disabled.'>'.$text.'</button>';
+
+
+        $guides = json_decode(config('site.guides'));
+        $held_saldo = 0;
+        $tahun = date('Y');
+        $bulan = date('m');
+        foreach($guides as $guide)
+        {
+            $held_saldo += AccHelper::total_per_month($guide->id,$tahun,$bulan,false);
+        }
+
+        $total_saldo = $pettycash_saldo+$held_saldo;
+
         return response()->json([
                     "id" => "1",
                     "pettycash_saldo" => number_format($pettycash_saldo, 0, ',', '.'),
-                    "button" => $button
+                    "button" => $button,
+                    "held_saldo" => number_format($held_saldo, 0, ',', '.'),
+                    "total_saldo" => number_format($total_saldo, 0, ',', '.')
                 ]);
     }
 

@@ -114,7 +114,9 @@ $(function() {
 function get_saldo()
 {
 	$.get("{{ route('route_tourcms_pettycash.index') }}/saldo", function(data, status){
-    	$('#saldo').html(data.pettycash_saldo);
+    	$('#pettycash_saldo').html(data.pettycash_saldo);
+    	$('#held_saldo').html(data.held_saldo);
+    	$('#total_saldo').html(data.total_saldo);
     	$('#button').html(data.button);
   	});
 }
@@ -186,8 +188,12 @@ function SET_DONE()
 </div>
 
                     </div>
-                    <div class="col-auto text-right mr-0 pr-0"  style="font-size: 25px">
-                    	Saldo : <span id="saldo"></span>
+                    <div class="col-auto text-right mr-0 pr-0"  style="font-size: 18px">
+                    	Petty Cash : <span id="pettycash_saldo"></span>
+                    	<br />
+                    	Held : <span id="held_saldo"></span>
+                    	<br />
+                    	Total : <span id="total_saldo"></span>
                     	<br />
                     	<span id="button"></span>
                     </div>
