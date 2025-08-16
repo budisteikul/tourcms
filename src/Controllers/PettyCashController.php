@@ -46,9 +46,12 @@ class PettyCashController extends Controller
         $bulan = date('m');
         foreach($guides as $guide)
         {
-            $held_saldo += AccHelper::total_per_month($guide->id,$tahun,$bulan,false);
+            $salary = AccHelper::total_per_month($guide->id,$tahun,$bulan,false);
+            $ca = AccHelper::ca($guide->id,$bulan,$tahun);
+            $salary_ca = $salary - $ca->total;
+            $held_saldo += $salary_ca;
         }
-
+        
         $total_saldo = $pettycash_saldo+$held_saldo;
 
         return response()->json([
