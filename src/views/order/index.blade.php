@@ -172,30 +172,37 @@ function SET_DONE()
 
 <div class="row w-100">
                 	<div class="col text-left">
-<div class="col-md-6">
-                   		<div class="form-group">
+<div class="col-lg-8 col-sm-12 mb-4">
 
-    <select class="form-control" id="app" data-live-search="true">
+	Petty Cash : <span id="pettycash_saldo"></span>
+                    	<br />
+                    	Held : <span id="held_saldo"></span>
+                    	<br />
+                    	Total : <span id="total_saldo"></span>
+                    	<br /><br />
+                    	<span id="button"></span>
+
+               		
+
+
+
+</div>
+
+                    </div>
+                    <div class="col-lg-4 col-sm-12 text-right mr-0 pr-0"  style="font-size: 18px">
+                    	<div class="input-group">
+
+    <select class="form-control mr-2" id="app" data-live-search="true">
        	<option value="1">Jogja Night Food Tour</option>
        	<option value="2">Jogja Morning Food Tour</option>
        	<option value="3">Taman Anyar Tour</option>
        	<option value="4">Denpasar Food Tour</option>
        	<option value="5">Ubud Food Tour</option>
 	</select>
+
+<button   onclick="CREATE($('#app').val()); return false;" id="create" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Create</button>
 	
 </div>
-<button   onclick="CREATE($('#app').val()); return false;" id="create" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Create</button>
-</div>
-
-                    </div>
-                    <div class="col-auto text-right mr-0 pr-0"  style="font-size: 18px">
-                    	Petty Cash : <span id="pettycash_saldo"></span>
-                    	<br />
-                    	Held : <span id="held_saldo"></span>
-                    	<br />
-                    	Total : <span id="total_saldo"></span>
-                    	<br />
-                    	<span id="button"></span>
                     </div>
 
 </div>
