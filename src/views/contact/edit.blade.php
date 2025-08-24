@@ -331,6 +331,10 @@ function clear_messages()
 
 function sendTemplate(template_id, guide_id=null)
 {
+    var buttonId = event.srcElement.id;
+    var buttonText = $('#'+ buttonId).html()
+    
+    
 
     $.confirm({
         title: 'Are you sure?',
@@ -344,6 +348,9 @@ function sendTemplate(template_id, guide_id=null)
                 keys: ['enter'],
                 action: function(){
                     
+                    $("#"+ buttonId).attr("disabled", true);
+                    $("#"+ buttonId).html('<i class="fa fa-spinner fa-spin"></i>');
+
                     $.ajax({
                         data: {
                           "_token": $("meta[name=csrf-token]").attr("content"),
@@ -355,7 +362,8 @@ function sendTemplate(template_id, guide_id=null)
                         url: '{{ route('route_tourcms_contact.index') .'/template' }}'
                     }).done(function( data ) {
       
-                        
+                        $("#"+ buttonId).attr("disabled", false);
+                        $("#"+ buttonId).html(buttonText);
 
                     });
                     
