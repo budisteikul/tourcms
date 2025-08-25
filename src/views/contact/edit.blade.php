@@ -332,13 +332,13 @@ function clear_messages()
 function sendTemplate(template_id, guide_id=null)
 {
     var buttonId = event.srcElement.id;
-    var buttonText = $('#'+ buttonId).html()
-    
+    var buttonText = $('#'+ buttonId).html();
+    var content = $('#'+ buttonId).text();
     
 
     $.confirm({
         title: 'Are you sure?',
-        content: '',
+        content: content,
         type: 'blue',
         icon: 'fas fa-paper-plane',
         buttons: {   
