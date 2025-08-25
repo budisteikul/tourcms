@@ -68,7 +68,7 @@
             @if(isset($shoppingcart->shoppingcart_payment))
             
             <div class="card mb-2" style="border-radius: 0px;">
-                <div class="card-header bg-secondary" style="border-radius: 0px;">PAYMENT</div>
+                <div class="card-header bg-secondary" style="border-radius: 0px;">ACTION</div>
             
                   <ul class="list-group list-group-flush">
                     @if($shoppingcart->shoppingcart_payment->payment_provider!="none")
@@ -87,7 +87,7 @@
                     @endif
                     <li class="list-group-item"><b>Payment Provider :</b> {{ strtoupper($shoppingcart->shoppingcart_payment->payment_provider) }}</li>
                     @endif
-                    <li class="list-group-item"><b>Total :</b> {{ strtoupper($shoppingcart->shoppingcart_payment->currency) }} {{ $General->numberFormat($shoppingcart->shoppingcart_payment->amount,$shoppingcart->shoppingcart_payment->currency) }}</li>
+                    <!-- li class="list-group-item"><b>Total :</b> {{ strtoupper($shoppingcart->shoppingcart_payment->currency) }} {{ $General->numberFormat($shoppingcart->shoppingcart_payment->amount,$shoppingcart->shoppingcart_payment->currency) }}</li -->
                     @if($shoppingcart->shoppingcart_payment->payment_type=="bank_redirect")
                     <li class="list-group-item">
                         <b>Link :</b> {{ $shoppingcart->shoppingcart_payment->redirect }}
