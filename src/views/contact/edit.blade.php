@@ -337,8 +337,8 @@ function sendTemplate(template_id, guide_id=null)
     
 
     $.confirm({
-        title: 'Are you sure?',
-        content: content,
+        title: content,
+        content: 'Are you sure?',
         type: 'blue',
         icon: 'fas fa-paper-plane',
         buttons: {   
