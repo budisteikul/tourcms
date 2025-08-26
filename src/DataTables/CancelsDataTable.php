@@ -91,6 +91,7 @@ class CancelsDataTable extends DataTable
 
             Column::make('shoppingcart.confirmation_code')->title('Transaction ID')->orderable(false)->addClass('align-middle'),
             
+            Column::make('payment_provider')->title('Payment Provider')->orderable(false)->addClass('align-middle'),
             Column::make('amount_text')->title('Amount')->orderable(false)->addClass('align-middle'),
             Column::make('refund_text')->title('Refund')->orderable(false)->addClass('align-middle'),
             
