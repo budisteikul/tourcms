@@ -33,8 +33,8 @@ class CancelsDataTable extends DataTable
                     return $id->currency .' '. GeneralHelper::numberFormat($id->amount,$id->currency);
                 })
             ->editColumn('payment_provider', function($id){
-                    $payment_provider = ShoppingcartPayment::where('shoppingcart_id',$id->id)->first();
-                    return $payment_provider;
+                    $payment_provider = ShoppingcartPayment::where('shoppingcart_id',$id->shoppingcart_id)->first()->payment_provider;
+                    return strtoupper($payment_provider);
                 })
             ->addColumn('refund_text', function($id){
                     return $id->currency .' '. GeneralHelper::numberFormat($id->refund,$id->currency);
