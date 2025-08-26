@@ -63,7 +63,8 @@
                 <div class="container ml-0 pl-0">
                 <div class="row">
                 	<div class="col">
-                    
+                    <b>Stripe Hold : {{$stripe_amount}}</b><br />
+                    <b>Paypal Hold : {{$paypal_amount}}</b>
                     </div>
                     
                 </div>
