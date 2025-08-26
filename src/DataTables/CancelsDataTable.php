@@ -3,6 +3,7 @@
 namespace budisteikul\tourcms\DataTables;
 
 use budisteikul\tourcms\Models\ShoppingcartCancellation as Cancel;
+use budisteikul\tourcms\Models\ShoppingcartPayment;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -32,7 +33,8 @@ class CancelsDataTable extends DataTable
                     return $id->currency .' '. GeneralHelper::numberFormat($id->amount,$id->currency);
                 })
             ->editColumn('payment_provider', function($id){
-                    return $id->payment_provider;
+                    $payment_provider = ShoppingcartPayment::where('shoppingcart_id',$id->id)->first();
+                    return $payment_provider;
                 })
             ->addColumn('refund_text', function($id){
                     return $id->currency .' '. GeneralHelper::numberFormat($id->refund,$id->currency);
