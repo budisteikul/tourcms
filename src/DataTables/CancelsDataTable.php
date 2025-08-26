@@ -31,6 +31,9 @@ class CancelsDataTable extends DataTable
             ->addColumn('amount_text', function($id){
                     return $id->currency .' '. GeneralHelper::numberFormat($id->amount,$id->currency);
                 })
+            ->editColumn('payment_provider', function($id){
+                    return $id->payment_provider;
+                })
             ->addColumn('refund_text', function($id){
                     return $id->currency .' '. GeneralHelper::numberFormat($id->refund,$id->currency);
                 })
