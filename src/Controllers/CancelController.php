@@ -8,6 +8,7 @@ use budisteikul\tourcms\Models\ShoppingcartCancellation;
 use budisteikul\tourcms\Models\ShoppingcartProduct;
 use budisteikul\tourcms\DataTables\CancelsDataTable;
 use budisteikul\tourcms\Helpers\PaymentHelper;
+use budisteikul\tourcms\Helpers\GeneralHelper;
 
 class CancelController extends Controller
 {
@@ -44,7 +45,6 @@ class CancelController extends Controller
                     return $query->where('booking_status','CONFIRMED');
                  })->whereDate('date', '>=', date('Y-m-01'))->whereNotNull('date')->orderBy('date')->orderBy('id')->get();
 
-
         foreach($model as $x)
         {
             if(isset($x->shoppingcart->shoppingcart_payment->payment_provider))
@@ -53,6 +53,8 @@ class CancelController extends Controller
             }
         }
 
+        $stripe_amount = GeneralHelper::numberFormat($stripe_amount,'USD').' USD';
+        $paypal_amount = GeneralHelper::numberFormat($paypal_amount,'USD').' USD';
         return $dataTable->render('tourcms::cancels.index',['stripe_amount'=>$stripe_amount,'paypal_amount'=>$paypal_amount]);
     }
 
