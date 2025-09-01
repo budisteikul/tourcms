@@ -53,9 +53,28 @@ class CancelController extends Controller
             }
         }
 
+        $wise_amount = 0 ;
+        $model = ShoppingcartProduct::with(['shoppingcart' => function ($query) {
+                    $query = $query->with(['shoppingcart_payment' => function ($query) {
+                        return $query->where('payment_provider','wise');
+                    }]);
+                 }])
+                 ->whereHas('shoppingcart', function ($query) {
+                    return $query->where('booking_status','CONFIRMED');
+                 })->whereDate('date', '>=', date('Y-m-01'))->whereNotNull('date')->orderBy('date')->orderBy('id')->get();
+
+        foreach($model as $x)
+        {
+            if(isset($x->shoppingcart->shoppingcart_payment->payment_provider))
+            {
+                $wise_amount += $x->shoppingcart->shoppingcart_payment->amount;
+            }
+        }
+
         $stripe_amount = GeneralHelper::numberFormat($stripe_amount,'USD').' USD';
         $paypal_amount = GeneralHelper::numberFormat($paypal_amount,'USD').' USD';
-        return $dataTable->render('tourcms::cancels.index',['stripe_amount'=>$stripe_amount,'paypal_amount'=>$paypal_amount]);
+        $wise_amount = GeneralHelper::numberFormat($wise_amount,'IDR').' IDR';
+        return $dataTable->render('tourcms::cancels.index',['stripe_amount'=>$stripe_amount,'paypal_amount'=>$paypal_amount,'wise_amount'=>$wise_amount]);
     }
 
     public function create()

@@ -64,7 +64,8 @@
                 <div class="row">
                 	<div class="col">
                     <b>Stripe Hold : {{$stripe_amount}}</b><br />
-                    <b>Paypal Hold : {{$paypal_amount}}</b>
+                    <b>Paypal Hold : {{$paypal_amount}}</b><br />
+                    <b>Wise Hold : {{$wise_amount}}</b><br/>
                     </div>
                     
                 </div>
