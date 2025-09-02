@@ -423,7 +423,7 @@ function fileUpload()
     dragDrop:true,
     maxFileCount:1,
     fileName: "myfile",
-    allowedTypes:"jpg,jpeg",  
+    allowedTypes:"jpg,jpeg,pdf",  
     returnType:"json",
     acceptFiles:"image/*",
     uploadStr:"<i class=\"fa fa-folder-open\"></i> Browse",
