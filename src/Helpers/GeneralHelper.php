@@ -86,6 +86,9 @@ class GeneralHelper {
                 $new_date = $date->setTimezone('UTC')->format('Y-m-d\TH:i:s.v\Z');
                 return $new_date;
             break;
+            case 13:
+                return \Carbon\Carbon::parse($date)->addDay()->format('D, M jS');
+            break;
             default:
                 return \Carbon\Carbon::now()->toDateTimeString();
         }

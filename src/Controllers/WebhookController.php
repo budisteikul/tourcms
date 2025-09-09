@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use budisteikul\tourcms\Helpers\BookingHelper;
 use budisteikul\tourcms\Helpers\PaymentHelper;
+use budisteikul\tourcms\Helpers\GeneralHelper;
 use budisteikul\tourcms\Models\Shoppingcart;
 use budisteikul\tourcms\Models\ShoppingcartPayment;
 use budisteikul\tourcms\Models\Contact;
@@ -25,7 +26,11 @@ class WebhookController extends Controller
     
     public function webhook($webhook_app,Request $request)
     {
-        
+        if($webhook_app=="test")
+        {
+            print(GeneralHelper::dateFormat("",13));
+            exit();
+        }
 
         if($webhook_app=="whatsapp")
         {

@@ -198,7 +198,7 @@ class ContactController extends Controller
                 $type = "reminder_step1";
                 $template = "reminder_step1";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The *Bali Taman Anyar Village Tour* will start tomorrow morning at *9.30AM* and our meeting point is *SDN 3 Penarungan*";
+                $var2 = "The *Bali Taman Anyar Village Tour* will start tomorrow morning (".GeneralHelper::dateFormat("",13).") at *9.30AM* and our meeting point is *SDN 3 Penarungan*";
                 $var3 = "Please be there 15 minutes before the tour start 🙏";
                 $var4 = "https://maps.app.goo.gl/1Qd734sCUGkY9ckX9";
             break;
@@ -207,7 +207,7 @@ class ContactController extends Controller
                 $type = "reminder_step1";
                 $template = "reminder_step1";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The *Bali Taman Anyar Village Tour* will start tomorrow morning at *9.30AM* and our meeting point is *SDN 2 Penarungan*";
+                $var2 = "The *Bali Taman Anyar Village Tour* will start tomorrow morning (".GeneralHelper::dateFormat("",13).") at *9.30AM* and our meeting point is *SDN 2 Penarungan*";
                 $var3 = "Please be there 15 minutes before the tour start 🙏";
                 $var4 = "https://maps.app.goo.gl/6m9Bm1mrdLVZRefh6";
             break;
@@ -247,7 +247,7 @@ class ContactController extends Controller
                 $type = "reminder_jogja_food_tour";
                 $template = "reminder_jogja_food_tour";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "tomorrow night";
+                $var2 = "tomorrow night (".GeneralHelper::dateFormat("",13).")";
                 $var3 = "6:30PM";
                 $var4 = "Tugu Jogja (Yogyakarta Monument)";
                 $var5 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
@@ -271,7 +271,7 @@ class ContactController extends Controller
                 $type = "reminder_jogja_food_tour";
                 $template = "reminder_jogja_food_tour";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "tomorrow morning";
+                $var2 = "tomorrow morning (".GeneralHelper::dateFormat("",13).")";
                 $var3 = "8:00AM";
                 $var4 = "Lupis Mbah Satinem";
                 $var5 = "https://maps.app.goo.gl/tn2biVoLgPTRrtQs8";
@@ -310,7 +310,7 @@ class ContactController extends Controller
                 $template = "tour_guide";
 
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "tomorrow morning";
+                $var2 = "tomorrow morning (".GeneralHelper::dateFormat("",13).")";
                 $var3 = "8.00AM";
                 $var4 = "Lupis Mbah Satinem";
                 $var5 = "https://maps.app.goo.gl/NDVzUFu8ts5VC4eQ8";
