@@ -56,6 +56,12 @@ class ExpensesController extends Controller
             $note = 'Expenses - Refund : '. number_format($amount, 0, ',', '.');
             $status = 0;
         }
+        else if($app==4)
+        {
+            $trans_id = 57;
+            $note = 'Expenses - Rent : '. number_format($amount, 0, ',', '.');
+            $status = 0;
+        }
         else
         {
             $trans_id = 16;

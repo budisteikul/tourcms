@@ -35,8 +35,8 @@
       <option value="1">BILL</option>
       <option value="2">BANK FEE</option>
       <option value="3">REFUND</option>
-      <option value="4">OTHER</option>
-    
+      <option value="4">RENT</option>
+      <option value="5">OTHER</option>
     </select>
 </div>
 
