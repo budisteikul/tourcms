@@ -68,7 +68,7 @@ class PettyCashController extends Controller
      */
     public function store(Request $request)
     {
-        $bank_fee = 0;
+        $bank_fee = config('site.topup_fee');
 
         $fin_transactions = fin_transactions::where('status',0)->get();
         $total = $fin_transactions->sum('amount');
