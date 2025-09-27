@@ -75,12 +75,14 @@ class OrderController extends Controller
             if($app==1)
             {
 
+                $duty_fee = 0;
                 $guide_settings = json_decode(config('site.guides'));
                 foreach($guide_settings as $guide_setting)
                 {
                     if($guide->id==$guide_setting->id)
                     {
                         $total_guide = $guide_setting->fee * $pax;
+                        $duty_fee = $guide_setting->duty_fee;
                     }
                 }
 
@@ -91,6 +93,12 @@ class OrderController extends Controller
                 $total = $total_cost + $total_guide;
                 $tour = "Jogja Night Food Tour";
                 $pax = $pax;
+
+                if($duty_fee>0)
+                {
+                    $total = $total + $duty_fee;
+                    $total_guide = $total_guide + $duty_fee;
+                }
 
                 if($additional>0)
                 {
