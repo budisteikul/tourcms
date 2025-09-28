@@ -21,6 +21,7 @@ class NeracaController extends Controller
 
         $capital = AccHelper::capital();
         $debt = AccHelper::debt();
+        $receivable = AccHelper::Receivable();
         $retained_earnings = AccHelper::calculate_saldo_akhir($tahun-1,12);
 
         $revenue = 0;
@@ -40,18 +41,21 @@ class NeracaController extends Controller
         {
             $expenses += AccHelper::total_per_month_by_type('Expenses',$tahun,$i);
         }
+
+        
         
         $cash = 0;
         $accounts_receivable = 0;
         $earning = $revenue - $cogs - $expenses;
 
-        $cash = $capital + $debt + $retained_earnings + $earning;
+        $cash = $capital + $debt + $retained_earnings + $earning - $receivable;
+        
         if($earning<0)
         {
             $accounts_receivable = $earning * -1;
             $earning = 0;
         }
-        
+        $accounts_receivable += $receivable;
 
         $total_asset = $cash + $accounts_receivable;
         $total_liabilities_and_equity =  $capital+$earning+$retained_earnings+$debt;

@@ -48,6 +48,7 @@
       <option value="Cost of Goods Sold">Cost of Goods Sold</option>
       <option value="Capital">Capital</option>
       <option value="Debt">Debt</option>
+      <option value="Receivable">Receivable</option>
 	</select>
 </div>
 

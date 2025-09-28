@@ -24,6 +24,11 @@ class AccHelper {
         return self::total_by_type('Debt');
     }
 
+    public static function receivable()
+    {
+        return self::total_by_type('Receivable');
+    }
+
     public static function first_date_transaction()
     {
         $fin_transactions = fin_transactions::orderBy('date')->first();

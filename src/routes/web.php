@@ -234,7 +234,7 @@ Route::resource('/cms/fin/report/monthly', 'budisteikul\tourcms\Controllers\Repo
 
 Route::resource('/cms/fin/tax', 'budisteikul\tourcms\Controllers\TaxController',[ 'names' => 'route_fin_tax' ])->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
 
-Route::resource('/cms/fin/neraca', 'budisteikul\tourcms\Controllers\NeracaController',[ 'names' => 'route_fin_neraca' ])->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
+Route::resource('/cms/fin/neraca', 'budisteikul\tourcms\Controllers\NeracaController',[ 'names' => 'route_fin_neraca' ])->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);
 
 Route::get('/cms/fin/report/pdf/{tahun}','budisteikul\tourcms\Controllers\LaporanController@pdf')->middleware(['web','auth','verified','CoreMiddleware']);
 

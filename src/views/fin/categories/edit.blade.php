@@ -45,6 +45,7 @@
       <option value="Cost of Goods Sold" {{ ($category->type=='Cost of Goods Sold') ? 'selected' : '' }}>Cost of Goods Sold</option>
       <option value="Capital" {{ ($category->type=='Capital') ? 'selected' : '' }}>Capital</option>
       <option value="Debt" {{ ($category->type=='Debt') ? 'selected' : '' }}>Debt</option>
+      <option value="Receivable" {{ ($category->type=='Receivable') ? 'selected' : '' }}>Receivable</option>
 	</select>
 </div>
      
