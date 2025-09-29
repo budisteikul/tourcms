@@ -103,7 +103,7 @@ class PettyCashController extends Controller
         $order->type = 'pettycash';
         $order->date = date('Y-m-d');
         //$order->tour = 'Petty Cash';
-        $order->total = $total + $bank_fee;
+        $order->total = $total;
         $order->note = 'Petty Cash - Top up : '. number_format($total, 0, ',', '.') .' - Bank Fee : '. number_format($bank_fee, 0, ',', '.'); 
         $order->transactions = json_encode($json);
         $order->save();
