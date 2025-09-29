@@ -41,6 +41,17 @@ class AccHelper {
         return $fin_categories->type;
     }
 
+
+    public static function order_by_month($type,$month,$year)
+    {
+        $data = new \stdClass();
+        $orders = Order::where('type',$type)->whereMonth('date',$month)->whereYear('date',$year);
+        $data->type = $type;
+        $data->count = $orders->count();
+        $data->total = $orders->sum('total');
+        return $data;
+    }
+
     public static function ca($guide_id,$month,$year,$type="cash_advance")
     {
         $data = new \stdClass();
