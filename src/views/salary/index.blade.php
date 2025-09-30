@@ -45,12 +45,12 @@ table{
 <div style="margin-top: 30px; margin-bottom: 40px; font-weight: bold; text-align: left; font-size:14px">
   Date : {{ $date_name }}<br />
   Name : {{ $guide_name }}<br />
-  Balance : {{number_format($salary->fee - $cash_advance->total, 0, ',', '.')}}<br />
+  Total Fee : {{number_format($salary->fee - $cash_advance->total, 0, ',', '.')}}<br />
   On duty : {{number_format($salary->count, 0, ',', '.')}}
 </div>
 
 <center>
-<div style="text-align:left"><h3>In</h3></div>
+<div style="text-align:left"><h3>Fee</h3></div>
 <table id="table1" border="1" cellspacing="2" cellpadding="3" style="border-collapse: collapse; " >
   <thead>
     <tr>
@@ -90,7 +90,7 @@ table{
 <br />
 <br />
 @if($cash_advance->total>0)
-<div style="text-align:left"><h3>Out</h3></div>
+<div style="text-align:left"><h3>Fee Deductions</h3></div>
 <table id="table1" border="1" cellspacing="2" cellpadding="3" style="border-collapse: collapse; " >
   <thead>
     <tr>

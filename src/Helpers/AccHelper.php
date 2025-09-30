@@ -71,7 +71,7 @@ class AccHelper {
     public static function order_guide($guide_id,$month,$year,$type="order")
     {
         $data = new \stdClass();
-        $query = Order::where('type',$type)->where('guide',$guide_id)->whereMonth('date',$month)->whereYear('date',$year);
+        $query = Order::where('type',$type)->where('guide',$guide_id)->whereMonth('date',$month)->whereYear('date',$year)->orderBy('date');
         $data->query = $query->get();
         $data->fee = $query->sum('fee');
         $data->cost = $query->sum('cost');
