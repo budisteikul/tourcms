@@ -64,7 +64,11 @@ class OrderDataTable extends DataTable
      */
     public function query(Order $model): QueryBuilder
     {
-        return $model->where('type','order')->orWhere('type','pettycash')->newQuery();
+        $tahun = $this->tahun;
+        $bulan = $this->bulan;
+        return $model->where(function ($query) {
+                            $query->where('type', 'order')->orWhere('type', 'pettycash');
+                        })->whereYear('date',$tahun)->whereMonth('date',$bulan)->orderBy('date','DESC')->newQuery();
     }
 
     /**

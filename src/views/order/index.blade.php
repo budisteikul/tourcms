@@ -1,3 +1,4 @@
+@inject('fin', 'budisteikul\tourcms\Helpers\AccHelper')
 @extends('coresdk::layouts.app')
 @section('content')
 @push('scripts')
@@ -169,6 +170,14 @@ function SET_DONE()
             <div class="card">
                 <div class="card-header">Orders</div>
                 <div class="card-body">
+
+<div class="row w-100">
+                	<div class="col  text-left">
+                   		{!! $fin::select_yearmonth_form($tahun,$bulan)  !!}
+                    </div>
+                    
+                	</div>
+                	<hr />
 
 <div class="row w-100">
                 	<div class="col text-left">

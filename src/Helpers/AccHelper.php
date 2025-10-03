@@ -315,22 +315,37 @@ class AccHelper {
     }
 
     
-    
-    public static function calculate_saldo($tahun,$bulan)
+    public static function calculate_saldo_byType($type,$bulan,$tahun,$thismonth=true)
     {
                 $fin_date_start = self::first_date_transaction();
 
                 $start_year = Str::substr($fin_date_start, 0,4);
                 $start_month = Str::substr($fin_date_start, 5,2);
 
-                $newDateTime = Carbon::parse($start_year."-".$start_month."-01")->subMonths(1);
+                if($thismonth)
+                {
+                    $newDateTime = Carbon::parse($start_year."-".$start_month."-01");
+                }
+                else
+                {
+                    $newDateTime = Carbon::parse($start_year."-".$start_month."-01")->subMonths(1);
+                }
+                
                 $tahun_past = Str::substr($newDateTime, 0,4);
                 $bulan_past = Str::substr($newDateTime, 5,2);
 
                 $tahun_req = $tahun;
                 $bulan_req = $bulan;
 
-                $newDateTime = Carbon::parse($tahun."-".$bulan."-01")->subMonths(1);
+                if($thismonth)
+                {
+                    $newDateTime = Carbon::parse($tahun."-".$bulan."-01");
+                }
+                else
+                {
+                    $newDateTime = Carbon::parse($tahun."-".$bulan."-01")->subMonths(1);
+                }
+                
                 $tahun = Str::substr($newDateTime, 0,4);
                 $bulan = Str::substr($newDateTime, 5,2);
                 
@@ -362,14 +377,9 @@ class AccHelper {
                     
                     for($j=$xbulan;$j<=$ybulan;$j++)
                     {
-                                $jbulan = GeneralHelper::digitFormat($j,2);
-                                $revenue_per = self::total_per_month_by_type('Revenue',$i,$jbulan);
-                                $cogs_per = self::total_per_month_by_type('Cost of Goods Sold',$i,$jbulan);
-                                $gross_margin = $revenue_per - $cogs_per;
-                                $total_expenses = self::total_per_month_by_type('Expenses',$i,$jbulan);
-                    
-                                $profit_loss = $gross_margin - $total_expenses;
-                                $total += $profit_loss;
+                        $jbulan = GeneralHelper::digitFormat($j,2);
+                        $subtotal = self::total_per_month_by_type($type,$i,$jbulan);
+                        $total += $subtotal;
                     }
                 }
                 
@@ -378,64 +388,14 @@ class AccHelper {
 
     public static function calculate_saldo_akhir($tahun,$bulan)
     {
-                $fin_date_start = self::first_date_transaction();
+        $revenue = self::calculate_saldo_byType('Revenue',$bulan,$tahun);
+        $cogs = self::calculate_saldo_byType('Cost of Goods Sold',$bulan,$tahun);
+        $expenses = self::calculate_saldo_byType('Expenses',$bulan,$tahun);
 
-                $start_year = Str::substr($fin_date_start, 0,4);
-                $start_month = Str::substr($fin_date_start, 5,2);
-
-                $newDateTime = Carbon::parse($start_year."-".$start_month."-01");
-                $tahun_past = Str::substr($newDateTime, 0,4);
-                $bulan_past = Str::substr($newDateTime, 5,2);
-
-                $tahun_req = $tahun;
-                $bulan_req = $bulan;
-
-                $newDateTime = Carbon::parse($tahun."-".$bulan."-01");
-                $tahun = Str::substr($newDateTime, 0,4);
-                $bulan = Str::substr($newDateTime, 5,2);
-                
-                $total = 0;
-                for($i=$start_year;$i<=$tahun;$i++)
-                {
-                    $xbulan = $bulan_past;
-                    $ybulan = $bulan;
-                    
-                    if(($tahun_req>$start_year))
-                    {
-                        if($i==$start_year)
-                        {
-                            $xbulan = $bulan_past;
-                            $ybulan = 12;
-                        }
-                        else if($i<$tahun_req)
-                        {
-                            $xbulan = 1;
-                            $ybulan = 12;
-                        }
-                        else
-                        {   
-                            $xbulan = 1;
-                            $ybulan = $bulan;
-                        }
-                    }
-
-                    
-                    for($j=$xbulan;$j<=$ybulan;$j++)
-                    {
-                                $jbulan = GeneralHelper::digitFormat($j,2);
-                                $revenue_per = self::total_per_month_by_type('Revenue',$i,$jbulan);
-                                $cogs_per = self::total_per_month_by_type('Cost of Goods Sold',$i,$jbulan);
-                                $gross_margin = $revenue_per - $cogs_per;
-                                $total_expenses = self::total_per_month_by_type('Expenses',$i,$jbulan);
-                                $profit_loss = $gross_margin - $total_expenses;
-                                $total += $profit_loss;
-                    }
-                }
-                
-                return round($total);
+        $total = $revenue - $cogs - $expenses;
+        return $total;
     }
 
-    
 	public static function total_per_month($category_id,$year,$month,$status=true)
     {
           $total = 0;

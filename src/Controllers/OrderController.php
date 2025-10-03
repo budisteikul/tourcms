@@ -10,14 +10,30 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use budisteikul\tourcms\DataTables\OrderDataTable;
 
+use Carbon\Carbon;
+use Illuminate\Support\Str;
+use budisteikul\tourcms\Helpers\GeneralHelper;
+
 class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(OrderDataTable $dataTable)
+    public function index(OrderDataTable $dataTable,Request $request)
     {
-        return $dataTable->render('tourcms::order.index');
+        $date = $request->input('date');
+
+        if($date=="") $date = date('Y-m');
+
+        $newDateTime = Carbon::parse($date."-01");
+        $tahun = Str::substr($newDateTime, 0,4);
+        $bulan = Str::substr($newDateTime, 5,2);
+        $bulan = GeneralHelper::digitFormat($bulan,2);
+        return $dataTable->with([
+                'tahun' => $tahun,
+                'bulan' => $bulan
+           ])->render('tourcms::order.index',['tahun' => $tahun,
+                'bulan' => $bulan]);
     }
 
     /**

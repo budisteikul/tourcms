@@ -71,6 +71,7 @@ class TransactionsDataTable extends DataTable
      */
     public function query(fin_transactions $model): QueryBuilder
     {
+        
         $tahun = $this->tahun;
         $bulan = $this->bulan;
         return $model->with('categories')->whereYear('date',$tahun)->whereMonth('date',$bulan)->orderBy('date','DESC')->newQuery();
