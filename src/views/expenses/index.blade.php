@@ -1,3 +1,4 @@
+@inject('fin', 'budisteikul\tourcms\Helpers\AccHelper')
 @extends('coresdk::layouts.app')
 @section('content')
 @push('scripts')
@@ -62,7 +63,13 @@
                 <div class="card-header">Expenses</div>
                 <div class="card-body">
         		
-
+<div class="row w-100">
+                	<div class="col  text-left">
+                   		{!! $fin::select_yearmonth_form($tahun,$bulan)  !!}
+                    </div>
+                    
+                	</div>
+                	<hr />
         		<div class="row w-100">
                 	<div class="col  text-left">
                    		<button   onclick="CREATE(); return false;" id="create" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Create</button>

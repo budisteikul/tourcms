@@ -57,7 +57,9 @@ class ExpensesDataTable extends DataTable
      */
     public function query(Order $model): QueryBuilder
     {
-        return $model->where('type','expenses')->newQuery();
+        $tahun = $this->tahun;
+        $bulan = $this->bulan;
+        return $model->where('type','expenses')->whereYear('date',$tahun)->whereMonth('date',$bulan)->orderBy('date','DESC')->newQuery();
     }
 
     /**
