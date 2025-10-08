@@ -33,13 +33,11 @@
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Message</a>
-    <a class="nav-item nav-link" id="nav-menu3-tab" data-toggle="tab" href="#nav-menu3" role="tab" aria-controls="nav-menu3" aria-selected="false">Booking</a>
+    
     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Jogja Food Tour</a>
     <a class="nav-item nav-link" id="nav-menu5-tab" data-toggle="tab" href="#nav-menu5" role="tab" aria-controls="nav-menu5" aria-selected="false">Taman Anyar</a>
     <a class="nav-item nav-link" id="nav-menu6-tab" data-toggle="tab" href="#nav-menu6" role="tab" aria-controls="nav-menu6" aria-selected="false">Request Review</a>
-    <a class="nav-item nav-link" id="nav-menu4-tab" data-toggle="tab" href="#nav-menu4" role="tab" aria-controls="nav-menu4" aria-selected="false">General</a>
-    <a class="nav-item nav-link" id="nav-menu7-tab" data-toggle="tab" href="#nav-menu7" role="tab" aria-controls="nav-menu4" aria-selected="false">Reminder</a>
-    <a class="nav-item nav-link" id="nav-menu100-tab" data-toggle="tab" href="#nav-menu100" role="tab" aria-controls="nav-menu100" aria-selected="false">Testing</a>
+    <a class="nav-item nav-link" id="nav-menu3-tab" data-toggle="tab" href="#nav-menu3" role="tab" aria-controls="nav-menu3" aria-selected="false">Booking</a>
     
   </div>
 </nav>
@@ -159,11 +157,7 @@
                     
 </div>
 
-<div class="tab-pane fade pt-4" id="nav-menu4" role="tabpanel" aria-labelledby="nav-menu4-tab">
-                   
 
-                    
-</div>
 
 
 <div class="tab-pane fade pt-4" id="nav-menu6" role="tabpanel" aria-labelledby="nav-menu6-tab">
@@ -173,16 +167,8 @@
 </div>
 
 
-<div class="tab-pane fade pt-4" id="nav-menu7" role="tabpanel" aria-labelledby="nav-menu7-tab">
-        
-        
-        
-</div>
 
-<div class="tab-pane fade pt-4" id="nav-menu100" role="tabpanel" aria-labelledby="nav-menu100-tab">
-                    
-                    
-</div>
+
 
 
 
