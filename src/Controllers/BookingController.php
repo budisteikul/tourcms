@@ -53,11 +53,15 @@ class BookingController extends Controller
         $channels = Channel::get();
         $mainContactDetails = ShoppingcartQuestion::where('shoppingcart_id',$shoppingcart->id)->where('type','mainContactDetails')->orderBy('order')->get();
         $activityBookings = ShoppingcartQuestion::where('shoppingcart_id',$shoppingcart->id)->where('type','activityBookings')->orderBy('booking_id')->orderBy('order')->get();
+        $product = ShoppingcartProduct::where('shoppingcart_id',$shoppingcart->id)->first();
+        $product_name = $product->title;
+
         return view('tourcms::booking.question_edit',[
             'shoppingcart'=>$shoppingcart,
             'channels'=>$channels,
             'mainContactDetails'=>$mainContactDetails,
             'activityBookings'=>$activityBookings,
+            'product_name'=>$product_name,
         ]);
     }
 
@@ -68,10 +72,13 @@ class BookingController extends Controller
 
         $booking_channel =  $request->input('booking_channel');
         $confirmation_code =  $request->input('confirmation_code');
+        $product_name =  $request->input('product_name');
         $shoppingcart = Shoppingcart::findOrFail($id);
         $shoppingcart->booking_channel = $booking_channel;
         $shoppingcart->confirmation_code = $confirmation_code;
         $shoppingcart->save();
+
+        ShoppingcartProduct::where('shoppingcart_id', $shoppingcart->id)->update(['title'=>$product_name]);
 
         $array = $request->post();
         foreach ($array as $key => $value)

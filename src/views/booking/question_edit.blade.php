@@ -37,7 +37,12 @@
 <div class="form-group">
 	<label for="confirmation_code">Confirmation Code :</label>
 	<input type="text" id="confirmation_code" name="confirmation_code" class="form-control" placeholder="Confirmation Code" value="{{$shoppingcart->confirmation_code}}" autocomplete="off">
+</div>
+<div class="form-group">
+	<label for="product_name">Product Name :</label>
+	<input type="text" id="product_name" name="product_name" class="form-control" placeholder="Product Name" value="{{$product_name}}" autocomplete="off">
 </div> 
+
 <h2>Main Contact</h2>
 @foreach($mainContactDetails as $mainContactDetail)
 @php
@@ -125,6 +130,7 @@ function UPDATE_BOOKING()
         	@endforeach
         	"booking_channel": $("#bookingChannel").val(),
         	"confirmation_code": $("#confirmation_code").val(),
+        	"product_name": $("#product_name").val(),
         	"_token": $("meta[name=csrf-token]").attr("content"),
         },
 		type: 'POST',
