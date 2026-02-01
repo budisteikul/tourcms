@@ -50,6 +50,12 @@ class OrderController extends Controller
         return view('tourcms::order.create-jnft',['guides'=>$guides]);
     }
 
+    public function create_short()
+    {
+        $guides = json_decode(config('site.guides'));
+        return view('tourcms::order.create-short',['guides'=>$guides]);
+    }
+
     public function create_jmft()
     {
         $guides = json_decode(config('site.guides'));
@@ -78,6 +84,84 @@ class OrderController extends Controller
     {
         $app =  $request->input('app');
         
+        if($app==6)
+            {
+                $date =  $request->input('date');
+                $guide =  $request->input('guide');
+                $pax =  $request->input('pax');
+                $additional =  $request->input('additional');
+
+                $modal_tour = 80000;
+                $fee_guide = 80000;
+                $tour = "Jogja Short Food Tour";
+                $guide = fin_categories::where('id',$guide)->first();
+
+                $total_guide = $fee_guide * $pax;
+                $total_cost =  $modal_tour * $pax;
+
+
+                //additional
+                if($additional>0)
+                {
+                    $total = $total + $additional;
+                
+                    $transaction = new fin_transactions;
+                    $transaction->category_id = 53;
+                    $transaction->date = $date;
+                    $transaction->amount = $additional;
+                    $transaction->status = 0;
+                    $transaction->save();
+
+                    $json_trans_id[] = [
+                        'trans_id' => $transaction->id
+                    ];
+                }
+
+                $note = $tour.' - '. $pax .'pax';
+                $total = $total_cost + $total_guide;
+
+                //guide
+                $transaction = new fin_transactions;
+                $transaction->category_id = $guide->id;
+                $transaction->date = $date;
+                $transaction->amount = $total_guide;
+                $transaction->status = 0;
+                $transaction->save();
+
+                $json_trans_id[] = [
+                    'trans_id' => $transaction->id
+                ];
+
+                //modal
+                $transaction = new fin_transactions;
+                $transaction->category_id = 15;
+                $transaction->date = $date;
+                $transaction->amount = $total_cost;
+                $transaction->status = 0;
+                $transaction->save();
+
+                $json_trans_id[] = [
+                    'trans_id' => $transaction->id
+                ];
+
+                $json[] = [
+                    'trans_id' => $json_trans_id
+                ];
+
+                $order = new Order;
+                $order->type = 'order';
+                $order->date = $date;
+                $order->guide = $guide->id;
+                $order->tour = $tour;
+                $order->pax = $pax;
+                $order->fee = $total_guide;
+                $order->cost = $total_cost;
+                $order->total = $total;
+                $order->note = $note;
+                $order->transactions = json_encode($json);
+                $order->save();
+
+            }
 
         if($app==1 || $app==2)
         {
@@ -87,6 +171,8 @@ class OrderController extends Controller
             $additional =  $request->input('additional');
 
             $guide = fin_categories::where('id',$guide)->first();
+
+
 
             if($app==1)
             {
