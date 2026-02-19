@@ -95,6 +95,8 @@ class ContactController extends Controller
         $type = null;
         $template = null;
 
+        $time_nighttour = "6.45PM";
+
         switch($template_id)
         {
 
@@ -102,7 +104,7 @@ class ContactController extends Controller
                 $type = "reminder_step1";
                 $template = "reminder_step1";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The *Yogyakarta Night Walking and Food Tour* will start tonight at *6.30PM* and our meeting point  is *Tugu Jogja* (Yogyakarta Monument). Please wait near the sign \"Tugu Golong Gilig\"";
+                $var2 = "The *Yogyakarta Night Walking and Food Tour* will start tonight at *".$time_nighttour."* and our meeting point  is *Tugu Jogja* (Yogyakarta Monument). Please wait near the sign \"Tugu Golong Gilig\"";
                 $var3 = "By the way, do you have any food allergy or dietary restrictions?";
                 $var4 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
             break;
@@ -112,7 +114,7 @@ class ContactController extends Controller
                 $template = "reminder_step1_alt";
                 $image = config("site.assets")."/img/guide/kalika02.jpg";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The *Yogyakarta Night Walking and Food Tour* will start tonight at *6.30PM* and our meeting point  is *Tugu Jogja* (Yogyakarta Monument). Please wait near the sign \"Tugu Golong Gilig\"";
+                $var2 = "The *Yogyakarta Night Walking and Food Tour* will start tonight at *".$time_nighttour."* and our meeting point  is *Tugu Jogja* (Yogyakarta Monument). Please wait near the sign \"Tugu Golong Gilig\"";
                 $var3 = "Her name is *Kalika*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
                 $var4 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
             break;
@@ -122,7 +124,7 @@ class ContactController extends Controller
                 $template = "reminder_step1_alt";
                 $image = config("site.assets")."/img/guide/anisa01.jpeg";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The *Yogyakarta Night Walking and Food Tour* will start tonight at *6.30PM* and our meeting point  is *Tugu Jogja* (Yogyakarta Monument). Please wait near the sign \"Tugu Golong Gilig\"";
+                $var2 = "The *Yogyakarta Night Walking and Food Tour* will start tonight at *".$time_nighttour."* and our meeting point  is *Tugu Jogja* (Yogyakarta Monument). Please wait near the sign \"Tugu Golong Gilig\"";
                 $var3 = "Her name is *Anisa*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
                 $var4 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
             break;
@@ -132,7 +134,7 @@ class ContactController extends Controller
                 $template = "reminder_step1_alt";
                 $image = config("site.assets")."/img/guide/jasmine03.jpeg";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The *Yogyakarta Night Walking and Food Tour* will start tonight at *6.30PM* and our meeting point is *Tugu Jogja* (Yogyakarta Monument). Please wait near the sign \"Tugu Golong Gilig\"";
+                $var2 = "The *Yogyakarta Night Walking and Food Tour* will start tonight at *".$time_nighttour."* and our meeting point is *Tugu Jogja* (Yogyakarta Monument). Please wait near the sign \"Tugu Golong Gilig\"";
                 $var3 = "Her name is *Jasmine*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
                 $var4 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
             break;
@@ -142,7 +144,7 @@ class ContactController extends Controller
                 $template = "reminder_step1_alt";
                 $image = config("site.assets")."/img/guide/dhea01.jpeg";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "The *Yogyakarta Night Walking and Food Tour* will start tonight at *6.30PM* and our meeting point is *Tugu Jogja* (Yogyakarta Monument). Please wait near the sign \"Tugu Golong Gilig\"";
+                $var2 = "The *Yogyakarta Night Walking and Food Tour* will start tonight at *".$time_nighttour."* and our meeting point is *Tugu Jogja* (Yogyakarta Monument). Please wait near the sign \"Tugu Golong Gilig\"";
                 $var3 = "Her name is *Dhea*. She will be the tour guide on duty and will be waiting for you at meeting point 😊";
                 $var4 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
             break;
@@ -248,7 +250,7 @@ class ContactController extends Controller
                 $template = "reminder_jogja_food_tour";
                 $var1 = ucwords(strtolower($contact->name));
                 $var2 = "tomorrow night (".GeneralHelper::dateFormat("",13).")";
-                $var3 = "6:30PM";
+                $var3 = $time_nighttour;
                 $var4 = "Tugu Jogja (Yogyakarta Monument)";
                 $var5 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
                 $var6 = "Please wait near the sign Tugu_Golong_Gilig";
@@ -260,7 +262,7 @@ class ContactController extends Controller
                 $template = "reminder_jogja_food_tour";
                 $var1 = ucwords(strtolower($contact->name));
                 $var2 = "tonight";
-                $var3 = "6:30PM";
+                $var3 = $time_nighttour;
                 $var4 = "Tugu Jogja (Yogyakarta Monument)";
                 $var5 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
                 $var6 = "Please wait near the sign Tugu_Golong_Gilig";
@@ -299,7 +301,7 @@ class ContactController extends Controller
 
                 $var1 = ucwords(strtolower($contact->name));
                 $var2 = "tonight";
-                $var3 = "6.30PM";
+                $var3 = $time_nighttour;
                 $var4 = "Tugu Jogja (Yogyakarta Monument)";
                 $var5 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
                 $var6 = "Please wait near the sign Tugu Golong Gilig";
