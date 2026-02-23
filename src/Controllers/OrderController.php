@@ -98,7 +98,7 @@ class OrderController extends Controller
 
                 $total_guide = $fee_guide * $pax;
                 $total_cost =  $modal_tour * $pax;
-
+                $total = 0;
 
                 //additional
                 if($additional>0)
@@ -118,7 +118,7 @@ class OrderController extends Controller
                 }
 
                 $note = $tour.' - '. $pax .'pax';
-                $total = $total_cost + $total_guide;
+                $total += $total_cost + $total_guide;
 
                 //guide
                 $transaction = new fin_transactions;
