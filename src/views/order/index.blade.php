@@ -101,6 +101,16 @@
           		autoFocus: false
    			});	
 		}
+		else if(app==7)
+		{
+			$.fancybox.open({
+        		type: 'ajax',
+       	 		src: '{{ route('route_tourcms_orders.create') }}/smt',
+				modal: true,
+          		touch: false,
+          		autoFocus: false
+   			});	
+		}
 	}
 	
 	
@@ -217,6 +227,7 @@ function SET_DONE()
        	<option value="4">Denpasar Food Tour</option>
        	<option value="5">Ubud Food Tour</option>
        	<option value="6">Jogja Short Food Tour</option>
+       	<option value="7">Semarang Tour</option>
 	</select>
 
 <button   onclick="CREATE($('#app').val()); return false;" id="create" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Create</button>

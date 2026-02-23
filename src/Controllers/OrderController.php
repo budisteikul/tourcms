@@ -67,6 +67,11 @@ class OrderController extends Controller
         return view('tourcms::order.create-tat');
     }
 
+    public function create_smt()
+    {
+        return view('tourcms::order.create-smt');
+    }
+
     public function create_dft()
     {
         return view('tourcms::order.create-dft');
@@ -84,6 +89,60 @@ class OrderController extends Controller
     {
         $app =  $request->input('app');
         
+        if($app==7)
+        {
+            $date =  $request->input('date');
+            $pax =  $request->input('pax');
+            $additional =  $request->input('additional');
+
+            $cost = 425000 * $pax;
+            $total = $cost;
+            $tour = "Semarang Food Tour";
+
+            if($additional>0)
+            {
+                $total = $cost + $additional;
+                
+                $transaction = new fin_transactions;
+                $transaction->category_id = 60;
+                $transaction->date = $date;
+                $transaction->amount = $additional;
+                $transaction->status = 0;
+                $transaction->save();
+
+                $json_trans_id[] = [
+                    'trans_id' => $transaction->id
+                ];
+            }
+
+            $note = $tour.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
+            
+            $transaction = new fin_transactions;
+            $transaction->category_id = 62;
+            $transaction->date = $date;
+            $transaction->amount = $cost;
+            $transaction->status = 0;
+            $transaction->save();
+
+            $json_trans_id[] = [
+                'trans_id' => $transaction->id
+            ];
+
+            $json[] = [
+                'trans_id' => $json_trans_id
+            ];
+
+            $order = new Order;
+            $order->type = 'order';
+            $order->date = $date;
+            $order->tour = $tour;
+            $order->pax = $pax;
+            $order->total = $total;
+            $order->note = $note;
+            $order->transactions = json_encode($json);
+            $order->save();
+        }
+
         if($app==6)
             {
                 $date =  $request->input('date');
