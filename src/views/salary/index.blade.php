@@ -90,7 +90,7 @@ table{
 <br />
 <br />
 @if($cash_advance->total>0)
-<div style="text-align:left"><h3>Fee Deductions</h3></div>
+<div style="text-align:left"><h3>Deduction and Commision</h3></div>
 <table id="table1" border="1" cellspacing="2" cellpadding="3" style="border-collapse: collapse; " >
   <thead>
     <tr>
@@ -114,7 +114,7 @@ table{
       <td align="center">{{$no}}</td>
       <td>{{$GeneralHelper->dateFormat($x->date,4)}}</td>
       <td>{{$x->note}}</td>
-      <td align="right">{{number_format($x->total, 0, ',', '.')}}</td>
+      <td align="right">{{number_format($x->total * -1, 0, ',', '.')}}</td>
     </tr>
     @endforeach
     
@@ -122,7 +122,7 @@ table{
     <tr>
       <td align="center" colspan="3"><strong>Total</strong></td>
       
-      <td align="right">{{number_format($total, 0, ',', '.')}}</td>
+      <td align="right">{{number_format($total * -1, 0, ',', '.')}}</td>
     </tr>
 
   </tbody>
