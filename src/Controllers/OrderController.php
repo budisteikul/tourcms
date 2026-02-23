@@ -95,13 +95,14 @@ class OrderController extends Controller
             $pax =  $request->input('pax');
             $additional =  $request->input('additional');
 
-            $cost = 425000 * $pax;
-            $total = $cost;
+            $cost = 400000 * $pax;
+            $commision = 25000 * $pax;
+            $total = $cost + $commision;
             $tour = "Semarang Food Tour";
 
             if($additional>0)
             {
-                $total = $cost + $additional;
+                $total += $additional;
                 
                 $transaction = new fin_transactions;
                 $transaction->category_id = 60;
@@ -115,7 +116,16 @@ class OrderController extends Controller
                 ];
             }
 
-            $note = $tour.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
+            $transaction = new fin_transactions;
+            $transaction->category_id = 61;
+            $transaction->date = $date;
+            $transaction->amount = $commision;
+            $transaction->status = 0;
+            $transaction->save();
+
+            $json_trans_id[] = [
+                'trans_id' => $transaction->id
+            ];
             
             $transaction = new fin_transactions;
             $transaction->category_id = 62;
@@ -131,6 +141,8 @@ class OrderController extends Controller
             $json[] = [
                 'trans_id' => $json_trans_id
             ];
+
+            $note = $tour.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
 
             $order = new Order;
             $order->type = 'order';
