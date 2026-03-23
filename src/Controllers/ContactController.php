@@ -95,7 +95,7 @@ class ContactController extends Controller
         $type = null;
         $template = null;
 
-        $time_nighttour = "6.45PM";
+        $time_nighttour = "6.30PM";
 
         switch($template_id)
         {
