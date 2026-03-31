@@ -244,6 +244,15 @@ class ContactController extends Controller
                 $var4 = "https://www.tripadvisor.com/UserReviewEdit-g297701-d27735579";
             break;
 
+            case 904:
+                // Jogja Night Food Tour (GYG)
+                $type = "gyg_request_review_jogjanightfoodtour";
+                $template = "gyg_request_review_jogjanightfoodtour";
+                $var1 = ucwords(strtolower($contact->name));
+                $var2 = "scan-review-qr?activity_id=429708&utm_medium=offline&utm_source=supplier_review_link&utm_campaign=supplier_review_qrcode&utm_content=429708";
+            break;
+
+            
             case 1000:
                 // Jogja Food Tour
                 $type = "reminder_jogja_food_tour";
@@ -523,6 +532,8 @@ class ContactController extends Controller
             //=======================================================
         }
 
+        
+        
         if($type=="request_review")
         {
             if($var1=="") $var1="friend";
@@ -626,6 +637,42 @@ class ContactController extends Controller
             $whatsapp->sendTemplate($contact->wa_id,$template, $components);
         }
 
+        if($type=="gyg_request_review_jogjanightfoodtour")
+        {
+            if($var1=="") $var1="friend";
+            $components = [
+                                    [
+                                        "type"=> "body",
+                                        "parameters" => [
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var1
+                                            ]
+                                        ]
+                                    ],
+				    [
+                                                    "type"=> "button",
+                                                    "sub_type"=> "url",
+                                                    "index"=> 0,
+                                                    "parameters" => [[
+                                                        "type" => "text",
+                                                        "text" => $var2                                                    ]]
+                                    ],
+				    [
+                                                    "type"=> "button",
+                                                    "sub_type"=> "quick_reply",
+                                                    "index"=> 1,
+                                                    "parameters" => [[
+                                                        "type" => "payload",
+                                                        "payload" => "no_review"                                                    ]]
+                                    ]				    
+				    
+                            ];
+            
+            $whatsapp = new WhatsappHelper;
+            $whatsapp->sendTemplate($contact->wa_id,$template, $components, "en_US");
+        }
+        
         if($type=="text")
         {
             $whatsapp = new WhatsappHelper;
