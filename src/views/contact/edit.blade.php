@@ -164,6 +164,7 @@
                     <button type="button" class="btn btn-danger mb-2" id="template901"  onclick="sendTemplate(901); return false;"><i class="fas fa-paper-plane"></i> Denpasar Night Food Tour</button>
                     <button type="button" class="btn btn-danger mb-2" id="template902"  onclick="sendTemplate(902); return false;"><i class="fas fa-paper-plane"></i> Taman Anyar</button>
                     <button type="button" class="btn btn-danger mb-2" id="template903"  onclick="sendTemplate(903); return false;"><i class="fas fa-paper-plane"></i> Ubud Food Tour</button>
+					<button type="button" class="btn btn-danger mb-2" id="template904"  onclick="sendTemplate(904); return false;"><i class="fas fa-paper-plane"></i> Jogja Night Food Tour (GYG)</button>
 </div>
 
 
