@@ -238,6 +238,7 @@ class OrderController extends Controller
         {
             $date =  $request->input('date');
             $guide =  $request->input('guide');
+            $gaji =  $request->input('gaji');
             $pax =  $request->input('pax');
             $additional =  $request->input('additional');
 
@@ -248,30 +249,43 @@ class OrderController extends Controller
             if($app==1)
             {
 
-                $duty_fee = 0;
-                $guide_settings = json_decode(config('site.guides'));
-                foreach($guide_settings as $guide_setting)
+                
+
+                if($gaji==0)
                 {
-                    if($guide->id==$guide_setting->id)
+                    $duty_fee = 0;
+                    $guide_settings = json_decode(config('site.guides'));
+                    foreach($guide_settings as $guide_setting)
                     {
-                        $total_guide = $guide_setting->fee * $pax;
-                        $duty_fee = $guide_setting->duty_fee;
+                        if($guide->id==$guide_setting->id)
+                        {
+                            $total_guide = $guide_setting->fee * $pax;
+                            $duty_fee = $guide_setting->duty_fee;
+                        }
+                    }
+                    
+                    $total_cost = 250000 * $pax;
+                    if($pax>=5) $total_cost = 200000 * $pax;
+
+                    $total = $total_cost + $total_guide;
+                    $tour = "Jogja Night Food Tour";
+
+                    if($duty_fee>0)
+                    {
+                        $total = $total + $duty_fee;
+                        $total_guide = $total_guide + $duty_fee;
                     }
                 }
-
-                
-                $total_cost = 250000 * $pax;
-                if($pax>=5) $total_cost = 200000 * $pax;
-
-                $total = $total_cost + $total_guide;
-                $tour = "Jogja Night Food Tour";
-                $pax = $pax;
-
-                if($duty_fee>0)
+                else
                 {
-                    $total = $total + $duty_fee;
-                    $total_guide = $total_guide + $duty_fee;
+                    $total_guide = $gaji;
+                    $total_cost = 250000 * $pax;
+                    if($pax>=5) $total_cost = 200000 * $pax;
+
+                    $total = $total_cost + $total_guide;
+                    $tour = "Jogja Night Food Tour";
                 }
+                
 
                 if($additional>0)
                 {
