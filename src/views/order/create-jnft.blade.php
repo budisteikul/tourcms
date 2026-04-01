@@ -66,6 +66,11 @@
 </div>
 
 <div class="form-group">
+	<label for="gaji">Fee Guide :</label>
+	<input type="number" id="gaji" name="gaji" class="form-control" placeholder="Fee Guide" autocomplete="off" value="0">
+</div>
+
+<div class="form-group">
 	<label for="pax">Pax :</label>
 	<input type="number" id="pax" name="pax" class="form-control" placeholder="Pax" autocomplete="off" value="1">
 </div> 
@@ -98,7 +103,7 @@ function STORE()
 		var error = false;
 		$("#submit2").attr("disabled", true);
 		$('#submit2').html('<i class="fa fa-spinner fa-spin"></i>');
-		var input = ["guide","pax","date","additional"];
+		var input = ["guide","pax","date","additional","gaji"];
 	
 		$.each(input, function( index, value ) {
   			$('#'+ value).removeClass('is-invalid');
@@ -113,6 +118,7 @@ function STORE()
 			"guide": $('#guide').val(),
 			"pax": $('#pax').val(),
 			"date": $('#date').val(),
+			"gaji": $('#gaji').val(),
 			"additional": $('#additional').val(),
 			"app": 1
 			
