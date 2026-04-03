@@ -89,7 +89,7 @@ table{
 </table>
 <br />
 <br />
-@if($cash_advance->total>0)
+@if($cash_advance->total!=0)
 <div style="text-align:left"><h3>Deduction and Commision</h3></div>
 <table id="table1" border="1" cellspacing="2" cellpadding="3" style="border-collapse: collapse; " >
   <thead>
