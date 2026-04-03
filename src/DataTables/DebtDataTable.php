@@ -27,7 +27,7 @@ class DebtDataTable extends DataTable
         return datatables($query)
                 ->addIndexColumn()
                 ->editColumn('total', function($id){
-                    return number_format($id->total, 0, ',', '.');
+                    return number_format($id->total * -1, 0, ',', '.');
                 })
                 ->editColumn('date', function($id){
                     return GeneralHelper::dateFormat($id->date,4);
