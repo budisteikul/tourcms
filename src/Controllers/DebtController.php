@@ -72,7 +72,7 @@ class DebtController extends Controller
         $order->type = 'cash_advance';
         $order->date =  $date;
         $order->guide =  $guide->id;
-        $order->total = $amount;
+        $order->total = $amount * -1;
         $order->note = $note;
         $order->save();
 
