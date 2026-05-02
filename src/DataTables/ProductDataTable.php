@@ -125,8 +125,9 @@ class ProductDataTable extends DataTable
                   ->addClass('text-center align-middle'),
 
             Column::make('name')->title('Name')->orderable(false)->addClass('align-middle'),
+            Column::make('excerpt')->title('Excerpt')->orderable(false)->addClass('align-middle'),
             Column::make('category_id')->title('Category')->orderable(false)->addClass('align-middle'),
-            Column::make('deposit')->title('Deposit')->orderable(false)->addClass('align-middle'),
+            //Column::make('deposit')->title('Deposit')->orderable(false)->addClass('align-middle'),
             
             Column::computed('action')
                   ->exportable(false)
