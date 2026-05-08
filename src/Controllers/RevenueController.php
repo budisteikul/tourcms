@@ -53,43 +53,25 @@ class RevenueController extends Controller
     {
         $app =  $request->input('app');
         $amount =  $request->input('amount');
-        $date = date('Y-m-d');
+        $date = $request->input('date');
 
         if($app==1)
         {
-            $trans_id = 23;
-            $note = 'Revenue - AIRBNB : '. number_format($amount, 0, ',', '.');
+            $trans_id = 29;
+            $note = 'Revenue - MARKETPLACE : '. number_format($amount, 0, ',', '.');
             $status = 1;
         }
         else if($app==2)
         {
-            $trans_id = 49;
-            $note = 'Revenue - PARTNER : '. number_format($amount, 0, ',', '.');
+            $trans_id = 48;
+            $note = 'Revenue - WEBISTE : '. number_format($amount, 0, ',', '.');
             $status = 1;
-        }
-        else if($app==3)
-        {
-            $trans_id = 24;
-            $note = 'Revenue - VIATOR : '. number_format($amount, 0, ',', '.');
-            $status = 1;
-            $date = date("Y-m-d",strtotime("-1 month"));
-            $date = substr($date,0,7).'-'.date("t", strtotime($date));
-        }
-        else if($app==4)
-        {
-            $trans_id = 25;
-            $note = 'Revenue - GETYOURGUIDE : '. number_format($amount, 0, ',', '.');
-            $status = 1;
-            $date = date("Y-m-d",strtotime("-1 month"));
-            $date = substr($date,0,7).'-'.date("t", strtotime($date));
         }
         else
         {
-            $trans_id = 27;
-            $note = 'Revenue - WEBSITE : '. number_format($amount, 0, ',', '.');
+            $trans_id = 49;
+            $note = 'Revenue - OFFLINE : '. number_format($amount, 0, ',', '.');
             $status = 1;
-            $date = date("Y-m-d",strtotime("-1 month"));
-            $date = substr($date,0,7).'-'.date("t", strtotime($date));
         }
 
         $transaction = new fin_transactions;

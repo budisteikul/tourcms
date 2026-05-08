@@ -27,16 +27,39 @@
 
 <div id="result"></div>
 
-
+<div class="form-group">   
+				 <label for="datetimepicker1">Date :</label>           
+                <div class='input-group' id='datetimepicker1'>
+                    <input type="text" id="date" name="date" value="<?= date('Y-m-d') ?>" class="form-control bg-white" readonly>
+                    <div class="input-group-append input-group-addon text-muted">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                </div>
+ 		<script type="text/javascript">
+            $(function () {
+                $('#date').datetimepicker({
+					format: 'YYYY-MM-DD',
+					showTodayButton: true,
+					showClose: true,
+					ignoreReadonly: true,
+					icons: {
+                    	time: "fa fa-clock"
+                	},
+					widgetPositioning: {
+            			horizontal: 'left',
+            			vertical: 'bottom'
+        			},
+				});
+            });
+        </script>    
+</div>
 
 <div class="form-group">
     <label for="app">Revenue</label>
     <select class="form-control" id="app">
-      <option value="1">AIRBNB</option>
-      <option value="2">PARTNER</option>
-      <option value="3">VIATOR</option>
-      <option value="4">GETYOURGUIDE</option>
-      <option value="5">WEBSITE</option>
+      <option value="1">MARKETPLACE</option>
+      <option value="2">WEBSITE</option>
+      <option value="3">OFFLINE</option>
     </select>
 </div>
 
@@ -69,7 +92,7 @@ function STORE()
 	var error = false;
 	$("#submit").attr("disabled", true);
 	$('#submit').html('<i class="fa fa-spinner fa-spin"></i>');
-	var input = ["app","amount"];
+	var input = ["app","amount","date"];
 	
 	$.each(input, function( index, value ) {
   		$('#'+ value).removeClass('is-invalid');
@@ -80,7 +103,8 @@ function STORE()
 		data: {
         	"_token": $("meta[name=csrf-token]").attr("content"),
 			"app": $('#app').val(),
-			"amount": $('#amount').val()
+			"amount": $('#amount').val(),
+			"date": $('#date').val()
         },
 		type: 'POST',
 		url: '{{ route('route_tourcms_revenue.store') }}'
