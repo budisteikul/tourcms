@@ -30,7 +30,7 @@
 <div class="form-group">   
 				 <label for="datetimepicker1">Date :</label>           
                 <div class='input-group' id='datetimepicker1'>
-                    <input type="text" id="date" name="date" value="<?= date('Y-m-d') ?>" class="form-control bg-white" readonly>
+                    <input type="text" id="date" name="date" value="<?= $date ?>" class="form-control bg-white" readonly>
                     <div class="input-group-append input-group-addon text-muted">
                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                     </div>

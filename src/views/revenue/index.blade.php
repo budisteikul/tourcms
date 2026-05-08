@@ -43,7 +43,7 @@
 		
 			$.fancybox.open({
         		type: 'ajax',
-       	 		src: '{{ route('route_tourcms_revenue.create') }}',
+       	 		src: '{{ route('route_tourcms_revenue.create') }}?date=<?= $tahun ?>-<?= $bulan ?>-<?= date('d') ?>',
 				modal: true,
           		touch: false,
           		autoFocus: false
