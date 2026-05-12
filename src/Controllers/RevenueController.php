@@ -65,7 +65,7 @@ class RevenueController extends Controller
         else if($app==2)
         {
             $trans_id = 48;
-            $note = 'Revenue - WEBISTE : '. number_format($amount, 0, ',', '.');
+            $note = 'Revenue - WEBSITE : '. number_format($amount, 0, ',', '.');
             $status = 1;
         }
         else

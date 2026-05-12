@@ -53,12 +53,13 @@ class ExpensesController extends Controller
     {
         $app =  $request->input('app');
         $amount =  $request->input('amount');
+        $date = $request->input('date');
 
         if($app==1)
         {
             $trans_id = 54;
             $note = 'Expenses - Bill : '. number_format($amount, 0, ',', '.');
-            $status = 0;
+            $status = 1;
         }
         else if($app==2)
         {
@@ -70,24 +71,24 @@ class ExpensesController extends Controller
         {
             $trans_id = 46;
             $note = 'Expenses - Refund : '. number_format($amount, 0, ',', '.');
-            $status = 0;
+            $status = 1;
         }
         else if($app==4)
         {
             $trans_id = 57;
             $note = 'Expenses - Rent : '. number_format($amount, 0, ',', '.');
-            $status = 0;
+            $status = 1;
         }
         else
         {
             $trans_id = 16;
             $note = 'Expenses - Other : '. number_format($amount, 0, ',', '.');
-            $status = 0;
+            $status = 1;
         }
 
         $transaction = new fin_transactions;
         $transaction->category_id = $trans_id;
-        $transaction->date = date('Y-m-d');
+        $transaction->date = $date;
         $transaction->amount = $amount;
         $transaction->status = $status;
         $transaction->save();
@@ -102,7 +103,7 @@ class ExpensesController extends Controller
 
         $order = new Order;
         $order->type = 'expenses';
-        $order->date =  date('Y-m-d');
+        $order->date =  $date;
         $order->total = $amount;
         $order->note = $note;
         $order->transactions = json_encode($json);
