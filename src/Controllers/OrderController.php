@@ -265,7 +265,7 @@ class OrderController extends Controller
                     }
                     
                     $total_cost = 250000 * $pax;
-                    if($pax>=5) $total_cost = 200000 * $pax;
+                    //if($pax>=5) $total_cost = 200000 * $pax;
 
                     $total = $total_cost + $total_guide;
                     $tour = "Jogja Night Food Tour";
