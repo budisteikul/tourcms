@@ -83,7 +83,7 @@ class ExpensesController extends Controller
         {
             $trans_id = 16;
             $note = 'Expenses - Other : '. number_format($amount, 0, ',', '.');
-            $status = 0;
+            $status = 1;
         }
 
         $transaction = new fin_transactions;
