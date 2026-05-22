@@ -76,14 +76,14 @@ class ExpensesController extends Controller
         else if($app==4)
         {
             $trans_id = 57;
-            $note = 'Expenses - Rent : '. number_format($amount, 0, ',', '.');
+            $note = 'Expenses - Bea Materai : '. number_format($amount, 0, ',', '.');
             $status = 0;
         }
         else
         {
             $trans_id = 16;
             $note = 'Expenses - Other : '. number_format($amount, 0, ',', '.');
-            $status = 1;
+            $status = 0;
         }
 
         $transaction = new fin_transactions;
