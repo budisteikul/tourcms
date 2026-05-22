@@ -54,7 +54,9 @@ class ExpensesController extends Controller
         $app =  $request->input('app');
         $amount =  $request->input('amount');
         $date = $request->input('date');
+        $note = $request->input('note');
 
+        /*
         if($app==1)
         {
             $trans_id = 54;
@@ -75,7 +77,7 @@ class ExpensesController extends Controller
         }
         else if($app==4)
         {
-            $trans_id = 57;
+            $trans_id = 16;
             $note = 'Expenses - Bea Materai : '. number_format($amount, 0, ',', '.');
             $status = 0;
         }
@@ -85,6 +87,11 @@ class ExpensesController extends Controller
             $note = 'Expenses - Other : '. number_format($amount, 0, ',', '.');
             $status = 0;
         }
+        */
+
+        $trans_id = 16;
+        $note = 'Expenses - '. $note .' : '. number_format($amount, 0, ',', '.');
+        $status = 0;
 
         $transaction = new fin_transactions;
         $transaction->category_id = $trans_id;

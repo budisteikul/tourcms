@@ -54,7 +54,7 @@
         </script>    
 </div>
 
-<div class="form-group">
+<!-- div class="form-group">
     <label for="app">Expenses</label>
     <select class="form-control" id="app">
       <option value="1">BILL</option>
@@ -63,6 +63,11 @@
       <option value="3">REFUND</option>
       <option value="5">OTHER</option>
     </select>
+</div -->
+
+<div class="form-group">
+	<label for="note">Note :</label>
+	<input type="text" id="note" name="note" class="form-control" placeholder="Note" autocomplete="off">
 </div>
 
 <div class="form-group">
@@ -106,7 +111,8 @@ function STORE()
         	"_token": $("meta[name=csrf-token]").attr("content"),
 			"app": $('#app').val(),
 			"amount": $('#amount').val(),
-			"date": $('#date').val()
+			"date": $('#date').val(),
+			"note": $('#note').val()
         },
 		type: 'POST',
 		url: '{{ route('route_tourcms_expenses.store') }}'
