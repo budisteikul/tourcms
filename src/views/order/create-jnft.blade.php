@@ -65,10 +65,7 @@
 	</select>
 </div>
 
-<div class="form-group">
-	<label for="gaji">Fee Guide :</label>
-	<input type="number" id="gaji" name="gaji" class="form-control" placeholder="Fee Guide" autocomplete="off" value="0">
-</div>
+
 
 <div class="form-group">
 	<label for="pax">Pax :</label>
@@ -79,6 +76,11 @@
 	<label for="additional">Additional :</label>
 	<input type="number" id="additional" name="additional" class="form-control" placeholder="Additional" autocomplete="off" value="0">
 </div>
+
+<!-- div class="form-group">
+	<label for="gaji">Fee Guide :</label>
+	<input type="number" id="gaji" name="gaji" class="form-control" placeholder="Fee Guide" autocomplete="off" value="0">
+</div -->
 
 	<button id="submit2" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
 </form>
