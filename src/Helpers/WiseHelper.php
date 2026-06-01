@@ -47,14 +47,7 @@ class WiseHelper {
     }
 
     
-    public function getCard()
-    {
-        $value = Cache::remember('_wise_card',60*24*30*12, function()
-        {
-            return json_decode($this->GET('/v3/spend/profiles/'. $this->tw->profileId .'/cards?pageSize=10&pageNumber=1'));
-        });
-        return $value;
-    }
+   
 
 
     public function getBank()

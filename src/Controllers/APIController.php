@@ -49,7 +49,7 @@ class APIController extends Controller
     public function test()
     {
         $tw = new WiseHelper();
-        $aaa = $tw->getCard();
+        $aaa = $tw->getRecipientAccounts();
         print_r($aaa);
     }
 
