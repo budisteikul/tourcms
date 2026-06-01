@@ -36,6 +36,8 @@ use Illuminate\Support\Facades\Storage;
 
 use budisteikul\tourcms\Helpers\TaskHelper;
 
+use budisteikul\tourcms\Helpers\WiseHelper;
+
 class APIController extends Controller
 {
     
@@ -46,11 +48,9 @@ class APIController extends Controller
 
     public function test()
     {
-        $aaa = ReportHelper::booking_per_month(3,2025);
-        foreach($aaa as $x)
-        {
-            print_r($x->total);
-        }
+        $tw = new WiseHelper();
+        $aaa = $tw->getCard();
+        print_r($aaa);
     }
 
     public function test2()

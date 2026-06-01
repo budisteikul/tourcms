@@ -245,5 +245,3 @@ Route::resource('/cms/fin/profitloss-old', 'budisteikul\tourcms\Controllers\Sale
 Route::resource('/cms/fin/report/payment', 'budisteikul\tourcms\Controllers\ReportPaymentController',[ 'names' => 'route_fin_report_payment' ])->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware']);
 
 Route::get('/test','budisteikul\tourcms\Controllers\APIController@test')->middleware(['web','auth','verified','CoreMiddleware','SettingMiddleware']);
-
-Route::post('/cms/test','budisteikul\tourcms\Controllers\BookingController@test')->middleware(['SettingMiddleware']);
