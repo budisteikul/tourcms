@@ -36,7 +36,6 @@ use Illuminate\Support\Facades\Storage;
 
 use budisteikul\tourcms\Helpers\TaskHelper;
 
-use budisteikul\tourcms\Helpers\WiseHelper;
 
 class APIController extends Controller
 {
@@ -48,65 +47,10 @@ class APIController extends Controller
 
     public function test()
     {
-        $tw = new WiseHelper();
-        $aaa = $tw->getBalanceAccounts();
-        print_r($aaa);
-    }
-
-    public function test2()
-    {
-        
-        $calendar = array();
-        $tahun = 2025;
-        $bulan = 4;
-        
-        $date = date($tahun.'-'.$bulan.'-01');
-        $day = date('w', strtotime($date)); //6
-        $day = $day - 1;
-        if($day<=0) $day = $day + 7;
-        $day_ago = date('Y-m-d', strtotime('-'.$day.' days', strtotime($date)));
-        
-        for($i=1;$i<=$day;$i++)
-        {
-            $calendar[] = date('Y-m-d', strtotime('-'.$i.' days', strtotime($date)));
-        }
-        $calendar = array_reverse($calendar);
-
-        for($i=1;$i<=substr(date('Y-m-t', strtotime($date)),8,2);$i++)
-        {
-            $calendar[] = date('Y-m-d', strtotime($tahun.'-'.$bulan.'-'.$i));
-        }
-
-        $date = date('Y-m-t', strtotime($date));
-        $day = date('w', strtotime($date));
-        $day = 7 - $day;
-        for($i=1;$i<=$day;$i++)
-        {
-            $calendar[] = date('Y-m-d', strtotime('+'.$i.' days', strtotime($date)));
-        }
-        
-        $dataObj = array();
-        $dataObj = [
-            'timeZone' => 'UTC',
-            'month' => $bulan,
-            'year' => $tahun,
-            'allowPast' => false,
-            'allowAllToday' => false,
-            'requiredPax' => 0,
-            'firstOfMonth' => strtotime(date('Y-m-01', strtotime($date)).'T07:00:00+07:00')*1000,
-            'lastOfMonth' => strtotime(date('Y-m-t', strtotime($date)) .'T07:00:00+07:00')*1000,
-            'isFlexible' => false,
-            'weeks' => [[
-                'days' => [$calendar]
-            ]]
-        ];
-
-
-        print_r(json_encode($dataObj));
-
-        
         
     }
+
+    
 
     public function cancellation($sessionId,$confirmationCode)
     {
