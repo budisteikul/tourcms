@@ -31,8 +31,7 @@ class ReviewController extends Controller
     {
         $products = Product::orderBy('name')->get();
         $channels = Channel::orderBy('name')->get();
-        $reviews = Review::select('link')->groupBy('link')->get();
-        return view('tourcms::review.create',['products'=>$products,'channels'=>$channels,'reviews'=>$reviews]);
+        return view('tourcms::review.create',['products'=>$products,'channels'=>$channels]);
     }
 
     /**
@@ -57,21 +56,21 @@ class ReviewController extends Controller
 
         $product_id = $request->input('product_id');
         $user = $request->input('user');
-        $title = $request->input('title');
+        //$title = $request->input('title');
         $text = $request->input('text');
         $date = $request->input('date');
         $rating = $request->input('rating');
         $channel_id = $request->input('channel_id');
-        $link = $request->input('link');
+        //$link = $request->input('link');
         
         $review = new Review();
         $review->product_id = $product_id;
         $review->user = $user;
-        $review->title = $title;
+        //$review->title = $title;
         $review->text = $text;
         $review->date = $date;
         $review->rating = $rating;
-        $review->link = $link;
+        //$review->link = $link;
         $review->channel_id = $channel_id;
         $review->save();
         
@@ -126,20 +125,20 @@ class ReviewController extends Controller
         
         $product_id = $request->input('product_id');
         $user = $request->input('user');
-        $title = $request->input('title');
+        //$title = $request->input('title');
         $text = $request->input('text');
         $date = $request->input('date');
         $rating = $request->input('rating');
         $channel_id = $request->input('channel_id');
-        $link = $request->input('link');
+        //$link = $request->input('link');
         
         $review->product_id = $product_id;
         $review->user = $user;
-        $review->title = $title;
+        //$review->title = $title;
         $review->text = $text;
         $review->date = $date;
         $review->rating = $rating;
-        $review->link = $link;
+        //$review->link = $link;
         $review->channel_id = $channel_id;
         $review->save();
         

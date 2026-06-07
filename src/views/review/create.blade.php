@@ -91,27 +91,8 @@
 </div> 
 
 <div class="form-group">
-	<label for="title">Title :</label>
-	<input type="text" id="title" name="title" class="form-control" placeholder="Title">
-</div>
-
-<div class="form-group">
 	<label for="text">Text :</label>
     <textarea class="form-control" id="text" name="text" rows="5" placeholder="Text"></textarea>
-</div>
-
-<!-- div class="form-group">
-	<label for="link">Link :</label>
-	<input type="text" id="link" name="link" class="form-control" placeholder="Link" value="">
-</div -->
-
-<div class="form-group">
-	<label for="link">Link :</label>
-    <select class="form-control" id="link">
-       @foreach($reviews as $review)
-       	<option value="{{ $review->link }}">{{ $review->link }}</option>
-       @endforeach
-	</select>
 </div>
 
 	<button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
