@@ -30,7 +30,7 @@ class ReviewController extends Controller
     public function create()
     {
         $products = Product::orderBy('name','desc')->get();
-        $channels = Channel::orderBy('name')->get();
+        $channels = Channel::where('can_review','1')->orderBy('name')->get();
         return view('tourcms::review.create',['products'=>$products,'channels'=>$channels]);
     }
 
@@ -100,7 +100,7 @@ class ReviewController extends Controller
     public function edit(Review $review)
     {
         $products = Product::orderBy('name','desc')->get();
-        $channels = Channel::orderBy('name')->get();
+        $channels = Channel::where('can_review','1')->orderBy('name')->get();
         return view('tourcms::review.edit',['products'=>$products,'channels'=>$channels,'review'=>$review]);
     }
 

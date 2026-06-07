@@ -45,6 +45,21 @@
     </select>
   </div>
 
+<div class="form-group">
+<div class="form-check form-inline">
+  <input class="form-check-input" type="checkbox" id="can_review" {{ $channel->can_review ? "checked" : "" }}>
+  <label class="form-check-label" for="can_review">
+    Can review
+  </label>
+</div>
+<div class="form-check form-inline">
+  <input class="form-check-input" type="checkbox" id="can_booking" {{ $channel->can_booking ? "checked" : "" }}>
+  <label class="form-check-label" for="can_booking">
+    Can booking
+  </label>
+</div>
+</div>
+
 <button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
 </form>
 </div>
@@ -104,7 +119,9 @@ function UPDATE()
         	"_token": $("meta[name=csrf-token]").attr("content"),
 			"name": $('#name').val(),
 			"description": $('#description').val(),
-			"invoice": $('#invoice').val()
+			"invoice": $('#invoice').val(),
+			"can_review": $('#can_review').is(':checked'),
+			"can_booking": $('#can_booking').is(':checked')
         },
 		type: 'PUT',
 		url: '{{ route('route_tourcms_channel.update',$channel->id) }}'
