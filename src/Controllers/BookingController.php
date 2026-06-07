@@ -50,7 +50,7 @@ class BookingController extends Controller
     public function question_edit($id)
     {
         $shoppingcart = Shoppingcart::where('id',$id)->firstOrFail();
-        $channels = Channel::get();
+        $channels = Channel::where('can_booking',1)->get();
         $mainContactDetails = ShoppingcartQuestion::where('shoppingcart_id',$shoppingcart->id)->where('type','mainContactDetails')->orderBy('order')->get();
         $activityBookings = ShoppingcartQuestion::where('shoppingcart_id',$shoppingcart->id)->where('type','activityBookings')->orderBy('booking_id')->orderBy('order')->get();
         $product = ShoppingcartProduct::where('shoppingcart_id',$shoppingcart->id)->first();
@@ -148,7 +148,7 @@ class BookingController extends Controller
             return redirect(route('route_tourcms_booking.index'));
         }
 
-        $channels = Channel::get();
+        $channels = Channel::where('can_booking',1)->get();
         return view('tourcms::booking.checkout')
                 ->with([
                         'shoppingcart'=>$shoppingcart,
