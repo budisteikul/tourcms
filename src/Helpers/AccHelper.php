@@ -4,6 +4,7 @@ namespace budisteikul\tourcms\Helpers;
 use budisteikul\tourcms\Models\fin_transactions;
 use budisteikul\tourcms\Models\fin_categories;
 use budisteikul\tourcms\Models\Order;
+use budisteikul\tourcms\Models\Investment;
 use budisteikul\tourcms\Helpers\GeneralHelper;
 use budisteikul\tourcms\Models\Shoppingcart;
 use budisteikul\tourcms\Models\Product;
@@ -27,6 +28,14 @@ class AccHelper {
     public static function receivable()
     {
         return self::total_by_type('Receivable');
+    }
+
+    public static function investment($year)
+    {
+        $investment = 0;
+        $last = Investment::whereYear('date',$year)->latest()->first();
+        if($last) $investment = $last->investment;
+        return $investment;
     }
 
     public static function first_date_transaction()

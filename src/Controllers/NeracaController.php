@@ -42,7 +42,7 @@ class NeracaController extends Controller
             $expenses += AccHelper::total_per_month_by_type('Expenses',$tahun,$i);
         }
 
-        
+        $investment = AccHelper::investment($tahun);
         
         $cash = 0;
         $accounts_receivable = 0;
@@ -65,6 +65,7 @@ class NeracaController extends Controller
             $pdf = PDF::setOptions(['tempDir' =>  storage_path(),'fontDir' => storage_path(),'fontCache' => storage_path(),'isRemoteEnabled' => true])->loadView('tourcms::fin.pdf.neraca', [
                 'tahun'=>$tahun,
                 'cash'=>$cash,
+                'investment'=>$investment,
                 'retained_earnings'=>$retained_earnings,
                 'capital'=>$capital,
                 'debt'=>$debt,
@@ -81,6 +82,7 @@ class NeracaController extends Controller
             [
                 'tahun'=>$tahun,
                 'cash'=>$cash,
+                'investment'=>$investment,
                 'retained_earnings'=>$retained_earnings,
                 'capital'=>$capital,
                 'debt'=>$debt,

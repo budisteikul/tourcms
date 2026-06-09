@@ -59,12 +59,27 @@ table{
       <td valign="top">&nbsp;</td>
       <td valign="top">&nbsp;</td>
     </tr>
+    @if($investment>0)
     @if($cash>0)
     <tr>
       <td valign="top">Cash and Cash Equivalents</td>
-      <td valign="top" align="right">{{number_format($cash, 0, ',', '.')}}</td>
+      <td valign="top" align="right">{{number_format($cash-$investment, 0, ',', '.')}}</td>
       <td valign="top">&nbsp;</td>
     </tr>
+    @endif
+    <tr>
+      <td valign="top">Investment</td>
+      <td valign="top" align="right">{{number_format($investment, 0, ',', '.')}}</td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+    @else
+    @if($cash>0)
+    <tr>
+      <td valign="top">Cash and Cash Equivalents</td>
+      <td valign="top" align="right">{{number_format($cash-$investment, 0, ',', '.')}}</td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+    @endif
     @endif
     @if($accounts_receivable>0)
     <tr>
