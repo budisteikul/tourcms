@@ -55,6 +55,8 @@ class ExpensesController extends Controller
         $amount =  $request->input('amount');
         $date = $request->input('date');
         $note = $request->input('note');
+        $status =  $request->input('status');
+        $status = $status === 'true'? true: false;
 
         /*
         if($app==1)
@@ -91,7 +93,7 @@ class ExpensesController extends Controller
 
         $trans_id = 16;
         $note = 'Expenses - '. $note .' : '. number_format($amount, 0, ',', '.');
-        $status = 0;
+        //$status = 0;
 
         $transaction = new fin_transactions;
         $transaction->category_id = $trans_id;

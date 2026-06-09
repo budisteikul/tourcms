@@ -56,7 +56,7 @@ class ChannelController extends Controller
         $can_review =  $request->input('can_review');
         $can_review = $can_review === 'true'? true: false;
         $can_booking =  $request->input('can_booking');
-        $can_booking = $can_review === 'true'? true: false;
+        $can_booking = $can_booking === 'true'? true: false;
 
         $channel = new Channel();
         $channel->name = $name;

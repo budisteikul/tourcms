@@ -54,16 +54,6 @@
         </script>    
 </div>
 
-<!-- div class="form-group">
-    <label for="app">Expenses</label>
-    <select class="form-control" id="app">
-      <option value="1">BILL</option>
-      <option value="2">BANK FEE</option>
-      <option value="4">BEA MATERAI</option>
-      <option value="3">REFUND</option>
-      <option value="5">OTHER</option>
-    </select>
-</div -->
 
 <div class="form-group">
 	<label for="note">Note :</label>
@@ -75,8 +65,14 @@
 	<input type="number" step="0.01" id="amount" name="amount" class="form-control" placeholder="amount">
 </div>
 
-
-
+<div class="form-group">
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="status">
+  <label class="form-check-label" for="status">
+    Master account
+  </label>
+</div>
+</div>
 
 
 	
@@ -99,7 +95,7 @@ function STORE()
 	var error = false;
 	$("#submit").attr("disabled", true);
 	$('#submit').html('<i class="fa fa-spinner fa-spin"></i>');
-	var input = ["app","amount","date"];
+	var input = ["amount","date"];
 	
 	$.each(input, function( index, value ) {
   		$('#'+ value).removeClass('is-invalid');
@@ -109,10 +105,10 @@ function STORE()
 	$.ajax({
 		data: {
         	"_token": $("meta[name=csrf-token]").attr("content"),
-			"app": $('#app').val(),
 			"amount": $('#amount').val(),
 			"date": $('#date').val(),
-			"note": $('#note').val()
+			"note": $('#note').val(),
+			"status": $('#status').is(':checked')
         },
 		type: 'POST',
 		url: '{{ route('route_tourcms_expenses.store') }}'
