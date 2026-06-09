@@ -227,7 +227,7 @@
       @php
         $collapsed = 'collapsed';
         $show = '';        
-        if(request()->is('cms/fin/profitloss*') || request()->is('cms/fin/tax*') || request()->is('cms/fin/transactions*') || request()->is('cms/fin/neraca*') || request()->is('cms/fin/orders*') || request()->is('cms/fin/pettycash*') || request()->is('cms/fin/expenses*') || request()->is('cms/fin/revenue*') || request()->is('cms/fin/ca*'))
+        if(request()->is('cms/fin/profitloss*') || request()->is('cms/fin/tax*') || request()->is('cms/fin/transactions*') || request()->is('cms/fin/neraca*') || request()->is('cms/fin/orders*') || request()->is('cms/fin/pettycash*') || request()->is('cms/fin/expenses*') || request()->is('cms/fin/revenue*') || request()->is('cms/fin/ca*') || request()->is('cms/fin/investment*'))
         {
           $collapsed = '';
           $show = 'show';
@@ -235,7 +235,7 @@
       @endphp
         <a class="nav-link {{$collapsed}}" href="#" data-toggle="collapse" data-target="#menu-fin1" aria-expanded="false" aria-controls="menu-fin1">
           <i class="fas fa-balance-scale"></i>
-          <span>ACCOUNTING</span>
+          <span>FINANCIAL</span>
         </a>
         <div id="menu-fin1" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -249,6 +249,8 @@
              <a class="collapse-item {{ (request()->is('cms/fin/profitloss*')) ? 'active' : '' }}" href="{{ route('route_fin_profitloss.index') }}"><i class="far fa-circle"></i> {{ __('Profit Loss') }}</a>
 
              <a class="collapse-item {{ (request()->is('cms/fin/neraca*')) ? 'active' : '' }}" href="{{ route('route_fin_neraca.index') }}"><i class="far fa-circle"></i> {{ __('Balance Sheet') }}</a>
+
+             <a class="collapse-item {{ (request()->is('cms/fin/investment*')) ? 'active' : '' }}" href="{{ route('route_tourcms_investment.index') }}"><i class="far fa-circle"></i> {{ __('Investment') }}</a>
 
              <a class="collapse-item {{ (request()->is('cms/fin/orders*')) ? 'active' : '' }}" href="{{ route('route_tourcms_orders.index') }}"><i class="far fa-circle"></i> {{ __('Orders') }}</a>
 
