@@ -291,12 +291,14 @@ class OrderController extends Controller
             }
 
             $pengurang_gyg = 0;
+            $pengurang_gyg_text = "";
             if($level_id==2)
             {
                 if($gyg_count<=4)
                 {
                     $pengurang_gyg = 30000 * $gyg_count;
                 }
+                $pengurang_gyg_text = " (GYG : ". $gyg_count .")";
             }
             $total_guide = ($guiding_fee * $pax) + $duty_fee - $pengurang_gyg;
 
@@ -305,7 +307,7 @@ class OrderController extends Controller
             $total = $total_cost + $total_guide;
             $tour = "Jogja Night Food Tour";
             $text_pengurang_gyg = "";
-            $note = $tour .' - '. $pax .'pax (GYG : '.$gyg_count.')';
+            $note = $tour .' - '. $pax .'pax'. $pengurang_gyg_text;
 
             //Fee tak terduga
             if($additional>0)
