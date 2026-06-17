@@ -10,4 +10,9 @@ class Order extends Model
     protected $table = 'orders';
     protected $keyType = 'string';
     protected $dateFormat = 'Y-m-d H:i:s.u';
+
+    public function shoppingcarts()
+    {
+        return $this->belongsToMany('budisteikul\tourcms\Models\Shoppingcart','orders_shoppingcarts','order_id','shoppingcart_id')->withPivot('type')->withTimestamps();
+    }
 }

@@ -36,5 +36,9 @@ class Shoppingcart extends Model
         return $this->belongsTo(Partner::class,'referer','tracking_code');
     }
 
+    public function orders()
+    {
+        return $this->belongsToMany('budisteikul\tourcms\Models\Order','orders_shoppingcarts','shoppingcart_id','order_id')->withPivot('type')->withTimestamps();
+    }
 
 }
