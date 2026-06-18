@@ -292,7 +292,7 @@ class OrderController extends Controller
 
             $pengurang_gyg = 0;
             $pengurang_gyg_text = "";
-            if($level_id==2)
+            if($level_id==10)
             {
                 if($gyg_count<=4)
                 {
@@ -303,7 +303,7 @@ class OrderController extends Controller
             $total_guide = ($guiding_fee * $pax) + $duty_fee - $pengurang_gyg;
 
                     
-            $total_cost = 250000 * $pax;
+            $total_cost = 225000 * $pax;
             $total = $total_cost + $total_guide;
             $tour = "Jogja Night Food Tour";
             $text_pengurang_gyg = "";
