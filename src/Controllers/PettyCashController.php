@@ -25,7 +25,7 @@ class PettyCashController extends Controller
      */
     public function saldo()
     {
-        $pettycash = 10000000;
+        $pettycash = config('site.pettycash');
         $fin_transactions = fin_transactions::where('status',0)->get();
         $total = $fin_transactions->sum('amount');
         $pettycash_saldo = $pettycash - $total;

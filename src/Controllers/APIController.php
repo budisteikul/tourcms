@@ -48,6 +48,7 @@ class APIController extends Controller
     public function test()
     {
         
+        exit();
     }
 
     
