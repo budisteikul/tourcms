@@ -41,6 +41,7 @@
             $(function () {
                 $('#date').datetimepicker({
 					format: 'YYYY-MM-DD',
+					enabledDates: [{!! $moment !!}],
 					showTodayButton: true,
 					showClose: true,
 					ignoreReadonly: true,
@@ -57,9 +58,30 @@
 </div>
 
 <div class="form-group">
-	<label for="pax">Pax :</label>
-	<input type="number" id="pax" name="pax" class="form-control" placeholder="Pax" autocomplete="off" value="1">
-</div> 
+    <label for="by_qty">Guests :</label>
+    @foreach($guests as $guest)
+    @php
+    				$name = "";
+    				foreach($guest->shoppingcart->shoppingcart_questions as $question)
+                    {
+                        $name .= $question->answer .' ';
+                    }
+                    $name = rtrim($name);
+                    
+                    $people = 0;
+                    foreach($guest->shoppingcart_product_details as $shoppingcart_product_detail)
+                    {
+                        $people += $shoppingcart_product_detail->people;
+                    }
+    @endphp
+	<div class="form-check">
+    	<input type="checkbox" class="form-check-input" name="guests[]" value="{{ $name }}|{{ $guest->shoppingcart->booking_channel }}|{{ $people }}|{{$guest->shoppingcart_id}}" id="guest_{{ $guest->id }}">
+    	<label class="form-check-label" for="guest_{{ $guest->id }}">{{ $name }} - {{ $guest->shoppingcart->booking_channel }} {{ $people }} - {{ $guest->title }}</label>
+  	</div>
+  	@endforeach
+</div>
+
+
 <div class="form-group">
 	<label for="additional">Additional :</label>
 	<input type="number" id="additional" name="additional" class="form-control" placeholder="Additional" autocomplete="off" value="0">
@@ -88,19 +110,19 @@ function STORE()
 		var error = false;
 		$("#submit2").attr("disabled", true);
 		$('#submit2').html('<i class="fa fa-spinner fa-spin"></i>');
-		var input = ["pax","date","additional"];
+		var input = ["date","additional"];
 	
 		$.each(input, function( index, value ) {
   			$('#'+ value).removeClass('is-invalid');
   			$('#span-'+ value).remove();
 		});
 	
-	
+		var guests = $('input[name="guests\\[\\]"]:checked').map(function(i, elem) { return $(this).val(); }).get();
 
 		$.ajax({
 		data: {
         	"_token": $("meta[name=csrf-token]").attr("content"),
-			"pax": $('#pax').val(),
+			"guests": guests,
 			"date": $('#date').val(),
 			"additional": $('#additional').val(),
 			"app": 7

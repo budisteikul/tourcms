@@ -41,6 +41,7 @@
             $(function () {
                 $('#date').datetimepicker({
 					format: 'YYYY-MM-DD',
+					enabledDates: [{!! $moment !!}],
 					showTodayButton: true,
 					showClose: true,
 					ignoreReadonly: true,
@@ -74,7 +75,8 @@
                     {
                         $name .= $question->answer .' ';
                     }
-
+                    $name = rtrim($name);
+                    
                     $people = 0;
                     foreach($guest->shoppingcart_product_details as $shoppingcart_product_detail)
                     {

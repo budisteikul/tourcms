@@ -46,10 +46,8 @@ class OrderController extends Controller
         
     }
 
-    public function create_jnft()
+    public function getGuests()
     {
-        $guides = json_decode(config('site.guides'));
-        
         $guests = ShoppingcartProduct::with(['shoppingcart' => function ($query) {
                     $query = $query->with(['shoppingcart_questions' => function ($query) {
                         return $query->where('question_id','firstName')->orWhere('question_id','lastName');
@@ -57,21 +55,47 @@ class OrderController extends Controller
                  }])
                  ->whereHas('shoppingcart', function ($query) {
                     return $query->where('booking_status','CONFIRMED')->doesntHave('orders');
-                 })->whereDate('date', '=', date('Y-m-d'))->whereNotNull('date')->orderBy('date')->orderBy('id')->get();
+                 })->whereDate('date', '<=', Carbon::now())->whereDate('date', '>=', Carbon::now()->addDays(-1))->whereNotNull('date')->orderBy('date')->orderBy('id')->get();
+        return $guests;
+    }
 
-        return view('tourcms::order.create-jnft',['guides'=>$guides,'guests'=>$guests]);
+    public function getMoment()
+    {
+        $dt = Carbon::now();
+        $moment = 'moment("'. Carbon::now()->format('Y-m-d') .'"),moment("'.Carbon::now()->addDays(-1)->format('Y-m-d').'")';
+        return $moment;
+    }
+
+    public function create_jnft()
+    {
+        $guides = json_decode(config('site.guides'));
+        
+        $guests = self::getGuests();
+        $moment = self::getMoment();
+        return view('tourcms::order.create-jnft',['guides'=>$guides,'guests'=>$guests,'moment'=>$moment]);
     }
 
     public function create_short()
     {
         $guides = json_decode(config('site.guides'));
-        return view('tourcms::order.create-short',['guides'=>$guides]);
+        $guests = self::getGuests();
+        $moment = self::getMoment();
+        return view('tourcms::order.create-short',['guides'=>$guides,'guests'=>$guests,'moment'=>$moment]);
     }
 
     public function create_jmft()
     {
         $guides = json_decode(config('site.guides'));
-        return view('tourcms::order.create-jmft',['guides'=>$guides]);
+        $guests = self::getGuests();
+        $moment = self::getMoment();
+        return view('tourcms::order.create-jmft',['guides'=>$guides,'guests'=>$guests,'moment'=>$moment]);
+    }
+
+    public function create_smt()
+    {
+        $guests = self::getGuests();
+        $moment = self::getMoment();
+        return view('tourcms::order.create-smt',['guests'=>$guests,'moment'=>$moment]);
     }
 
     public function create_tat()
@@ -79,10 +103,7 @@ class OrderController extends Controller
         return view('tourcms::order.create-tat');
     }
 
-    public function create_smt()
-    {
-        return view('tourcms::order.create-smt');
-    }
+    
 
     public function create_dft()
     {
@@ -103,13 +124,30 @@ class OrderController extends Controller
         
         if($app==7)
         {
+            $cogs_fee = 400000;
+            
+            $validator = Validator::make($request->all(), [
+                'guests' => 'required'
+            ]);
+        
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return response()->json($errors);
+            }
+
             $date =  $request->input('date');
-            $pax =  $request->input('pax');
+            $guests =  $request->input('guests');
             $additional =  $request->input('additional');
 
-            $cost = 400000 * $pax;
-            $commision = 25000 * $pax;
-            $total = $cost + $commision;
+            //Hitung pax
+            $pax = 0;
+            foreach($guests as $guest)
+            {
+                $array_guest = explode("|",$guest);
+                $pax += $array_guest[2];
+            }
+
+            $total = $cogs_fee * $pax;
             $tour = "Semarang Food Tour";
 
             if($additional>0)
@@ -128,21 +166,11 @@ class OrderController extends Controller
                 ];
             }
 
-            $transaction = new fin_transactions;
-            $transaction->category_id = 61;
-            $transaction->date = $date;
-            $transaction->amount = $commision;
-            $transaction->status = 0;
-            $transaction->save();
-
-            $json_trans_id[] = [
-                'trans_id' => $transaction->id
-            ];
             
             $transaction = new fin_transactions;
             $transaction->category_id = 62;
             $transaction->date = $date;
-            $transaction->amount = $cost;
+            $transaction->amount = $total;
             $transaction->status = 0;
             $transaction->save();
 
@@ -165,87 +193,125 @@ class OrderController extends Controller
             $order->note = $note;
             $order->transactions = json_encode($json);
             $order->save();
+
+            $order_id = $order->id;
+            foreach($guests as $guest)
+            {
+                $array_guest = explode("|",$guest);
+                DB::table('orders_shoppingcarts')->insert(['order_id'=>$order_id,'shoppingcart_id'=>$array_guest[3],"note"=>$array_guest[0]." - ".$array_guest[1]." ".$array_guest[2],"created_at" => now(),
+    "updated_at" => now()]);
+            }
         }
 
+        // Short Food Tour
         if($app==6)
             {
-                $date =  $request->input('date');
-                $guide =  $request->input('guide');
-                $pax =  $request->input('pax');
-                $additional =  $request->input('additional');
+            
+            $guiding_fee = 80000;
+            $cost_fee = 80000;
 
-                $modal_tour = 80000;
-                $fee_guide = 80000;
-                $tour = "Jogja Short Food Tour";
-                $guide = fin_categories::where('id',$guide)->first();
+            $validator = Validator::make($request->all(), [
+                'guests' => 'required'
+            ]);
+        
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return response()->json($errors);
+            }
+            
+            $date =  $request->input('date');
+            $guide =  $request->input('guide');
+            $additional =  $request->input('additional');
+            $guests =  $request->input('guests');
 
-                $total_guide = $fee_guide * $pax;
-                $total_cost =  $modal_tour * $pax;
-                $total = 0;
+            //Hitung pax
+            $pax = 0;
+            foreach($guests as $guest)
+            {
+                $array_guest = explode("|",$guest);
+                $pax += $array_guest[2];
+            }
+            
+            
+            
+            $guide = fin_categories::where('id',$guide)->first();
+            
 
-                //additional
-                if($additional>0)
-                {
-                    $total = $total + $additional;
+            $total_guide = $guiding_fee * $pax;
+            $total_cost = $cost_fee * $pax;
+            
+            $total = $total_cost + $total_guide;
+            $tour = "Jogja Short Food Tour";
+            $note = $tour .' - '. $pax .'pax';
+
+            //Fee tak terduga
+            if($additional>0)
+            {
+                $total = $total + $additional;
                 
-                    $transaction = new fin_transactions;
-                    $transaction->category_id = 53;
-                    $transaction->date = $date;
-                    $transaction->amount = $additional;
-                    $transaction->status = 0;
-                    $transaction->save();
-
-                    $json_trans_id[] = [
-                        'trans_id' => $transaction->id
-                    ];
-                }
-
-                $note = $tour.' - '. $pax .'pax';
-                $total += $total_cost + $total_guide;
-
-                //guide
                 $transaction = new fin_transactions;
-                $transaction->category_id = $guide->id;
+                $transaction->category_id = 53;
                 $transaction->date = $date;
-                $transaction->amount = $total_guide;
+                $transaction->amount = $additional;
                 $transaction->status = 0;
                 $transaction->save();
 
                 $json_trans_id[] = [
                     'trans_id' => $transaction->id
                 ];
+            }
+             
+            $transaction = new fin_transactions;
+            $transaction->category_id = $guide->id;
+            $transaction->date = $date;
+            $transaction->amount = $total_guide;
+            $transaction->status = 0;
+            $transaction->save();
 
-                //modal
-                $transaction = new fin_transactions;
-                $transaction->category_id = 15;
-                $transaction->date = $date;
-                $transaction->amount = $total_cost;
-                $transaction->status = 0;
-                $transaction->save();
+            $json_trans_id[] = [
+                'trans_id' => $transaction->id
+            ];
 
-                $json_trans_id[] = [
-                    'trans_id' => $transaction->id
-                ];
+            $transaction = new fin_transactions;
+            $transaction->category_id = 15;
+            $transaction->date = $date;
+            $transaction->amount = $total_cost;
+            $transaction->status = 0;
+            $transaction->save();
 
-                $json[] = [
-                    'trans_id' => $json_trans_id
-                ];
+            $json_trans_id[] = [
+                'trans_id' => $transaction->id
+            ];
 
-                $order = new Order;
-                $order->type = 'order';
-                $order->date = $date;
-                $order->guide = $guide->id;
-                $order->tour = $tour;
-                $order->pax = $pax;
-                $order->fee = $total_guide;
-                $order->cost = $total_cost;
-                $order->total = $total;
-                $order->note = $note;
-                $order->transactions = json_encode($json);
-                $order->save();
+            $json[] = [
+                'trans_id' => $json_trans_id
+            ];
 
+            $order = new Order;
+            $order->type = 'order';
+            $order->date = $date;
+            $order->guide = $guide->id;
+            $order->tour = $tour;
+            $order->pax = $pax;
+            $order->fee = $total_guide;
+            $order->cost = $total_cost;
+            $order->total = $total;
+            $order->note = $note;
+            $order->transactions = json_encode($json);
+            $order->save();
+
+            $order_id = $order->id;
+            foreach($guests as $guest)
+            {
+                $array_guest = explode("|",$guest);
+                DB::table('orders_shoppingcarts')->insert(['order_id'=>$order_id,'shoppingcart_id'=>$array_guest[3],"note"=>$array_guest[0]." - ".$array_guest[1]." ".$array_guest[2],"created_at" => now(),
+    "updated_at" => now()]);
             }
 
+
+        }
+
+        //Full Night Food Tour
         if($app==1)
         {
             $validator = Validator::make($request->all(), [
@@ -375,7 +441,7 @@ class OrderController extends Controller
             foreach($guests as $guest)
             {
                 $array_guest = explode("|",$guest);
-                DB::table('orders_shoppingcarts')->insert(['order_id'=>$order_id,'shoppingcart_id'=>$array_guest[3],"note"=>$guest,"created_at" => now(),
+                DB::table('orders_shoppingcarts')->insert(['order_id'=>$order_id,'shoppingcart_id'=>$array_guest[3],"note"=>$array_guest[0]." - ".$array_guest[1]." ".$array_guest[2],"created_at" => now(),
     "updated_at" => now()]);
             }
 
@@ -383,115 +449,60 @@ class OrderController extends Controller
 
         if($app==2)
         {
+            $guiding_fee = 150000;
+            $cost_fee = 150000;
+
+            $validator = Validator::make($request->all(), [
+                'guests' => 'required'
+            ]);
+        
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return response()->json($errors);
+            }
+            
             $date =  $request->input('date');
             $guide =  $request->input('guide');
-            $gaji =  $request->input('gaji');
-            $pax =  $request->input('pax');
             $additional =  $request->input('additional');
+            $guests =  $request->input('guests');
 
+            //Hitung pax
+            $pax = 0;
+            foreach($guests as $guest)
+            {
+                $array_guest = explode("|",$guest);
+                $pax += $array_guest[2];
+            }
+            
+            
+            
             $guide = fin_categories::where('id',$guide)->first();
-
-
-
-            if($app==1)
-            {
-
-                
-
-                if($gaji==0)
-                {
-                    $duty_fee = 0;
-                    $guide_settings = json_decode(config('site.guides'));
-                    foreach($guide_settings as $guide_setting)
-                    {
-                        if($guide->id==$guide_setting->id)
-                        {
-                            $total_guide = $guide_setting->fee * $pax;
-                            $duty_fee = $guide_setting->duty_fee;
-                        }
-                    }
-                    
-                    $total_cost = 250000 * $pax;
-                    //if($pax>=5) $total_cost = 200000 * $pax;
-
-                    $total = $total_cost + $total_guide;
-                    $tour = "Jogja Night Food Tour";
-
-                    if($duty_fee>0)
-                    {
-                        $total = $total + $duty_fee;
-                        $total_guide = $total_guide + $duty_fee;
-                    }
-                }
-                else
-                {
-                    $total_guide = $gaji;
-                    $total_cost = 250000 * $pax;
-                    if($pax>=5) $total_cost = 200000 * $pax;
-
-                    $total = $total_cost + $total_guide;
-                    $tour = "Jogja Night Food Tour";
-                }
-                
-
-                if($additional>0)
-                {
-                    $total = $total + $additional;
-                
-                    $transaction = new fin_transactions;
-                    $transaction->category_id = 53;
-                    $transaction->date = $date;
-                    $transaction->amount = $additional;
-                    $transaction->status = 0;
-                    $transaction->save();
-
-                    $json_trans_id[] = [
-                        'trans_id' => $transaction->id
-                    ];
-                }
-                //$note = $tour.' - '. $guide->name .' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
-                $note = $tour.' - '. $pax .'pax';
-            }
-
-            if($app==2)
-            {
-                if($guide->id==55 || $guide->id==56)
-                {
-                    $total_guide = 100000 * $pax;
-                }
-                else
-                {
-                    $total_guide = 150000 * $pax;
-                }
-
-                $total_cost = 150000 * $pax;
-                if($pax>=3) $total_cost = 100000 * $pax;
-
-                $total = $total_cost + $total_guide;
-                $tour = "Jogja Morning Food Tour";
-                $pax = $pax;
-                if($additional>0)
-                {
-                    $total = $total + $additional;
-                
-                    $transaction = new fin_transactions;
-                    $transaction->category_id = 53;
-                    $transaction->date = $date;
-                    $transaction->amount = $additional;
-                    $transaction->status = 0;
-                    $transaction->save();
-
-                    $json_trans_id[] = [
-                        'trans_id' => $transaction->id
-                    ];
-                }
-                //$note = $tour.' - '. $guide->name.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
-                $note = $tour.' - '. $pax .'pax';
-            }
             
 
+            $total_guide = $guiding_fee * $pax;
+            $total_cost = $cost_fee * $pax;
             
+            $total = $total_cost + $total_guide;
+            $tour = "Jogja Morning Food Tour";
+            $note = $tour .' - '. $pax .'pax';
 
+            //Fee tak terduga
+            if($additional>0)
+            {
+                $total = $total + $additional;
+                
+                $transaction = new fin_transactions;
+                $transaction->category_id = 53;
+                $transaction->date = $date;
+                $transaction->amount = $additional;
+                $transaction->status = 0;
+                $transaction->save();
+
+                $json_trans_id[] = [
+                    'trans_id' => $transaction->id
+                ];
+            }
+             
             $transaction = new fin_transactions;
             $transaction->category_id = $guide->id;
             $transaction->date = $date;
@@ -514,8 +525,6 @@ class OrderController extends Controller
                 'trans_id' => $transaction->id
             ];
 
-            
-
             $json[] = [
                 'trans_id' => $json_trans_id
             ];
@@ -532,6 +541,14 @@ class OrderController extends Controller
             $order->note = $note;
             $order->transactions = json_encode($json);
             $order->save();
+
+            $order_id = $order->id;
+            foreach($guests as $guest)
+            {
+                $array_guest = explode("|",$guest);
+                DB::table('orders_shoppingcarts')->insert(['order_id'=>$order_id,'shoppingcart_id'=>$array_guest[3],"note"=>$array_guest[0]." - ".$array_guest[1]." ".$array_guest[2],"created_at" => now(),
+    "updated_at" => now()]);
+            }
 
         }
 

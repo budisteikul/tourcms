@@ -47,7 +47,8 @@ class APIController extends Controller
 
     public function test()
     {
-        
+        $date = Carbon::now()->addDays(-1);
+        print($date);   
         exit();
     }
 
