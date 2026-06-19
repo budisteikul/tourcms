@@ -76,9 +76,14 @@
     Reminder - Jogja Night Food Tour
   </div>
   <div class="card-body">
-        <button type="button" class="btn btn-danger mb-2" id="template1000"  onclick="sendTemplate(1000); return false;"><i class="fas fa-paper-plane"></i> Jogja Tomorrow Night Food Tour</button>
 
-        <button type="button" class="btn btn-danger mb-2" id="template1001"  onclick="sendTemplate(1001); return false;"><i class="fas fa-paper-plane"></i> Jogja Tonight Food Tour</button>
+        <button type="button" class="btn btn-danger mb-2" id="template1000"  onclick="sendTemplate(1000); return false;"><i class="fas fa-paper-plane"></i> Jogja Tomorrow Night Food Tour  w/ Question</button>
+
+        <button type="button" class="btn btn-danger mb-2" id="template1001"  onclick="sendTemplate(1001); return false;"><i class="fas fa-paper-plane"></i> Jogja Tonight Food Tour w/ Question</button>
+
+        <button type="button" class="btn btn-danger mb-2" id="template1010"  onclick="sendTemplate(1010); return false;"><i class="fas fa-paper-plane"></i> Jogja Tomorrow Night Food Tour</button>
+
+        <button type="button" class="btn btn-danger mb-2" id="template1011"  onclick="sendTemplate(1011); return false;"><i class="fas fa-paper-plane"></i> Jogja Tonight Food Tour</button>
 
         
 
@@ -93,7 +98,12 @@
   <div class="card-body">
         
 
-        <button type="button" class="btn btn-danger mb-2" id="template1002"  onclick="sendTemplate(1002); return false;"><i class="fas fa-paper-plane"></i> Jogja Tomorrow Morning Food Tour</button>
+        <button type="button" class="btn btn-danger mb-2" id="template1002"  onclick="sendTemplate(1002); return false;"><i class="fas fa-paper-plane"></i> Jogja Tomorrow Morning Food Tour  w/ Question</button>
+
+        <button type="button" class="btn btn-danger mb-2" id="template1012"  onclick="sendTemplate(1012); return false;"><i class="fas fa-paper-plane"></i> Jogja Tomorrow Morning Food Tour</button>
+
+
+
   </div>
 </div>
 
