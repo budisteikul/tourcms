@@ -89,6 +89,9 @@ class GeneralHelper {
             case 13:
                 return \Carbon\Carbon::parse($date)->addDay()->format('D, M jS');
             break;
+            case 14:
+                return \Carbon\Carbon::parse($date)->format('D, M jS');
+            break;
             default:
                 return \Carbon\Carbon::now()->toDateTimeString();
         }

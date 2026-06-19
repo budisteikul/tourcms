@@ -95,7 +95,8 @@ class ContactController extends Controller
         $type = null;
         $template = null;
 
-        $time_nighttour = "6.30PM";
+        $time_nighttour = "6:30PM";
+        $time_morningtour = "8:00AM";
 
         switch($template_id)
         {
@@ -255,80 +256,86 @@ class ContactController extends Controller
             
             case 1000:
                 // Jogja Food Tour
-                $type = "reminder_jogjafoodtour";
-                $template = "reminder_jogjafoodtour";
+                $type = "reminder_foodtour";
+                $template = "reminder_foodtour";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "tomorrow night (".GeneralHelper::dateFormat("",13).")";
-                $var3 = $time_nighttour;
-                $var4 = "Tugu Jogja (Yogyakarta Monument)";
-                $var5 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
-                $var6 = "Please wait near the sign Tugu_Golong_Gilig";
-                $var7 = "By the way, do you/does anyone in your group have any food allergies or dietary restrictions?";
+                $var2 = "tomorrow night";
+                $var3 = GeneralHelper::dateFormat("",13);
+                $var4 = $time_nighttour;
+                $var5 = "Tugu Jogja (Yogyakarta Monument)";
+                $var6 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
+                $var7 = "Please wait near the sign Tugu_Golong_Gilig";
+                $var8 = "By the way, do you/does anyone in your group have any food allergies or dietary restrictions?";
             break;
 
             case 1010:
                 // Jogja Food Tour
-                $type = "reminder_jogjafoodtour";
-                $template = "reminder_jogjafoodtour";
+                $type = "reminder_foodtour";
+                $template = "reminder_foodtour";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "tomorrow night (".GeneralHelper::dateFormat("",13).")";
-                $var3 = $time_nighttour;
-                $var4 = "Tugu Jogja (Yogyakarta Monument)";
-                $var5 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
-                $var6 = "Please wait near the sign Tugu_Golong_Gilig";
-                $var7 = ".";
+                $var2 = "tomorrow night";
+                $var3 = GeneralHelper::dateFormat("",13);
+                $var4 = $time_nighttour;
+                $var5 = "Tugu Jogja (Yogyakarta Monument)";
+                $var6 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
+                $var7 = "Please wait near the sign Tugu_Golong_Gilig";
+                $var8 = ".";
             break;
 
             case 1001:
                 // Jogja Food Tour
-                $type = "reminder_jogjafoodtour";
-                $template = "reminder_jogjafoodtour";
+                $type = "reminder_foodtour";
+                $template = "reminder_foodtour";
                 $var1 = ucwords(strtolower($contact->name));
                 $var2 = "tonight";
-                $var3 = $time_nighttour;
-                $var4 = "Tugu Jogja (Yogyakarta Monument)";
-                $var5 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
-                $var6 = "Please wait near the sign Tugu_Golong_Gilig";
-                $var7 = "By the way, do you/does anyone in your group have any food allergies or dietary restrictions?";
+                $var3 = GeneralHelper::dateFormat("",14);
+                $var4 = $time_nighttour;
+                $var5 = "Tugu Jogja (Yogyakarta Monument)";
+                $var6 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
+                $var7 = "Please wait near the sign Tugu_Golong_Gilig";
+                $var8 = "By the way, do you/does anyone in your group have any food allergies or dietary restrictions?";
             break;
 
             case 1011:
                 // Jogja Food Tour
-                $type = "reminder_jogjafoodtour";
-                $template = "reminder_jogjafoodtour";
+                $type = "reminder_foodtour";
+                $template = "reminder_foodtour";
                 $var1 = ucwords(strtolower($contact->name));
                 $var2 = "tonight";
-                $var3 = $time_nighttour;
-                $var4 = "Tugu Jogja (Yogyakarta Monument)";
-                $var5 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
-                $var6 = "Please wait near the sign Tugu_Golong_Gilig";
-                $var7 = ".";
+                $var3 = GeneralHelper::dateFormat("",14);
+                $var4 = $time_nighttour;
+                $var5 = "Tugu Jogja (Yogyakarta Monument)";
+                $var6 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
+                $var7 = "Please wait near the sign Tugu_Golong_Gilig";
+                $var8 = ".";
             break;
 
             case 1002:
                 // Jogja Morning Tour
-                $type = "reminder_jogjafoodtour";
-                $template = "reminder_jogjafoodtour";
+                $type = "reminder_foodtour";
+                $template = "reminder_foodtour";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "tomorrow morning (".GeneralHelper::dateFormat("",13).")";
-                $var3 = "8:00AM";
-                $var4 = "Lupis Mbah Satinem";
-                $var5 = "https://maps.app.goo.gl/tn2biVoLgPTRrtQs8";
-                $var6 = ".";
-                $var7 = "By the way, do you/does anyone in your group have any food allergies or dietary restrictions?";
+                $var2 = "tomorrow morning";
+                $var3 = GeneralHelper::dateFormat("",13);
+                $var4 = $time_morningtour;
+                $var5 = "Lupis Mbah Satinem";
+                $var6 = "https://maps.app.goo.gl/tn2biVoLgPTRrtQs8";
+                $var7 = ".";
+                $var8 = "By the way, do you/does anyone in your group have any food allergies or dietary restrictions?";
             break;
 
             case 1012:
                 // Jogja Morning Tour
-                $type = "reminder_jogjafoodtour";
-                $template = "reminder_jogjafoodtour";
+                $type = "reminder_foodtour";
+                $template = "reminder_foodtour";
                 $var1 = ucwords(strtolower($contact->name));
-                $var2 = "tomorrow morning (".GeneralHelper::dateFormat("",13).")";
-                $var3 = "8:00AM";
-                $var4 = "Lupis Mbah Satinem";
-                $var5 = "https://maps.app.goo.gl/tn2biVoLgPTRrtQs8";
-                $var6 = ".";
+                $var2 = "tomorrow morning";
+                $var3 = GeneralHelper::dateFormat("",13);
+                $var4 = $time_morningtour;
+                $var5 = "Lupis Mbah Satinem";
+                $var6 = "https://maps.app.goo.gl/tn2biVoLgPTRrtQs8";
                 $var7 = ".";
+                $var8 = ".";
             break;
 
             case 2001:
@@ -502,7 +509,7 @@ class ContactController extends Controller
             $whatsapp->sendTemplate($contact->wa_id,$template, $components);
         }
 
-        if($type=="reminder_jogjafoodtour")
+        if($type=="reminder_foodtour")
         {
             if($var1=="") $var1="participant";
             $components = [
@@ -536,6 +543,10 @@ class ContactController extends Controller
                                             [
                                                 "type"=>"text",
                                                 "text"=> $var7
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var8
                                             ]
                                         ]
                                     ]
@@ -562,14 +573,16 @@ class ContactController extends Controller
                     if($email!="")
                     {
                         $payload = new \stdClass();
-                        $payload->app = 'mail_question';
+                        $payload->app = 'mail_reminder';
                         $payload->email = $email;
                         $payload->name = $var1;
                         $payload->time_description = $var2;
-                        $payload->time = $var3;
-                        $payload->location = $var4;
-                        $payload->map = $var5;
-                        $payload->map_description = str_ireplace("`","",$var6);
+                        $payload->date = $var3;
+                        $payload->time = $var4;
+                        $payload->location = $var5;
+                        $payload->map = $var6;
+                        $payload->map_description = str_ireplace("`","",$var7);
+                        $payload->question = $var8;
                         TaskHelper::create($payload);
                     }
                 }
