@@ -463,7 +463,7 @@ class ContactController extends Controller
             $whatsapp->sendTemplate($contact->wa_id,$template, $components);
         }
 
-        if($type=="reminder_jogja_food_tour")
+        if($type=="reminder_jogjafoodtour")
         {
             if($var1=="") $var1="participant";
             $components = [
