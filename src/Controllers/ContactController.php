@@ -255,38 +255,41 @@ class ContactController extends Controller
             
             case 1000:
                 // Jogja Food Tour
-                $type = "reminder_jogja_food_tour";
-                $template = "reminder_jogja_food_tour";
+                $type = "reminder_jogjafoodtour";
+                $template = "reminder_jogjafoodtour";
                 $var1 = ucwords(strtolower($contact->name));
                 $var2 = "tomorrow night (".GeneralHelper::dateFormat("",13).")";
                 $var3 = $time_nighttour;
                 $var4 = "Tugu Jogja (Yogyakarta Monument)";
                 $var5 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
                 $var6 = "Please wait near the sign Tugu_Golong_Gilig";
+                $var7 = "By the way, do you/does anyone in your group have any food allergies or dietary restrictions?";
             break;
 
             case 1001:
                 // Jogja Food Tour
-                $type = "reminder_jogja_food_tour";
-                $template = "reminder_jogja_food_tour";
+                $type = "reminder_jogjafoodtour";
+                $template = "reminder_jogjafoodtour";
                 $var1 = ucwords(strtolower($contact->name));
                 $var2 = "tonight";
                 $var3 = $time_nighttour;
                 $var4 = "Tugu Jogja (Yogyakarta Monument)";
                 $var5 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
                 $var6 = "Please wait near the sign Tugu_Golong_Gilig";
+                $var7 = "By the way, do you/does anyone in your group have any food allergies or dietary restrictions?";
             break;
 
             case 1002:
                 // Jogja Morning Tour
-                $type = "reminder_jogja_food_tour";
-                $template = "reminder_jogja_food_tour";
+                $type = "reminder_jogjafoodtour";
+                $template = "reminder_jogjafoodtour";
                 $var1 = ucwords(strtolower($contact->name));
                 $var2 = "tomorrow morning (".GeneralHelper::dateFormat("",13).")";
                 $var3 = "8:00AM";
                 $var4 = "Lupis Mbah Satinem";
                 $var5 = "https://maps.app.goo.gl/tn2biVoLgPTRrtQs8";
                 $var6 = ".";
+                $var7 = "By the way, do you/does anyone in your group have any food allergies or dietary restrictions?";
             break;
 
             case 2001:
@@ -490,14 +493,21 @@ class ContactController extends Controller
                                             [
                                                 "type"=>"text",
                                                 "text"=> $var6
+                                            ],
+                                            [
+                                                "type"=>"text",
+                                                "text"=> $var7
                                             ]
                                         ]
-                                    ],
+                                    ]
+                                    /*
+                                    ,
                                     [
                                         "type"=> "button",
                                         "sub_type"=> "flow",
                                         "index"=> 0
                                     ]
+                                    */
                             ];
             
             $whatsapp = new WhatsappHelper;
