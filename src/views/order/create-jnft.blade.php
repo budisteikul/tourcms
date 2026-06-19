@@ -136,7 +136,7 @@ function STORE()
 			"date": $('#date').val(),
 			"additional": $('#additional').val(),
 			"guests": guests,
-			"app": 1
+			"app": {!! $app !!}
 			
         },
 		type: 'POST',

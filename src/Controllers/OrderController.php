@@ -72,7 +72,7 @@ class OrderController extends Controller
         
         $guests = self::getGuests();
         $moment = self::getMoment();
-        return view('tourcms::order.create-jnft',['guides'=>$guides,'guests'=>$guests,'moment'=>$moment]);
+        return view('tourcms::order.create-jnft',['app'=>1, 'guides'=>$guides,'guests'=>$guests,'moment'=>$moment]);
     }
 
     public function create_short()
@@ -80,7 +80,7 @@ class OrderController extends Controller
         $guides = json_decode(config('site.guides'));
         $guests = self::getGuests();
         $moment = self::getMoment();
-        return view('tourcms::order.create-short',['guides'=>$guides,'guests'=>$guests,'moment'=>$moment]);
+        return view('tourcms::order.create-short',['app'=>3, 'guides'=>$guides,'guests'=>$guests,'moment'=>$moment]);
     }
 
     public function create_jmft()
@@ -88,46 +88,33 @@ class OrderController extends Controller
         $guides = json_decode(config('site.guides'));
         $guests = self::getGuests();
         $moment = self::getMoment();
-        return view('tourcms::order.create-jmft',['guides'=>$guides,'guests'=>$guests,'moment'=>$moment]);
+        return view('tourcms::order.create-jmft',['app'=>2, 'guides'=>$guides,'guests'=>$guests,'moment'=>$moment]);
     }
 
     public function create_smt()
     {
         $guests = self::getGuests();
         $moment = self::getMoment();
-        return view('tourcms::order.create-smt',['guests'=>$guests,'moment'=>$moment]);
-    }
-
-    public function create_tat()
-    {
-        return view('tourcms::order.create-tat');
+        return view('tourcms::order.create-smt',['app'=>999, 'guests'=>$guests,'moment'=>$moment]);
     }
 
     
-
-    public function create_dft()
-    {
-        return view('tourcms::order.create-dft');
-    }
-
-    public function create_uft()
-    {
-        return view('tourcms::order.create-uft');
-    }
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
+
         $app =  $request->input('app');
         
-        if($app==7)
+        if($app==999)
         {
-            $cogs_fee = 400000;
+            
             
             $validator = Validator::make($request->all(), [
-                'guests' => 'required'
+                'guests' => 'required',
+                'total' => 'required|integer|gt:0',
+                'additional' => 'required|integer'
             ]);
         
             if ($validator->fails()) {
@@ -136,8 +123,24 @@ class OrderController extends Controller
             }
 
             $date =  $request->input('date');
+            $tour =  $request->input('tour');
             $guests =  $request->input('guests');
             $additional =  $request->input('additional');
+            $total =  $request->input('total');
+
+
+            if($tour==1)
+            {
+                $supplier_id = 62;
+                $additional_id = 60;
+                $tour_text = "Semarang Food Tour";
+            }
+            else
+            {
+                $supplier_id = 45;
+                $additional_id = 52;
+                $tour_text = "Bali Food Tour";
+            }
 
             //Hitung pax
             $pax = 0;
@@ -147,15 +150,15 @@ class OrderController extends Controller
                 $pax += $array_guest[2];
             }
 
-            $total = $cogs_fee * $pax;
-            $tour = "Semarang Food Tour";
+            
+            
 
             if($additional>0)
             {
                 $total += $additional;
                 
                 $transaction = new fin_transactions;
-                $transaction->category_id = 60;
+                $transaction->category_id = $additional_id;
                 $transaction->date = $date;
                 $transaction->amount = $additional;
                 $transaction->status = 0;
@@ -168,7 +171,7 @@ class OrderController extends Controller
 
             
             $transaction = new fin_transactions;
-            $transaction->category_id = 62;
+            $transaction->category_id = $supplier_id;
             $transaction->date = $date;
             $transaction->amount = $total;
             $transaction->status = 0;
@@ -182,7 +185,7 @@ class OrderController extends Controller
                 'trans_id' => $json_trans_id
             ];
 
-            $note = $tour.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
+            $note = $tour_text.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
 
             $order = new Order;
             $order->type = 'order';
@@ -204,7 +207,7 @@ class OrderController extends Controller
         }
 
         // Short Food Tour
-        if($app==6)
+        if($app==3)
             {
             
             $guiding_fee = 80000;
@@ -552,218 +555,7 @@ class OrderController extends Controller
 
         }
 
-        if($app==3)
-        {
-            $date =  $request->input('date');
-            $pax =  $request->input('pax');
-            $additional =  $request->input('additional');
-
-            $cost = 375000 * $pax;
-            $total = $cost;
-            $tour = "Taman Anyar Tour";
-
-            if($additional>0)
-            {
-                $total = $cost + $additional;
-                
-                $transaction = new fin_transactions;
-                $transaction->category_id = 52;
-                $transaction->date = $date;
-                $transaction->amount = $additional;
-                $transaction->status = 0;
-                $transaction->save();
-
-                $json_trans_id[] = [
-                    'trans_id' => $transaction->id
-                ];
-            }
-
-            $note = $tour.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
-            
-            $transaction = new fin_transactions;
-            $transaction->category_id = 42;
-            $transaction->date = $date;
-            $transaction->amount = $cost;
-            $transaction->status = 0;
-            $transaction->save();
-
-            $json_trans_id[] = [
-                'trans_id' => $transaction->id
-            ];
-
-            
-
-            $json[] = [
-                'trans_id' => $json_trans_id
-            ];
-
-            $order = new Order;
-            $order->type = 'order';
-            $order->date = $date;
-            $order->tour = $tour;
-            $order->pax = $pax;
-            $order->total = $total;
-            $order->note = $note;
-            $order->transactions = json_encode($json);
-            $order->save();
-        }
-
-        if($app==4)
-        {
-            $date =  $request->input('date');
-            $pax =  $request->input('pax');
-            $additional =  $request->input('additional');
-            
-            $fee_guide = 200000;
-            if($pax<2)
-            {
-                $guide = $fee_guide;
-            }
-            else
-            {
-                $guide = $fee_guide + (($pax - 2 + 1) * 100000);
-            }
-
-            $cost = 200000 * $pax;
-            $commision = 50000 * $pax;
-            $total = $cost + $guide + $commision;
-
-            $tour = "Denpasar Food Tour";
-            
-            if($additional>0)
-            {
-                $total = $total + $additional;
-                
-                $transaction = new fin_transactions;
-                $transaction->category_id = 52;
-                $transaction->date = $date;
-                $transaction->amount = $additional;
-                $transaction->status = 0;
-                $transaction->save();
-
-                $json_trans_id[] = [
-                    'trans_id' => $transaction->id
-                ];
-            }
-
-            $note = $tour.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
-
-            $transaction = new fin_transactions;
-            $transaction->category_id = 44;
-            $transaction->date = $date;
-            $transaction->amount = $guide;
-            $transaction->status = 0;
-            $transaction->save();
-
-            $json_trans_id[] = [
-                'trans_id' => $transaction->id
-            ];
-
-            $transaction = new fin_transactions;
-            $transaction->category_id = 43;
-            $transaction->date = $date;
-            $transaction->amount = $commision;
-            $transaction->status = 0;
-            $transaction->save();
-
-            $json_trans_id[] = [
-                'trans_id' => $transaction->id
-            ];
-
-            $transaction = new fin_transactions;
-            $transaction->category_id = 45;
-            $transaction->date = $date;
-            $transaction->amount = $cost;
-            $transaction->status = 0;
-            $transaction->save();
-
-            $json_trans_id[] = [
-                'trans_id' => $transaction->id
-            ];
-
-           
-
-            $json[] = [
-                'trans_id' => $json_trans_id
-            ];
-
-            $order = new Order;
-            $order->type = 'order';
-            $order->date = $date;
-            $order->tour = $tour;
-            $order->pax = $pax;
-            $order->total = $total;
-            $order->note = $note;
-            $order->transactions = json_encode($json);
-            $order->save();
-        }
-
-        if($app==5)
-        {
-            $date =  $request->input('date');
-            $pax =  $request->input('pax');
-            $additional =  $request->input('additional');
-            $rate =  $request->input('rate');
-            
-            if($rate==1)
-            {
-                $cost = 350000 * $pax;
-            }
-            else
-            {
-                $cost = 500000 * $pax;
-            }
-
-            $total = $cost;
-
-            $tour = "Ubud Food Tour";
-            
-            if($additional>0)
-            {
-                $total = $total + $additional;
-                
-                $transaction = new fin_transactions;
-                $transaction->category_id = 52;
-                $transaction->date = $date;
-                $transaction->amount = $additional;
-                $transaction->status = 0;
-                $transaction->save();
-
-                $json_trans_id[] = [
-                    'trans_id' => $transaction->id
-                ];
-            }
-
-            $note = $tour.' - '. $pax .'pax - '. number_format($total, 0, ',', '.');
-
-            $transaction = new fin_transactions;
-            $transaction->category_id = 39;
-            $transaction->date = $date;
-            $transaction->amount = $cost;
-            $transaction->status = 0;
-            $transaction->save();
-
-            $json_trans_id[] = [
-                'trans_id' => $transaction->id
-            ];
-
-            
-
-            $json[] = [
-                'trans_id' => $json_trans_id
-            ];
-
-            $order = new Order;
-            $order->type = 'order';
-            $order->date = $date;
-            $order->tour = $tour;
-            $order->pax = $pax;
-            $order->total = $total;
-            $order->note = $note;
-            $order->transactions = json_encode($json);
-            $order->save();
-        }
-
+        
         return response()->json([
                     "id" => "1",
                     "message" => 'Success'

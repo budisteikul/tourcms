@@ -65,43 +65,13 @@
 		{
 			$.fancybox.open({
         		type: 'ajax',
-       	 		src: '{{ route('route_tourcms_orders.create') }}/tat',
-				modal: true,
-          		touch: false,
-          		autoFocus: false
-   			});	
-		}
-		else if(app==4)
-		{
-			$.fancybox.open({
-        		type: 'ajax',
-       	 		src: '{{ route('route_tourcms_orders.create') }}/dft',
-				modal: true,
-          		touch: false,
-          		autoFocus: false
-   			});	
-		}
-		else if(app==5)
-		{
-			$.fancybox.open({
-        		type: 'ajax',
-       	 		src: '{{ route('route_tourcms_orders.create') }}/uft',
-				modal: true,
-          		touch: false,
-          		autoFocus: false
-   			});	
-		}
-		else if(app==6)
-		{
-			$.fancybox.open({
-        		type: 'ajax',
        	 		src: '{{ route('route_tourcms_orders.create') }}/short',
 				modal: true,
           		touch: false,
           		autoFocus: false
    			});	
 		}
-		else if(app==7)
+		else
 		{
 			$.fancybox.open({
         		type: 'ajax',
@@ -222,12 +192,9 @@ function SET_DONE()
 
     <select class="form-control mr-2" id="app" data-live-search="true">
        	<option value="1">Jogja Night Food Tour</option>
-       	<option value="6">Jogja Short Food Tour</option>
+       	<option value="3">Jogja Short Food Tour</option>
        	<option value="2">Jogja Morning Food Tour</option>
-       	<option value="7">Semarang Tour</option>
-       	<option value="4">Denpasar Food Tour</option>
-       	<option value="5">Ubud Food Tour</option>
-       	<option value="3">Taman Anyar Tour</option>
+       	<option value="999">General Tour</option>
 	</select>
 
 <button   onclick="CREATE($('#app').val()); return false;" id="create" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Create</button>

@@ -11,7 +11,7 @@
                 <div class="row align-items-center w-100">
                     <div class="col text-left">
                         <div class="d-flex align-self-center">
-                        Create Order for Semarang Tour
+                        Create Order for General Tour
                         </div>
                     </div>
                     <div class="col-auto text-right mr-0 pr-0">
@@ -58,6 +58,14 @@
 </div>
 
 <div class="form-group">
+    <label for="tour">Tour</label>
+    <select class="form-control" id="tour">
+      <option value="1">SEMARANG FOOD TOUR</option>
+      <option value="2">BALI FOOD TOUR</option>
+    </select>
+</div>
+
+<div class="form-group">
     <label for="by_qty">Guests :</label>
     @foreach($guests as $guest)
     @php
@@ -81,10 +89,14 @@
   	@endforeach
 </div>
 
+<div class="form-group">
+	<label for="total">Total Supplier :</label>
+	<input type="number" id="total" name="total" class="form-control" placeholder="" autocomplete="off" value="0">
+</div> 
 
 <div class="form-group">
-	<label for="additional">Additional :</label>
-	<input type="number" id="additional" name="additional" class="form-control" placeholder="Additional" autocomplete="off" value="0">
+	<label for="additional">Total Additional :</label>
+	<input type="number" id="additional" name="additional" class="form-control" placeholder="" autocomplete="off" value="0">
 </div> 
 
 	<button id="submit2" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
@@ -110,7 +122,7 @@ function STORE()
 		var error = false;
 		$("#submit2").attr("disabled", true);
 		$('#submit2').html('<i class="fa fa-spinner fa-spin"></i>');
-		var input = ["date","additional"];
+		var input = ["total","additional"];
 	
 		$.each(input, function( index, value ) {
   			$('#'+ value).removeClass('is-invalid');
@@ -124,8 +136,10 @@ function STORE()
         	"_token": $("meta[name=csrf-token]").attr("content"),
 			"guests": guests,
 			"date": $('#date').val(),
+			"tour": $('#tour').val(),
+			"total": $('#total').val(),
 			"additional": $('#additional').val(),
-			"app": 7
+			"app": {!! $app !!}
 			
         },
 		type: 'POST',
