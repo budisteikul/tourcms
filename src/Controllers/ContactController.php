@@ -263,7 +263,7 @@ class ContactController extends Controller
                 $var3 = GeneralHelper::dateFormat("",13);
                 $var4 = $time_nighttour;
                 $var5 = "Tugu Jogja (Yogyakarta Monument)";
-                $var6 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
+                $var6 = "https://maps.app.goo.gl/aN3dqz1ENELekR9a9";
                 $var7 = "Please wait near the sign Tugu_Golong_Gilig";
                 $var8 = "By the way, do you/does anyone in your group have any food allergies or dietary restrictions?";
             break;
@@ -277,7 +277,7 @@ class ContactController extends Controller
                 $var3 = GeneralHelper::dateFormat("",13);
                 $var4 = $time_nighttour;
                 $var5 = "Tugu Jogja (Yogyakarta Monument)";
-                $var6 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
+                $var6 = "https://maps.app.goo.gl/aN3dqz1ENELekR9a9";
                 $var7 = "Please wait near the sign Tugu_Golong_Gilig";
                 $var8 = ".";
             break;
@@ -291,7 +291,7 @@ class ContactController extends Controller
                 $var3 = GeneralHelper::dateFormat("",14);
                 $var4 = $time_nighttour;
                 $var5 = "Tugu Jogja (Yogyakarta Monument)";
-                $var6 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
+                $var6 = "https://maps.app.goo.gl/aN3dqz1ENELekR9a9";
                 $var7 = "Please wait near the sign Tugu_Golong_Gilig";
                 $var8 = "By the way, do you/does anyone in your group have any food allergies or dietary restrictions?";
             break;
@@ -305,7 +305,7 @@ class ContactController extends Controller
                 $var3 = GeneralHelper::dateFormat("",14);
                 $var4 = $time_nighttour;
                 $var5 = "Tugu Jogja (Yogyakarta Monument)";
-                $var6 = "https://maps.app.goo.gl/XYB5wbb5ckNNzfKv7";
+                $var6 = "https://maps.app.goo.gl/aN3dqz1ENELekR9a9";
                 $var7 = "Please wait near the sign Tugu_Golong_Gilig";
                 $var8 = ".";
             break;
