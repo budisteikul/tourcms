@@ -118,14 +118,14 @@ class OrderDataTable extends DataTable
             Column::make('date')->title('Date')->orderable(false)->addClass('align-middle'),
             //Column::make('tour')->title('Tour')->orderable(false)->addClass('align-middle'),
             //Column::make('pax')->title('Pax')->orderable(false)->addClass('align-middle'),
-            Column::make('total')->title('Total')->orderable(false)->addClass('align-middle'),
-           Column::make('guide')->title('Guide')->orderable(false)->addClass('align-middle'),
+            
             Column::make('note')->title('Note')->orderable(false)->addClass('align-middle'),
+            Column::make('guide')->title('Guide')->orderable(false)->addClass('align-middle'),
+            Column::make('total')->title('Total')->addClass('align-middle')->orderable(false)->addClass('align-middle text-right'),
             
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(220)
                   ->addClass('text-center'),
             
         ];

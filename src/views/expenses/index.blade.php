@@ -60,7 +60,7 @@
 <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Expenses</div>
+                <div class="card-header">General Expenses</div>
                 <div class="card-body">
         		
 <div class="row w-100">
@@ -73,6 +73,9 @@
         		<div class="row w-100">
                 	<div class="col  text-left">
                    		<button   onclick="CREATE(); return false;" id="create" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Create</button>
+                    </div>
+                    <div class="col-auto text-right mr-0 pr-0">
+                   		<a class="btn btn-primary text-white" href="{{ route('route_tourcms_debt.index') }}"><i class="fas fa-random"></i> Miscellaneous expense</a>
                     </div>
 
 

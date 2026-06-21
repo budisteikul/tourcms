@@ -157,7 +157,7 @@ function SET_DONE()
 <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Orders</div>
+                <div class="card-header">Purchase Orders</div>
                 <div class="card-body">
 
 <div class="row w-100">
@@ -187,6 +187,7 @@ function SET_DONE()
 </div>
 
                     </div>
+
                     <div class="col-lg-4 col-sm-12 text-right mr-0 pr-0"  style="font-size: 18px">
                     	<div class="input-group">
 

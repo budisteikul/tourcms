@@ -11,7 +11,7 @@
                 <div class="row align-items-center w-100">
                     <div class="col text-left">
                         <div class="d-flex align-self-center">
-                        Create Order for Jogja Short Food Tour
+                        Create Purchase Orders for Jogja Short Food Tour
                         </div>
                     </div>
                     <div class="col-auto text-right mr-0 pr-0">
