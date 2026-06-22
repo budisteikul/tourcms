@@ -139,7 +139,7 @@ function STORE()
 			"tour": $('#tour').val(),
 			"total": $('#total').val(),
 			"additional": $('#additional').val(),
-			"app": {!! $app !!}
+			"app": 999
 			
         },
 		type: 'POST',

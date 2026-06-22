@@ -72,30 +72,16 @@ class OrderController extends Controller
         
         $guests = self::getGuests();
         $moment = self::getMoment();
-        return view('tourcms::order.create-jnft',['app'=>1, 'guides'=>$guides,'guests'=>$guests,'moment'=>$moment]);
+        return view('tourcms::order.create-jnft',['guides'=>$guides,'guests'=>$guests,'moment'=>$moment]);
     }
 
-    public function create_short()
-    {
-        $guides = json_decode(config('site.guides'));
-        $guests = self::getGuests();
-        $moment = self::getMoment();
-        return view('tourcms::order.create-short',['app'=>3, 'guides'=>$guides,'guests'=>$guests,'moment'=>$moment]);
-    }
-
-    public function create_jmft()
-    {
-        $guides = json_decode(config('site.guides'));
-        $guests = self::getGuests();
-        $moment = self::getMoment();
-        return view('tourcms::order.create-jmft',['app'=>2, 'guides'=>$guides,'guests'=>$guests,'moment'=>$moment]);
-    }
+    
 
     public function create_smt()
     {
         $guests = self::getGuests();
         $moment = self::getMoment();
-        return view('tourcms::order.create-smt',['app'=>999, 'guests'=>$guests,'moment'=>$moment]);
+        return view('tourcms::order.create-smt',[ 'guests'=>$guests,'moment'=>$moment]);
     }
 
     

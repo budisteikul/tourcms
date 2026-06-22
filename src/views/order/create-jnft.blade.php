@@ -58,6 +58,15 @@
 </div>
 
 <div class="form-group">
+    <label for="app">Tour</label>
+    <select class="form-control" id="app">
+      <option value="1">Jogja Night Food Tour</option>
+      <option value="3">Jogja Short Food Tour</option>
+      <option value="2">Jogja Morning Food Tour</option>
+    </select>
+</div>
+
+<div class="form-group">
 	<label for="guide">Guide :</label>
     <select class="form-control" id="guide" data-live-search="true">
     	@foreach($guides as $guide)
@@ -115,8 +124,8 @@
 <script language="javascript">
 function STORE()
 {
-	//if(app==1)
-	//{
+	
+		
 		var error = false;
 		$("#submit2").attr("disabled", true);
 		$('#submit2').html('<i class="fa fa-spinner fa-spin"></i>');
@@ -132,11 +141,12 @@ function STORE()
 		$.ajax({
 		data: {
         	"_token": $("meta[name=csrf-token]").attr("content"),
+        	"app": $('#app').val(),
 			"guide": $('#guide').val(),
 			"date": $('#date').val(),
 			"additional": $('#additional').val(),
 			"guests": guests,
-			"app": {!! $app !!}
+			
 			
         },
 		type: 'POST',
@@ -169,7 +179,7 @@ function STORE()
 	
 	
 		return false;
-	//}
+	
 	
 }
 </script>

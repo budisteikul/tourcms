@@ -39,33 +39,13 @@
 		
 	}
 	
-	function CREATE(app)
+	function CREATE(create_form)
 	{
-		if(app==1)
+		if(create_form=="internal_tour")
 		{
 			$.fancybox.open({
         		type: 'ajax',
        	 		src: '{{ route('route_tourcms_orders.create') }}/jnft',
-				modal: true,
-          		touch: false,
-          		autoFocus: false
-   			});	
-		}
-		else if(app==2)
-		{
-			$.fancybox.open({
-        		type: 'ajax',
-       	 		src: '{{ route('route_tourcms_orders.create') }}/jmft',
-				modal: true,
-          		touch: false,
-          		autoFocus: false
-   			});	
-		}
-		else if(app==3)
-		{
-			$.fancybox.open({
-        		type: 'ajax',
-       	 		src: '{{ route('route_tourcms_orders.create') }}/short',
 				modal: true,
           		touch: false,
           		autoFocus: false
@@ -191,14 +171,12 @@ function SET_DONE()
                     <div class="col-lg-4 col-sm-12 text-right mr-0 pr-0"  style="font-size: 18px">
                     	<div class="input-group">
 
-    <select class="form-control mr-2" id="app" data-live-search="true">
-       	<option value="1">Jogja Night Food Tour</option>
-       	<option value="3">Jogja Short Food Tour</option>
-       	<option value="2">Jogja Morning Food Tour</option>
-       	<option value="999">General Tour</option>
+    <select class="form-control mr-2" id="create_form" data-live-search="true">
+       	<option value="internal_tour">Internal Tour</option>
+       	<option value="external_tour">External Tour</option>
 	</select>
 
-<button   onclick="CREATE($('#app').val()); return false;" id="create" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Create</button>
+<button   onclick="CREATE($('#create_form').val()); return false;" id="create" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Create</button>
 	
 </div>
                     </div>
