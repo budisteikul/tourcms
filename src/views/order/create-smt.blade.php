@@ -154,6 +154,7 @@ function STORE()
        				setTimeout(function (){
   						$.fancybox.close();
   						get_saldo();
+  						count_guest();
 					}, 1000);
 			}
 			else

@@ -28,6 +28,7 @@
 						        }).done(function( msg ) {
 							         table.ajax.reload( null, false );
 							         get_saldo();
+							         count_guest();
 						        });	
             		}
         		},
@@ -81,6 +82,10 @@ $(function() {
     get_saldo();
 });
 
+$(function() {
+    count_guest();
+});
+
 function get_saldo()
 {
 	$.get("{{ route('route_tourcms_pettycash.index') }}/saldo", function(data, status){
@@ -88,6 +93,13 @@ function get_saldo()
     	$('#held_saldo').html(data.held_saldo);
     	$('#total_saldo').html(data.total_saldo);
     	$('#button').html(data.button);
+  	});
+}
+
+function count_guest()
+{
+	$.get("{{ route('route_tourcms_orders.index') }}/count_guest", function(data, status){
+    	$('#button2').html(data.button);
   	});
 }
 
@@ -168,18 +180,20 @@ function SET_DONE()
 
                     </div>
 
-                    <div class="col-lg-4 col-sm-12 text-right mr-0 pr-0"  style="font-size: 18px">
-                    	<div class="input-group">
+<div class="col-lg-4 col-sm-12 text-right mr-0 pr-0"  style="font-size: 18px">
+    <div class="input-group btn-group">
 
     <select class="form-control mr-2" id="create_form" data-live-search="true">
        	<option value="internal_tour">Internal Tour</option>
        	<option value="external_tour">External Tour</option>
 	</select>
 
-<button   onclick="CREATE($('#create_form').val()); return false;" id="create" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Create</button>
-	
+<span id="button2">
+<button   onclick="CREATE($('#create_form').val()); return false;" id="create2" type="submit" class="btn btn-primary" disabled><i class="fa fa-save"></i> Create</button>
+</span>
+	</div>
 </div>
-                    </div>
+
 
 </div>
 

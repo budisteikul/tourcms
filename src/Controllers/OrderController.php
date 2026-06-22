@@ -46,6 +46,21 @@ class OrderController extends Controller
         
     }
 
+    public function countGuest()
+    {
+        $total = self::getGuests()->count();
+        if($total>0)
+        {
+            $button = "<button   onclick=\"CREATE($('#create_form').val()); return false;\" id=\"create\" type=\"submit\" class=\"btn btn-primary\"><i class=\"fa fa-save\"></i> Create</button>";
+        }
+        else
+        {
+            $button = "<button   onclick=\"CREATE($('#create_form').val()); return false;\" id=\"create\" type=\"submit\" class=\"btn btn-primary\" disabled><i class=\"fa fa-save\"></i> Create</button>";
+        }
+
+        return response()->json(["button" => $button]);
+    }
+
     public function getGuests()
     {
         $guests = ShoppingcartProduct::with(['shoppingcart' => function ($query) {
