@@ -35,7 +35,7 @@
     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Message</a>
     
     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Jogja Food Tour</a>
-    <a class="nav-item nav-link" id="nav-menu5-tab" data-toggle="tab" href="#nav-menu5" role="tab" aria-controls="nav-menu5" aria-selected="false">Taman Anyar</a>
+    <!-- a class="nav-item nav-link" id="nav-menu5-tab" data-toggle="tab" href="#nav-menu5" role="tab" aria-controls="nav-menu5" aria-selected="false">Taman Anyar</a -->
     <a class="nav-item nav-link" id="nav-menu6-tab" data-toggle="tab" href="#nav-menu6" role="tab" aria-controls="nav-menu6" aria-selected="false">Request Review</a>
     <a class="nav-item nav-link" id="nav-menu3-tab" data-toggle="tab" href="#nav-menu3" role="tab" aria-controls="nav-menu3" aria-selected="false">Booking</a>
     
@@ -171,9 +171,9 @@
 
 
 <div class="tab-pane fade pt-4" id="nav-menu6" role="tabpanel" aria-labelledby="nav-menu6-tab">
-                    <button type="button" class="btn btn-danger mb-2" id="template901"  onclick="sendTemplate(901); return false;"><i class="fas fa-paper-plane"></i> Denpasar Night Food Tour</button>
+                    <!-- button type="button" class="btn btn-danger mb-2" id="template901"  onclick="sendTemplate(901); return false;"><i class="fas fa-paper-plane"></i> Denpasar Night Food Tour</button>
                     <button type="button" class="btn btn-danger mb-2" id="template902"  onclick="sendTemplate(902); return false;"><i class="fas fa-paper-plane"></i> Taman Anyar</button>
-                    <button type="button" class="btn btn-danger mb-2" id="template903"  onclick="sendTemplate(903); return false;"><i class="fas fa-paper-plane"></i> Ubud Food Tour</button>
+                    <button type="button" class="btn btn-danger mb-2" id="template903"  onclick="sendTemplate(903); return false;"><i class="fas fa-paper-plane"></i> Ubud Food Tour</button -->
 					<button type="button" class="btn btn-danger mb-2" id="template904"  onclick="sendTemplate(904); return false;"><i class="fas fa-paper-plane"></i> Jogja Night Food Tour (GYG)</button>
 </div>
 
