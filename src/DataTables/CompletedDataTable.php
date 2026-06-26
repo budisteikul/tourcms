@@ -33,7 +33,13 @@ class CompletedDataTable extends DataTable
                     $question = BookingHelper::get_answer_contact($id->shoppingcart);
                     $name = $question->firstName .' '. $question->lastName;
                     $name = '<a href="#" onClick="SHOW(\''.$shoppingcart_id.'\'); return false;">'. $name .'</a>';
-                    return $name;
+
+                    $people = 0;
+                    foreach($id->shoppingcart_product_details as $shoppingcart_product_detail)
+                    {
+                        $people += $shoppingcart_product_detail->people;
+                    }
+                    return $name ." ". $people;
                 })
                 ->addColumn('date_text', function($id){
                     return GeneralHelper::dateFormat($id->date,10);
@@ -42,14 +48,6 @@ class CompletedDataTable extends DataTable
                     $payment = 'none';
                     if(isset($id->shoppingcart->shoppingcart_payment->payment_provider)) $payment = $id->shoppingcart->shoppingcart_payment->payment_provider;
                     return $payment;
-                })
-                ->addColumn('people', function($id){
-                    $people = 0;
-                    foreach($id->shoppingcart_product_details as $shoppingcart_product_detail)
-                    {
-                        $people += $shoppingcart_product_detail->people;
-                    }
-                    return $people;
                 })
                  ->filterColumn('name', function($query, $keyword) {
                     $query->whereHas('shoppingcart', function ($query) use ($keyword) {
@@ -126,12 +124,12 @@ class CompletedDataTable extends DataTable
                   ->searchable(false)
                   ->addClass('text-center align-middle'),
 
-            Column::make('name')->title('Main Contact')->orderable(false)->addClass('align-middle'),
+            Column::make('name')->title('Name')->orderable(false)->addClass('align-middle'),
+            Column::make('date_text')->title('Date')->orderable(false)->addClass('align-middle'),
             Column::make('title')->title('Tour')->orderable(false)->addClass('align-middle'),
             Column::make('shoppingcart.booking_channel')->title('Channel')->orderable(false)->addClass('align-middle'),
-            Column::make('payment')->title('Payment')->orderable(false)->addClass('align-middle'),
-            Column::make('date_text')->title('Date')->orderable(false)->addClass('align-middle'),
-            Column::make('people')->title('People')->orderable(false)->addClass('align-middle'),
+            //Column::make('payment')->title('Payment')->orderable(false)->addClass('align-middle'),
+            
 
             ];
         

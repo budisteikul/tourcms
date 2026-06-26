@@ -43,17 +43,8 @@ class ScheduleDataTable extends DataTable
                     {
                         $people += $shoppingcart_product_detail->people;
                     }
-                    return '<a href="#" onClick="SHOW(\''.$id->shoppingcart->id.'\'); return false;">'. $name .'</a> ';
+                    return '<a href="#" onClick="SHOW(\''.$id->shoppingcart->id.'\'); return false;">'. $name .'</a> '. $people;
                 })
-                ->addColumn('people', function($id){
-                    $people = 0;
-                    foreach($id->shoppingcart_product_details as $shoppingcart_product_detail)
-                    {
-                        $people += $shoppingcart_product_detail->people;
-                    }
-                    return $people;
-                })
-                /*
                 ->addColumn('single_view', function($id){
                     $name = '';
                     foreach($id->shoppingcart->shoppingcart_questions as $question)
@@ -92,7 +83,6 @@ class ScheduleDataTable extends DataTable
                     </div>
                             ';
                 })
-                */
                 ->addColumn('action', function ($id) {
                     $button_wa = '';
                     $contact = BookingHelper::get_answer_contact($id->shoppingcart);
@@ -101,7 +91,7 @@ class ScheduleDataTable extends DataTable
                         $nomor = GeneralHelper::phoneNumber($contact->phoneNumber);
                         $wa = new WhatsappHelper;
                         $wa = $wa->contact($nomor, $contact->firstName,$id->shoppingcart->id);
-                        $button_wa = '<a target="_blank" id="btn-wa" href="/cms/contact/'.$wa.'/edit" class="btn btn-sm btn-primary text-white"><i class="fab fa-whatsapp"></i> WA</a>'; 
+                        $button_wa = '<a target="_blank" id="btn-wa" href="/cms/contact/'.$wa.'/edit" class="btn btn-sm btn-primary text-white"><i class="fab fa-whatsapp"></i> Whatsapp</a>'; 
                     }
                 return '
                 <div class="btn-toolbar justify-content-end">
@@ -117,7 +107,7 @@ class ScheduleDataTable extends DataTable
   </button>
   <div class="dropdown-menu">
     <a id="btn-edit"  href="#" onClick="EDIT_BOOKING(\''.$id->shoppingcart->id.'\'); return false;" class="dropdown-item">Edit Booking</a>
-    <a id="btn-edit"  href="#" onClick="EDIT(\''.$id->id.'\'); return false;" class="dropdown-item">Reschedule</a>
+    <a id="btn-edit"  href="#" onClick="EDIT(\''.$id->shoppingcart->id.'\'); return false;" class="dropdown-item">Reschedule</a>
  
                         
                         
@@ -196,23 +186,21 @@ class ScheduleDataTable extends DataTable
             
             return [
 
-            /*
+            
             Column::computed('DT_RowIndex')
                   ->width(30)
                   ->title('No')
                   ->orderable(false)
                   ->searchable(false)
                   ->addClass('text-center align-top'),
-            */
+
             //Column::make('shoppingcart.shoppingcart_questions.answer')->title('People')->orderable(false)->addClass('align-middle'),
-            //Column::make('single_view')->title('Tour')->orderable(false)->addClass('align-middle'),
+            Column::make('single_view')->title('Tour')->orderable(false)->addClass('align-middle'),
             //Column::make('shoppingcart.confirmation_code')->title('confirmation_code')->visible(false)->orderable(false)->addClass('align-middle'),
-            Column::make('date_text')->title('Date')->orderable(false)->width(200)->addClass('align-top'),
-            Column::make('name')->title('Main Contact')->width(180)->orderable(false)->addClass('align-top'),
-            Column::make('people')->title('Pax')->width(30)->orderable(false)->addClass('text-center align-top'),
-            
-            Column::make('shoppingcart.booking_channel')->title('Channel')->orderable(false)->addClass('align-top'),
-            Column::make('title')->title('Tour')->orderable(false)->addClass('align-top'),
+            //Column::make('name')->title('Main Contact')->orderable(false)->addClass('align-middle'),
+            //Column::make('date_text')->title('Date')->orderable(false)->addClass('align-middle'),
+            //Column::make('shoppingcart.booking_channel')->title('Channel')->orderable(false)->addClass('align-middle'),
+            //Column::make('title')->title('Tour')->orderable(false)->addClass('align-middle'),
             
             
             //Column::make('people')->title('Pax')->orderable(false)->addClass('align-middle text-center'),
@@ -220,7 +208,7 @@ class ScheduleDataTable extends DataTable
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(150)
+                  //->width(190)
                   ->addClass('text-center'),
             ];
         
