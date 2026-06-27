@@ -38,12 +38,20 @@ class ScheduleDataTable extends DataTable
                         $name .= $question->answer .' ';
                     }
 
-                    $people = 0;
-                    foreach($id->shoppingcart_product_details as $shoppingcart_product_detail)
+                    $button_wa = '';
+                    $contact = BookingHelper::get_answer_contact($id->shoppingcart);
+                    if($contact->phoneNumber!="")
                     {
-                        $people += $shoppingcart_product_detail->people;
+                        $nomor = GeneralHelper::phoneNumber($contact->phoneNumber);
+                        $wa = new WhatsappHelper;
+                        $wa = $wa->contact($nomor, $contact->firstName,$id->shoppingcart->id);
+                        $button_wa = '<a target="_blank" id="btn-wa" href="/cms/contact/'.$wa.'/edit" class="btn btn-sm btn-primary text-white"><i class="fab fa-whatsapp"></i> WA</a>'; 
                     }
-                    //return '<a href="#" onClick="SHOW(\''.$id->shoppingcart->id.'\'); return false;">'. $name .'</a> ';
+
+                    if($contact->phoneNumber!="")
+                    {
+                        return '<a target="_blank" id="btn-wa" href="/cms/contact/'.$wa.'/edit">'.$name.'</a>';
+                    }
                     return  $name ;
                 })
                 ->addColumn('people', function($id){
@@ -54,46 +62,6 @@ class ScheduleDataTable extends DataTable
                     }
                     return $people;
                 })
-                /*
-                ->addColumn('single_view', function($id){
-                    $name = '';
-                    foreach($id->shoppingcart->shoppingcart_questions as $question)
-                    {
-                        $name .= $question->answer .' ';
-                    }
-
-                    $people = 0;
-                    foreach($id->shoppingcart_product_details as $shoppingcart_product_detail)
-                    {
-                        $people += $shoppingcart_product_detail->people;
-                    }
-
-                    $date = GeneralHelper::dateFormat($id->date,10);
-
-                    $channel = $id->shoppingcart->booking_channel;
-
-                    $tour = $id->title;
-                    return '
-                    <div class="row col-12">
-                    <div class="col-6">
-                        <a href="#" onClick="SHOW(\''.$id->shoppingcart->id.'\'); return false;">'. $name .'</a> '. $people .' pax
-                    </div>
-                    <div class="col-6 text-right">
-                            '.$date.'
-                    </div>
-                    </div>
-
-                    <div class="row col-12">
-                    <div class="col-6">
-                            '.$tour.'
-                    </div>
-                    <div class="col-6 text-right">
-                            '.$channel.'
-                    </div>
-                    </div>
-                            ';
-                })
-                */
                 ->addColumn('action', function ($id) {
                     $button_wa = '';
                     $contact = BookingHelper::get_answer_contact($id->shoppingcart);
@@ -108,11 +76,11 @@ class ScheduleDataTable extends DataTable
                 <div class="btn-toolbar justify-content-end">
                     <div class="btn-group mr-2" role="group">
 
-                        '.$button_wa.'
+                        
 
                        
 
-                  <button id="btn-edit" type="button" onClick="EDIT_BOOKING(\''.$id->shoppingcart->id.'\'); return false;" class="btn btn-sm btn-success  pt-0 pb-0 pl-1 pr-1"><i class="fa fa-edit"></i> Edit Booking</button>
+                  <button id="btn-edit" type="button" onClick="EDIT_BOOKING(\''.$id->shoppingcart->id.'\'); return false;" class="btn btn-sm btn-success  pt-0 pb-0 pl-1 pr-1"><i class="fa fa-edit"></i> Edit</button>
 
  
                         
@@ -208,18 +176,21 @@ class ScheduleDataTable extends DataTable
             Column::make('people')->title('Pax')->width(30)->orderable(false)->addClass('text-center align-top'),
             
             Column::make('shoppingcart.booking_channel')->title('Channel')->orderable(false)->addClass('align-top'),
-            Column::make('title')->title('Tour')->orderable(false)->addClass('align-top'),
+            Column::make('title')->title('Tour')->orderable(false)->addClass('align-top .overflow-hidden'),
             
             
             //Column::make('people')->title('Pax')->orderable(false)->addClass('align-middle text-center'),
 
+            
             Column::computed('action')
+                  ->title('')
                   ->exportable(false)
                   ->printable(false)
-                  //->width(150)
+                  //->width(25)
                   ->addClass('text-center'),
+            
             ];
-        
+            
 
         
     }
