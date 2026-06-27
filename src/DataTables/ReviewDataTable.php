@@ -113,13 +113,14 @@ class ReviewDataTable extends DataTable
             Column::make('user')->title('User')->orderable(false)->addClass('align-middle'),
             Column::make('date')->title('Date')->orderable(false)->addClass('align-middle'),
             Column::make('channel')->title('Channel')->orderable(false)->addClass('align-middle'),
-            Column::make('product')->title('Product')->orderable(false)->addClass('align-middle'),
+            //Column::make('product')->title('Product')->orderable(false)->addClass('align-middle'),
             Column::make('rate')->title('Rate')->orderable(false)->addClass('align-middle'),
+            Column::make('text')->title('Rate')->orderable(false)->addClass('align-middle'),
             
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(220)
+                  ->width(120)
                   ->addClass('text-center'),
             
         ];

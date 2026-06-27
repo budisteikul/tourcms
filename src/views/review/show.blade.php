@@ -24,16 +24,16 @@
 
         <div class="col-sm-12 justify-content-left">
 
-            <div class="row border-bottom">
+            <div class="row border-bottom p-2">
                 <div class="col-lg-2 font-weight-bold">
                     USER
                 </div>
-                <div class="col-md-auto">
+                <div class="col-md-auto ">
                     {{$review->user}}
                 </div>
             </div>
 
-            <div class="row border-bottom">
+            <div class="row border-bottom p-2">
                 <div class="col-lg-2 font-weight-bold">
                     CHANNEL
                 </div>
@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-            <div class="row border-bottom">
+            <div class="row border-bottom p-2">
                 <div class="col-lg-2 font-weight-bold">
                     DATE
                 </div>
@@ -51,7 +51,7 @@
                 </div>
             </div>
 
-            <div class="row border-bottom">
+            <div class="row border-bottom p-2">
                 <div class="col-lg-2 font-weight-bold">
                     PRODUCT
                 </div>
@@ -60,7 +60,7 @@
                 </div>
             </div>
 
-            <div class="row border-bottom">
+            <div class="row border-bottom p-2">
                 <div class="col-lg-2 font-weight-bold">
                     RATE
                 </div>
@@ -69,10 +69,7 @@
                 </div>
             </div>
             
-            <div class="row border-bottom">
-                <div class="col-lg-2 font-weight-bold">
-                    TEXT
-                </div>
+            <div class="row border-bottom p-2">
                 <div class="col-md-auto">
                     @if($review->title!="")
                     {{$review->title}}
@@ -82,14 +79,7 @@
                 </div>
             </div>
 
-            <div class="row border-bottom">
-                <div class="col-lg-2 font-weight-bold">
-                    LINK
-                </div>
-                <div class="col-md-auto">
-                    {{$review->link}}
-                </div>
-            </div>
+            
             
 
         </div>
