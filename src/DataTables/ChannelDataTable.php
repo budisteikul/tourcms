@@ -107,18 +107,18 @@ class ChannelDataTable extends DataTable
                   ->title('No')
                   ->orderable(false)
                   ->searchable(false)
-                  ->addClass('text-center align-middle'),
+                  ->addClass('text-center align-top'),
 
-            Column::make('name')->title('Name')->orderable(false)->addClass('align-middle'),
-            Column::make('description')->title('Description')->orderable(false)->addClass('align-middle'),
-            Column::make('invoice')->title('Invoice')->orderable(false)->addClass('align-middle'),
+            Column::make('name')->title('Name')->orderable(false)->addClass('align-top'),
+            Column::make('description')->title('Description')->orderable(false)->addClass('align-top'),
+            Column::make('invoice')->title('Invoice')->orderable(false)->addClass('align-top'),
             
             
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
                   ->width(220)
-                  ->addClass('text-center'),
+                  ->addClass('text-center align-top'),
             
         ];
 
