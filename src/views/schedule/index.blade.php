@@ -41,14 +41,6 @@ function EDIT_BOOKING(id)
   
 
 </script>
-<style>
-.dataTable td, .dataTable th {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 250px; /* You must set a max-width for ellipsis to work */
-}
-</style>
 @endpush
 <div class="row justify-content-center">
         <div class="col-md-12">
