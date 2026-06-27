@@ -24,7 +24,14 @@
 				
 <form onSubmit="UPDATE_BOOKING(); return false;">
 <div id="result"></div>
-<h2>Booking</h2>
+
+
+<div class="card mb-2 ">
+<div class="card-header bg-secondary">
+BOOKING
+</div>
+<div class="card-body">
+
 <div class="form-group">
 <label for="bookingChannel"><strong>Channel</strong></label>
 <select style="font-size:16px;height:47px;"  class="form-control" id="bookingChannel" name="bookingChannel">
@@ -38,10 +45,15 @@
 	<label for="confirmation_code">Confirmation Code :</label>
 	<input type="text" id="confirmation_code" name="confirmation_code" class="form-control" placeholder="Confirmation Code" value="{{$shoppingcart->confirmation_code}}" autocomplete="off">
 </div>
+</div>
+</div>
 
 
-
-<h2>Main Contact</h2>
+<div class="card mb-2 ">
+<div class="card-header bg-secondary">
+MAIN CONTACT
+</div>
+<div class="card-body">
 @foreach($mainContactDetails as $mainContactDetail)
 @php
 $label = $mainContactDetail->label;
@@ -52,8 +64,16 @@ if($label=="") $label = $mainContactDetail->question_id;
 	<input type="text" id="{{$mainContactDetail->question_id}}" name="{{$mainContactDetail->question_id}}" class="form-control" autocomplete="off" value="{{$mainContactDetail->answer}}">
 </div>
 @endforeach
+</div>
+</div>
 
-<h2>Product</h2>
+
+
+<div class="card mb-2 ">
+<div class="card-header bg-secondary">
+PRODUCTS
+</div>
+<div class="card-body">
 @foreach($shoppingcart->shoppingcart_products as $product)
 <div class="form-group">
 	<label for="product">Product Name :</label>
@@ -88,8 +108,17 @@ if($label=="") $label = $mainContactDetail->question_id;
         </script>    
 </div>
 @endforeach
+</div>
+</div>
 
-<h2>Product Question</h2>
+
+
+
+<div class="card mb-2 ">
+<div class="card-header bg-secondary">
+QUESTIONS
+</div>
+<div class="card-body">
 @php
 $booking_id = "";
 @endphp
@@ -124,6 +153,9 @@ if($label=="") $label = $activityBooking->question_id;
 	</div>
 	@endif
 @endforeach     
+</div>
+</div>
+
 <button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
 </form>
 </div>
