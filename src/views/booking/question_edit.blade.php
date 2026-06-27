@@ -38,10 +38,8 @@
 	<label for="confirmation_code">Confirmation Code :</label>
 	<input type="text" id="confirmation_code" name="confirmation_code" class="form-control" placeholder="Confirmation Code" value="{{$shoppingcart->confirmation_code}}" autocomplete="off">
 </div>
-<div class="form-group">
-	<label for="product_name">Product Name :</label>
-	<input type="text" id="product_name" name="product_name" class="form-control" placeholder="Product Name" value="{{$product_name}}" autocomplete="off">
-</div> 
+
+
 
 <h2>Main Contact</h2>
 @foreach($mainContactDetails as $mainContactDetail)
@@ -55,6 +53,41 @@ if($label=="") $label = $mainContactDetail->question_id;
 </div>
 @endforeach
 
+<h2>Product</h2>
+@foreach($shoppingcart->shoppingcart_products as $product)
+<div class="form-group">
+	<label for="product">Product Name :</label>
+	<input type="text" id="product_{{ $product->id }}" name="product_name" class="form-control" placeholder="Product Name" value="{{ $product->title }}" autocomplete="off">
+</div>
+<div class="form-group">   
+				 <label for="datetimepicker_{{ $product->id }}">Date :</label>           
+                <div class='input-group' id='datetimepicker_{{ $product->id }}'>
+                    <input type="text" id="date_{{ $product->id }}" name="date_{{ $product->id }}" value="{{ $product->date }}" class="form-control bg-white" readonly>
+                    <div class="input-group-append input-group-addon text-muted">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                </div>
+ 		<script type="text/javascript">
+ 			//$('#date').on('dp.change', function(e){ console.log(e.date); })
+
+            $(function () {
+                $('#date_{{ $product->id }}').datetimepicker({
+					format: 'YYYY-MM-DD HH:mm:ss',
+					showTodayButton: true,
+					showClose: true,
+					ignoreReadonly: true,
+					icons: {
+                    	time: "fa fa-clock"
+                	},
+					widgetPositioning: {
+            			horizontal: 'left',
+            			vertical: 'bottom'
+        			}
+				});
+            });
+        </script>    
+</div>
+@endforeach
 
 <h2>Product Question</h2>
 @php
@@ -109,6 +142,8 @@ if($label=="") $label = $activityBooking->question_id;
 <script language="javascript">
 function UPDATE_BOOKING()
 {
+
+   
 	var error = false;
 	$("#submit").attr("disabled", true);
 	$('#submit').html('<i class="fa fa-spinner fa-spin"></i>');
@@ -118,7 +153,19 @@ function UPDATE_BOOKING()
   		$('#'+ value).removeClass('is-invalid');
   		$('#span-'+ value).remove();
 	});
-	
+
+	let products = [];
+	$('[id^="product_"]').each(function() {
+    	var currentId = $(this).attr('id');
+    	var currentValue = $(this).val();
+    	var idParts = currentId.split('_');
+		products.push({
+            id: idParts[1],
+            product_date: $("#date_"+ idParts[1]).val(),
+            product_name: currentValue
+        });
+	});
+	let jsonResult = JSON.stringify(products);
 
 	$.ajax({
 		data: {
@@ -129,6 +176,7 @@ function UPDATE_BOOKING()
         	"{{$mainContactDetail->question_id}}": $('#{{$mainContactDetail->question_id}}').val(),
         	@endforeach
         	"booking_channel": $("#bookingChannel").val(),
+        	"products": products,
         	"confirmation_code": $("#confirmation_code").val(),
         	"product_name": $("#product_name").val(),
         	"_token": $("meta[name=csrf-token]").attr("content"),

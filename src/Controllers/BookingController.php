@@ -53,15 +53,16 @@ class BookingController extends Controller
         $channels = Channel::where('can_booking',1)->get();
         $mainContactDetails = ShoppingcartQuestion::where('shoppingcart_id',$shoppingcart->id)->where('type','mainContactDetails')->orderBy('order')->get();
         $activityBookings = ShoppingcartQuestion::where('shoppingcart_id',$shoppingcart->id)->where('type','activityBookings')->orderBy('booking_id')->orderBy('order')->get();
-        $product = ShoppingcartProduct::where('shoppingcart_id',$shoppingcart->id)->first();
-        $product_name = $product->title;
+
+        //$products = ShoppingcartProduct::where('shoppingcart_id',$shoppingcart->id)->first();
+        //$product_name = $product->title;
 
         return view('tourcms::booking.question_edit',[
             'shoppingcart'=>$shoppingcart,
             'channels'=>$channels,
             'mainContactDetails'=>$mainContactDetails,
             'activityBookings'=>$activityBookings,
-            'product_name'=>$product_name,
+            //'products'=>$products,
         ]);
     }
 
@@ -69,7 +70,8 @@ class BookingController extends Controller
 
     public function question_update($id,Request $request)
     {
-
+        
+        
         $booking_channel =  $request->input('booking_channel');
         $confirmation_code =  $request->input('confirmation_code');
         $product_name =  $request->input('product_name');
@@ -78,7 +80,15 @@ class BookingController extends Controller
         $shoppingcart->confirmation_code = $confirmation_code;
         $shoppingcart->save();
 
-        ShoppingcartProduct::where('shoppingcart_id', $shoppingcart->id)->update(['title'=>$product_name]);
+        $products =  $request->input('products');
+        foreach($products as $product)
+        {
+            ShoppingcartProduct::where('shoppingcart_id', $shoppingcart->id)->where('id',$product['id'])->update(['title'=>$product['product_name'],'date'=>$product['product_date']]);
+        }
+
+        
+
+
 
         $array = $request->post();
         foreach ($array as $key => $value)
