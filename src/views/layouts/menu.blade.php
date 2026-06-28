@@ -35,7 +35,7 @@
           <i class="far fa-calendar-alt"></i>
           <span>SCHEDULE</span>
         </a>
-        <div id="menu-2" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
+        <div style="z-index: 9999" id="menu-2" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             
             
@@ -75,7 +75,7 @@
           <i class="fas fa-shopping-cart"></i>
           <span>ORDER</span>
         </a>
-        <div id="menu-3" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
+        <div style="z-index: 9999" id="menu-3" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             
             <a class="collapse-item {{ (request()->is('cms/booking*')) ? 'active' : '' }}" href="{{ route('route_tourcms_booking.index') }}"><i class="far fa-circle"></i> {{ __('Booking') }}</a>
@@ -115,7 +115,7 @@
           <i class="fas fa-globe-asia"></i>
           <span>WEBSITE</span>
         </a>
-        <div id="menu-4" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
+        <div style="z-index: 9999" id="menu-4" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             
            
@@ -237,7 +237,7 @@
           <i class="fas fa-balance-scale"></i>
           <span>FINANCIAL</span>
         </a>
-        <div id="menu-fin1" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
+        <div style="z-index: 9999" id="menu-fin1" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             
             
