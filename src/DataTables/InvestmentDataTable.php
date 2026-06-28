@@ -114,10 +114,10 @@ class InvestmentDataTable extends DataTable
             
             Column::make('date')->title('Date')->orderable(false)->addClass('align-middle'),
             
-            Column::make('investment')->title('Investment')->orderable(false)->addClass('align-middle'),
+            Column::make('investment')->title('Investment')->orderable(false)->addClass('align-middle text-right'),
            
-            Column::make('return')->title('Return')->orderable(false)->addClass('align-middle'),
-            Column::make('portfolio')->title('Portfolio')->orderable(false)->addClass('align-middle'),
+            Column::make('return')->title('Return')->orderable(false)->addClass('align-middle text-right'),
+            Column::make('portfolio')->title('Portfolio')->orderable(false)->addClass('align-middle text-right'),
             
             Column::computed('action')
                   ->exportable(false)

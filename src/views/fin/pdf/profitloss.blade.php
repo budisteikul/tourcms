@@ -100,14 +100,18 @@ hr
         @endphp
         <td align="right" style="background-color:#FEFEEF">{{  number_format($fin_categories_revenue_per, 0, ',', '.') }}</td>
       @endfor
-      <td align="right" class="font-weight-bolder"><i>{{ number_format($fin_categories_revenue_subtotal, 0, ',', '.') }}</i></td>
+      <td align="right" class="font-weight-bolder">
+        <style>
+          @php 
+          if($fin_categories_revenue_subtotal<=0)
+          {
+            print_r("#rev-". $fin_categories_revenue->id ." { display: none;}");
+          }
+          @endphp
+        </style>
+        <i>{{ number_format($fin_categories_revenue_subtotal, 0, ',', '.') }}</i></td>
       
     </tr>
-      <script>
-        @if ($fin_categories_revenue_subtotal==0)
-          $('#rev-{{ $fin_categories_revenue->id }}').remove();
-        @endif
-      </script>
       <!-- #### -->
     @endforeach
     <tr>
@@ -175,14 +179,19 @@ hr
         @endphp
         <td align="right" style="background-color:#FEFEEF">{{ number_format($fin_categories_cog_per, 0, ',', '.') }}</td>
       @endfor
-      <td align="right" class="font-weight-bolder"><i>{{ number_format($fin_categories_cog_subtotal, 0, ',', '.') }}</i></td>
+      <td align="right" class="font-weight-bolder">
+        <style>
+          @php 
+          if($fin_categories_cog_subtotal<=0)
+          {
+            print_r("#cogs-". $fin_categories_cog->id ." { display: none;}");
+          }
+          @endphp
+        </style>
+        <i>{{ number_format($fin_categories_cog_subtotal, 0, ',', '.') }}</i></td>
       
     </tr>
-      <script>
-        @if ($fin_categories_cog_subtotal==0)
-          $('#cogs-{{ $fin_categories_cog->id }}').remove();
-        @endif
-      </script>
+     
       <!-- #### -->
     @endforeach
     <tr>
@@ -278,14 +287,18 @@ hr
         @endphp
         <td align="right" style="background-color:#FEFEEF">{{ number_format($fin_categories_expense_per, 0, ',', '.') }}</td>
       @endfor
-      <td align="right" class="font-weight-bolder"><i>{{ number_format($fin_categories_expense_subtotal, 0, ',', '.') }}</i></td>
+      <td align="right" class="font-weight-bolder">
+        <style>
+          @php 
+          if($fin_categories_expense_subtotal<=0)
+          {
+            print_r("#exp-". $fin_categories_expense->id ." { display: none;}");
+          }
+          @endphp
+        </style>
+        <i>{{ number_format($fin_categories_expense_subtotal, 0, ',', '.') }}</i></td>
       
     </tr>
-      <script>
-        @if ($fin_categories_expense_subtotal==0)
-          $('#exp-{{ $fin_categories_expense->id }}').remove();
-        @endif
-      </script>
       <!-- #### -->
     @endforeach
 
