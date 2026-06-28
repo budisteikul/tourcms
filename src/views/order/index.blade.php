@@ -183,14 +183,15 @@ function SET_DONE()
 <div class="col-lg-4 col-sm-12 text-right mr-0 pr-0"  style="font-size: 18px">
     <div class="input-group btn-group">
 
-    <select class="form-control mr-2" id="create_form" data-live-search="true">
+    <select class="form-control" id="create_form" data-live-search="true">
        	<option value="internal_tour">Internal Tour</option>
        	<option value="external_tour">External Tour</option>
 	</select>
 
-<span id="button2">
-<button   onclick="CREATE($('#create_form').val()); return false;" id="create2" type="submit" class="btn btn-primary" disabled><b class="fa fa-plus-square"></b> Create</button>
-</span>
+	<span id="button2"  class="input-group-append">
+		<button   onclick="CREATE($('#create_form').val()); return false;" id="create2" type="submit" class="btn btn-primary" disabled><b class="fa fa-plus-square"></b> Create</button>
+	</span>
+
 	</div>
 </div>
 
