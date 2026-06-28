@@ -72,7 +72,7 @@
                 	<hr />
         		<div class="row w-100">
                 	<div class="col  text-left">
-                   		<button   onclick="CREATE(); return false;" id="create" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Create</button>
+                   		<button   onclick="CREATE(); return false;" id="create" type="submit" class="btn btn-primary"><b class="fa fa-plus-square"></b> Create</button>
                     </div>
 
 

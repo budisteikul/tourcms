@@ -72,7 +72,7 @@
                 	<hr />
         		<div class="row w-100">
                 	<div class="col  text-left">
-                   		<button   onclick="CREATE(); return false;" id="create" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Create</button>
+                   		<button   onclick="CREATE(); return false;" id="create" type="submit" class="btn btn-primary"><b class="fa fa-plus-square"></b> Create</button>
                     </div>
                     <div class="col-auto text-right mr-0 pr-0">
                    		<a class="btn btn-primary text-white" href="{{ route('route_tourcms_debt.index') }}"><i class="fas fa-random"></i> Miscellaneous expense</a>

@@ -189,7 +189,7 @@ function SET_DONE()
 	</select>
 
 <span id="button2">
-<button   onclick="CREATE($('#create_form').val()); return false;" id="create2" type="submit" class="btn btn-primary" disabled><i class="fa fa-save"></i> Create</button>
+<button   onclick="CREATE($('#create_form').val()); return false;" id="create2" type="submit" class="btn btn-primary" disabled><b class="fa fa-plus-square"></b> Create</button>
 </span>
 	</div>
 </div>

@@ -51,11 +51,11 @@ class OrderController extends Controller
         $total = self::getGuests()->count();
         if($total>0)
         {
-            $button = "<button   onclick=\"CREATE($('#create_form').val()); return false;\" id=\"create\" type=\"submit\" class=\"btn btn-primary\"><i class=\"fa fa-save\"></i> Create</button>";
+            $button = "<button   onclick=\"CREATE($('#create_form').val()); return false;\" id=\"create\" type=\"submit\" class=\"btn btn-primary\"><b class=\"fa fa-plus-square\"></b> Create</button>";
         }
         else
         {
-            $button = "<button   onclick=\"CREATE($('#create_form').val()); return false;\" id=\"create\" type=\"submit\" class=\"btn btn-primary\" disabled><i class=\"fa fa-save\"></i> Create</button>";
+            $button = "<button   onclick=\"CREATE($('#create_form').val()); return false;\" id=\"create\" type=\"submit\" class=\"btn btn-primary\" disabled><b class=\"fa fa-plus-square\"></b> Create</button>";
         }
 
         return response()->json(["button" => $button]);
