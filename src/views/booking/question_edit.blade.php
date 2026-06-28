@@ -1,7 +1,7 @@
 @inject('ProductHelper', 'budisteikul\tourcms\Helpers\ProductHelper')
 
 
-<div class="h-100" style="width:99%">		
+<div class="h-100 w-100 pl-2 pr-2 pt-0" style="overflow-x:hidden;"> 		
 
     <div class="row justify-content-center">
         <div class="col-md-12 pr-0 pl-0 pt-0 pb-0">

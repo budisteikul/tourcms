@@ -171,9 +171,17 @@ class ScheduleDataTable extends DataTable
             //Column::make('shoppingcart.shoppingcart_questions.answer')->title('People')->orderable(false)->addClass('align-middle'),
             //Column::make('single_view')->title('Tour')->orderable(false)->addClass('align-middle'),
             //Column::make('shoppingcart.confirmation_code')->title('confirmation_code')->visible(false)->orderable(false)->addClass('align-middle'),
+            Column::computed('action')
+                  ->title('')
+                  ->exportable(false)
+                  ->printable(false)
+                  //->width(25)
+                  ->addClass('text-center'),
+
             Column::make('date_text')->title('Date')->orderable(false)->addClass('align-top'),
-            Column::make('name')->title('Main Contact')->orderable(false)->addClass('align-top'),
             Column::make('people')->title('Pax')->width(30)->orderable(false)->addClass('text-center align-top'),
+            Column::make('name')->title('Main Contact')->orderable(false)->addClass('align-top'),
+            
             
             Column::make('shoppingcart.booking_channel')->title('Channel')->orderable(false)->addClass('align-top'),
             Column::make('title')->title('Tour')->orderable(false)->addClass('align-top .overflow-hidden'),
@@ -182,12 +190,7 @@ class ScheduleDataTable extends DataTable
             //Column::make('people')->title('Pax')->orderable(false)->addClass('align-middle text-center'),
 
             
-            Column::computed('action')
-                  ->title('')
-                  ->exportable(false)
-                  ->printable(false)
-                  //->width(25)
-                  ->addClass('text-center'),
+            
             
             ];
             
