@@ -44,7 +44,7 @@ class LaporanController extends Controller
 
         //NERACA ==========================================================================
         $capital = AccHelper::capital();
-        $debt = AccHelper::debt();
+        $receivable = AccHelper::Receivable();
         $retained_earnings = AccHelper::calculate_saldo_akhir($tahun-1,12);
 
         $revenue = 0;
@@ -64,28 +64,32 @@ class LaporanController extends Controller
         {
             $expenses += AccHelper::total_per_month_by_type('Expenses',$tahun,$i);
         }
+
+        $investment = AccHelper::investment($tahun);
         
         $cash = 0;
         $accounts_receivable = 0;
         $earning = $revenue - $cogs - $expenses;
 
-        $cash = $capital + $debt + $retained_earnings + $earning;
+        $cash = $capital + $retained_earnings + $earning - $receivable;
+        
         if($earning<0)
         {
             $accounts_receivable = $earning * -1;
             $earning = 0;
         }
-        
+        $accounts_receivable += $receivable;
 
         $total_asset = $cash + $accounts_receivable;
         $total_liabilities_and_equity =  $capital+$earning+$retained_earnings;
+        
 
         $pdf = PDF::setOptions(['tempDir' =>  storage_path(),'fontDir' => storage_path(),'fontCache' => storage_path(),'isRemoteEnabled' => true])->loadView('tourcms::fin.pdf.neraca', [
                 'tahun'=>$tahun,
                 'cash'=>$cash,
+                'investment'=>$investment,
                 'retained_earnings'=>$retained_earnings,
                 'capital'=>$capital,
-                'debt'=>$debt,
                 'accounts_receivable'=>$accounts_receivable,
                 'earning'=>$earning,
                 'total_asset'=>$total_asset,
@@ -96,7 +100,7 @@ class LaporanController extends Controller
         Storage::disk('local')->put('pdf/laporan/neraca-'. $tahun .'.pdf', $content);
         //NERACA ==========================================================================
 
-        //PP23 ==========================================================================
+        //PP55 ==========================================================================
         $data = new \stdClass();
 
         $data->month = [];

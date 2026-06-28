@@ -43,7 +43,7 @@ table{
 
 <div>
 <div style="margin-top: 30px; margin-bottom: 40px; font-weight: bold; text-align: center; font-size:22px">
-  Payment List PP23 {{env('APP_NAME')}} For Year {{$tahun}}
+  Payment List PP55 2022 {{env('APP_NAME')}} For Year {{$tahun}}
 </div>
 
 <center>
@@ -55,8 +55,8 @@ table{
     <tr>
       <td width="10"><strong>NO</strong></td>
       <td ><strong>MONTH</strong></td>
-      <td align="right"><strong>DPP</strong></td>
-      <td align="right"><strong>PPH</strong></td>
+      <td align="right"><strong>SALES</strong></td>
+      <td align="right"><strong>TAX</strong></td>
     </tr>
   </thead>
   <tbody>

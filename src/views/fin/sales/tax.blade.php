@@ -7,7 +7,7 @@
 <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Tax PP23</div>
+                <div class="card-header">Tax PP55 2022</div>
                 <div class="card-body">
                 
                    
@@ -39,8 +39,8 @@
     <tr>
       <td width="10"><strong>NO</strong></td>
       <td><strong>MONTH</strong></td>
-      <td align="right"><strong>DPP</strong></td>
-      <td align="right"><strong>PPH</strong></td>
+      <td align="right"><strong>SALES</strong></td>
+      <td align="right"><strong>TAX</strong></td>
     </tr>
   </thead>
   <tbody>
