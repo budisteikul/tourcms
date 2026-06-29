@@ -41,7 +41,9 @@ class ScheduleDataTable extends DataTable
                     }
                     if($result!="")
                     {
-                        return '<i class="fas fa-sticky-note text-primary"></i>';
+                        return '
+                        <i class="fas fa-sticky-note text-primary" data-toggle="tooltip" data-placement="top" title="'.$result.'"></i>
+                        ';
                     }
                     return $result;
                 })
@@ -149,6 +151,12 @@ class ScheduleDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
+                    ->initComplete('function () {
+                    $(\'[data-toggle="tooltip"]\').tooltip();
+                    }')
+                    ->drawCallback('function () {
+                    $(\'[data-toggle="tooltip"]\').tooltip();
+                    }')
                     ->parameters([
                         'language' => [
                             'paginate' => [

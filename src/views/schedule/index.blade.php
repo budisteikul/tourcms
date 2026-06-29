@@ -1,6 +1,6 @@
 @extends('coresdk::layouts.page',['mainTitle'=>'Schedule'])
 @section('content')
-@push('scripts')
+
 <script type="text/javascript">
 function SHOW(id)
   {
@@ -38,12 +38,13 @@ function EDIT_BOOKING(id)
   }
 
 
+
   
 
 </script>
-@endpush
 
-        		
+
+       
                
         <hr>
      
@@ -53,5 +54,6 @@ function EDIT_BOOKING(id)
                
 
 {!! $dataTable->scripts() !!}
+
 
 @endsection
