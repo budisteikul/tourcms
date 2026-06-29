@@ -1,4 +1,4 @@
-@extends('coresdk::layouts.app')
+@extends('coresdk::layouts.page',['mainTitle'=>'Category'])
 @section('content')
 @push('scripts')
 <script type="text/javascript">
@@ -72,11 +72,7 @@ function SHOW()
   }
 	</script>
 @endpush
-<div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Categories</div>
-                <div class="card-body">
+
                 	<div class="row w-100">
                 	<div class="col  text-left">
                    		<button type="button" class="btn btn-primary"  onclick="CREATE(); return false;"><b class="fa fa-plus-square"></b> Add category</button>
@@ -99,10 +95,6 @@ function SHOW()
         
 		{!! $dataTable->table(['class'=>'table table-sm table-bordered table-hover table-striped table-responsive w-100 d-block d-md-table']) !!}
 		
-                </div>
-            </div>
-        </div>
-    </div>
 
 {!! $dataTable->scripts() !!}
 

@@ -1,4 +1,4 @@
-@extends('coresdk::layouts.input-form')
+@extends('coresdk::layouts.input-form',["mainTitle" => "Create Revenue"])
 @section('content')
 				
 <form onSubmit="STORE(); return false;">

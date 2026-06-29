@@ -1,4 +1,4 @@
-@extends('coresdk::layouts.app')
+@extends('coresdk::layouts.page',['mainTitle'=>'Channel'])
 @section('content')
 @push('scripts')
 <script type="text/javascript">
@@ -73,11 +73,7 @@
   }
 	</script>
 @endpush
-<div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Channel</div>
-                <div class="card-body">
+
         		
                 <div class="container ml-0 pl-0">
                 <div class="row">
@@ -93,10 +89,7 @@
         
 		{!! $dataTable->table(['class'=>'table table-sm table-bordered table-hover table-striped table-responsive w-100 d-block d-md-table']) !!}
 		
-                </div>
-            </div>
-        </div>
-    </div>
+              
 
 {!! $dataTable->scripts() !!}
 

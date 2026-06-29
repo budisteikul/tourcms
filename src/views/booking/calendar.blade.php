@@ -1,4 +1,4 @@
-@extends('coresdk::layouts.app')
+@extends('coresdk::layouts.page',['mainTitle'=>'Create Booking for '.$contents->title])
 @section('content')
 <script language="javascript">
 function CREATE()
@@ -12,12 +12,7 @@ function CREATE()
     }
 </script>
 <script src="{{ asset('assets/javascripts/widgets/687035c46b475965b2131d0e804b858e-widget-utils.js') }}"></script>
-<div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
 
-                <div class="card-header">Create Booking for {{$contents->title}}</div>
-                <div class="card-body">
 
 <div class="widget-body" id="WidgetContent">
 <div class="widget">
@@ -104,9 +99,6 @@ function CREATE()
     <div class="col-sm">
        <a style="height:47px;" class="btn btn-lg btn-block btn-success" href="{{route('route_tourcms_booking.index')}}/checkout"><i class="fas fa-shopping-cart"></i> <b>VIEW CART</b></a>
     </div>
-  </div>
                
-            </div>
-        </div>
- </div>
+           
 @endsection

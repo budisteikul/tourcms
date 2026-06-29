@@ -1,13 +1,7 @@
 @inject('fin', 'budisteikul\tourcms\Helpers\AccHelper')
-@extends('coresdk::layouts.app')
+@extends('coresdk::layouts.page',['mainTitle'=>'Profit Loss'])
 @section('content')
-<div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Profit &amp; Loss</div>
-                <div class="card-body">
-                
-                
+               
       
 
 <div class="row w-100">
@@ -23,7 +17,8 @@
         </a>
     </div>        
 </div>
-                
+
+<div class="scroll-container">                
 <table border="0" cellspacing="1" cellpadding="2" class="table table-borderless table-responsive w-100 d-block d-md-table" >
   <thead>
     <tr class="table-active">
@@ -361,11 +356,6 @@
     </tr>
   </tbody>
 </table>
+</div>
 
-
-
- </div>
-            </div>
-        </div>
-    </div>
 @endsection

@@ -1,5 +1,5 @@
 @inject('fin', 'budisteikul\tourcms\Helpers\AccHelper')
-@extends('coresdk::layouts.app')
+@extends('coresdk::layouts.page',['mainTitle'=>'Investment'])
 @section('content')
 @push('scripts')
 <script type="text/javascript">
@@ -57,11 +57,7 @@
   
 	</script>
 @endpush
-<div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Investment</div>
-                <div class="card-body">
+
         		
 <div class="row w-100">
                 	<div class="col  text-left">
@@ -85,10 +81,7 @@
         
 		{!! $dataTable->table(['class'=>'table table-sm table-bordered table-hover table-striped table-responsive w-100 d-block d-md-table']) !!}
 		
-                </div>
-            </div>
-        </div>
-    </div>
+            
 
 {!! $dataTable->scripts() !!}
 

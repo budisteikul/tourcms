@@ -1,19 +1,13 @@
 @inject('fin', 'budisteikul\tourcms\Helpers\AccHelper')
 @inject('report', 'budisteikul\tourcms\Helpers\ReportHelper')
 @inject('productHelper', 'budisteikul\tourcms\Helpers\ProductHelper')
-@extends('coresdk::layouts.app')
+@extends('coresdk::layouts.page',['mainTitle'=>'New Monthly Report'])
 @section('content')
 @push('scripts')
 <script
 src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 </script>
 @endpush
-
-<div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Monthly Report</div>
-                <div class="card-body">
                 
                     <div class="row w-100">
                     <div class="col text-left">
@@ -148,18 +142,6 @@ foreach($traveler_booking_per_months as $traveler_booking_per_month)
 
   </div>
 
-
-
-
-
-
-
-
-
-                </div>
-            </div>
-        </div>
-</div>
 
 
 <script language="javascript">

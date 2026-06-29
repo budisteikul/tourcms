@@ -1,14 +1,9 @@
 @inject('fin', 'budisteikul\tourcms\Helpers\AccHelper')
-@extends('coresdk::layouts.app')
+@extends('coresdk::layouts.page',['mainTitle'=>'Balance Sheet'])
 @section('content')
 
 
 
-<div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Balance Sheet</div>
-                <div class="card-body">
                 
                    
                                       
@@ -150,10 +145,4 @@
                     
 
 
-
-
- </div>
-            </div>
-        </div>
-    </div>
 @endsection

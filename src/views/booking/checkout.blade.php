@@ -1,6 +1,6 @@
 @inject('ProductHelper', 'budisteikul\tourcms\Helpers\ProductHelper')
 @inject('GeneralHelper', 'budisteikul\tourcms\Helpers\GeneralHelper')
-@extends('coresdk::layouts.app')
+@extends('coresdk::layouts.page',['mainTitle'=>'Checkout'])
 @section('content')
 <script language="javascript">
 function CREATE()
@@ -13,11 +13,7 @@ function CREATE()
         }); 
     }
 </script>
-<div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Checkout Booking</div>
-                <div class="card-body">
+
 
 
 	<div class="row">
@@ -510,13 +506,6 @@ function DELETE()
 	</div>
 
 
-
-
-		
-                </div>
-            </div>
-        </div>
- </div>
 
  <script language="javascript">
 function STORE()

@@ -1,4 +1,4 @@
-@extends('coresdk::layouts.app')
+@extends('coresdk::layouts.page',['mainTitle'=>'Booking'])
 @section('content')
 @push('scripts')
 <script type="text/javascript">
@@ -102,11 +102,7 @@
   }
 	</script>
 @endpush
-<div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Booking</div>
-                <div class="card-body">
+
         		    
                 <div class="row w-100">
                   @if(Auth::user()->id==1)
@@ -125,10 +121,7 @@
         
 		{!! $dataTable->table(['class'=>'table table-sm table-bordered table-hover table-striped table-responsive w-100 d-block d-md-table']) !!}
 		
-                </div>
-            </div>
-        </div>
-    </div>
+           
 
 {!! $dataTable->scripts() !!}
 
