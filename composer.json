@@ -44,5 +44,13 @@
                 "QrCode": "SimpleSoftwareIO\\QrCode\\Facades\\QrCode"
             }
         }
+    },
+    "config": {
+        "audit": {
+            "ignore": [
+                "dompdf/dompdf",
+                "barryvdh/laravel-dompdf"
+            ]
+        }
     }
 }
