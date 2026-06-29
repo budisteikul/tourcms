@@ -1,12 +1,10 @@
-@extends('coresdk::layouts.app')
+@extends('coresdk::layouts.page',['mainTitle'=>'Chat'])
 @section('content')
 
-<div class="row justify-content-center" style="min-height: 500px;">
-        <div class="col-md-12">
-            <div class="card mb-2">
-                
-                <div class="card-header pr-0">
-                <div class="row align-items-center w-100">
+
+        		    
+        
+<div class="row align-items-center w-100">
                     <div class="col text-left">
                         <div class="d-flex align-self-center">
                         <a href="https://wa.me/{{ $contact->wa_id }}" class="btn btn-sm btn-success mb-0" target="_blank"><i class="fab fa-whatsapp"></i> {{$contact->name}} +{{$contact->wa_id}}</a>
@@ -18,12 +16,7 @@
                             <button class="btn btn-sm btn-danger mr-0" type="button" onClick="clear_messages();return false;"><i class="fa fa-window-close"></i> Clear messages</button>
                         </div>
                     </div>
-                </div>
-                </div>
-                <div class="card-body">
-        		    
-                
-
+</div>
 <hr>
 
 <div id="message_chat" style="overflow-y: scroll; max-height: 500px;flex-direction: column-reverse;display: flex;"></div> 
@@ -188,17 +181,6 @@
 
 
 
-
-
-</div>
-
-                </div>
-            </div>
-
-           
-
-        </div>
-    </div>
 @push('scripts')
 <script type="module">
   // Import the functions you need from the SDKs you need

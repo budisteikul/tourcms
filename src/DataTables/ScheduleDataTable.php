@@ -2,6 +2,7 @@
 namespace budisteikul\tourcms\DataTables;
 
 use budisteikul\tourcms\Models\ShoppingcartProduct;
+use budisteikul\tourcms\Models\ShoppingcartQuestion;
 use budisteikul\tourcms\Helpers\GeneralHelper;
 use budisteikul\tourcms\Helpers\BookingHelper;
 use budisteikul\tourcms\Helpers\WhatsappHelper;
@@ -30,6 +31,19 @@ class ScheduleDataTable extends DataTable
         return datatables($query)
                 ->addColumn('date_text', function($id){
                     return '<a href="#" onClick="SHOW(\''.$id->shoppingcart->id.'\'); return false;">'.GeneralHelper::dateFormat($id->date,10).'</a>';
+                })
+                ->addColumn('note', function($id){
+                    $result = '';
+                    $notes = ShoppingcartQuestion::where('shoppingcart_id', $id->shoppingcart->id)->where('question_id','GENERAL')->get();
+                    foreach($notes as $note)
+                    {
+                        $result .= $note->answer;
+                    }
+                    if($result!="")
+                    {
+                        return '<i class="fas fa-sticky-note text-primary"></i>';
+                    }
+                    return $result;
                 })
                 ->addColumn('name', function($id){
                     $name = '';
@@ -101,7 +115,7 @@ class ScheduleDataTable extends DataTable
                     //$query->whereRaw($sql, ["%{$keyword}%"]);
                 })
                 ->addIndexColumn()
-                ->rawColumns(['name','date_text','single_view','action']);
+                ->rawColumns(['name','date_text','note','action']);
     }
 
     /**
@@ -181,7 +195,7 @@ class ScheduleDataTable extends DataTable
             Column::make('date_text')->title('Date')->orderable(false)->addClass('align-top'),
             Column::make('people')->title('Pax')->width(30)->orderable(false)->addClass('text-center align-top'),
             Column::make('name')->title('Main Contact')->orderable(false)->addClass('align-top'),
-            
+            Column::make('note')->title('Note')->orderable(false)->addClass('text-center align-top'),
             
             Column::make('shoppingcart.booking_channel')->title('Channel')->orderable(false)->addClass('align-top'),
             Column::make('title')->title('Tour')->orderable(false)->addClass('align-top .overflow-hidden'),
