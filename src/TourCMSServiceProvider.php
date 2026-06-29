@@ -50,6 +50,5 @@ class TourCMSServiceProvider extends ServiceProvider
             'metadata' => ['cacheControl'=> 'public,max-age=86400'], 
         ];
 
-       
     }
 }
