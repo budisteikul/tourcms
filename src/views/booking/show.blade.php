@@ -6,9 +6,14 @@
 @extends('coresdk::layouts.input-form',["mainTitle" => "Booking Detail"])
 @section('content')
 
-            
-            
-            <div class="card mb-2 ">
+<div class="container-fluid m-0 w-100 p-0">
+  <div class="row">
+    <!-- First Column -->
+    <div class="col-12 col-md-6">
+      
+
+
+            <div class="card mb-2">
                 <div class="card-header bg-secondary">CUSTOMER</div>
                   <ul class="list-group list-group-flush ml-0 mr-0 pl-0 pr-0">
                     <li class="list-group-item"><a href="{{env("APP_API_URL")}}/pdf/invoice/{{ $shoppingcart->session_id }}/Invoice-{{ $shoppingcart->confirmation_code }}.pdf"><i class="far fa-file-pdf"></i> Invoice-{{ $shoppingcart->confirmation_code }}.pdf</a></li>
@@ -30,16 +35,22 @@
                     <li class="list-group-item"><b>Status :</b> {{ strtoupper($shoppingcart->booking_status) }}</li>
                     @if($contact->phoneNumber!="")
                     <li class="list-group-item">
-                         <a href="/cms/contact/{{ $Whatsapp->contact($nomor, $contact->firstName, $shoppingcart->id) }}/edit" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fab fa-whatsapp"></i> Whatsapp Business API</a>
-                         <a href="https://wa.me/{{ $nomor }}" class="btn btn-sm btn-success mb-2" target="_blank"><i class="fab fa-whatsapp"></i> Whatsapp Business App</a>
+                         <a href="/cms/contact/{{ $Whatsapp->contact($nomor, $contact->firstName, $shoppingcart->id) }}/edit" class="btn btn-block btn-primary mr-0" target="_blank"><i class="fab fa-whatsapp"></i> Whatsapp Business API</a>
+                         <!-- a href="https://wa.me/{{ $nomor }}" class="btn btn-sm btn-success mb-2" target="_blank"><i class="fab fa-whatsapp"></i> Whatsapp Business App</a -->
                     </li>
                     @endif
                   </ul>
             </div>
 
-            
-            
-            
+
+
+    </div>
+    
+    <!-- Second Column -->
+    <div class="col-12 col-md-6">
+      
+
+
             <div class="card-header bg-secondary">PRODUCT</div>
             {!! $Content->view_product_detail($shoppingcart) !!}
             
@@ -48,7 +59,7 @@
             @if(isset($shoppingcart->shoppingcart_payment))
             @if($shoppingcart->booking_channel=="WEBSITE")
             <div class="card mb-2" style="border-radius: 0px;">
-                <div class="card-header bg-secondary" style="border-radius: 0px;">ACTION</div>
+                <div class="card-header bg-secondary">PAYMENT</div>
             
                   <ul class="list-group list-group-flush">
                     @if($shoppingcart->shoppingcart_payment->payment_provider!="none")
@@ -89,12 +100,27 @@
             </div>
              @endif
              @endif
+
+
+
+
+    </div>
+  </div>
+</div>
+            
+            
+            
+
+            
+            
+            
+            
              
            
 
            
             @if($shoppingcart->booking_status!="CANCELED")
-            <div class="card mb-2">
+            <div class="card mb-2 mt-2">
                 <div class="card-body bg-light">
                     @if($contact->phoneNumber!="")
                     <!-- li class="list-group-item"><button id="btn-whatsapp" type="button" onClick="RESEND_WHATSAPP('{{ $shoppingcart->id }}','{{ $shoppingcart->confirmation_code }}'); return false;" class="btn btn-block btn-success mr-0"><i class="fab fa-whatsapp"></i> <b>Resend Receipt by Whatsapp</b></button></li -->

@@ -5,6 +5,11 @@
 <form onSubmit="UPDATE_BOOKING(); return false;">
 <div id="result"></div>
 
+<div class="container-fluid m-0 w-100 p-0">
+  <div class="row">
+    <div class="col-12 col-md-6">
+
+
 
 <div class="card mb-2 ">
 <div class="card-header bg-secondary">
@@ -47,6 +52,10 @@ if($label=="") $label = $mainContactDetail->question_id;
 </div>
 </div>
 
+
+
+    </div>
+    <div class="col-12 col-md-6">
 
 
 <div class="card mb-2 ">
@@ -135,6 +144,18 @@ if($label=="") $label = $activityBooking->question_id;
 @endforeach     
 </div>
 </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
 
 <button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
 </form>
