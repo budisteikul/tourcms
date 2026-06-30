@@ -42,7 +42,9 @@ function EDIT_BOOKING(id)
   
 
 </script>
-
+<style>
+  font-color:#94a2b8;
+</style>
 
        
                

@@ -123,7 +123,7 @@ foreach($traveler_booking_per_months as $traveler_booking_per_month)
     $total = $total - $ca->total;
 @endphp
     <div class="col-sm-auto">
-<div class="card text-white bg-primary mb-3">
+<div class="card mb-3">
   <div class="card-header">{{ $fin->nameCategory($guide->id,'-') }}</div>
   <div class="card-body">
     <h5 class="card-title">Total : IDR {{ number_format($total, 0, ',', '.') }}</h5>
