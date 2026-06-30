@@ -33,13 +33,15 @@ class CompletedDataTable extends DataTable
                     $question = BookingHelper::get_answer_contact($id->shoppingcart);
                     $name = $question->firstName .' '. $question->lastName;
                     $name = '<a href="#" onClick="SHOW(\''.$shoppingcart_id.'\'); return false;">'. $name .'</a>';
-
+                    return $name;
+                })
+                 ->addColumn('people', function($id){
                     $people = 0;
                     foreach($id->shoppingcart_product_details as $shoppingcart_product_detail)
                     {
                         $people += $shoppingcart_product_detail->people;
                     }
-                    return $name ." ". $people;
+                    return $people;
                 })
                 ->addColumn('date_text', function($id){
                     return GeneralHelper::dateFormat($id->date,10);
@@ -125,6 +127,7 @@ class CompletedDataTable extends DataTable
                   ->addClass('text-center align-middle'),
 
             Column::make('name')->title('Name')->orderable(false)->addClass('align-middle'),
+            Column::make('people')->title('Pax')->width(30)->orderable(false)->addClass('text-center align-middle'),
             Column::make('date_text')->title('Date')->orderable(false)->addClass('align-middle'),
             Column::make('title')->title('Tour')->orderable(false)->addClass('align-middle'),
             Column::make('shoppingcart.booking_channel')->title('Channel')->orderable(false)->addClass('align-middle'),

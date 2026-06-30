@@ -182,17 +182,7 @@ class ScheduleDataTable extends DataTable
             
             return [
 
-            /*
-            Column::computed('DT_RowIndex')
-                  ->width(30)
-                  ->title('No')
-                  ->orderable(false)
-                  ->searchable(false)
-                  ->addClass('text-center align-top'),
-            */
-            //Column::make('shoppingcart.shoppingcart_questions.answer')->title('People')->orderable(false)->addClass('align-middle'),
-            //Column::make('single_view')->title('Tour')->orderable(false)->addClass('align-middle'),
-            //Column::make('shoppingcart.confirmation_code')->title('confirmation_code')->visible(false)->orderable(false)->addClass('align-middle'),
+           
             Column::computed('action')
                   ->title('')
                   ->exportable(false)
@@ -207,10 +197,6 @@ class ScheduleDataTable extends DataTable
             
             Column::make('shoppingcart.booking_channel')->title('Channel')->orderable(false)->addClass('align-top'),
             Column::make('title')->title('Tour')->orderable(false)->addClass('align-top .overflow-hidden'),
-            
-            
-            //Column::make('people')->title('Pax')->orderable(false)->addClass('align-middle text-center'),
-
             
             
             
