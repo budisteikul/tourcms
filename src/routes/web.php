@@ -68,6 +68,7 @@ Route::resource('/cms/fin/revenue','budisteikul\tourcms\Controllers\RevenueContr
 	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);
 
 //ca
+Route::get('/cms/fin/ca/fee','budisteikul\tourcms\Controllers\DebtController@fee')->middleware(['web','auth','verified','CoreMiddleware','SettingMiddleware']);
 Route::resource('/cms/fin/ca','budisteikul\tourcms\Controllers\DebtController',[ 'names' => 'route_tourcms_debt' ])
 	->middleware(['web','auth','verified','CoreMiddleware','LevelMiddleware','SettingMiddleware']);
 

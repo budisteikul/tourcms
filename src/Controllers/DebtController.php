@@ -13,6 +13,7 @@ use budisteikul\tourcms\DataTables\DebtDataTable;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use budisteikul\tourcms\Helpers\GeneralHelper;
+use budisteikul\tourcms\Helpers\AccHelper;
 
 class DebtController extends Controller
 {
@@ -37,6 +38,52 @@ class DebtController extends Controller
                 'bulan' => $bulan
            ])->render('tourcms::debt.index',['tahun' => $tahun,
                 'bulan' => $bulan,'guides' => $guides]);
+    }
+
+    public function fee(Request $request)
+    {
+        $date = $request->input('date');
+
+        if($date=="") $date = date('Y-m');
+
+        $newDateTime = Carbon::parse($date."-01");
+        $tahun = Str::substr($newDateTime, 0,4);
+        $bulan = Str::substr($newDateTime, 5,2);
+        $bulan = GeneralHelper::digitFormat($bulan,2);
+
+        $guides = json_decode(config('site.guides'));
+
+        $aaa = '';
+        foreach($guides as $guide)
+        {
+            $total = AccHelper::total_per_month($guide->id,$tahun,$bulan,false);
+            $order = AccHelper::count_per_month($guide->id,$tahun,$bulan,false);
+            $ca = AccHelper::ca($guide->id,$bulan,$tahun);
+            $total = $total - $ca->total;
+
+            $aaa .= '
+    <div class="col-sm-3">
+        <div class="col-sm-12 justify-content-left">
+            <div class="row border-bottom p-2">
+                <div class="col-md-auto ">
+                    <b>Guide :</b> '.$guide->name.'
+                </div>
+            </div>
+            <div class="row border-bottom p-2">
+                
+                <div class="col-md-auto ">
+                    <b>Total :</b> IDR '. number_format($total, 0, ',', '.') .'
+                </div>
+            </div>
+        </div>
+    </div>';
+        }
+
+        $view = '<div class="row mt-4">'.$aaa.'</div>';
+        return response()->json([
+                    "id" => "1",
+                    "view" => $view
+                ]);
     }
 
     /**

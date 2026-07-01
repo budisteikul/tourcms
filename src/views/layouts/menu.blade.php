@@ -240,23 +240,13 @@
         <div style="z-index: 9999" id="menu-fin1" class="collapse {{$show}}" aria-labelledby="heading1" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             
-            
-
-             <!-- a class="collapse-item {{ (request()->is('cms/fin/transactions*')) ? 'active' : '' }}" href="{{ route('route_fin_transactions.index') }}"><i class="far fa-circle"></i> {{ __('Transaction') }}</a -->
-            
-             
-
-             
-
-             
-
              <a class="collapse-item {{ (request()->is('cms/fin/orders*')) ? 'active' : '' }}" href="{{ route('route_tourcms_orders.index') }}"><i class="far fa-circle"></i> {{ __('Purchase Orders') }}</a>
-
-             <!-- a class="collapse-item {{ (request()->is('cms/fin/pettycash*')) ? 'active' : '' }}" href="{{ route('route_tourcms_pettycash.index') }}"><i class="far fa-circle"></i> {{ __('Petty Cash') }}</a -->
 
              <a class="collapse-item {{ (request()->is('cms/fin/expenses*')) ? 'active' : '' }}" href="{{ route('route_tourcms_expenses.index') }}"><i class="far fa-circle"></i> {{ __('Expenses') }}</a>
 
              <a class="collapse-item {{ (request()->is('cms/fin/revenue*')) ? 'active' : '' }}" href="{{ route('route_tourcms_revenue.index') }}"><i class="far fa-circle"></i> {{ __('Revenue') }}</a>
+
+             <a class="collapse-item {{ (request()->is('cms/fin/ca*')) ? 'active' : '' }}" href="{{ route('route_tourcms_debt.index') }}"><i class="far fa-circle"></i> {{ __('Fee and Deduction') }}</a>
 
              <a class="collapse-item {{ (request()->is('cms/fin/investment*')) ? 'active' : '' }}" href="{{ route('route_tourcms_investment.index') }}"><i class="far fa-circle"></i> {{ __('Investment') }}</a>
 

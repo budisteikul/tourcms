@@ -1,5 +1,5 @@
 @inject('fin', 'budisteikul\tourcms\Helpers\AccHelper')
-@extends('coresdk::layouts.page',['mainTitle'=>'General Expenses'])
+@extends('coresdk::layouts.page',['mainTitle'=>'Expenses'])
 @section('content')
 @push('scripts')
 <script type="text/javascript">
@@ -70,9 +70,7 @@
                 	<div class="col  text-left">
                    		<button   onclick="CREATE(); return false;" id="create" type="submit" class="btn btn-primary"><b class="fa fa-plus-square"></b> Create</button>
                     </div>
-                    <div class="col-auto text-right mr-0 pr-0">
-                   		<a class="btn btn-primary text-white" href="{{ route('route_tourcms_debt.index') }}"><i class="fas fa-random"></i> Miscellaneous expense</a>
-                    </div>
+                   
 
 
 </div>

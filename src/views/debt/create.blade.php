@@ -1,4 +1,4 @@
-@extends('coresdk::layouts.input-form',["mainTitle" => "Create Miscellaneous Expense"])
+@extends('coresdk::layouts.input-form',["mainTitle" => "Create Fee or Deduction"])
 @section('content')
 
 				
@@ -90,6 +90,7 @@ function STORE()
        				$('#dataTableBuilder').DataTable().ajax.reload( null, false );
        				$("#result").empty().append('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><b>Success!</b></div>').hide().fadeIn();
        				setTimeout(function (){
+       					get_fee();
   						$.fancybox.close();
 					}, 1000);
 					

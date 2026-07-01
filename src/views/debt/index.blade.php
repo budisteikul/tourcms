@@ -1,5 +1,5 @@
 @inject('fin', 'budisteikul\tourcms\Helpers\AccHelper')
-@extends('coresdk::layouts.page',['mainTitle'=>'Miscellaneous Expenses'])
+@extends('coresdk::layouts.page',['mainTitle'=>'Fee and Deduction'])
 @section('content')
 @push('scripts')
 <script type="text/javascript">
@@ -25,6 +25,7 @@
      						   type: 'DELETE',
      						   url: '{{ route('route_tourcms_debt.index') }}/'+ id
 						        }).done(function( msg ) {
+						        	get_fee();
 							         table.ajax.reload( null, false );
 						        });	
             		}
@@ -51,7 +52,16 @@
 		
 	}
 	
-	
+	$(function() {
+    	get_fee();
+	});
+
+	function get_fee()
+	{
+		$.get("{{ route('route_tourcms_debt.index') }}/fee?date={{$tahun}}-{{$bulan}}", function(data, status){
+    		$('#view').html(data.view);
+  		});
+	}
 
   
 	</script>
@@ -71,9 +81,7 @@
                 	<div class="col  text-left">
                    		<button   onclick="CREATE(); return false;" id="create" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Create</button>
                     </div>
-                    <div class="col-auto text-right mr-0 pr-0">
-                   		<a class="btn btn-primary text-white" href="{{ route('route_tourcms_expenses.index') }}"><i class="fas fa-random"></i> General expense</a>
-                    </div>
+                    
 
 
 </div>
@@ -87,31 +95,7 @@
 		
 <hr>              
 
-<div class="row mt-4">
-	@foreach($guides as $guide)
-	@php
-    	$total = $fin->total_per_month($guide->id,$tahun,$bulan,false);
-    	$order = $fin->count_per_month($guide->id,$tahun,$bulan,false);
-    	$ca = $fin->ca($guide->id,$bulan,$tahun);
-    	$total = $total - $ca->total;
-	@endphp
-    <div class="col-sm-3">
-    	<div class="col-sm-12 justify-content-left">
-            <div class="row border-bottom p-2">
-                <div class="col-md-auto ">
-                    <b>Guide :</b> {{ $guide->name }}
-                </div>
-            </div>
-            <div class="row border-bottom p-2">
-                
-                <div class="col-md-auto ">
-                    <b>Total :</b> IDR {{ number_format($total, 0, ',', '.') }}
-                </div>
-            </div>
-        </div>
-	</div>
-	@endforeach
-</div>
+<div id="view"></div>
 
 <hr>
 
