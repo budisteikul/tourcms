@@ -72,7 +72,7 @@ class DebtController extends Controller
             <div class="row border-bottom p-2">
                 
                 <div class="col-md-auto ">
-                    <b>Total :</b> IDR '. number_format($total, 0, ',', '.') .'
+                    <b>Fee :</b> IDR '. number_format($total, 0, ',', '.') .'
                 </div>
             </div>
         </div>

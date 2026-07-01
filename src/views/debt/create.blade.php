@@ -34,7 +34,7 @@
 </div>
 
 <div class="form-group">
-    <label for="app">Debt</label>
+    <label for="app">Guide</label>
     <select class="form-control" id="app">
       @foreach($guides as $guide)
        	<option value="{{$guide->id}}">{{$guide->name}}</option>
