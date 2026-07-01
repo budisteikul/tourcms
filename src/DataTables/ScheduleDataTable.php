@@ -34,7 +34,7 @@ class ScheduleDataTable extends DataTable
                 })
                 ->addColumn('note', function($id){
                     $result = '';
-                    $notes = ShoppingcartQuestion::where('shoppingcart_id', $id->shoppingcart->id)->where('question_id','GENERAL')->get();
+                    $notes = ShoppingcartQuestion::where('shoppingcart_id', $id->shoppingcart->id)->where('type','activityBookings')->get();
                     foreach($notes as $note)
                     {
                         $result .= $note->answer;
