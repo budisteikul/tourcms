@@ -1,5 +1,5 @@
 @inject('fin', 'budisteikul\tourcms\Helpers\AccHelper')
-@extends('coresdk::layouts.page',['mainTitle'=>'Expenses'])
+@extends('coresdk::layouts.page',['mainTitle'=>'General Expenses'])
 @section('content')
 @push('scripts')
 <script type="text/javascript">
