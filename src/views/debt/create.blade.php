@@ -1,4 +1,4 @@
-@extends('coresdk::layouts.input-form',["mainTitle" => "Create General Expense"])
+@extends('coresdk::layouts.input-form',["mainTitle" => "Create Miscellaneous Expense"])
 @section('content')
 
 				

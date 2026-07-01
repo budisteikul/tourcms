@@ -57,6 +57,8 @@
 	</script>
 @endpush
 
+
+
 <div class="row w-100">
                 	<div class="col  text-left">
                    		{!! $fin::select_yearmonth_form($tahun,$bulan)  !!}
@@ -83,7 +85,35 @@
         
 		{!! $dataTable->table(['class'=>'table table-sm table-bordered table-hover table-striped table-responsive w-100 d-block d-md-table']) !!}
 		
-              
+<hr>              
+
+<div class="row mt-4">
+	@foreach($guides as $guide)
+	@php
+    	$total = $fin->total_per_month($guide->id,$tahun,$bulan,false);
+    	$order = $fin->count_per_month($guide->id,$tahun,$bulan,false);
+    	$ca = $fin->ca($guide->id,$bulan,$tahun);
+    	$total = $total - $ca->total;
+	@endphp
+    <div class="col-sm-3">
+    	<div class="col-sm-12 justify-content-left">
+            <div class="row border-bottom p-2">
+                <div class="col-md-auto ">
+                    <b>Guide :</b> {{ $guide->name }}
+                </div>
+            </div>
+            <div class="row border-bottom p-2">
+                
+                <div class="col-md-auto ">
+                    <b>Total :</b> IDR {{ number_format($total, 0, ',', '.') }}
+                </div>
+            </div>
+        </div>
+	</div>
+	@endforeach
+</div>
+
+<hr>
 
 {!! $dataTable->scripts() !!}
 

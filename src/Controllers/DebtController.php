@@ -29,11 +29,14 @@ class DebtController extends Controller
         $tahun = Str::substr($newDateTime, 0,4);
         $bulan = Str::substr($newDateTime, 5,2);
         $bulan = GeneralHelper::digitFormat($bulan,2);
+
+        $guides = json_decode(config('site.guides'));
+
         return $dataTable->with([
                 'tahun' => $tahun,
                 'bulan' => $bulan
            ])->render('tourcms::debt.index',['tahun' => $tahun,
-                'bulan' => $bulan]);
+                'bulan' => $bulan,'guides' => $guides]);
     }
 
     /**
@@ -66,8 +69,7 @@ class DebtController extends Controller
         }
 
         $guide = fin_categories::where('id',$app)->first();
-        //$note = 'Cash advance - '. $guide->name .' : '. number_format($amount, 0, ',', '.') .' - '. $note;
-
+        
         $order = new Order;
         $order->type = 'cash_advance';
         $order->date =  $date;

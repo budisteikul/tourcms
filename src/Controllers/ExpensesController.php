@@ -58,39 +58,6 @@ class ExpensesController extends Controller
         $status =  $request->input('status');
         $status = $status === 'true'? true: false;
 
-        /*
-        if($app==1)
-        {
-            $trans_id = 54;
-            $note = 'Expenses - Bill : '. number_format($amount, 0, ',', '.');
-            $status = 0;
-        }
-        else if($app==2)
-        {
-            $trans_id = 47;
-            $note = 'Expenses - Bank Fee : '. number_format($amount, 0, ',', '.');
-            $status = 0;
-        }
-        else if($app==3)
-        {
-            $trans_id = 46;
-            $note = 'Expenses - Refund : '. number_format($amount, 0, ',', '.');
-            $status = 0;
-        }
-        else if($app==4)
-        {
-            $trans_id = 16;
-            $note = 'Expenses - Bea Materai : '. number_format($amount, 0, ',', '.');
-            $status = 0;
-        }
-        else
-        {
-            $trans_id = 16;
-            $note = 'Expenses - Other : '. number_format($amount, 0, ',', '.');
-            $status = 0;
-        }
-        */
-
         $trans_id = 16;
         $note = 'Expenses - '. $note .' : '. number_format($amount, 0, ',', '.');
         //$status = 0;
