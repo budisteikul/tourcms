@@ -44,7 +44,7 @@
 
 <div class="form-group">
 	<label for="amount">Amount :</label>
-	<input type="number" step="0.01" id="amount" name="amount" class="form-control" placeholder="amount">
+	<input type="number" step="0.01" id="amount" name="amount" class="form-control" placeholder="amount" autocomplete="off">
 </div>
 
 
